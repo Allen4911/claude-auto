@@ -31,34 +31,7 @@ cat ~/.claude/settings.json 2>/dev/null || echo "{}"
 
 이 설정이 `true`이면 `claude` 명령을 실행할 때마다 자동으로 Remote Control이 활성화됩니다.
 
-```json
-{
-  "model": "claude-opus-4-6",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [{ "type": "command", "command": "~/.claude/hooks/rtk-wrapper.sh" }]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Bash|Edit|Write|Agent|Task",
-        "hooks": [{ "type": "command", "command": "node ~/.claude/hooks/gsd-context-monitor.js", "timeout": 10 }]
-      }
-    ]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "node ~/.claude/hooks/gsd-statusline.js"
-  },
-  "enabledPlugins": {
-    "superpowers@superpowers-marketplace": true
-  },
-  "skipDangerousModePermissionPrompt": true,
-  "remoteControlAtStartup": true
-}
-```
+![settings.json Remote Control 설정](../assets/04-2-settings-json.png)
 
 ### /config 메뉴로 설정
 
@@ -76,14 +49,7 @@ cat ~/.claude/settings.json 2>/dev/null || echo "{}"
 
 특정 세션에만 Remote Control을 활성화하려면 실행 시 플래그를 사용합니다.
 
-```bash
-$ claude --remote-control "팀 에이전트 서버"
-
-✅ Remote Control 활성화됨
-   세션: team-agent-graceful-unicorn
-   URL : https://claude.ai/code/session_xxxxx
-   QR코드: 스페이스바를 눌러 표시
-```
+![CLI 플래그로 Remote Control 실행](../assets/04-2-remote-control-flag.png)
 
 ### 인터랙티브 세션 + 원격 접근
 
