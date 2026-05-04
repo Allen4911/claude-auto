@@ -43,11 +43,7 @@ tmux rename-session -t team newname
 
 `-x`와 `-y`는 세션의 가상 터미널 크기입니다. 실제 터미널 크기보다 크게 설정하면 파인이 잘리지 않습니다.
 
-```bash
-$ tmux list-sessions
-
-team1: 1 windows (created Sun Apr 26 14:31:06 2026) (attached)
-```
+![TMUX 세션 목록 확인](../assets/03-1-tmux-sessions.png)
 
 ---
 
@@ -144,14 +140,14 @@ tmux select-layout -t team:0 main-vertical
 tmux set-option -t team main-pane-width 158
 ```
 
-| Pane | 이름 | 비고 |
+| Pane | 팀원 | 위치 |
 |------|------|------|
-| 0 | 쭌 (팀장) | 너비 158 |
-| 1 | 민준 | |
-| 2 | 지훈 | |
-| 3 | 수아 | |
-| 4 | 서연 | |
-| 5 | 태양 | |
+| 0 | 쭌 (팀장) | 왼쪽 메인 (너비 158) |
+| 1 | 민준 | 오른쪽 상단 |
+| 2 | 지훈 | 오른쪽 2번째 |
+| 3 | 수아 | 오른쪽 3번째 |
+| 4 | 서연 | 오른쪽 4번째 |
+| 5 | 태양 | 오른쪽 하단 |
 
 ---
 
