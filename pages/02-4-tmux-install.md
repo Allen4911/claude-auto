@@ -18,11 +18,7 @@ tmux -V
 tmux 3.4
 ```
 
-```bash
-$ tmux -V
-
-tmux 3.4
-```
+![TMUX 버전 확인](../assets/02-4-tmux-install.png)
 
 ---
 
