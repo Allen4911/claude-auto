@@ -23,12 +23,7 @@ claude --version
 claude-code 2.1.71
 ```
 
-```bash
-$ npm install -g @anthropic-ai/claude-code 2>&1 | tail -5 && echo '✅ 설치 완료'
-
-changed 2 packages in 2s
-✅ 설치 완료
-```
+![Claude Code 설치 확인](../assets/02-3-claude-install.png)
 
 ---
 
