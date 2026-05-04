@@ -22,20 +22,7 @@ Press SPACE to show QR code
 Press W to toggle spawn mode (same-dir ↔ worktree)
 ```
 
-```bash
-$ claude remote-control --help
-
-USAGE
-  claude remote-control [options]
-
-OPTIONS
-  --name <name>          세션 이름
-  --spawn <mode>         same-dir, worktree, session (기본: same-dir)
-  --capacity <N>         최대 동시 세션 수 (기본: 32)
-  --permission-mode      acceptEdits, auto, bypassPermissions, dontAsk, plan
-  -v, --verbose          상세 출력
-  -h, --help             도움말
-```
+![서버 모드 실행 옵션 예시](../assets/04-3-server-mode.png)
 
 ---
 
