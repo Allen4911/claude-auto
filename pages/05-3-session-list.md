@@ -12,17 +12,11 @@ QR 코드 없이도 세션 목록 화면에서 원하는 세션을 직접 찾아
 
 Claude 모바일 앱에서 하단 탭의 **Code** 를 탭하면 세션 목록 화면이 열립니다.
 
-![앱 하단 탭 - Code 탭 강조 표시](../assets/05-3-code-tab-highlight.png)
-
 <hr>
 
 ## 세션 목록 화면 구성
 
 세션 목록에는 현재 Remote Control 이 활성화된 모든 세션이 표시됩니다.
-
-![세션 목록 UI](../assets/05-3-session-list.png)
-
-![세션 목록 화면 전체](../assets/05-3-session-list-full.png)
 
 각 항목의 구성 요소:
 
@@ -61,8 +55,6 @@ claude remote-control --remote-control-session-name-prefix team-minjun
 
 세션이 많을 경우, 목록 상단의 **검색창**을 이용합니다.
 
-![세션 목록 상단 검색창에 "민준" 입력 후 필터된 결과](../assets/05-3-search-minjun.png)
-
 세션 이름, 부제목, 호스트명 등 모든 텍스트를 검색할 수 있습니다.
 
 <hr>
@@ -75,13 +67,9 @@ claude remote-control --remote-control-session-name-prefix team-minjun
 
 연결하려는 세션 항목을 탭합니다.
 
-![세션 항목 탭하는 화면](../assets/05-3-session-tap.png)
-
 **Step 2 — 세션 화면 진입**
 
 해당 에이전트의 대화 화면이 열립니다. PC에서 진행 중인 실시간 대화 내용이 표시됩니다.
-
-![팀 에이전트 세션 대화 화면](../assets/05-3-session-chat.png)
 
 <hr>
 
@@ -91,11 +79,7 @@ claude remote-control --remote-control-session-name-prefix team-minjun
 
 **iOS:** 상단 타이틀 영역을 탭하거나 왼쪽 스와이프로 세션 목록으로 돌아갑니다.
 
-![iOS 세션 전환 - 뒤로가기 제스처](../assets/05-3-ios-swipe.png)
-
 **Android:** 시스템 뒤로가기 버튼 또는 앱 내 뒤로가기 화살표를 탭합니다.
-
-![Android 뒤로가기 버튼으로 세션 목록 복귀](../assets/05-3-android-back.png)
 
 <hr>
 
@@ -107,8 +91,6 @@ claude remote-control --remote-control-session-name-prefix team-minjun
 | 초록 점 + "응답 대기 중" | Claude가 사용자 입력을 기다림 | 지시 입력 |
 | 노란 점 + "도구 승인 필요" | 실행 권한 승인 대기 | 5-4장 참고 |
 | 회색 + "오프라인" | PC 세션이 종료되었거나 네트워크 불량 | PC 상태 확인 |
-
-![다양한 상태의 세션 목록 예시](../assets/05-3-session-states.png)
 
 <hr>
 

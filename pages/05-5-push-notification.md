@@ -30,8 +30,6 @@ Claude Code는 다음 상황에서 모바일 알림을 전송합니다.
 
 앱을 처음 설치하고 Code 기능에 접근하면, 알림 권한 요청 팝업이 자동으로 나타납니다. **허용** 을 탭합니다.
 
-![iOS 알림 권한 요청 팝업 - "허용" 버튼 강조](../assets/05-5-ios-permission.png)
-
 **나중에 권한을 켜는 방법**
 
 권한 요청을 거부했거나 나중에 활성화하려면:
@@ -41,23 +39,17 @@ Claude Code는 다음 상황에서 모바일 알림을 전송합니다.
 3. **알림** → **알림 허용** 토글 켜기
 4. **알림 스타일** 에서 **배너** 또는 **알림** 선택 권장
 
-![iPhone 설정 > Claude > 알림 화면](../assets/05-5-ios-notif-settings.png)
-
 ### Android
 
 **처음 앱 실행 시**
 
 Android 13 이상에서는 앱 첫 실행 시 알림 권한 요청 팝업이 나타납니다. **허용** 을 탭합니다.
 
-![Android 알림 권한 요청 팝업](../assets/05-5-android-permission.png)
-
 **나중에 권한을 켜는 방법**
 
 1. 기기 **설정** → **앱** (또는 **애플리케이션**)
 2. **Claude** 선택
 3. **알림** → **알림 허용** 토글 켜기
-
-![Android 설정 > Claude > 알림 화면](../assets/05-5-android-notif-settings.png)
 
 <hr>
 
@@ -67,8 +59,6 @@ Claude 앱 자체에서도 알림 종류를 세밀하게 조정할 수 있습니
 
 **설정 경로:**
 - 앱 우측 상단 프로필 아이콘 → **Settings** → **Notifications**
-
-![Claude 앱 Notifications 설정 화면](../assets/05-5-app-notif-settings.png)
 
 | 설정 항목 | 설명 |
 |-----------|------|
@@ -95,13 +85,9 @@ Claude 앱 자체에서도 알림 종류를 세밀하게 조정할 수 있습니
 Bash: npm run test
 ```
 
-![잠금 화면의 Claude 알림 카드](../assets/05-5-lockscreen.png)
-
 **iOS:** 알림을 왼쪽으로 스와이프하면 **보기** 버튼이 나타납니다. 탭하면 앱이 열리며 해당 세션으로 바로 이동합니다.
 
 **Android:** 알림을 탭하면 해당 세션이 바로 열립니다. 알림을 길게 누르면 **승인 / 거부** 액션 버튼이 나타납니다(지원 기기에 따라 다름).
-
-![Android 알림 확장 - 액션 버튼 표시](../assets/05-5-android-expand.png)
 
 <hr>
 
@@ -112,8 +98,6 @@ Bash: npm run test
 **iOS:** 화면 상단에서 아래로 스와이프 → 알림 센터
 
 **Android:** 화면 상단에서 아래로 스와이프 → 알림 패널
-
-![알림 센터에 여러 Claude 세션 알림이 쌓인 모습](../assets/05-5-multiple-notifs.png)
 
 <hr>
 
@@ -145,8 +129,6 @@ Bash: npm run test
 
 4. Claude가 작업 재개 → 완료 시 재알림
 ```
-
-![이동 중 스마트폰으로 승인하는 화면](../assets/05-5-mobile-approve.png)
 
 <hr>
 
