@@ -1,8 +1,8 @@
-# 2-2. 필수 패키지 설치
+## 2-2. 필수 패키지 설치
 
 Claude Code와 TMUX 기반 멀티에이전트 환경을 구성하려면 Node.js, npm, 그리고 몇 가지 유틸리티가 필요합니다. 이 챕터에서는 순서대로 설치합니다.
 
----
+<hr>
 
 ## Node.js 설치
 
@@ -50,7 +50,7 @@ node --version
 npm --version
 ```
 
----
+<hr>
 
 ## Git 설치
 
@@ -70,7 +70,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
 ```
 
----
+<hr>
 
 ## curl, wget, unzip
 
@@ -80,7 +80,7 @@ git config --global user.email "your@email.com"
 sudo apt install -y curl wget unzip
 ```
 
----
+<hr>
 
 ## build-essential (선택)
 
@@ -90,7 +90,7 @@ sudo apt install -y curl wget unzip
 sudo apt install -y build-essential
 ```
 
----
+<hr>
 
 ## 전체 설치 요약 스크립트
 
@@ -117,7 +117,7 @@ echo "  npm:  $(npm --version)"
 echo "  git:  $(git --version)"
 ```
 
----
+<hr>
 
 ## 설치 확인 체크리스트
 

@@ -1,8 +1,8 @@
-# 4-4. 세션 이름 설정
+## 4-4. 세션 이름 설정
 
 원격에서 여러 Claude Code 세션에 접속할 때 세션 이름이 중요합니다. 이름을 잘 설정하면 `claude.ai/code` 세션 목록에서 원하는 세션을 빠르게 찾을 수 있습니다.
 
----
+<hr>
 
 ## 세션 이름 결정 우선순위
 
@@ -15,7 +15,7 @@ Claude Code는 세션 이름을 다음 순서로 결정합니다.
 | 3 | 대화 기록의 마지막 의미 있는 메시지 | (자동) |
 | 4 | `{hostname}-{랜덤형용사}-{랜덤명사}` | `mypc-graceful-unicorn` |
 
----
+<hr>
 
 ## 이름 직접 지정
 
@@ -33,7 +33,7 @@ claude remote-control --name "개발 서버"
 ### 실행 중 세션에서 지정
 
 ```
-❯ /remote-control 내 프로젝트 작업
+> /remote-control 내 프로젝트 작업
 ```
 
 `/remote-control` 명령어 뒤에 이름을 입력합니다.
@@ -41,10 +41,10 @@ claude remote-control --name "개발 서버"
 ### 실행 중 세션 이름 변경
 
 ```
-❯ /rename 새 세션 이름
+> /rename 새 세션 이름
 ```
 
----
+<hr>
 
 ## 세션 이름 접두사 설정
 
@@ -74,7 +74,7 @@ claude remote-control
 # 결과: myproject-gentle-forest
 ```
 
----
+<hr>
 
 ## 멀티에이전트 팀에서 세션 이름 관리
 
@@ -106,7 +106,7 @@ tmux send-keys -t team:0.2 \
 ● 리뷰어-태양
 ```
 
----
+<hr>
 
 ## 환경변수 기반 접두사와 역할 이름 결합
 
@@ -118,7 +118,7 @@ export CLAUDE_REMOTE_CONTROL_SESSION_NAME_PREFIX="team"
 claude --rc "pane0-팀장"     # → team-pane0-팀장 (접두사 + 이름)
 ```
 
----
+<hr>
 
 ## 세션 이름 모범 사례
 
@@ -141,21 +141,21 @@ claude --rc "$(date +%Y%m%d)-데이터마이그레이션"
 
 세션 목록에서 잘리지 않도록 이름은 20자 이내로 유지합니다.
 
----
+<hr>
 
 ## 세션 이름 확인
 
 현재 세션 이름은 `/status` 명령으로 확인합니다.
 
 ```
-❯ /status
+> /status
 
 Session: 팀장-쭌
 Remote Control: Active
 Model: claude-sonnet-4-6
 ```
 
----
+<hr>
 
 ## 요약
 

@@ -1,8 +1,8 @@
-# 4-5. Stream JSON 제어
+## 4-5. Stream JSON 제어
 
 Remote Control이 사람이 다른 기기에서 직접 접속하는 방식이라면, **Stream JSON**은 프로그램이 Claude Code를 자동으로 제어하는 방식입니다. 스크립트, 파이프라인, 다른 애플리케이션에서 Claude와 구조화된 방식으로 통신할 수 있습니다.
 
----
+<hr>
 
 ## Stream JSON 모드의 두 가지 방향
 
@@ -11,7 +11,7 @@ Remote Control이 사람이 다른 기기에서 직접 접속하는 방식이라
 | 출력 스트리밍 | `--output-format stream-json` | Claude 응답을 JSON 스트림으로 받기 |
 | 입력 스트리밍 | `--input-format stream-json` | JSON으로 메시지를 Claude에게 전송 |
 
----
+<hr>
 
 ## 출력: Stream JSON
 
@@ -64,7 +64,7 @@ claude -p "2 + 2는?" \
     jq -r 'select(.type == "result") | .result'
 ```
 
----
+<hr>
 
 ## 단일 JSON 출력 (`--output-format json`)
 
@@ -113,7 +113,7 @@ claude -p "다음 텍스트에서 이름 목록을 추출해줘: 앨런, 민준,
 }
 ```
 
----
+<hr>
 
 ## 입력: Stream JSON
 
@@ -148,7 +148,7 @@ echo '{"type":"user_message","content":"안녕하세요!","uuid":"msg-001"}' | \
 | `--replay-user-messages` | 수신한 사용자 메시지를 stdout에 에코 (수신 확인용) |
 | `--include-partial-messages` | 부분 토큰 스트림 이벤트 포함 |
 
----
+<hr>
 
 ## 실용 예제: 파이프라인에서 활용
 
@@ -188,7 +188,7 @@ claude -p "README.md 초안 작성해줘" \
 echo "README.md 생성 완료"
 ```
 
----
+<hr>
 
 ## Remote Control과 Stream JSON 비교
 
@@ -200,7 +200,7 @@ echo "README.md 생성 완료"
 | 세션 유지 | 영구 세션 | 요청별 실행 |
 | 자동화 | 어려움 | 쉬움 |
 
----
+<hr>
 
 ## 요약
 

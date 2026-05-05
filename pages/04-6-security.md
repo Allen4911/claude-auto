@@ -1,8 +1,8 @@
-# 4-6. 보안 설정 및 인증 요구사항
+## 4-6. 보안 설정 및 인증 요구사항
 
 Remote Control은 외부에서 Claude Code를 원격 제어하는 기능이다. 편리한 만큼 보안 설정을 소홀히 하면 의도하지 않은 접근이 발생할 수 있다. 이 절에서는 Remote Control의 보안 모델과 권장 설정을 다룬다.
 
----
+<hr>
 
 ## 인증 구조
 
@@ -23,7 +23,7 @@ Claude Code 서버 모드
 
 핵심 원칙: **동일한 Anthropic 계정으로 로그인한 기기만 해당 세션에 접근할 수 있다.** 타인이 세션 ID를 알더라도 계정 인증 없이는 연결이 불가능하다.
 
----
+<hr>
 
 ## 권한 모드 (Permission Mode)
 
@@ -50,7 +50,7 @@ Claude: "git push origin main을 실행하겠습니다. 승인하시겠습니까
 
 `bypassPermissions` 모드는 이 승인 단계를 건너뛰므로 Remote Control 환경에서는 사용하지 않는 것이 좋다.
 
----
+<hr>
 
 ## settings.json 보안 설정
 
@@ -85,7 +85,7 @@ Claude: "git push origin main을 실행하겠습니다. 승인하시겠습니까
 
 읽기 전용 명령어(`git status`, `git log`, `Read`)는 자동 허용하되, 시스템 변경 명령어(`rm`, `sudo`)는 차단하는 것이 기본 원칙이다.
 
----
+<hr>
 
 ## 네트워크 보안
 
@@ -103,7 +103,7 @@ sudo ufw enable
 
 여러 팀원이 같은 머신에서 각자 Claude Code를 실행할 경우, 세션은 Anthropic 계정 단위로 격리된다. A의 계정으로 생성된 세션은 B의 계정으로 접근할 수 없다.
 
----
+<hr>
 
 ## 팀 환경 보안 체크리스트
 
@@ -160,7 +160,7 @@ claude --project-dir /home/user/my-project
 
 `--project-dir` 플래그로 Claude가 접근할 수 있는 디렉토리 범위를 지정한다. 이 범위 밖의 파일은 읽거나 수정할 수 없다.
 
----
+<hr>
 
 ## 보안 사고 대응
 
@@ -191,7 +191,7 @@ git log --oneline -20
 git diff HEAD~5
 ```
 
----
+<hr>
 
 ## 요약
 

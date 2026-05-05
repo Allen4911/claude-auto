@@ -1,8 +1,8 @@
-# 3-1. TMUX 세션·윈도우·파인 구조
+## 3-1. TMUX 세션·윈도우·파인 구조
 
 멀티에이전트 환경을 설계하기 전에 TMUX의 계층 구조를 완전히 이해해야 합니다. 에이전트 간 통신, 레이아웃 구성, 자동화 스크립트 모두 이 구조를 기반으로 작동합니다.
 
----
+<hr>
 
 ## 계층 구조 전체 그림
 
@@ -22,7 +22,7 @@ tmux 서버 (백그라운드 프로세스)
 └── 세션: work                      ← 별도 작업용 세션 (선택)
 ```
 
----
+<hr>
 
 ## 세션(Session)
 
@@ -45,7 +45,7 @@ tmux rename-session -t team newname
 
 ![TMUX 세션 목록 확인](../assets/03-1-tmux-sessions.png)
 
----
+<hr>
 
 ## 윈도우(Window)
 
@@ -66,7 +66,7 @@ tmux rename-window -t team:1 "monitor"
 
 멀티에이전트 환경에서는 보통 윈도우 0 하나만 사용합니다. 6개 파인이 모두 윈도우 0에 배치됩니다.
 
----
+<hr>
 
 ## 파인(Pane)
 
@@ -110,7 +110,7 @@ team:0.0   # team 세션, 윈도우 0, 파인 0
 team:0.3   # team 세션, 윈도우 0, 파인 3
 ```
 
----
+<hr>
 
 ## 파인 정보 조회
 
@@ -129,7 +129,7 @@ tmux capture-pane -t team:0.2 -p
 tmux list-panes -t team:0 -F "#{pane_index}: #{pane_current_command}"
 ```
 
----
+<hr>
 
 ## main-vertical 레이아웃
 
@@ -149,7 +149,7 @@ tmux set-option -t team main-pane-width 158
 | 4 | 서연 | 오른쪽 4번째 |
 | 5 | 태양 | 오른쪽 하단 |
 
----
+<hr>
 
 ## 요약
 

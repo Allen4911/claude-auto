@@ -1,8 +1,8 @@
-# 2-3. Claude Code 설치 및 인증
+## 2-3. Claude Code 설치 및 인증
 
 Claude Code는 Anthropic이 만든 AI 코딩 어시스턴트 CLI 도구입니다. 터미널에서 직접 Claude와 대화하며 코드를 작성하고, 파일을 편집하고, 명령을 실행할 수 있습니다. 멀티에이전트 환경에서는 각 TMUX 파인마다 Claude Code 인스턴스가 독립적으로 동작합니다.
 
----
+<hr>
 
 ## 설치
 
@@ -25,7 +25,7 @@ claude-code 2.1.71
 
 ![Claude Code 설치 확인](../assets/02-3-claude-install.png)
 
----
+<hr>
 
 ## 인증
 
@@ -69,23 +69,23 @@ How would you like to authenticate?
 
 > **중요**: Remote Control 기능을 사용하려면 반드시 `claude.ai`를 통한 OAuth 로그인이 필요합니다. API 키 방식으로는 Remote Control이 활성화되지 않습니다.
 
----
+<hr>
 
 ## 인증 확인
 
-로그인 후 Claude 프롬프트(❯)가 나타나면 인증이 완료된 것입니다.
+로그인 후 Claude 프롬프트(>)가 나타나면 인증이 완료된 것입니다.
 
 ```
-❯ Hello! What can I help you with?
+> Hello! What can I help you with?
 ```
 
 현재 인증 상태는 `/status` 명령으로 확인할 수 있습니다.
 
 ```
-❯ /status
+> /status
 ```
 
----
+<hr>
 
 ## 모델 설정
 
@@ -102,7 +102,7 @@ claude --model claude-opus-4-6
 claude --model claude-haiku-4-5-20251001
 ```
 
----
+<hr>
 
 ## 권한 설정 (멀티에이전트용)
 
@@ -114,7 +114,7 @@ claude --dangerously-skip-permissions
 
 이 플래그는 파일 읽기/쓰기, 명령 실행 등의 권한 승인 절차를 자동으로 허용합니다. 신뢰할 수 있는 환경에서만 사용하세요.
 
----
+<hr>
 
 ## 업데이트
 
@@ -127,7 +127,7 @@ npm update -g @anthropic-ai/claude-code
 npm install -g @anthropic-ai/claude-code@latest
 ```
 
----
+<hr>
 
 ## 요약
 
@@ -140,7 +140,7 @@ claude
 
 # 인증 후 정상 동작 확인
 claude --version   # 버전 출력
-claude             # ❯ 프롬프트 확인
+claude             # > 프롬프트 확인
 ```
 
 다음 챕터에서는 멀티에이전트 환경의 핵심인 TMUX를 설치하고 기본 사용법을 익힙니다.

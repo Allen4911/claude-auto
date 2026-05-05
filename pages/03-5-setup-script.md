@@ -1,8 +1,8 @@
-# 3-5. 팀 셋업 스크립트 작성
+## 3-5. 팀 셋업 스크립트 작성
 
 지금까지 배운 레이아웃 구성, Claude 자동 실행, 역할 정의를 하나의 스크립트로 통합합니다. 이 스크립트를 한 번 실행하면 팀 전체 환경이 자동으로 구성됩니다.
 
----
+<hr>
 
 ## 스크립트 전체 구조
 
@@ -17,7 +17,7 @@ setup-team.sh
 └── [5단계] 세션 접속
 ```
 
----
+<hr>
 
 ## 완성된 셋업 스크립트
 
@@ -67,7 +67,7 @@ start_claude_in_pane() {
         tmux send-keys -t "$pane" Enter; sleep 1
     }
 
-    wait_for_pane "$pane" "❯" 30
+    wait_for_pane "$pane" ">" 30
 }
 
 # ── [0/4] 사전 요구사항 확인 ────────────────────────────────
@@ -145,7 +145,7 @@ for pane in 0 1 2 3 4 5; do
     echo -n "  Pane $pane (${MEMBER_NAMES[$pane]}): "
     start_claude_in_pane "$SESSION:0.$pane" "${MEMBER_MODELS[$pane]}"
 
-    tmux capture-pane -t "$SESSION:0.$pane" -p 2>/dev/null | grep -q "❯" \
+    tmux capture-pane -t "$SESSION:0.$pane" -p 2>/dev/null | grep -q ">" \
         && echo -e "${GREEN}✅ 준비 완료${NC}" \
         || echo -e "${RED}⚠️  타임아웃 — 수동 확인 필요${NC}"
 done
@@ -161,7 +161,7 @@ echo -e "${NC}"
 [ -t 1 ] && tmux attach -t "$SESSION"
 ```
 
----
+<hr>
 
 ## 스크립트 실행
 
@@ -173,7 +173,7 @@ chmod +x setup-team.sh
 bash setup-team.sh
 ```
 
----
+<hr>
 
 ## 실행 결과 확인
 
@@ -183,9 +183,9 @@ bash setup-team.sh
 tmux attach -t team
 ```
 
-각 파인 상단에 이름이 표시되고, 모든 파인에 Claude 프롬프트(❯)가 나타나면 성공입니다.
+각 파인 상단에 이름이 표시되고, 모든 파인에 Claude 프롬프트(>)가 나타나면 성공입니다.
 
----
+<hr>
 
 ## 특정 에이전트에 작업 전달
 
@@ -202,7 +202,7 @@ tmux send-keys -t team:0.4 "서연, Rust와 Go의 성능 비교 조사해줘" En
 tmux send-keys -t team:0.5 "태양, 방금 작성된 auth.py 코드 리뷰해줘" Enter
 ```
 
----
+<hr>
 
 ## 요약
 

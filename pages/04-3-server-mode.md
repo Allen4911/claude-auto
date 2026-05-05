@@ -1,8 +1,8 @@
-# 4-3. 서버 모드 및 Spawn 모드
+## 4-3. 서버 모드 및 Spawn 모드
 
 Remote Control의 **서버 모드**는 하나의 로컬 머신에서 여러 원격 세션을 동시에 관리할 수 있게 해줍니다. 팀원들이 각자 원격으로 연결하거나, 여러 작업을 병렬로 처리할 때 유용합니다.
 
----
+<hr>
 
 ## 서버 모드 실행
 
@@ -24,7 +24,7 @@ Press W to toggle spawn mode (same-dir ↔ worktree)
 
 ![서버 모드 실행 옵션 예시](../assets/04-3-server-mode.png)
 
----
+<hr>
 
 ## 서버 모드 옵션
 
@@ -48,7 +48,7 @@ claude remote-control \
 | `--sandbox` | 파일시스템·네트워크 격리 | 비활성 |
 | `--no-sandbox` | 격리 명시적 비활성화 | — |
 
----
+<hr>
 
 ## Spawn 모드
 
@@ -98,7 +98,7 @@ claude remote-control --spawn session
 
 혼자만 사용하고 실수로 중복 접속하는 것을 방지할 때 유용합니다.
 
----
+<hr>
 
 ## 런타임 단축키
 
@@ -110,7 +110,7 @@ claude remote-control --spawn session
 | `W` | `same-dir` ↔ `worktree` 모드 전환 |
 | `Q` 또는 `Ctrl+C` | 서버 종료 |
 
----
+<hr>
 
 ## 실용적인 서버 모드 예시
 
@@ -146,7 +146,7 @@ claude remote-control \
     --name "쭌의 작업"
 ```
 
----
+<hr>
 
 ## 세션 현황 모니터링
 
@@ -158,7 +158,7 @@ claude remote-control \
 [2026-04-26 14:05:30] Session disconnected: myapp-swift-eagle
 ```
 
----
+<hr>
 
 ## TMUX 팀과 서버 모드 결합
 
@@ -172,7 +172,7 @@ tmux send-keys -t team:0.0 \
 
 이제 스마트폰에서 `claude.ai/code`에 접속해 `쭌-팀장` 세션을 선택하면 팀장에게 직접 지시를 내릴 수 있습니다.
 
----
+<hr>
 
 ## 요약
 

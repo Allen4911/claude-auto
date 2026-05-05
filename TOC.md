@@ -11,28 +11,28 @@
 ---
 
 ## 2장. Ubuntu 환경에서 Claude & TMUX 설치
-- [2-1. Ubuntu 설치 — WSL2 또는 네이티브 선택](pages/02-1-ubuntu-install.md)
-- [2-2. 필수 패키지 설치 (Node.js, npm, git)](pages/02-2-prerequisites.md)
+- [2-1. Ubuntu 설치: WSL2 또는 네이티브](pages/02-1-ubuntu-install.md)
+- [2-2. 필수 패키지 설치](pages/02-2-prerequisites.md)
 - [2-3. Claude Code 설치 및 인증](pages/02-3-claude-install.md)
 - [2-4. TMUX 설치 및 기본 명령어](pages/02-4-tmux-install.md)
 
 ---
 
 ## 3장. Claude Code와 TMUX로 멀티에이전트 구성
-- [3-1. TMUX 세션·윈도우·파인 구조 이해](pages/03-1-tmux-structure.md)
-- [3-2. 팀 에이전트 레이아웃 설계 (6파인 구성 예시)](pages/03-2-team-layout.md)
-- [3-3. 각 파인에 Claude Code 자동 실행 스크립트](pages/03-3-auto-launch.md)
+- [3-1. TMUX 세션·윈도우·파인 구조](pages/03-1-tmux-structure.md)
+- [3-2. 팀 에이전트 레이아웃 설계](pages/03-2-team-layout.md)
+- [3-3. 각 파인에 Claude Code 자동 실행](pages/03-3-auto-launch.md)
 - [3-4. CLAUDE.md로 팀원 역할 정의](pages/03-4-claude-md-roles.md)
-- [3-5. 팀 셋업 스크립트 작성 및 실행](pages/03-5-setup-script.md)
+- [3-5. 팀 셋업 스크립트 작성](pages/03-5-setup-script.md)
 
 ---
 
 ## 4장. Claude Code Remote-Control 기능 설정 및 사용
-- [4-1. Remote-Control 개요 및 아키텍처](pages/04-1-remote-control-overview.md)
-- [4-2. 활성화 방법 3가지 (settings.json / /config / CLI 플래그)](pages/04-2-activation.md)
-- [4-3. 서버 모드 실행 및 Spawn 모드 선택](pages/04-3-server-mode.md)
-- [4-4. 세션 이름 설정 및 관리](pages/04-4-session-naming.md)
-- [4-5. Stream JSON으로 프로그래밍 방식 제어](pages/04-5-stream-json.md)
+- [4-1. Remote-Control 개요](pages/04-1-remote-control-overview.md)
+- [4-2. Remote Control 활성화 방법 3가지](pages/04-2-activation.md)
+- [4-3. 서버 모드 및 Spawn 모드](pages/04-3-server-mode.md)
+- [4-4. 세션 이름 설정](pages/04-4-session-naming.md)
+- [4-5. Stream JSON 제어](pages/04-5-stream-json.md)
 - [4-6. 보안 설정 및 인증 요구사항](pages/04-6-security.md)
 
 ---
@@ -67,10 +67,10 @@
 ---
 
 ## 7장. 실전 팀 에이전트 운용
-- [7-1. 팀 지시 흐름 설계 (사용자 → 팀장 → 팀원)](pages/07-1-team-flow.md)
-- [7-2. Bot Mode 활용 (채널·메시지 라우팅)](pages/07-2-bot-mode.md)
-- [7-3. 업무 분담 전략 (PM·디자이너·개발자·리뷰어)](pages/07-3-task-distribution.md)
-- [7-4. Triple Crown 전략 — gstack + GSD + Superpowers 통합](pages/07-4-triple-crown.md)
+- [7-1. 팀 지시 흐름 설계](pages/07-1-team-flow.md)
+- [7-2. Bot Mode 활용](pages/07-2-bot-mode.md)
+- [7-3. 업무 분담 전략](pages/07-3-task-distribution.md)
+- [7-4. Triple Crown 전략 — gstack + GSD + Superpowers 통합 워크플로우](pages/07-4-triple-crown.md)
 - [7-5. 자동화 워크플로우 예시](pages/07-5-workflow-examples.md)
 
 ---

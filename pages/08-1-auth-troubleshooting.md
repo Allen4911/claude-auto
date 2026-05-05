@@ -1,8 +1,8 @@
-# 8-1. Remote-Control 인증 오류 해결
+## 8-1. Remote-Control 인증 오류 해결
 
 Remote Control을 사용하다 보면 인증 관련 오류를 마주칠 때가 있다. 대부분의 문제는 토큰 만료, 계정 불일치, 네트워크 설정에서 발생한다. 이 절에서는 자주 발생하는 인증 오류와 해결 방법을 정리한다.
 
----
+<hr>
 
 ## 증상별 진단 가이드
 
@@ -78,7 +78,7 @@ cat .claude/settings.json | grep -A 20 "deny"
 
 과도한 `deny` 규칙이 정상 명령어까지 차단하고 있을 수 있다. 패턴을 좁히거나 불필요한 규칙을 제거한다.
 
----
+<hr>
 
 ## 인증 토큰 관리
 
@@ -110,7 +110,7 @@ claude auth logout
 claude auth login
 ```
 
----
+<hr>
 
 ## TMUX 팀 환경에서의 인증 문제
 
@@ -136,7 +136,7 @@ sleep 2
 tmux send-keys -t team:0.3 "claude" Enter
 ```
 
----
+<hr>
 
 ## 진단 명령어 모음
 
@@ -163,7 +163,7 @@ python3 -c "import json; json.load(open('$HOME/.claude/settings.json'))" \
     || echo "JSON 구문 오류"
 ```
 
----
+<hr>
 
 ## 요약
 

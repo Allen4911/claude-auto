@@ -1,8 +1,8 @@
-# 2-1. Ubuntu 설치: WSL2 또는 네이티브
+## 2-1. Ubuntu 설치: WSL2 또는 네이티브
 
 이 책에서 구성하는 Claude 멀티에이전트 환경은 **Ubuntu Linux** 위에서 동작합니다. Windows 사용자라면 WSL2(Windows Subsystem for Linux 2)를 통해, 리눅스/Mac 사용자라면 네이티브 환경을 그대로 사용할 수 있습니다.
 
----
+<hr>
 
 ## WSL2로 Ubuntu 설치하기 (Windows)
 
@@ -48,13 +48,13 @@ wsl --set-version Ubuntu 2
 
 시작 메뉴에서 **Ubuntu** 앱을 실행하거나, Windows Terminal에서 Ubuntu 탭을 선택합니다. 이후 모든 작업은 이 Ubuntu 터미널에서 진행합니다.
 
----
+<hr>
 
 ## 네이티브 Ubuntu 설치 (리눅스/Mac)
 
 이미 Ubuntu 22.04 이상 또는 Debian 계열 배포판을 사용 중이라면 별도 설치 없이 다음 챕터로 넘어가도 됩니다. macOS는 Homebrew 환경을 그대로 활용할 수 있습니다.
 
----
+<hr>
 
 ## 패키지 목록 최신화
 
@@ -64,7 +64,7 @@ wsl --set-version Ubuntu 2
 sudo apt update && sudo apt upgrade -y
 ```
 
----
+<hr>
 
 ## WSL2 네트워크 정보 확인
 
@@ -78,7 +78,7 @@ ip addr show eth0 | grep 'inet '
 cat /etc/resolv.conf | grep nameserver
 ```
 
----
+<hr>
 
 ## 요약
 

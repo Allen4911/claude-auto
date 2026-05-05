@@ -1,8 +1,8 @@
-# 4-2. Remote Control 활성화 방법 3가지
+## 4-2. Remote Control 활성화 방법 3가지
 
 Remote Control은 상황에 따라 세 가지 방법으로 활성화할 수 있습니다. 항상 켜두고 싶다면 전역 설정을, 특정 세션에만 적용하려면 CLI 플래그나 세션 내 명령을 사용합니다.
 
----
+<hr>
 
 ## 방법 1: settings.json 전역 설정
 
@@ -38,12 +38,12 @@ cat ~/.claude/settings.json 2>/dev/null || echo "{}"
 직접 파일을 편집하는 대신 Claude Code 내부에서 설정할 수도 있습니다.
 
 ```
-❯ /config
+> /config
 ```
 
 `/config` 메뉴에서 **Enable Remote Control for all sessions** 항목을 `true`로 변경합니다.
 
----
+<hr>
 
 ## 방법 2: CLI 플래그 (일회성)
 
@@ -79,7 +79,7 @@ claude remote-control --remote-control-session-name-prefix myproject
 
 서버 모드는 4-3 챕터에서 자세히 다룹니다.
 
----
+<hr>
 
 ## 방법 3: 실행 중인 세션에서 활성화
 
@@ -88,13 +88,13 @@ claude remote-control --remote-control-session-name-prefix myproject
 ### 기본 활성화
 
 ```
-❯ /remote-control
+> /remote-control
 ```
 
 ### 세션 이름 지정
 
 ```
-❯ /remote-control 내 프로젝트 작업
+> /remote-control 내 프로젝트 작업
 ```
 
 명령을 입력하면 Claude가 Remote Control URL과 QR 코드를 제공합니다.
@@ -108,7 +108,7 @@ VS Code의 Claude 확장 내에서도 동일한 명령이 동작합니다.
 /rc
 ```
 
----
+<hr>
 
 ## 활성화 확인
 
@@ -122,7 +122,7 @@ URL: https://claude.ai/code?session=abc123...
 Press SPACE to show QR code
 ```
 
----
+<hr>
 
 ## 접속 방법
 
@@ -139,7 +139,7 @@ https://claude.ai/code?session=<session-id>
 # → 세션 이름 검색 → 컴퓨터 아이콘 + 초록 점 선택
 ```
 
----
+<hr>
 
 ## 멀티에이전트 팀에서 활용
 
@@ -151,7 +151,7 @@ tmux send-keys -t team:0.0 \
     "claude --rc '팀장 쭌' --dangerously-skip-permissions" Enter
 ```
 
----
+<hr>
 
 ## 세 가지 방법 비교
 
@@ -161,7 +161,7 @@ tmux send-keys -t team:0.0 \
 | CLI 플래그 (`--rc`) | 특정 세션 1개 | 그때그때 켜고 싶을 때 |
 | `/remote-control` | 현재 실행 중 세션 | 실행 후 필요해졌을 때 |
 
----
+<hr>
 
 ## 요약
 
