@@ -25,6 +25,8 @@ Ubuntu(WSL2 포함) 위에 Claude Code와 TMUX를 설치하고, 6개의 파인(P
 | 4 | 서연 | 개발자 |
 | 5 | 태양 | 리뷰어 |
 
+![AI 팀 에이전트 구성](../assets/01-2-team-concept.png)
+
 ### 2. Remote-Control 연동
 
 Claude Code의 Remote-Control 기능을 활성화하여 **모바일 앱이나 웹 브라우저에서 팀 에이전트를 원격 제어**하는 방법을 상세히 설명한다. 출퇴근길 지하철에서도, 카페에서도 팀에게 지시를 내릴 수 있다.
