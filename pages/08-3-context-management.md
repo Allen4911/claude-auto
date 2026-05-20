@@ -66,7 +66,7 @@ Claude Code의 `/context-save`와 `/context-restore` 명령어는 현재 작업 
 /context-restore
 ```
 
-![[07-8-context-management.png|572]]
+![](../assets/07-8-context-management.png)
 저장되는 내용에는 현재 진행 중인 작업, 중요한 결정 사항, 남은 작업 목록, git 상태 등이 포함됩니다.
 
 ### 멀티에이전트 팀에서의 활용
@@ -144,7 +144,7 @@ git log --since="1 day ago" --oneline  # 오늘만
 - TDD 필수 (실패 테스트 먼저)
 ```
 
-![[07-8-context-strategy.png]]
+![](../assets/07-8-context-strategy.png)
 
 <hr>
 

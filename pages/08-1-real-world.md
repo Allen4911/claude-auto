@@ -20,7 +20,7 @@
               민준(PM) → 서연(개발) + 태양(리뷰) + 지훈(리서치)
 ```
 
-![[07-6-cupangs.png|570]]
+![](../assets/07-6-cupangs.png)
 
 **민준(PM·아키텍트)**: 3개 Phase 설계 — AI 비교 분석, 가격 히스토리, 일괄 갱신
 
@@ -98,7 +98,7 @@ Phase 4: 발송 승인 워크플로우
 Phase 5: 스케줄링 및 로깅
 ```
 
-![[07-6-mail-auto.png|588]]
+![](../assets/07-6-mail-auto.png)
 
 **서연의 TDD 실천:**
 
@@ -180,7 +180,7 @@ openclaw message send --channel telegram --target 56518471 \
           쭌에게는 Phase 단위로만 보고
 ```
 
-![[07-6-central_command.png|696]]
+![](../assets/07-6-central_command.png)
 ### 2. 칸반 기반 진행 관리
 
 ```
@@ -188,7 +188,7 @@ Inbox → In Progress → Review → Done
   ↑민준    ↑서연/지훈    ↑태양    ↑민준 판단
 ```
 
-![[07-6-kanban-progress.png]]
+![](../assets/07-6-kanban-progress.png)
 
 ### 3. 텔레그램 실시간 보고
 

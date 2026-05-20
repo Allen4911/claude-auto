@@ -17,7 +17,7 @@ setup-team.sh
 └── [5단계] 세션 접속
 ```
 
-![[03-5-setup-script.png]]
+![](../assets/03-5-setup-script.png)
 
 <hr>
 

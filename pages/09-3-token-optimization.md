@@ -23,7 +23,7 @@ Claude Code에서 토큰이 소비되는 주요 경로를 이해해야 최적화
   └── 사고 과정 (thinking)
 ```
 
-![[08-3-token-consume.png|609]]
+![](../assets/08-3-token-consume.png)
 
 이 중 가장 큰 비중을 차지하는 것은 **도구 결과**와 **대화 히스토리**다.
 

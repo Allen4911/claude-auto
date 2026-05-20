@@ -22,7 +22,7 @@ Anthropic API 서버 (라우팅)
       └── 로컬 파일시스템, MCP 서버, 도구 사용
 ```
 
-![[04-1-remote-control.png]]
+![](../assets/04-1-remote-control.png)
 
 클라우드로 이동하는 것은 **통신 경로**뿐입니다. 코드, 파일, 설정은 모두 로컬에 남아 있습니다.
 

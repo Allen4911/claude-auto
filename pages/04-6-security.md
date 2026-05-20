@@ -21,7 +21,7 @@ Claude Code 서버 모드
 로컬 머신
 ```
 
-![[04-6-security-processing.png|555]]
+![](../assets/04-6-security-processing.png)
 
 핵심 원칙: **동일한 Anthropic 계정으로 로그인한 기기만 해당 세션에 접근할 수 있다.** 타인이 세션 ID를 알더라도 계정 인증 없이는 연결이 불가능하다.
 
@@ -50,7 +50,7 @@ Claude: "git push origin main을 실행하겠습니다. 승인하시겠습니까
 거부 → 작업 중단
 ```
 
-![[04-6-mobile-access.png|580]]
+![](../assets/04-6-mobile-access.png)
 
 `bypassPermissions` 모드는 이 승인 단계를 건너뛰므로 Remote Control 환경에서는 사용하지 않는 것이 좋다.
 

@@ -65,7 +65,7 @@ git checkout -b feature/phase-3-bulk-update
 
 Phase 완료 후 리뷰 통과 시 main에 머지합니다. 여러 Phase가 동시에 진행되더라도 브랜치로 격리합니다.
 
-![[07-9-conflict-Strategy.png]]
+![](../assets/07-9-conflict-Strategy.png)
 
 <hr>
 
