@@ -338,3 +338,88 @@ jobs:
 이 흐름이 완성되면 앨런은 스마트폰으로 지시만 내리고, 코드 작성부터 배포·알림까지 전 과정이 자동으로 이루어집니다.
 
 > **핵심 요약**: GitHub Actions는 멀티에이전트 팀의 자동화를 완성하는 마지막 레이어입니다. 팀이 코드를 작성하고 푸시하는 순간부터 최종 배포까지, 사람의 개입 없이 파이프라인이 흘러갑니다.
+
+<hr>
+
+## 워크플로우 디버깅
+
+GitHub Actions 워크플로우가 실패할 때 원인을 찾는 방법입니다.
+
+### 로그 확인
+
+GitHub 저장소 → Actions 탭 → 실패한 워크플로우 선택 → 실패한 step 클릭으로 상세 로그를 확인합니다.
+
+```bash
+# GitHub CLI로 워크플로우 실행 목록 확인
+gh run list --limit 10
+
+# 특정 실행의 상세 로그
+gh run view <run-id> --log-failed
+```
+
+### 로컬에서 워크플로우 테스트
+
+`act` 도구를 사용하면 GitHub Actions를 로컬에서 실행하여 빠르게 디버깅할 수 있습니다.
+
+```bash
+# act 설치
+brew install act  # macOS
+# 또는
+curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | bash
+
+# 로컬에서 push 이벤트 시뮬레이션
+act push
+
+# 특정 job만 실행
+act push -j test
+```
+
+### 자주 발생하는 오류
+
+| 오류 | 원인 | 해결법 |
+|------|------|--------|
+| `Permission denied` | GITHUB_TOKEN 권한 부족 | `permissions` 블록 추가 |
+| `Cache miss every run` | 캐시 키 오류 | `hashFiles` 경로 확인 |
+| `Artifact not found` | job 간 아티팩트 미전달 | `upload-artifact` 확인 |
+| `Environment not found` | 환경 이름 오타 | Settings → Environments 확인 |
+| `Secret not available` | 시크릿 미등록 | Settings → Secrets 등록 |
+
+<hr>
+
+## GitHub Actions 비용 최적화
+
+GitHub Actions는 월 2,000분(무료 계정) 또는 3,000분(Pro) 무료로 제공됩니다. 팀이 활발하게 작업하면 빠르게 소진될 수 있습니다.
+
+### 불필요한 실행 줄이기
+
+```yaml
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'        # src 변경 시만 실행
+      - '!src/**/*.md'  # md 파일은 제외
+```
+
+### 조기 종료 설정
+
+```yaml
+jobs:
+  test:
+    timeout-minutes: 10  # 10분 초과 시 자동 취소
+    steps:
+      - name: Run tests
+        run: npm test
+```
+
+### 실행 취소 설정
+
+같은 브랜치에서 새 push가 들어오면 이전 실행을 자동으로 취소합니다.
+
+```yaml
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+```
+
+개발 중에 빠르게 여러 번 push할 때 이전 실행이 낭비되지 않도록 합니다. 실제로 이 설정 하나로 Actions 사용량을 40% 이상 줄일 수 있습니다.

@@ -264,3 +264,101 @@ git merge --abort  # 확인 후 취소
 ```
 
 > **핵심 요약**: 멀티에이전트 충돌 방지의 핵심은 **역할별 파일 소유권**, **순차 실행 원칙**, **브랜치 전략**입니다. 충돌이 발생했을 때는 에이전트가 독단적으로 해결하지 않고 민준에게 보고하여 판단을 받습니다. Redis 기반 상태 공유와 GitHub Actions 자동화로 충돌을 사전에 탐지하면 팀의 작업 흐름이 안정적으로 유지됩니다.
+
+<hr>
+
+## 팀 코딩 컨벤션으로 충돌 예방
+
+기술적 충돌 외에도, 코딩 스타일 불일치로 인한 불필요한 변경이 충돌을 유발합니다. 팀 전체가 동일한 컨벤션을 따르면 이를 예방할 수 있습니다.
+
+### ESLint + Prettier 공유 설정
+
+```json
+// .eslintrc.json (팀 공통)
+{
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error",
+    "prefer-const": "error",
+    "no-console": "warn"
+  }
+}
+```
+
+```json
+// .prettierrc (팀 공통)
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "printWidth": 100
+}
+```
+
+이 설정을 저장소에 커밋하면 모든 에이전트가 동일한 규칙으로 코드를 작성합니다. 스타일 차이로 인한 diff가 사라져 리뷰 부담도 줄어듭니다.
+
+### Git Hooks로 컨벤션 강제
+
+```bash
+# .git/hooks/pre-commit
+#!/bin/bash
+
+# 스테이징된 TS 파일에 ESLint 실행
+STAGED_TS=$(git diff --cached --name-only --diff-filter=ACM | grep '\.tsx\?$')
+if [ -n "$STAGED_TS" ]; then
+  npx eslint $STAGED_TS --fix
+  git add $STAGED_TS
+fi
+
+# Prettier 포맷 강제
+npx prettier --write $STAGED_TS
+git add $STAGED_TS
+```
+
+커밋 시점에 자동으로 포맷을 통일하므로, 에이전트별 스타일 차이가 커밋에 남지 않습니다.
+
+<hr>
+
+## 대규모 리팩토링 시 충돌 관리
+
+파일명 변경, 인터페이스 대규모 변경 등 여러 파일에 걸친 리팩토링은 충돌 위험이 높습니다.
+
+### 리팩토링 전 팀 동결 선언
+
+```bash
+# 민준이 전 팀원에게 공지
+bash claude-send.sh 4 "⛔ 리팩토링 동결 시작. 
+auth 모듈 전면 재설계 예정.
+src/auth/ 파일 작업 중단. 완료 후 재개 알림."
+
+bash claude-send.sh 2 "⛔ 리팩토링 동결. auth 모듈 조사 보류."
+```
+
+### Feature Flag로 안전한 대규모 변경
+
+```typescript
+// 구 코드와 신 코드를 동시에 유지하며 점진적으로 전환
+const USE_NEW_AUTH = process.env.FEATURE_NEW_AUTH === 'true';
+
+export async function authenticate(token: string) {
+  if (USE_NEW_AUTH) {
+    return newAuthService.verify(token);
+  }
+  return legacyAuthService.verify(token);
+}
+```
+
+Feature Flag를 사용하면 리팩토링 중에도 다른 팀원이 나머지 기능을 개발할 수 있습니다. 전환이 완료되면 Flag와 구 코드를 제거합니다.
+
+### 리팩토링 완료 후 재동기화
+
+```bash
+# 리팩토링 완료 후 민준이 전 팀원에게 알림
+bash claude-send.sh 4 "✅ auth 리팩토링 완료. 
+커밋 def5678 확인 후 작업 재개.
+변경된 인터페이스: AuthToken → TokenPayload
+사용법: docs/auth-migration.md 참고"
+```
+
+팀원들은 최신 main을 pull 받고 자신의 브랜치를 rebase한 후 작업을 재개합니다.
