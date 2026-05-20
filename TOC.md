@@ -16,7 +16,7 @@
 * [02-2. Windows: WSL2 환경 구성 완전 가이드](pages/02-2-windows-wsl2.md)
 * [02-3. macOS: 설치 완전 가이드](pages/02-3-macos.md)
 * [02-4. Claude Code 설치 및 인증](pages/02-4-claude-install.md)
-* [02-5. TMUX 설치 및 기본 명령어](pages/02-5-tmux-install.md)
+* [02-5. TMUX 기본 명령어 및 활용](pages/02-5-tmux-install.md)
 
 ---
 

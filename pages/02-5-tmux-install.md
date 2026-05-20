@@ -1,44 +1,8 @@
-## 02-4. TMUX 설치 및 기본 명령어
+## 02-5. TMUX 기본 명령어 및 활용
 
 TMUX(Terminal Multiplexer)는 하나의 터미널 창 안에서 여러 개의 터미널을 동시에 실행하고 관리할 수 있는 강력한 도구입니다. Claude 멀티에이전트 환경에서는 TMUX의 파인(Pane) 기능을 활용해 6명의 에이전트를 동시에 운영합니다.
 
-<hr>
-
-## 설치
-
-### Windows (WSL2 Ubuntu 터미널)
-
-```bash
-sudo apt install -y tmux
-
-# 설치 확인
-tmux -V
-```
-
-### Linux (Ubuntu / Debian)
-
-```bash
-sudo apt install -y tmux
-
-# 설치 확인
-tmux -V
-```
-
-### macOS
-
-```bash
-brew install tmux
-
-# 설치 확인
-tmux -V
-```
-
-출력 예시:
-```
-tmux 3.4
-```
-
-![TMUX 버전 확인](../assets/02-4-tmux-install.png)
+> **설치**: 각 플랫폼 가이드에서 이미 완료됩니다. Windows는 [02-2](02-2-windows-wsl2.md), macOS는 [02-3](02-3-macos.md) 참고.
 
 <hr>
 
