@@ -21,7 +21,7 @@ superpowers는 Claude Code의 글로벌 스킬 시스템으로 설치됩니다.
 
 ```bash
 # 글로벌 스킬 디렉토리에 설치
-git clone https://github.com/[superpowers-repo] ~/.claude/skills/superpowers
+git clone https://github.com/obra/superpowers-marketplace ~/.claude/skills/superpowers
 ```
 
 설치 후 스킬이 자동으로 인식됩니다. `~/.claude/CLAUDE.md` 파일에 superpowers 스킬 디렉토리가 참조되면 모든 Claude Code 세션에서 해당 스킬을 사용할 수 있습니다.

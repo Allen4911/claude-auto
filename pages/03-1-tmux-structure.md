@@ -21,7 +21,7 @@ tmux 서버 (백그라운드 프로세스)
 │
 └── 세션: work                      ← 별도 작업용 세션 (선택)
 ```
-
+![[03-1-tmux-structure-session.png]]
 <hr>
 
 ## 세션(Session)

@@ -17,6 +17,8 @@ setup-team.sh
 └── [5단계] 세션 접속
 ```
 
+![[03-5-setup-script.png]]
+
 <hr>
 
 ## 완성된 셋업 스크립트
@@ -33,7 +35,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-SESSION="team"
+SESSION="team1"
 
 # ── 유틸: 파인에 패턴이 나타날 때까지 대기 ──────────────────
 wait_for_pane() {
@@ -121,9 +123,9 @@ tmux set-option -t "$SESSION" allow-rename off
 # 파인 이름 설정
 tmux select-pane -t "$SESSION:0.0" -T "쭌"
 tmux select-pane -t "$SESSION:0.1" -T "민준 아키텍트"
-tmux select-pane -t "$SESSION:0.2" -T "지훈 개발자"
+tmux select-pane -t "$SESSION:0.2" -T "지훈 리서쳐"
 tmux select-pane -t "$SESSION:0.3" -T "수아 UI/UX디자이너"
-tmux select-pane -t "$SESSION:0.4" -T "서연 리서쳐"
+tmux select-pane -t "$SESSION:0.4" -T "서연 개발자"
 tmux select-pane -t "$SESSION:0.5" -T "태양 QA·리뷰어"
 
 echo "  ✅ 레이아웃 구성 완료 (6 panes)"
@@ -192,11 +194,11 @@ tmux attach -t team
 팀 환경이 실행 중이면 터미널 어디서든 아래 명령으로 에이전트에게 작업을 전달할 수 있습니다.
 
 ```bash
-# 지훈에게 코드 작성 요청
-tmux send-keys -t team:0.2 "지훈, main.py에 사용자 인증 함수 추가해줘" Enter
+# 지훈에게 리서치 요청
+tmux send-keys -t team:0.2 "지훈, Rust와 Go의 성능 비교 조사해줘" Enter
 
-# 서연에게 리서치 요청
-tmux send-keys -t team:0.4 "서연, Rust와 Go의 성능 비교 조사해줘" Enter
+# 서연에게 코드 작성 요청
+tmux send-keys -t team:0.4 "서연, main.py에 사용자 인증 함수 추가해줘" Enter
 
 # 태양에게 코드 리뷰 요청
 tmux send-keys -t team:0.5 "태양, 방금 작성된 auth.py 코드 리뷰해줘" Enter

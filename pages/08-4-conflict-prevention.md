@@ -1,248 +1,364 @@
-## 8-4. 멀티에이전트 충돌 방지
+## 7-9. 멀티에이전트 충돌 방지
 
-여러 Claude Code 인스턴스가 동시에 같은 코드베이스에서 작업하면 충돌이 발생할 수 있다. 두 팀원이 같은 파일을 동시에 수정하거나, 한 팀원의 변경이 다른 팀원의 작업을 무효화하는 상황이다. 이 절에서는 멀티에이전트 환경에서 충돌을 예방하고 관리하는 전략을 다룬다.
+## 왜 충돌이 발생하는가?
 
-<hr>
+멀티에이전트 팀에서 여러 에이전트가 동시에 작업하다 보면 **충돌(Conflict)**이 발생합니다. 충돌은 크게 두 가지로 나뉩니다.
 
-## 충돌이 발생하는 유형
+**파일 충돌**: 두 에이전트가 같은 파일을 동시에 수정하면 git merge conflict가 발생합니다.
 
-### 유형 1: 파일 동시 수정
+**로직 충돌**: 한 에이전트의 변경이 다른 에이전트가 의존하는 인터페이스를 깨뜨립니다.
 
-```
-서연 (Pane 4): src/api/users.ts 수정 중
-    ↕ 동시에
-태양 (Pane 5): src/api/users.ts 리뷰 후 직접 수정
-    → 한쪽의 변경이 덮어씌워짐
-```
-
-### 유형 2: 의존성 충돌
-
-```
-서연: 새 패키지 추가 (npm install axios)
-    ↕ 동시에
-민준: package.json 수동 수정 중
-    → package.json / package-lock.json 충돌
-```
-
-### 유형 3: Git 충돌
-
-```
-서연: feature/notification 브랜치에서 커밋
-    ↕ 동시에
-지훈: 같은 브랜치에서 다른 파일 커밋
-    → push 실패 또는 머지 충돌
-```
+사람 팀에서도 이런 문제가 발생하지만, AI 에이전트는 더 빠르게 더 많은 파일을 수정합니다. 충돌을 사전에 방지하는 설계가 필수입니다.
 
 <hr>
 
-## 전략 1: 영역 분리
+## 충돌 방지의 기본 원칙
 
-가장 효과적인 충돌 방지 방법은 **작업 영역을 물리적으로 분리**하는 것이다.
+### 원칙 1: 역할별 파일 소유권
 
-### 디렉토리 기반 분리
-
-각 팀원에게 담당 디렉토리를 배정한다.
+각 에이전트가 담당하는 파일 영역을 명확히 나눕니다. 두 에이전트가 같은 파일을 수정하지 않도록 설계합니다.
 
 ```
-프로젝트 구조:
-├── src/
-│   ├── api/          ← 서연 담당
-│   ├── components/   ← 수아 담당
-│   ├── services/     ← 민준 담당
-│   └── utils/        ← 공용 (팀장 승인 후 수정)
-├── tests/            ← 태양 담당
-└── docs/             ← 지훈 담당
+서연(개발자)   → src/ 디렉터리 담당
+태양(리뷰어)   → 파일 수정 없음, 읽기만
+민준(PM)       → docs/, PLAN.md 담당
+수아(디자이너) → src/styles/, assets/ 담당
 ```
 
-팀장이 지시를 내릴 때 담당 영역을 명시한다.
-
-```bash
-# 명확한 영역 지정
-tmux send-keys -t team:0.4 \
-  "src/api/ 디렉토리에서 알림 API 엔드포인트를 구현해줘. \
-  다른 디렉토리의 파일은 수정하지 마." Enter
-```
-
-### 브랜치 기반 분리
-
-각 팀원이 독립된 Git 브랜치에서 작업한다.
-
-```bash
-# 팀원별 브랜치 생성
-tmux send-keys -t team:0.4 \
-  "git checkout -b feature/notification-api 에서 작업해줘" Enter
-
-tmux send-keys -t team:0.3 \
-  "git checkout -b feature/notification-ui 에서 작업해줘" Enter
-```
-
-브랜치가 분리되면 파일 수준의 충돌이 커밋 시점에서는 발생하지 않는다. 충돌은 머지 시점에만 발생하며, 팀장이 통제할 수 있다.
-
-### Git Worktree 활용
-
-같은 저장소의 다른 브랜치를 별도 디렉토리로 체크아웃하는 Git Worktree를 사용하면 브랜치 전환 없이 병렬 작업이 가능하다.
-
-```bash
-# 팀원별 worktree 생성
-git worktree add ../project-suyeon feature/notification-api
-git worktree add ../project-sua feature/notification-ui
-
-# 서연은 ../project-suyeon/ 에서 작업
-# 수아는 ../project-sua/ 에서 작업
-```
-
-각 팀원의 Claude Code가 다른 디렉토리에서 실행되므로 파일 시스템 수준에서 완전히 격리된다.
-
-<hr>
-
-## 전략 2: 잠금 규칙
-
-영역 분리가 불가능한 경우 **잠금 규칙**을 도입한다.
-
-### 파일 잠금 컨벤션
-
-```bash
-# 잠금 파일 생성
-echo "서연 작업중 $(date)" > src/api/users.ts.lock
-
-# 작업 완료 후 잠금 해제
-rm src/api/users.ts.lock
-```
-
-이 컨벤션을 CLAUDE.md에 명시한다.
+CLAUDE.md에 파일 소유권을 명시하면 에이전트가 자연스럽게 범위를 지킵니다.
 
 ```markdown
-# CLAUDE.md 잠금 규칙
-## 파일 잠금
-- 파일 수정 전 `.lock` 파일 존재 여부 확인
-- `.lock` 파일이 있으면 해당 파일 수정 금지
-- 수정 시작 시 `.lock` 파일 생성, 완료 시 삭제
+# CLAUDE.md (서연용)
+## 담당 영역
+- src/features/ — 기능 구현
+- src/utils/ — 유틸리티 함수
+- tests/ — 테스트 파일
+
+## 건드리지 않는 영역
+- src/styles/ — 수아 담당
+- docs/ — 민준 담당
 ```
 
-### 공유 파일 수정 프로토콜
+### 원칙 2: 순차 실행으로 의존성 관리
 
-여러 팀원이 수정할 수 있는 공유 파일(라우터 설정, 타입 정의 등)은 팀장을 통해 순차적으로 수정한다.
+설계 → 구현 → 리뷰 순서를 지키면 단계 간 충돌을 원천 차단합니다.
+
+```
+민준 설계 완료 후
+  → 서연 구현 시작 (민준 작업 파일 변경 없음)
+      → 서연 구현 완료 후
+          → 태양 리뷰 시작 (서연 작업 파일 변경 없음)
+```
+
+리뷰어가 읽는 동안 개발자가 같은 파일을 수정하면 혼란이 생깁니다. 태양이 리뷰 중에는 서연이 해당 파일에 손대지 않도록 합니다.
+
+### 원칙 3: 브랜치 전략
+
+각 Phase를 별도 브랜치에서 작업하면 main 브랜치의 안정성을 유지합니다.
 
 ```bash
-# 나쁜 예: 두 팀원이 동시에 routes.ts 수정
-# → 충돌 발생
-
-# 좋은 예: 순차 실행
-# 1단계: 서연이 API 라우트 추가
-tmux send-keys -t team:0.4 \
-  "src/routes.ts에 알림 API 라우트를 추가해줘" Enter
-# 서연 완료 확인 후...
-
-# 2단계: 수아가 UI 라우트 추가
-tmux send-keys -t team:0.3 \
-  "src/routes.ts에 알림 설정 페이지 라우트를 추가해줘" Enter
+# Phase별 브랜치 생성
+git checkout -b feature/phase-1-ai-comparison
+git checkout -b feature/phase-2-price-history
+git checkout -b feature/phase-3-bulk-update
 ```
+
+Phase 완료 후 리뷰 통과 시 main에 머지합니다. 여러 Phase가 동시에 진행되더라도 브랜치로 격리합니다.
+
+![[07-9-conflict-Strategy.png]]
 
 <hr>
 
-## 전략 3: 충돌 감지 및 해소
+## Git 충돌 처리
 
-예방에도 불구하고 충돌이 발생할 수 있다. 빠른 감지와 해소가 중요하다.
+사전 방지에도 불구하고 충돌이 발생하면 신속하게 해결합니다.
 
-### 정기적 상태 점검
-
-```bash
-# 팀장이 주기적으로 실행하는 충돌 점검
-#!/bin/bash
-
-# 수정 중인 파일 목록 수집
-echo "=== 현재 수정 중인 파일 ==="
-git diff --name-only
-echo ""
-
-echo "=== 스테이지되지 않은 변경 ==="
-git status --short
-echo ""
-
-# 같은 파일을 여러 곳에서 수정했는지 확인
-MODIFIED=$(git diff --name-only)
-for file in $MODIFIED; do
-  COUNT=$(echo "$MODIFIED" | grep -c "$file")
-  if [ "$COUNT" -gt 1 ]; then
-    echo "⚠️ 충돌 위험: $file ($COUNT곳에서 수정)"
-  fi
-done
-```
-
-### Git 충돌 해소
-
-머지 시 충돌이 발생하면 팀장이 판단하여 해소한다.
+### 충돌 감지
 
 ```bash
-# 브랜치 머지 시도
-git merge feature/notification-api
-# CONFLICT: src/routes.ts
+# 충돌 파일 확인
+git status
+# both modified: src/api/client.ts
 
 # 충돌 내용 확인
 git diff --name-only --diff-filter=U
-# src/routes.ts
-
-# 팀원에게 충돌 해소 지시
-tmux send-keys -t team:0.4 \
-  "src/routes.ts에서 머지 충돌이 발생했어. \
-  두 브랜치의 변경을 모두 유지하는 방향으로 해소해줘." Enter
 ```
 
-<hr>
-
-## 전략 4: 작업 순서 설계
-
-팀장이 작업을 배분할 때 충돌 가능성을 고려하여 순서를 설계한다.
-
-### 의존성 그래프 기반 배분
-
-```
-작업 A (지훈: 조사) ──→ 작업 C (민준: 설계) ──→ 작업 E (서연: 구현)
-                                              ↘
-작업 B (수아: UI 설계) ─────────────────────────→ 작업 F (서연: UI 구현)
-                                                       ↘
-                                                   작업 G (태양: 리뷰)
-```
-
-병렬 작업(A와 B)은 서로 다른 영역을 다루도록 설계하고, 의존성이 있는 작업(C→E, B→F)은 순차 실행한다.
-
-### 페이즈 기반 실행
+### 충돌 해결 절차
 
 ```bash
-# Phase 1: 병렬 (서로 영역이 다름)
-# 지훈 → 기술 조사
-# 수아 → UI 설계
-# (동시 실행 가능, 충돌 없음)
+# 1. 충돌 파일 열기
+code src/api/client.ts
 
-# Phase 2: 순차 (이전 결과에 의존)
-# 민준 → 아키텍처 설계 (지훈+수아의 결과 필요)
+# 2. 충돌 마커 확인
+<<<<<<< HEAD
+  const timeout = 5000;
+=======
+  const timeout = 10000;
+>>>>>>> feature/phase-2
 
-# Phase 3: 병렬 (브랜치로 분리)
-# 서연 → API 구현 (feature/api 브랜치)
-# 수아 → UI 구현 (feature/ui 브랜치)
+# 3. 올바른 버전 선택 또는 통합
+  const timeout = 10000;  // Phase 2에서 늘린 값 유지
 
-# Phase 4: 순차 (머지 후 리뷰)
-# 팀장 → 브랜치 머지
-# 태양 → 통합 리뷰
+# 4. 충돌 마커 제거 후 저장
+# 5. 스테이징
+git add src/api/client.ts
+
+# 6. 커밋
+git commit -m "resolve: api timeout 충돌 해결"
+```
+
+### 멀티에이전트 환경에서의 충돌 보고
+
+에이전트가 충돌을 발견하면 스스로 해결하지 않고 민준에게 보고합니다.
+
+```bash
+# 서연이 충돌 발견 시
+bash claude-send.sh 1 "src/api/client.ts에서 충돌 발생. 
+HEAD: timeout=5000, Phase-2: timeout=10000. 
+어떤 값으로 해결할까요?"
+```
+
+민준이 판단하여 지시를 내리면 서연이 해결합니다. **에이전트가 독단적으로 충돌을 해결하는 것은 위험**합니다.
+
+<hr>
+
+## Redis를 활용한 에이전트 간 상태 공유
+
+에이전트들이 서로의 작업 상태를 알 수 없으면 중복 작업이나 충돌이 발생합니다. Redis를 사용하면 에이전트 간 실시간 상태를 공유할 수 있습니다.
+
+### 상태 저장 패턴
+
+```python
+import redis
+
+r = redis.Redis()
+
+# 서연이 작업 시작 시
+r.set("lock:src/api/client.ts", "서연", ex=3600)  # 1시간 잠금
+
+# 다른 에이전트가 파일 수정 전 확인
+lock_holder = r.get("lock:src/api/client.ts")
+if lock_holder:
+    print(f"{lock_holder.decode()}이 작업 중. 완료 후 수정 가능.")
+else:
+    # 수정 진행
+    r.set("lock:src/api/client.ts", "자신의 이름", ex=3600)
+```
+
+### 작업 완료 신호
+
+```python
+# 서연이 Phase 완료 시
+r.publish("team:events", json.dumps({
+    "type": "phase_complete",
+    "agent": "서연",
+    "phase": 1,
+    "commit": "eaca3ba"
+}))
+
+# 태양이 이벤트 구독
+pubsub = r.pubsub()
+pubsub.subscribe("team:events")
+for message in pubsub.listen():
+    event = json.loads(message["data"])
+    if event["type"] == "phase_complete":
+        print(f"{event['agent']} Phase {event['phase']} 완료. 리뷰 시작.")
 ```
 
 <hr>
 
-## CLAUDE.md에 충돌 방지 규칙 명시
+## 실전 충돌 사례와 해결
 
-팀 전체에 적용되는 충돌 방지 규칙을 CLAUDE.md에 기록한다.
+### 사례 1: 동시 imports 수정
 
-```markdown
-## 충돌 방지 규칙
-1. 지시받은 디렉토리/파일 범위 안에서만 작업할 것
-2. 공유 파일(routes.ts, types.ts) 수정 전 팀장에게 보고
-3. 새 패키지 설치는 팀장 승인 후 진행
-4. 작업 완료 후 반드시 git add + commit
-5. 다른 팀원의 브랜치를 직접 수정하지 않을 것
+**상황**: 서연이 `utils/formatter.ts`에 함수를 추가하는 동시에 수아가 같은 파일의 스타일 유틸을 수정했습니다.
+
+**해결**: formatter.ts를 `utils/data-formatter.ts`(서연)와 `utils/style-formatter.ts`(수아)로 분리하여 파일 소유권 충돌을 원천 제거했습니다.
+
+**교훈**: 충돌이 반복되는 파일은 역할별로 분리하는 것이 장기적으로 유리합니다.
+
+### 사례 2: 타입 정의 변경
+
+**상황**: 민준이 `types/Product.ts`의 인터페이스를 변경했는데, 서연이 이미 구 인터페이스로 구현을 완료한 상태였습니다.
+
+**해결**: 민준이 타입 변경 전 서연에게 미리 알리는 규칙을 도입했습니다. 인터페이스 변경은 구현보다 반드시 먼저 공지합니다.
+
+```bash
+# 민준이 타입 변경 전 서연에게 공지
+bash claude-send.sh 4 "⚠️ Product 인터페이스 변경 예정. 
+price 필드가 number → PriceInfo 객체로 변경됨. 
+현재 작업 완료 후 알려줘, 타입 변경 후 함께 수정하자."
+```
+
+### 사례 3: 테스트 파일 덮어쓰기
+
+**상황**: 서연이 새 기능을 추가하면서 기존 테스트 파일을 실수로 덮어썼습니다.
+
+**해결**: git pre-commit hook으로 테스트 파일 삭제·축소를 방지합니다.
+
+```bash
+# .git/hooks/pre-commit
+#!/bin/bash
+# 테스트 파일이 줄었는지 확인
+DELETED_TESTS=$(git diff --cached --diff-filter=D -- 'tests/*.test.ts' | wc -l)
+if [ $DELETED_TESTS -gt 0 ]; then
+    echo "❌ 테스트 파일이 삭제되었습니다. 커밋 차단."
+    exit 1
+fi
 ```
 
 <hr>
 
-## 요약
+## 충돌 방지 체크리스트
 
-멀티에이전트 충돌 방지의 핵심은 **영역 분리**와 **순서 설계**다. 디렉토리, 브랜치, 또는 Git Worktree로 작업 영역을 물리적으로 분리하고, 공유 리소스는 순차적으로 접근하도록 설계한다. CLAUDE.md에 충돌 방지 규칙을 명시하고, 팀장이 작업 배분 시 의존성 그래프를 고려하면 대부분의 충돌을 사전에 예방할 수 있다.
+작업 시작 전 확인 사항입니다.
+
+```
+□ 내가 담당하는 파일 영역인가?
+□ 다른 에이전트가 이 파일을 작업 중이지 않은가? (Redis 확인)
+□ 최신 main/develop 브랜치를 pull 받았는가?
+□ 내 브랜치가 최신 base 브랜치를 기준으로 하는가?
+
+작업 완료 후 확인 사항:
+□ 충돌 없이 merge/rebase 가능한가?
+□ 테스트가 모두 통과하는가?
+□ 내가 변경한 파일 목록을 민준에게 보고했는가?
+```
+
+<hr>
+
+## 충돌 방지 자동화
+
+GitHub Actions와 연동하여 충돌 가능성을 PR 단계에서 조기 발견합니다.
+
+```yaml
+# .github/workflows/conflict-check.yml
+name: Conflict Check
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for merge conflicts
+        run: |
+          git fetch origin main
+          git merge-tree $(git merge-base HEAD origin/main) HEAD origin/main | \
+            grep -c "<<<<<<" && echo "충돌 발견" && exit 1 || echo "충돌 없음"
+```
+
+PR을 열기 전에 로컬에서도 확인합니다.
+
+```bash
+# main과의 충돌 사전 확인
+git fetch origin
+git merge --no-commit --no-ff origin/main
+git merge --abort  # 확인 후 취소
+```
+
+> **핵심 요약**: 멀티에이전트 충돌 방지의 핵심은 **역할별 파일 소유권**, **순차 실행 원칙**, **브랜치 전략**입니다. 충돌이 발생했을 때는 에이전트가 독단적으로 해결하지 않고 민준에게 보고하여 판단을 받습니다. Redis 기반 상태 공유와 GitHub Actions 자동화로 충돌을 사전에 탐지하면 팀의 작업 흐름이 안정적으로 유지됩니다.
+
+<hr>
+
+## 팀 코딩 컨벤션으로 충돌 예방
+
+기술적 충돌 외에도, 코딩 스타일 불일치로 인한 불필요한 변경이 충돌을 유발합니다. 팀 전체가 동일한 컨벤션을 따르면 이를 예방할 수 있습니다.
+
+### ESLint + Prettier 공유 설정
+
+```json
+// .eslintrc.json (팀 공통)
+{
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error",
+    "prefer-const": "error",
+    "no-console": "warn"
+  }
+}
+```
+
+```json
+// .prettierrc (팀 공통)
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "printWidth": 100
+}
+```
+
+이 설정을 저장소에 커밋하면 모든 에이전트가 동일한 규칙으로 코드를 작성합니다. 스타일 차이로 인한 diff가 사라져 리뷰 부담도 줄어듭니다.
+
+### Git Hooks로 컨벤션 강제
+
+```bash
+# .git/hooks/pre-commit
+#!/bin/bash
+
+# 스테이징된 TS 파일에 ESLint 실행
+STAGED_TS=$(git diff --cached --name-only --diff-filter=ACM | grep '\.tsx\?$')
+if [ -n "$STAGED_TS" ]; then
+  npx eslint $STAGED_TS --fix
+  git add $STAGED_TS
+fi
+
+# Prettier 포맷 강제
+npx prettier --write $STAGED_TS
+git add $STAGED_TS
+```
+
+커밋 시점에 자동으로 포맷을 통일하므로, 에이전트별 스타일 차이가 커밋에 남지 않습니다.
+
+<hr>
+
+## 대규모 리팩토링 시 충돌 관리
+
+파일명 변경, 인터페이스 대규모 변경 등 여러 파일에 걸친 리팩토링은 충돌 위험이 높습니다.
+
+### 리팩토링 전 팀 동결 선언
+
+```bash
+# 민준이 전 팀원에게 공지
+bash claude-send.sh 4 "⛔ 리팩토링 동결 시작. 
+auth 모듈 전면 재설계 예정.
+src/auth/ 파일 작업 중단. 완료 후 재개 알림."
+
+bash claude-send.sh 2 "⛔ 리팩토링 동결. auth 모듈 조사 보류."
+```
+
+### Feature Flag로 안전한 대규모 변경
+
+```typescript
+// 구 코드와 신 코드를 동시에 유지하며 점진적으로 전환
+const USE_NEW_AUTH = process.env.FEATURE_NEW_AUTH === 'true';
+
+export async function authenticate(token: string) {
+  if (USE_NEW_AUTH) {
+    return newAuthService.verify(token);
+  }
+  return legacyAuthService.verify(token);
+}
+```
+
+Feature Flag를 사용하면 리팩토링 중에도 다른 팀원이 나머지 기능을 개발할 수 있습니다. 전환이 완료되면 Flag와 구 코드를 제거합니다.
+
+### 리팩토링 완료 후 재동기화
+
+```bash
+# 리팩토링 완료 후 민준이 전 팀원에게 알림
+bash claude-send.sh 4 "✅ auth 리팩토링 완료. 
+커밋 def5678 확인 후 작업 재개.
+변경된 인터페이스: AuthToken → TokenPayload
+사용법: docs/auth-migration.md 참고"
+```
+
+팀원들은 최신 main을 pull 받고 자신의 브랜치를 rebase한 후 작업을 재개합니다.

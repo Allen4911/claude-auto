@@ -180,7 +180,7 @@ openclaw message send --channel telegram --target 56518471 \
           쭌에게는 Phase 단위로만 보고
 ```
 
-![[07-6-central_command.png|620]]
+![[07-6-central_command.png|696]]
 ### 2. 칸반 기반 진행 관리
 
 ```
