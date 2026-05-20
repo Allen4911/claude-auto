@@ -7,6 +7,7 @@
 * [01-1. 이 책의 목적과 대상 독자](pages/01-1-purpose.md)
 * [01-2. Remote-Control 팀 에이전트란 무엇인가](pages/01-2-what-is-remote-control.md)
 * [01-3. 전체 아키텍처 미리 보기](pages/01-3-architecture-overview.md)
+* [01-4. 개발 환경 및 최소 사양](pages/01-4-requirements.md)
 
 ---
 
