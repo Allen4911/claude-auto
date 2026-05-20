@@ -1,4 +1,4 @@
-## 7-7. GitHub Actions 기반 자동화
+## 8-2. GitHub Actions 기반 자동화
 
 ## GitHub Actions란?
 
