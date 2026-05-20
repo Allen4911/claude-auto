@@ -11,9 +11,11 @@
 
 ---
 
-## 02장. Ubuntu 환경에서 Claude & TMUX 설치
-* [02-1. Ubuntu 설치: WSL2 또는 네이티브](pages/02-1-ubuntu-install.md)
-* [02-2. 필수 패키지 설치](pages/02-2-prerequisites.md)
+## 02장. 환경 설치 및 기반 구성
+* [02-1. 플랫폼별 설치 안내](pages/02-1-ubuntu-install.md)
+* [02-1-W. Windows: WSL2 환경 구성 완전 가이드](pages/02-1-windows-wsl2.md)
+* [02-2-M. macOS: 설치 완전 가이드](pages/02-2-macos.md)
+* [02-2. 필수 패키지 설치 (Linux/WSL2)](pages/02-2-prerequisites.md)
 * [02-3. Claude Code 설치 및 인증](pages/02-3-claude-install.md)
 * [02-4. TMUX 설치 및 기본 명령어](pages/02-4-tmux-install.md)
 
