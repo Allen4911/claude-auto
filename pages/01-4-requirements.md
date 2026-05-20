@@ -53,12 +53,12 @@
 
 Remote-Control 기능과 멀티에이전트 환경을 사용하려면 적절한 Claude 플랜이 필요합니다.
 
-| 항목 | 요건 |
-|------|------|
-| **계정** | Anthropic 계정 (claude.ai 가입) |
-| **플랜** | Claude Pro 이상 권장 |
+| 항목        | 요건                                                 |
+| --------- | -------------------------------------------------- |
+| **계정**    | Anthropic 계정 (claude.ai 가입)                        |
+| **플랜**    | Claude Pro 이상 권장                                   |
 | **인증 방식** | claude.ai OAuth 로그인 (API 키 방식은 Remote-Control 미지원) |
-| **모바일 앱** | Claude iOS / Android 앱 설치 (Remote-Control 사용 시) |
+| **모바일 앱** | Claude iOS / Android 앱 설치 (Remote-Control 사용 시)    |
 
 > **무료 플랜 사용자**: Claude Code는 실행 가능하지만 요청 한도가 낮아 멀티에이전트 환경에서는 금방 한도에 도달할 수 있습니다. 장시간 작업이라면 Pro 플랜을 권장합니다.
 

@@ -313,4 +313,4 @@ tmux -V           # tmux 3.x
 claude --version  # claude-code x.x.x
 ```
 
-모든 항목이 버전을 출력하면 다음 챕터로 넘어갑니다. macOS 사용자는 [02-2. macOS 설치 가이드](02-2-macos.md)를 참고하세요.
+모든 항목이 버전을 출력하면 다음 챕터로 넘어갑니다. macOS 사용자는 [02-3. macOS 설치 가이드](02-3-macos.md)를 참고하세요.
