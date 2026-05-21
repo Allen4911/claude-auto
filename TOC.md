@@ -1,5 +1,5 @@
 # 클로드 코드(Claude Code) 멀티에이전트 팀 자동화 완전 가이드 : AI 개발팀 구성부터 Remote-Control 실전까지
-## TMUX + Remote-Control로 AI 개발팀을 구성하고 스마트폰으로 어디서든 지휘한다
+## 클로드 코드(Claude Code) 멀티에이전트 팀 자동화 완전 가이드 : AI 개발팀 구성부터 Remote-Control 실전까지
 
 ---
 
