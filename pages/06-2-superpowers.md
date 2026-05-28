@@ -10,21 +10,11 @@
 
 ## 설치 방법
 
-superpowers는 Claude Code의 글로벌 스킬 시스템으로 설치됩니다.
+superpowers는 Claude Code 플러그인 마켓플레이스를 통해 설치됩니다. GitHub 소스: `obra/superpowers-marketplace`
 
-```bash
-# Claude Code 세션에서 설치 시작
-/init
-```
+Claude Code 세션에서 플러그인 마켓플레이스를 통해 설치합니다. 설치 후 스킬이 `~/.claude/plugins/cache/superpowers-marketplace/superpowers/` 경로에 저장되며, 모든 Claude Code 세션에서 자동으로 사용 가능합니다.
 
-또는 직접 스킬 저장소를 클론하는 방식으로 설치할 수 있습니다.
-
-```bash
-# 글로벌 스킬 디렉토리에 설치
-git clone https://github.com/obra/superpowers-marketplace ~/.claude/skills/superpowers
-```
-
-설치 후 스킬이 자동으로 인식됩니다. `~/.claude/CLAUDE.md` 파일에 superpowers 스킬 디렉토리가 참조되면 모든 Claude Code 세션에서 해당 스킬을 사용할 수 있습니다.
+> **현재 최신 버전**: 5.0.7 (2026-04-16 기준)
 
 <hr>
 
