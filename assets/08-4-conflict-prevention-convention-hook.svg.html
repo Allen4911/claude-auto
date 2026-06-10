@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240">
+<rect width="900" height="240" fill="#1e1e2e"/>
+<text x="450" y="32" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#cdd6f4" text-anchor="middle" font-weight="bold">코딩 컨벤션 자동 적용 흐름</text>
+<text x="450" y="52" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6adc8" text-anchor="middle">pre-commit 훅이 커밋 시점에 품질 문지기 역할 수행</text>
+
+<!-- Step 1 -->
+<rect x="20" y="70" width="120" height="80" rx="8" fill="#313244" stroke="#89b4fa" stroke-width="2"/>
+<text x="80" y="104" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#89b4fa" text-anchor="middle">✏️</text>
+<text x="80" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">코드 수정</text>
+<text x="80" y="144" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">서연 작성</text>
+<polygon points="141,110 153,104 153,116" fill="#585b70"/>
+<line x1="139" y1="110" x2="151" y2="110" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 2 -->
+<rect x="154" y="70" width="130" height="80" rx="8" fill="#313244" stroke="#f9e2af" stroke-width="2"/>
+<text x="219" y="104" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#f9e2af" text-anchor="middle">💾</text>
+<text x="219" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">git commit</text>
+<text x="219" y="144" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">커밋 실행</text>
+<polygon points="285,110 297,104 297,116" fill="#585b70"/>
+<line x1="283" y1="110" x2="295" y2="110" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 3: hook fires -->
+<rect x="298" y="70" width="150" height="80" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="2.5"/>
+<rect x="298" y="70" width="150" height="32" rx="8" fill="#f38ba8" opacity="0.3"/>
+<text x="373" y="91" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#f38ba8" text-anchor="middle" font-weight="bold">pre-commit 훅</text>
+<text x="373" y="113" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cdd6f4" text-anchor="middle">자동 발동</text>
+<text x="373" y="131" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8" text-anchor="middle">품질 문지기</text>
+<text x="373" y="144" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">.git/hooks/pre-commit</text>
+
+<!-- ESLint branch -->
+<line x1="373" y1="150" x2="373" y2="170" stroke="#585b70" stroke-width="1.5"/>
+<polygon points="448,110 460,104 460,116" fill="#585b70"/>
+<line x1="446" y1="110" x2="458" y2="110" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 4: ESLint -->
+<rect x="460" y="70" width="130" height="80" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="2"/>
+<text x="525" y="104" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#f38ba8" text-anchor="middle">🔍</text>
+<text x="525" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">ESLint 검사</text>
+<text x="525" y="144" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8" text-anchor="middle">오류 시 차단</text>
+<!-- FAIL arrow -->
+<line x1="525" y1="150" x2="525" y2="185" stroke="#f38ba8" stroke-width="1.5" stroke-dasharray="3,3"/>
+<rect x="462" y="187" width="126" height="24" rx="4" fill="#313244" stroke="#f38ba8" stroke-width="1"/>
+<text x="525" y="203" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8" text-anchor="middle">오류 → 커밋 차단</text>
+
+<polygon points="592,110 604,104 604,116" fill="#585b70"/>
+<line x1="590" y1="110" x2="602" y2="110" stroke="#585b70" stroke-width="2"/>
+<text x="597" y="103" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="9" fill="#a6adc8">통과</text>
+
+<!-- Step 5: Prettier -->
+<rect x="605" y="70" width="130" height="80" rx="8" fill="#313244" stroke="#cba6f7" stroke-width="2"/>
+<text x="670" y="104" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#cba6f7" text-anchor="middle">✨</text>
+<text x="670" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">Prettier 포맷</text>
+<text x="670" y="144" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">자동 통일</text>
+<polygon points="737,110 749,104 749,116" fill="#585b70"/>
+<line x1="735" y1="110" x2="747" y2="110" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 6: commit done -->
+<rect x="750" y="70" width="130" height="80" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="2.5"/>
+<text x="815" y="104" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#a6e3a1" text-anchor="middle">✅</text>
+<text x="815" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">커밋 완료</text>
+<text x="815" y="144" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6e3a1" text-anchor="middle">스타일 통일됨</text>
+</svg>

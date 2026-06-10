@@ -2,6 +2,8 @@
 
 지금까지 배운 레이아웃 구성, Claude 자동 실행, 역할 정의를 하나의 스크립트로 통합합니다. 이 스크립트를 한 번 실행하면 팀 전체 환경이 자동으로 구성됩니다.
 
+> 💡 **원클릭 셋업이란?** 앞 절들에서 하나씩 익힌 명령(세션 생성·파인 분할·레이아웃·Claude 실행)을 한 파일에 모아, 명령 한 줄로 6인 팀 환경을 통째로 재현하는 것입니다. 컴퓨터를 껐다 켜거나 새 장비로 옮겨도 이 스크립트만 실행하면 같은 환경이 다시 만들어집니다.
+
 <hr>
 
 ## 스크립트 전체 구조
@@ -17,7 +19,7 @@ setup-team.sh
 └── [5단계] 세션 접속
 ```
 
-![](../assets/03-5-setup-script.png)
+![setup-team.sh의 0~5단계(의존성 확인→세션 정리→세션·레이아웃 생성→파인 이름→Claude 자동 실행→세션 접속) 구성 흐름 구조도](../assets/03-5-setup-script.png)
 
 <hr>
 
@@ -136,7 +138,7 @@ echo -e "\n${YELLOW}[3/4] Claude 실행 중... (파인당 최대 1분)${NC}"
 MEMBER_NAMES=("쭌" "민준" "지훈" "수아" "서연" "태양")
 MEMBER_MODELS=(
     "claude-sonnet-4-6"
-    "claude-opus-4-6"
+    "claude-opus-4-8"
     "claude-sonnet-4-6"
     "claude-sonnet-4-6"
     "claude-sonnet-4-6"
@@ -177,15 +179,19 @@ bash setup-team.sh
 
 <hr>
 
+![setup-team.sh 실행 진행 흐름도](../assets/03-5-setup-script-progress-flow.png)
+
 ## 실행 결과 확인
 
 스크립트 완료 후 TMUX 세션에 접속합니다.
 
 ```bash
-tmux attach -t team
+tmux attach -t team1
 ```
 
 각 파인 상단에 이름이 표시되고, 모든 파인에 Claude 프롬프트(>)가 나타나면 성공입니다.
+
+![셋업 완료 팀 환경 화면](../assets/03-5-setup-script-complete-screen.png)
 
 <hr>
 
@@ -195,13 +201,13 @@ tmux attach -t team
 
 ```bash
 # 지훈에게 리서치 요청
-tmux send-keys -t team:0.2 "지훈, Rust와 Go의 성능 비교 조사해줘" Enter
+tmux send-keys -t team1:0.2 "지훈, Rust와 Go의 성능 비교 조사해줘" Enter
 
 # 서연에게 코드 작성 요청
-tmux send-keys -t team:0.4 "서연, main.py에 사용자 인증 함수 추가해줘" Enter
+tmux send-keys -t team1:0.4 "서연, main.py에 사용자 인증 함수 추가해줘" Enter
 
 # 태양에게 코드 리뷰 요청
-tmux send-keys -t team:0.5 "태양, 방금 작성된 auth.py 코드 리뷰해줘" Enter
+tmux send-keys -t team1:0.5 "태양, 방금 작성된 auth.py 코드 리뷰해줘" Enter
 ```
 
 <hr>

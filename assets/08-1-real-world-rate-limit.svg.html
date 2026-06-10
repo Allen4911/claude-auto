@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260">
+<rect width="900" height="260" fill="#1e1e2e"/>
+<text x="450" y="32" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#cdd6f4" text-anchor="middle" font-weight="bold">Rate Limit 자동 대응 흐름</text>
+<text x="450" y="52" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6adc8" text-anchor="middle">사람이 개입하지 않아도 리셋 시각에 자동으로 재개</text>
+
+<!-- Step boxes (horizontal flow) -->
+<!-- 1: Rate limit hit -->
+<rect x="15" y="72" width="120" height="100" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="2"/>
+<text x="75" y="100" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#f38ba8" text-anchor="middle">⛔</text>
+<text x="75" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f38ba8" text-anchor="middle" font-weight="bold">한도 도달</text>
+<text x="75" y="140" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">리셋 47분 확인</text>
+<text x="75" y="156" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">서연 작업 중단</text>
+
+<polygon points="137,122 149,116 149,128" fill="#585b70"/>
+<line x1="135" y1="122" x2="147" y2="122" stroke="#585b70" stroke-width="2"/>
+
+<!-- 2: ScheduleWakeup -->
+<rect x="150" y="72" width="130" height="100" rx="8" fill="#313244" stroke="#f9e2af" stroke-width="2"/>
+<text x="215" y="100" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#f9e2af" text-anchor="middle">⏱️</text>
+<text x="215" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f9e2af" text-anchor="middle" font-weight="bold">ScheduleWakeup 등록</text>
+<text x="215" y="140" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">47분+여유 2분</text>
+<text x="215" y="156" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">=2940초 후 깨어남</text>
+
+<polygon points="282,122 294,116 294,128" fill="#585b70"/>
+<line x1="280" y1="122" x2="292" y2="122" stroke="#585b70" stroke-width="2"/>
+
+<!-- 3: Telegram -->
+<rect x="295" y="72" width="120" height="100" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="2"/>
+<text x="355" y="100" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#a6e3a1" text-anchor="middle">✈️</text>
+<text x="355" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle" font-weight="bold">텔레그램 보고</text>
+<text x="355" y="140" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">앨런에게</text>
+<text x="355" y="156" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">자동 재개 예정 고지</text>
+
+<!-- Time passes indicator -->
+<rect x="420" y="85" width="60" height="74" rx="8" fill="#181825" stroke="#45475a" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="450" y="118" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#585b70" text-anchor="middle">47분</text>
+<text x="450" y="134" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#585b70" text-anchor="middle">경과</text>
+<text x="450" y="150" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="14" fill="#585b70" text-anchor="middle">···</text>
+
+<polygon points="482,122 494,116 494,128" fill="#585b70"/>
+<line x1="480" y1="122" x2="492" y2="122" stroke="#585b70" stroke-width="2"/>
+
+<!-- 4: Wake up -->
+<rect x="495" y="72" width="120" height="100" rx="8" fill="#313244" stroke="#89b4fa" stroke-width="2"/>
+<text x="555" y="100" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#89b4fa" text-anchor="middle">⏰</text>
+<text x="555" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#89b4fa" text-anchor="middle" font-weight="bold">자동 깨어남</text>
+<text x="555" y="140" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">리셋 시각 도달</text>
+<text x="555" y="156" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">pane idle 확인</text>
+
+<polygon points="617,122 629,116 629,128" fill="#585b70"/>
+<line x1="615" y1="122" x2="627" y2="122" stroke="#585b70" stroke-width="2"/>
+
+<!-- 5: Minjun order -->
+<rect x="630" y="72" width="120" height="100" rx="8" fill="#313244" stroke="#cba6f7" stroke-width="2"/>
+<text x="690" y="100" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#cba6f7" text-anchor="middle">📋</text>
+<text x="690" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cba6f7" text-anchor="middle" font-weight="bold">민준에 재가동 지시</text>
+<text x="690" y="140" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">서연 작업 재개</text>
+<text x="690" y="156" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">pane-send.sh</text>
+
+<polygon points="752,122 764,116 764,128" fill="#585b70"/>
+<line x1="750" y1="122" x2="762" y2="122" stroke="#585b70" stroke-width="2"/>
+
+<!-- 6: Allen report -->
+<rect x="765" y="72" width="118" height="100" rx="8" fill="#313244" stroke="#fab387" stroke-width="2"/>
+<text x="824" y="100" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#fab387" text-anchor="middle">✅</text>
+<text x="824" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#fab387" text-anchor="middle" font-weight="bold">앨런 재개 보고</text>
+<text x="824" y="140" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">텔레그램 전송</text>
+<text x="824" y="156" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">작업 자동 재개</text>
+
+<text x="450" y="210" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#585b70" text-anchor="middle">핵심: rate limit 발생 즉시 ScheduleWakeup 등록 → 47분 후 자동 재개, 사람이 챙기지 않아도 됨</text>
+</svg>

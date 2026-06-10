@@ -13,11 +13,15 @@
 [자동] 조사 → 설계 → 구현 → 리뷰 → 보고
 ```
 
-![](../assets/07-5-workflow-auto.png)
+![사용자의 한 마디 지시가 조사→설계→구현→리뷰→보고로 자동 전개되는 워크플로우 개념도](../assets/07-5-workflow-auto.png)
 
 ## 워크플로우 1: 기능 개발 파이프라인
 
 가장 일반적인 워크플로우다. 새 기능을 처음부터 끝까지 개발하는 전체 과정이다.
+
+> 💡 **`@cc` 접두사**는 메시지를 팀(Claude CLI)으로 보내는 표시다. `@cc @서연 ...`처럼 특정 팀원을 지정하거나, `@cc ...`만 쓰면 팀장에게 전달된다. (브릿지 라우팅 규칙은 6장·CLAUDE.md 참고)
+
+![조사·디자인 병렬에서 설계·구현·리뷰·보고로 이어지는 기능 개발 파이프라인 5단계 흐름도](../assets/07-5-workflow-examples-feature-pipeline.png)
 
 ### 사용자 지시
 
@@ -102,12 +106,14 @@ tmux send-keys -t team:0.5 \
 - tests/notification.test.ts
 
 ✅ 리뷰: 태양 승인 (보안·성능 이슈 없음)
-📝 커밋: feat: add notification system with email and push support'
+📝 커밋: feat: add notification system with email and push support
 ```
 
 ## 워크플로우 2: 버그 핫픽스
 
 프로덕션 장애 상황에서의 긴급 대응 워크플로우다.
+
+![원인 분석·핫픽스 구현·긴급 리뷰로 이어지는 버그 핫픽스 3단계 긴급 대응 흐름도](../assets/07-5-workflow-examples-hotfix.png)
 
 ### 사용자 지시
 
@@ -163,7 +169,7 @@ tmux send-keys -t team:0.5 \
 ✅ 리뷰: 태양 긴급 승인
 🌿 브랜치: hotfix/payment-order-creation
 
-배포 승인해주시면 즉시 반영합니다.'
+배포 승인해주시면 즉시 반영합니다.
 ```
 
 ## 워크플로우 3: 코드 리뷰 자동화
@@ -211,12 +217,14 @@ tmux send-keys -t team:0.5 \
 ⚠️ 성능: user-profile 쿼리에 N+1 가능성
   → 제안: eager loading 적용
 
-💬 코멘트 2건 등록 완료'
+💬 코멘트 2건 등록 완료
 ```
 
 ## 워크플로우 4: 일일 팀 보고
 
 매일 정해진 시간에 각 팀원의 작업 현황을 수집하여 보고하는 워크플로우다.
+
+![팀장이 5인에게 현황을 요청하고 보고를 모아 사용자에게 전달하는 fan-out·fan-in 다이어그램](../assets/07-5-workflow-examples-daily-report.png)
 
 ### 사용자 지시
 
@@ -247,12 +255,14 @@ tmux send-keys -t team:0.5 "오늘 작업 현황을 한 줄로 보고해줘" Ent
 
 📌 내일 예정:
 - 서연: 알림 서비스 구현 완료 → 태양 리뷰
-- 민준: 배포 계획 수립'
+- 민준: 배포 계획 수립
 ```
 
 ## 워크플로우 5: 셋업 스크립트 자동화
 
 팀 환경 자체를 스크립트로 자동 구성하는 워크플로우다.
+
+![세션 생성부터 파인 분할·레이아웃·타이틀·claude 실행까지 팀 화면이 자동 구성되는 단계별 도식](../assets/07-5-workflow-examples-setup-script.png)
 
 ```bash
 #!/bin/bash

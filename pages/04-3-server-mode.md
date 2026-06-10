@@ -34,7 +34,7 @@ claude remote-control \
     --remote-control-session-name-prefix myproject \
     --spawn worktree \
     --capacity 16 \
-    --sandbox \
+    --permission-mode default \
     --verbose
 ```
 
@@ -45,14 +45,13 @@ claude remote-control \
 | `--spawn` | 세션 생성 방식 | `same-dir` |
 | `--capacity N` | 최대 동시 세션 수 | 32 |
 | `--verbose` | 상세 연결/세션 로그 출력 | 비활성 |
-| `--sandbox` | 파일시스템·네트워크 격리 | 비활성 |
-| `--no-sandbox` | 격리 명시적 비활성화 | — |
+| `--permission-mode <mode>` | 도구 실행 권한 모드 (default·plan·acceptEdits·bypassPermissions 등) | default |
 
 <hr>
 
 ## Spawn 모드
 
-Spawn 모드는 새로운 원격 접속자가 연결될 때 세션을 어떻게 생성할지를 결정합니다.
+Spawn 모드는 새로운 원격 접속자가 연결될 때 세션을 어떻게 생성할지를 결정합니다. 세 가지(`same-dir`·`worktree`·`session`) 중 하나를 `--spawn` 옵션으로 고릅니다.
 
 ### same-dir (기본)
 
@@ -88,6 +87,8 @@ claude remote-control --spawn worktree
 - 장점: 각 세션이 완전히 독립적으로 작업 가능
 - 단점: git 저장소가 있어야 사용 가능, 디스크 공간 추가 사용
 
+> 💡 **git worktree란?** 하나의 git 저장소를 여러 작업 폴더로 동시에 펼쳐 쓰는 기능입니다. 접속자마다 별도 폴더·브랜치를 받으므로 서로의 작업이 섞이지 않습니다. 여러 명이 같은 프로젝트를 동시에 만질 때 충돌을 막아 줍니다.
+
 ### session
 
 단일 세션만 허용합니다. 추가 접속 시도는 거부됩니다.
@@ -97,6 +98,8 @@ claude remote-control --spawn session
 ```
 
 혼자만 사용하고 실수로 중복 접속하는 것을 방지할 때 유용합니다.
+
+![Spawn 모드 3가지 비교](../assets/04-3-server-mode-spawn-modes.png)
 
 <hr>
 
@@ -134,7 +137,7 @@ claude remote-control \
     --name "팀 공유 AI 서버" \
     --spawn same-dir \
     --capacity 16 \
-    --sandbox \
+    --permission-mode default \
     --verbose
 ```
 

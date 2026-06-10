@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+<rect width="900" height="360" fill="#1e1e2e"/>
+<text x="450" y="38" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="22" fill="#cdd6f4" text-anchor="middle" font-weight="bold">파인 분할 순서도 — Pane 0 → Pane 5</text>
+<text x="450" y="62" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="14" fill="#a6adc8" text-anchor="middle">tmux new-session → split-window ×5 → 총 6개 파인</text>
+
+<!-- Step boxes -->
+<!-- Step 0: new-session -->
+<rect x="30" y="100" width="120" height="70" rx="8" fill="#313244" stroke="#89b4fa" stroke-width="2"/>
+<text x="90" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#89b4fa" text-anchor="middle" font-weight="bold">① 세션 생성</text>
+<text x="90" y="148" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#cdd6f4" text-anchor="middle">new-session</text>
+<text x="90" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">Pane 0</text>
+
+<polygon points="156,135 170,135 163,143" fill="#fab387"/>
+<line x1="150" y1="135" x2="170" y2="135" stroke="#fab387" stroke-width="2"/>
+
+<!-- Step 1 -->
+<rect x="175" y="100" width="120" height="70" rx="8" fill="#313244" stroke="#f9e2af" stroke-width="2"/>
+<text x="235" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#f9e2af" text-anchor="middle" font-weight="bold">② 1차 분할</text>
+<text x="235" y="148" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#cdd6f4" text-anchor="middle">split-window -h</text>
+<text x="235" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">+ Pane 1</text>
+
+<polygon points="301,135 315,135 308,143" fill="#fab387"/>
+<line x1="295" y1="135" x2="315" y2="135" stroke="#fab387" stroke-width="2"/>
+
+<!-- Step 2 -->
+<rect x="320" y="100" width="120" height="70" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="2"/>
+<text x="380" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6e3a1" text-anchor="middle" font-weight="bold">③ 2차 분할</text>
+<text x="380" y="148" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#cdd6f4" text-anchor="middle">split-window -h</text>
+<text x="380" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">+ Pane 2</text>
+
+<polygon points="446,135 460,135 453,143" fill="#fab387"/>
+<line x1="440" y1="135" x2="460" y2="135" stroke="#fab387" stroke-width="2"/>
+
+<!-- Step 3 -->
+<rect x="465" y="100" width="120" height="70" rx="8" fill="#313244" stroke="#cba6f7" stroke-width="2"/>
+<text x="525" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#cba6f7" text-anchor="middle" font-weight="bold">④ 3차 분할</text>
+<text x="525" y="148" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#cdd6f4" text-anchor="middle">split-window -h</text>
+<text x="525" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">+ Pane 3</text>
+
+<polygon points="591,135 605,135 598,143" fill="#fab387"/>
+<line x1="585" y1="135" x2="605" y2="135" stroke="#fab387" stroke-width="2"/>
+
+<!-- Step 4 -->
+<rect x="610" y="100" width="120" height="70" rx="8" fill="#313244" stroke="#94e2d5" stroke-width="2"/>
+<text x="670" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#94e2d5" text-anchor="middle" font-weight="bold">⑤ 4차 분할</text>
+<text x="670" y="148" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#cdd6f4" text-anchor="middle">split-window -h</text>
+<text x="670" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">+ Pane 4</text>
+
+<polygon points="736,135 750,135 743,143" fill="#fab387"/>
+<line x1="730" y1="135" x2="750" y2="135" stroke="#fab387" stroke-width="2"/>
+
+<!-- Step 5 -->
+<rect x="755" y="100" width="120" height="70" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="2"/>
+<text x="815" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#f38ba8" text-anchor="middle" font-weight="bold">⑥ 5차 분할</text>
+<text x="815" y="148" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#cdd6f4" text-anchor="middle">split-window -h</text>
+<text x="815" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">+ Pane 5</text>
+
+<!-- Result terminal mockup -->
+<rect x="80" y="220" width="740" height="110" rx="10" fill="#181825" stroke="#45475a" stroke-width="1.5"/>
+<circle cx="100" cy="238" r="5" fill="#f38ba8"/>
+<circle cx="118" cy="238" r="5" fill="#f9e2af"/>
+<circle cx="136" cy="238" r="5" fill="#a6e3a1"/>
+<text x="450" y="242" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6adc8" text-anchor="middle">team:0 — 분할 완료 결과</text>
+
+<!-- Pane dividers in terminal -->
+<rect x="95" y="255" width="100" height="62" rx="3" fill="#313244" stroke="#89b4fa" stroke-width="1.5"/>
+<text x="145" y="272" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#89b4fa" text-anchor="middle">Pane 0</text>
+<text x="145" y="288" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">쭌</text>
+<text x="145" y="304" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#a6e3a1" text-anchor="middle">&gt;</text>
+
+<rect x="205" y="255" width="100" height="62" rx="3" fill="#313244" stroke="#f9e2af" stroke-width="1.5"/>
+<text x="255" y="272" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f9e2af" text-anchor="middle">Pane 1</text>
+<text x="255" y="288" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">민준</text>
+<text x="255" y="304" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#a6e3a1" text-anchor="middle">&gt;</text>
+
+<rect x="315" y="255" width="100" height="62" rx="3" fill="#313244" stroke="#a6e3a1" stroke-width="1.5"/>
+<text x="365" y="272" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">Pane 2</text>
+<text x="365" y="288" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">지훈</text>
+<text x="365" y="304" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#a6e3a1" text-anchor="middle">&gt;</text>
+
+<rect x="425" y="255" width="100" height="62" rx="3" fill="#313244" stroke="#cba6f7" stroke-width="1.5"/>
+<text x="475" y="272" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cba6f7" text-anchor="middle">Pane 3</text>
+<text x="475" y="288" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">수아</text>
+<text x="475" y="304" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#a6e3a1" text-anchor="middle">&gt;</text>
+
+<rect x="535" y="255" width="100" height="62" rx="3" fill="#313244" stroke="#94e2d5" stroke-width="1.5"/>
+<text x="585" y="272" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#94e2d5" text-anchor="middle">Pane 4</text>
+<text x="585" y="288" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">서연</text>
+<text x="585" y="304" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#a6e3a1" text-anchor="middle">&gt;</text>
+
+<rect x="645" y="255" width="100" height="62" rx="3" fill="#313244" stroke="#f38ba8" stroke-width="1.5"/>
+<text x="695" y="272" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f38ba8" text-anchor="middle">Pane 5</text>
+<text x="695" y="288" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">태양</text>
+<text x="695" y="304" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#a6e3a1" text-anchor="middle">&gt;</text>
+</svg>

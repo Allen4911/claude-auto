@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+<rect width="900" height="300" fill="#1e1e2e"/>
+<text x="450" y="32" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#cdd6f4" text-anchor="middle" font-weight="bold">충돌 방지 체크리스트 흐름</text>
+<text x="450" y="52" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6adc8" text-anchor="middle">작업 시작 전 → 각 단계 통과 후에만 다음 단계로</text>
+
+<!-- Start diamond -->
+<polygon points="120,80 160,110 120,140 80,110" fill="#313244" stroke="#cdd6f4" stroke-width="2"/>
+<text x="120" y="115" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cdd6f4" text-anchor="middle">작업</text>
+<text x="120" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cdd6f4" text-anchor="middle">시작</text>
+
+<polygon points="162,110 174,104 174,116" fill="#585b70"/>
+<line x1="160" y1="110" x2="172" y2="110" stroke="#585b70" stroke-width="1.5"/>
+
+<!-- Check 1: ownership -->
+<rect x="175" y="88" width="130" height="44" rx="6" fill="#313244" stroke="#89b4fa" stroke-width="2"/>
+<text x="240" y="107" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#89b4fa" text-anchor="middle" font-weight="bold">파일 소유권</text>
+<text x="240" y="123" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">내 담당 파일인가?</text>
+<!-- FAIL arrow down -->
+<line x1="240" y1="132" x2="240" y2="180" stroke="#f38ba8" stroke-width="1.5" stroke-dasharray="3,3"/>
+<text x="255" y="160" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8">NO</text>
+<rect x="185" y="182" width="110" height="28" rx="4" fill="#313244" stroke="#f38ba8" stroke-width="1"/>
+<text x="240" y="200" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8" text-anchor="middle">중단 → 민준 보고</text>
+
+<polygon points="307,110 319,104 319,116" fill="#585b70"/>
+<line x1="305" y1="110" x2="317" y2="110" stroke="#585b70" stroke-width="1.5"/>
+<text x="311" y="102" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="9" fill="#a6adc8">OK</text>
+
+<!-- Check 2: Redis -->
+<rect x="320" y="88" width="130" height="44" rx="6" fill="#313244" stroke="#f38ba8" stroke-width="2"/>
+<text x="385" y="107" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f38ba8" text-anchor="middle" font-weight="bold">Redis 잠금</text>
+<text x="385" y="123" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">다른 에이전트 작업중?</text>
+<line x1="385" y1="132" x2="385" y2="180" stroke="#f38ba8" stroke-width="1.5" stroke-dasharray="3,3"/>
+<text x="400" y="160" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8">YES</text>
+<rect x="330" y="182" width="110" height="28" rx="4" fill="#313244" stroke="#f38ba8" stroke-width="1"/>
+<text x="385" y="200" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8" text-anchor="middle">대기 → 완료 후 진행</text>
+
+<polygon points="452,110 464,104 464,116" fill="#585b70"/>
+<line x1="450" y1="110" x2="462" y2="110" stroke="#585b70" stroke-width="1.5"/>
+<text x="456" y="102" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="9" fill="#a6adc8">OK</text>
+
+<!-- Check 3: git pull -->
+<rect x="465" y="88" width="120" height="44" rx="6" fill="#313244" stroke="#a6e3a1" stroke-width="2"/>
+<text x="525" y="107" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle" font-weight="bold">git pull</text>
+<text x="525" y="123" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">최신 상태 동기화</text>
+
+<polygon points="587,110 599,104 599,116" fill="#585b70"/>
+<line x1="585" y1="110" x2="597" y2="110" stroke="#585b70" stroke-width="1.5"/>
+
+<!-- Work -->
+<rect x="600" y="88" width="110" height="44" rx="6" fill="#313244" stroke="#cba6f7" stroke-width="2"/>
+<text x="655" y="107" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cba6f7" text-anchor="middle" font-weight="bold">작업 진행</text>
+<text x="655" y="123" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">Redis 잠금 등록</text>
+
+<polygon points="712,110 724,104 724,116" fill="#585b70"/>
+<line x1="710" y1="110" x2="722" y2="110" stroke="#585b70" stroke-width="1.5"/>
+
+<!-- Test + report -->
+<rect x="725" y="75" width="150" height="70" rx="6" fill="#313244" stroke="#f9e2af" stroke-width="2"/>
+<text x="800" y="99" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f9e2af" text-anchor="middle" font-weight="bold">테스트 실행</text>
+<line x1="800" y1="108" x2="800" y2="116" stroke="#f9e2af" stroke-width="1"/>
+<text x="800" y="129" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle" font-weight="bold">민준 보고</text>
+<text x="800" y="142" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">변경 파일 목록</text>
+
+<text x="450" y="248" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#585b70" text-anchor="middle">각 확인 단계 실패 시 즉시 중단 — 에이전트가 독단적으로 진행하는 것을 방지</text>
+</svg>

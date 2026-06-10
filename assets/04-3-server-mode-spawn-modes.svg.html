@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380">
+<rect width="900" height="380" fill="#1e1e2e"/>
+<text x="450" y="38" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="22" fill="#cdd6f4" text-anchor="middle" font-weight="bold">Spawn 모드 3가지 비교</text>
+<text x="450" y="62" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="14" fill="#a6adc8" text-anchor="middle">--spawn 옵션으로 다중 접속 동작 방식 제어</text>
+
+<!-- Mode 1: same-dir -->
+<rect x="30" y="86" width="260" height="260" rx="10" fill="#181825" stroke="#89b4fa" stroke-width="2"/>
+<text x="160" y="114" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#89b4fa" text-anchor="middle" font-weight="bold">same-dir</text>
+<text x="160" y="132" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">(기본값)</text>
+<line x1="46" y1="142" x2="274" y2="142" stroke="#313244" stroke-width="1"/>
+
+<!-- Users sharing same dir -->
+<rect x="50" y="152" width="66" height="36" rx="6" fill="#313244" stroke="#89b4fa" stroke-width="1"/>
+<text x="83" y="174" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#89b4fa" text-anchor="middle">접속자 A</text>
+
+<rect x="127" y="152" width="66" height="36" rx="6" fill="#313244" stroke="#89b4fa" stroke-width="1"/>
+<text x="160" y="174" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#89b4fa" text-anchor="middle">접속자 B</text>
+
+<rect x="204" y="152" width="66" height="36" rx="6" fill="#313244" stroke="#89b4fa" stroke-width="1"/>
+<text x="237" y="174" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#89b4fa" text-anchor="middle">접속자 C</text>
+
+<!-- All arrows pointing to same dir -->
+<line x1="83" y1="190" x2="140" y2="226" stroke="#89b4fa" stroke-width="1.5"/>
+<line x1="160" y1="190" x2="160" y2="226" stroke="#89b4fa" stroke-width="1.5"/>
+<line x1="237" y1="190" x2="180" y2="226" stroke="#89b4fa" stroke-width="1.5"/>
+<polygon points="140,226 136,216 146,218" fill="#89b4fa"/>
+<polygon points="160,226 154,216 166,216" fill="#89b4fa"/>
+<polygon points="180,226 176,216 186,218" fill="#89b4fa"/>
+
+<rect x="90" y="228" width="140" height="44" rx="6" fill="#313244" stroke="#89b4fa" stroke-width="1.5"/>
+<text x="160" y="248" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#cdd6f4" text-anchor="middle">/project/</text>
+<text x="160" y="264" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">공유 디렉토리</text>
+
+<text x="160" y="302" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">여러 접속자가 한</text>
+<text x="160" y="318" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">디렉토리 공유</text>
+<text x="160" y="336" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#89b4fa" text-anchor="middle">✓ 협업·데모에 적합</text>
+
+<!-- Mode 2: worktree -->
+<rect x="320" y="86" width="260" height="260" rx="10" fill="#181825" stroke="#f9e2af" stroke-width="2"/>
+<text x="450" y="114" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#f9e2af" text-anchor="middle" font-weight="bold">worktree</text>
+<text x="450" y="132" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">독립 작업 공간</text>
+<line x1="336" y1="142" x2="564" y2="142" stroke="#313244" stroke-width="1"/>
+
+<!-- Users with separate worktrees -->
+<rect x="340" y="152" width="66" height="36" rx="6" fill="#313244" stroke="#f9e2af" stroke-width="1"/>
+<text x="373" y="174" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f9e2af" text-anchor="middle">접속자 A</text>
+<rect x="417" y="152" width="66" height="36" rx="6" fill="#313244" stroke="#f9e2af" stroke-width="1"/>
+<text x="450" y="174" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f9e2af" text-anchor="middle">접속자 B</text>
+
+<line x1="373" y1="190" x2="373" y2="226" stroke="#f9e2af" stroke-width="1.5"/>
+<line x1="450" y1="190" x2="450" y2="226" stroke="#f9e2af" stroke-width="1.5"/>
+<polygon points="373,226 367,216 379,216" fill="#f9e2af"/>
+<polygon points="450,226 444,216 456,216" fill="#f9e2af"/>
+
+<rect x="340" y="228" width="66" height="44" rx="6" fill="#313244" stroke="#f9e2af" stroke-width="1.5"/>
+<text x="373" y="248" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#cdd6f4" text-anchor="middle">branch-A</text>
+<text x="373" y="264" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="9" fill="#a6adc8" text-anchor="middle">worktree</text>
+
+<rect x="417" y="228" width="66" height="44" rx="6" fill="#313244" stroke="#f9e2af" stroke-width="1.5"/>
+<text x="450" y="248" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#cdd6f4" text-anchor="middle">branch-B</text>
+<text x="450" y="264" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="9" fill="#a6adc8" text-anchor="middle">worktree</text>
+
+<text x="450" y="302" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">접속자마다 독립</text>
+<text x="450" y="318" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">worktree·브랜치</text>
+<text x="450" y="336" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f9e2af" text-anchor="middle">✓ 독립 병렬 작업</text>
+
+<!-- Mode 3: session -->
+<rect x="610" y="86" width="260" height="260" rx="10" fill="#181825" stroke="#a6e3a1" stroke-width="2"/>
+<text x="740" y="114" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#a6e3a1" text-anchor="middle" font-weight="bold">session</text>
+<text x="740" y="132" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">단일 접속</text>
+<line x1="626" y1="142" x2="854" y2="142" stroke="#313244" stroke-width="1"/>
+
+<!-- First user OK -->
+<rect x="674" y="152" width="66" height="36" rx="6" fill="#313244" stroke="#a6e3a1" stroke-width="1"/>
+<text x="707" y="174" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">접속자 A</text>
+<line x1="707" y1="190" x2="740" y2="226" stroke="#a6e3a1" stroke-width="1.5"/>
+<polygon points="740,226 734,216 746,216" fill="#a6e3a1"/>
+
+<!-- Second user blocked -->
+<rect x="760" y="152" width="66" height="36" rx="6" fill="#313244" stroke="#f38ba8" stroke-width="1"/>
+<text x="793" y="174" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f38ba8" text-anchor="middle">접속자 B</text>
+<line x1="793" y1="190" x2="793" y2="220" stroke="#f38ba8" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="793" y="238" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="16" fill="#f38ba8" text-anchor="middle">✕</text>
+<text x="793" y="256" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8" text-anchor="middle">접속 거부</text>
+
+<rect x="680" y="228" width="72" height="44" rx="6" fill="#313244" stroke="#a6e3a1" stroke-width="1.5"/>
+<text x="716" y="248" font-family="Noto Sans CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#cdd6f4" text-anchor="middle">단일</text>
+<text x="716" y="264" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="9" fill="#a6adc8" text-anchor="middle">세션</text>
+
+<text x="740" y="302" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">단일 세션만 허용</text>
+<text x="740" y="318" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">추가 접속 거부</text>
+<text x="740" y="336" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="middle">✓ 혼자 안전하게</text>
+</svg>

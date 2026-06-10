@@ -39,6 +39,8 @@ Anthropic API 서버 (라우팅)
 ### 보안 통신
 모든 트래픽은 TLS로 암호화됩니다. 로컬 머신에 인바운드 포트를 열 필요가 없어 방화벽 설정이 필요하지 않습니다.
 
+> 💡 **인바운드 포트를 안 열어도 되는 이유:** 내 PC가 바깥(Anthropic 서버)으로 먼저 연결을 맺는 "아웃바운드" 방식이기 때문입니다. 외부에서 내 PC로 들어오는 문(인바운드 포트)을 열지 않으므로, 해킹 위험이 큰 포트 개방 없이도 원격 제어가 됩니다.
+
 <hr>
 
 ## 활용 시나리오
@@ -64,6 +66,8 @@ Anthropic API 서버 (라우팅)
 | 인증 | SSH 키 / 비밀번호 | Anthropic 계정 (OAuth) |
 | 모바일 앱 | 별도 SSH 클라이언트 | Claude 공식 모바일 앱 |
 | 알림 기능 | 없음 | 푸시 알림 지원 |
+
+![SSH vs Remote Control 연결 방식 비교](../assets/04-1-remote-control-overview-ssh-vs-rc.png)
 
 <hr>
 
@@ -99,6 +103,8 @@ Remote Control이 활성화된 세션에 다른 기기에서 접속하는 방법
 1. **직접 URL**: 브라우저에서 `https://claude.ai/code?session=<session-id>` 열기
 2. **QR 코드**: 서버 모드에서 스페이스바 → 폰 카메라로 스캔
 3. **세션 목록**: `claude.ai/code`에서 세션 이름으로 찾기 (컴퓨터 아이콘 + 초록 점)
+
+![세션 접속 3가지 방법](../assets/04-1-remote-control-overview-access-methods.png)
 
 <hr>
 

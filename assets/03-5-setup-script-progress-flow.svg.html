@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380">
+<rect width="900" height="380" fill="#1e1e2e"/>
+<text x="450" y="38" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="22" fill="#cdd6f4" text-anchor="middle" font-weight="bold">setup-team.sh 실행 진행 흐름</text>
+<text x="450" y="62" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="14" fill="#a6adc8" text-anchor="middle">단계별 진행 표시 [0/4] → [4/4]</text>
+
+<!-- Terminal frame -->
+<rect x="60" y="80" width="780" height="270" rx="10" fill="#181825" stroke="#45475a" stroke-width="1.5"/>
+<rect x="60" y="80" width="780" height="28" rx="10" fill="#313244"/>
+<rect x="60" y="94" width="780" height="14" fill="#313244"/>
+<circle cx="80" cy="94" r="5" fill="#f38ba8"/>
+<circle cx="98" cy="94" r="5" fill="#f9e2af"/>
+<circle cx="116" cy="94" r="5" fill="#a6e3a1"/>
+<text x="450" y="98" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="12" fill="#a6adc8" text-anchor="middle">$ bash setup-team.sh</text>
+
+<!-- Step 0/4 -->
+<rect x="80" y="120" width="740" height="36" rx="4" fill="#313244"/>
+<text x="96" y="143" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#89b4fa" text-anchor="start">[0/4]</text>
+<text x="148" y="143" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#cdd6f4" text-anchor="start">의존성 확인 중...</text>
+<text x="750" y="143" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#a6e3a1" text-anchor="middle">✅</text>
+
+<!-- Step 1/4 -->
+<rect x="80" y="162" width="740" height="36" rx="4" fill="#313244"/>
+<text x="96" y="185" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#f9e2af" text-anchor="start">[1/4]</text>
+<text x="148" y="185" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#cdd6f4" text-anchor="start">기존 세션 정리 중...</text>
+<text x="750" y="185" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#a6e3a1" text-anchor="middle">✅</text>
+
+<!-- Step 2/4 -->
+<rect x="80" y="204" width="740" height="36" rx="4" fill="#313244"/>
+<text x="96" y="227" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#a6e3a1" text-anchor="start">[2/4]</text>
+<text x="148" y="227" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#cdd6f4" text-anchor="start">레이아웃 구성 중...</text>
+<text x="750" y="227" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#a6e3a1" text-anchor="middle">✅</text>
+
+<!-- Step 3/4 (with pane results) -->
+<rect x="80" y="246" width="740" height="62" rx="4" fill="#313244"/>
+<text x="96" y="269" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#cba6f7" text-anchor="start">[3/4]</text>
+<text x="148" y="269" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#cdd6f4" text-anchor="start">파인별 Claude 실행 중...</text>
+<text x="148" y="293" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="12" fill="#a6adc8" text-anchor="start">  Pane 0 쭌 ✅  Pane 1 민준 ✅  Pane 2 지훈 ✅  Pane 3 수아 ✅  Pane 4 서연 ✅  Pane 5 태양 ✅</text>
+
+<!-- Step 4/4 -->
+<rect x="80" y="314" width="740" height="26" rx="4" fill="#a6e3a1" opacity="0.15"/>
+<text x="96" y="331" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#a6e3a1" text-anchor="start">[4/4]</text>
+<text x="148" y="331" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#a6e3a1" text-anchor="start">✅ 팀 환경 설정 완료! — 6개 파인 모두 준비됨</text>
+
+<!-- Elapsed note -->
+<text x="450" y="368" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#585b70" text-anchor="middle">* 타임아웃 파인은 ⚠️ 표시 후 계속 진행</text>
+</svg>

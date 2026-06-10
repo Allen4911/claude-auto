@@ -15,6 +15,8 @@ Claude Code는 세션 이름을 다음 순서로 결정합니다.
 | 3 | 대화 기록의 마지막 의미 있는 메시지 | (자동) |
 | 4 | `{hostname}-{랜덤형용사}-{랜덤명사}` | `mypc-graceful-unicorn` |
 
+![세션 이름 결정 우선순위 Cascade](../assets/04-4-session-naming-cascade.png)
+
 <hr>
 
 ## 이름 직접 지정
@@ -58,6 +60,8 @@ claude remote-control --remote-control-session-name-prefix dev-machine
 # 결과: dev-machine-calm-river
 ```
 
+![자동 생성 세션 이름 구조](../assets/04-4-session-naming-auto-name.png)
+
 ### 환경변수로 설정
 
 매번 플래그를 입력하는 번거로움을 없애려면 환경변수를 사용합니다.
@@ -76,6 +80,8 @@ claude remote-control
 
 <hr>
 
+> 💡 **환경변수란?** 터미널이 기억하는 "공용 설정값"입니다. `~/.bashrc`(또는 `~/.zshrc`)에 한 줄 적어 두면, 터미널을 새로 열 때마다 자동 적용되어 매번 같은 옵션을 타이핑하지 않아도 됩니다.
+
 ## 멀티에이전트 팀에서 세션 이름 관리
 
 팀 환경에서는 각 파인(에이전트)의 세션 이름을 역할로 지정하면 원격에서 누구에게 접속하는지 즉시 알 수 있습니다.
@@ -90,9 +96,9 @@ tmux send-keys -t team:0.0 \
 tmux send-keys -t team:0.1 \
     "claude --rc '아키텍트-민준' --dangerously-skip-permissions" Enter
 
-# 파인 2: 개발자
+# 파인 2: 리서쳐
 tmux send-keys -t team:0.2 \
-    "claude --rc '개발자-지훈' --dangerously-skip-permissions" Enter
+    "claude --rc '리서쳐-지훈' --dangerously-skip-permissions" Enter
 ```
 
 이렇게 하면 `claude.ai/code`에서 세션 목록을 열었을 때 다음과 같이 표시됩니다.
@@ -100,9 +106,9 @@ tmux send-keys -t team:0.2 \
 ```
 ● 팀장-쭌           (컴퓨터 아이콘 + 초록 점 = 활성)
 ● 아키텍트-민준
-● 개발자-지훈
+● 리서쳐-지훈
 ● 디자이너-수아
-● 리서쳐-서연
+● 개발자-서연
 ● 리뷰어-태양
 ```
 

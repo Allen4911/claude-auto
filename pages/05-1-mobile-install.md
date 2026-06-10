@@ -4,6 +4,10 @@
 
 스마트폰으로 PC의 Claude Code 세션을 제어하려면 먼저 Claude 공식 모바일 앱을 설치하고, 데스크톱과 동일한 계정으로 로그인해야 합니다. 이 장에서는 앱 설치부터 계정 연결까지 단계별로 안내합니다.
 
+> 💡 **왜 "같은 계정"이 중요할까요?** Remote Control은 PC와 휴대폰이 동일한 claude.ai 계정으로 로그인되어 있을 때만 서로를 찾아 연결합니다. 계정이 다르면 휴대폰에서 PC 세션이 보이지 않습니다.
+
+![모바일 앱 설치 → 동일 계정 로그인 → 세션 연결로 이어지는 3단계 전체 흐름도](../assets/05-1-mobile-install-3-step-flow.png)
+
 <hr>
 
 ## 준비 사항
@@ -34,6 +38,10 @@ iPhone 또는 iPad에서 App Store를 실행합니다.
 **Step 3 — 다운로드 및 설치**
 
 **받기** 버튼을 탭합니다. Face ID 또는 Touch ID로 인증하면 다운로드가 시작됩니다.
+
+![App Store·Google Play에서 Claude 검색, Anthropic 개발사 확인, 설치까지 3단계 안내](../assets/05-1-mobile-install-store-install.png)
+
+> 💡 검색 결과에 비슷한 이름의 앱이 여럿 나올 수 있습니다. 개발사가 **Anthropic**으로 표시된 앱만 공식 앱입니다. 다른 개발사 앱은 설치하지 마세요.
 
 <hr>
 
@@ -67,6 +75,10 @@ Google, Apple 계정 또는 이메일로 로그인할 수 있습니다. **반드
 
 선택한 방식으로 인증을 완료하면 Claude 채팅 화면이 나타납니다. 상단 또는 하단 메뉴에 **Code** 탭이 보이면 Remote Control 기능에 접근할 준비가 된 것입니다.
 
+> 💡 **Code 탭**은 휴대폰에서 PC의 Claude Code 세션으로 들어가는 입구입니다. 이 탭이 보이지 않으면 구독 등급(Pro 이상)이나 앱 버전을 먼저 확인하세요(아래 문제 해결 참고).
+
+![데스크톱과 모바일 앱이 같은 claude.ai 계정으로 세션을 공유하는 개념도](../assets/05-1-mobile-install-same-account.png)
+
 <hr>
 
 ## 계정 연결 확인
@@ -75,7 +87,7 @@ Google, Apple 계정 또는 이메일로 로그인할 수 있습니다. **반드
 
 1. 앱 우측 상단 프로필 아이콘을 탭합니다.
 2. **Settings → Account** 메뉴에서 이메일 주소를 확인합니다.
-3. 데스크톱 터미널에서 `claude /status`를 입력해 동일한 계정인지 비교합니다.
+3. 데스크톱에서 `claude`로 세션을 실행한 뒤, 세션 안에서 `/status`를 입력해 동일한 계정인지 비교합니다. (`/status`는 Claude 세션 내부에서 쓰는 슬래시 명령으로, 터미널에 `claude /status`처럼 직접 입력하는 명령이 아닙니다.)
 
 <hr>
 

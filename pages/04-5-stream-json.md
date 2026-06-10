@@ -11,6 +11,10 @@ Remote Control이 사람이 다른 기기에서 직접 접속하는 방식이라
 | 출력 스트리밍 | `--output-format stream-json` | Claude 응답을 JSON 스트림으로 받기 |
 | 입력 스트리밍 | `--input-format stream-json` | JSON으로 메시지를 Claude에게 전송 |
 
+![Stream JSON 양방향 입출력 흐름도](../assets/04-5-stream-json-io-flow.png)
+
+> 💡 **Stream JSON은 누가 쓸까요?** 사람이 직접 쓰는 게 아니라 **프로그램**이 씁니다. Remote Control이 사람용 원격 조종이라면, Stream JSON은 스크립트가 Claude를 부품처럼 호출해 결과를 받아 가는 자동화용 통로입니다.
+
 <hr>
 
 ## 출력: Stream JSON
@@ -29,6 +33,8 @@ claude -p "파이썬으로 피보나치 함수를 작성해줘" \
 ### 출력 형식 (NDJSON)
 
 각 줄이 하나의 JSON 객체인 NDJSON(Newline Delimited JSON) 형식입니다.
+
+> 💡 **NDJSON이란?** 한 줄에 JSON 하나씩 줄바꿈으로 이어 붙인 형식입니다. 응답이 완성되길 기다리지 않고 한 줄씩 도착하는 대로 처리할 수 있어, 실시간 스트리밍과 프로그램 처리에 알맞습니다.
 
 ```json
 {"type":"stream_event","event":{"type":"message_start","message":{"id":"msg_01...","type":"message","role":"assistant","content":[]}},"session_id":"uuid","uuid":"event-uuid"}
@@ -160,6 +166,10 @@ cat main.py | \
     --output-format json | \
     jq -r '.result'
 ```
+
+![파이프라인 데이터 흐름](../assets/04-5-stream-json-pipeline.png)
+
+> 💡 **파이프(`|`)와 `jq`란?** `|`는 앞 명령의 출력을 다음 명령의 입력으로 넘기는 연결 장치입니다. `jq`는 JSON에서 원하는 값만 골라내는 도구로, 여기서는 Claude의 JSON 응답에서 `.result`(실제 답변)만 추출합니다.
 
 ### 여러 질문을 순차 처리
 

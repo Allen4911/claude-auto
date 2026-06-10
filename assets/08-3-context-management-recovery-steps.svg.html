@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260">
+<rect width="900" height="260" fill="#1e1e2e"/>
+<text x="450" y="32" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#cdd6f4" text-anchor="middle" font-weight="bold">비상 복구 4단계 흐름</text>
+<text x="450" y="52" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6adc8" text-anchor="middle">세션 끊김 → git 이력과 테스트만으로 빠르게 상태 파악</text>
+
+<!-- Trigger: 세션 끊김 -->
+<rect x="30" y="72" width="120" height="80" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="2"/>
+<text x="90" y="103" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#f38ba8" text-anchor="middle">💥</text>
+<text x="90" y="127" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#f38ba8" text-anchor="middle" font-weight="bold">세션 끊김</text>
+<text x="90" y="143" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">컨텍스트 소실</text>
+
+<polygon points="152,112 164,106 164,118" fill="#585b70"/>
+<line x1="150" y1="112" x2="162" y2="112" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 1: git log -->
+<rect x="165" y="72" width="158" height="80" rx="8" fill="#313244" stroke="#89b4fa" stroke-width="2"/>
+<rect x="165" y="72" width="158" height="32" rx="8" fill="#89b4fa" opacity="0.25"/>
+<text x="244" y="92" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#89b4fa" text-anchor="middle" font-weight="bold">1단계</text>
+<text x="244" y="107" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#a6e3a1" text-anchor="middle">git log --oneline</text>
+<text x="244" y="127" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cdd6f4" text-anchor="middle">마지막 커밋 확인</text>
+<text x="244" y="143" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">어디까지 완료됐나</text>
+
+<polygon points="325,112 337,106 337,118" fill="#585b70"/>
+<line x1="323" y1="112" x2="335" y2="112" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 2: branch check -->
+<rect x="338" y="72" width="148" height="80" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="2"/>
+<rect x="338" y="72" width="148" height="32" rx="8" fill="#a6e3a1" opacity="0.25"/>
+<text x="412" y="92" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#a6e3a1" text-anchor="middle" font-weight="bold">2단계</text>
+<text x="412" y="107" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#a6e3a1" text-anchor="middle">git branch</text>
+<text x="412" y="127" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cdd6f4" text-anchor="middle">브랜치 확인</text>
+<text x="412" y="143" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">작업 브랜치 위치</text>
+
+<polygon points="488,112 500,106 500,118" fill="#585b70"/>
+<line x1="486" y1="112" x2="498" y2="112" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 3: TODO search -->
+<rect x="501" y="72" width="148" height="80" rx="8" fill="#313244" stroke="#f9e2af" stroke-width="2"/>
+<rect x="501" y="72" width="148" height="32" rx="8" fill="#f9e2af" opacity="0.25"/>
+<text x="575" y="92" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#f9e2af" text-anchor="middle" font-weight="bold">3단계</text>
+<text x="575" y="107" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#f9e2af" text-anchor="middle">grep -rn "TODO|WIP"</text>
+<text x="575" y="127" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cdd6f4" text-anchor="middle">미완료 작업 검색</text>
+<text x="575" y="143" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">남은 작업 파악</text>
+
+<polygon points="651,112 663,106 663,118" fill="#585b70"/>
+<line x1="649" y1="112" x2="661" y2="112" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 4: test -->
+<rect x="664" y="72" width="148" height="80" rx="8" fill="#313244" stroke="#cba6f7" stroke-width="2"/>
+<rect x="664" y="72" width="148" height="32" rx="8" fill="#cba6f7" opacity="0.25"/>
+<text x="738" y="92" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cba6f7" text-anchor="middle" font-weight="bold">4단계</text>
+<text x="738" y="107" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#cba6f7" text-anchor="middle">npm test</text>
+<text x="738" y="127" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#cdd6f4" text-anchor="middle">테스트 실행</text>
+<text x="738" y="143" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">현재 상태 확인</text>
+
+<!-- Result -->
+<polygon points="815,112 827,106 827,118" fill="#a6e3a1"/>
+<line x1="813" y1="112" x2="825" y2="112" stroke="#a6e3a1" stroke-width="2"/>
+<rect x="828" y="85" width="58" height="52" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="2"/>
+<text x="857" y="108" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="16" fill="#a6e3a1" text-anchor="middle">✅</text>
+<text x="857" y="128" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6e3a1" text-anchor="middle">재개</text>
+
+<text x="450" y="192" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#585b70" text-anchor="middle">4단계 진행 소요 시간: 약 2~3분 — TDD와 잦은 커밋이 복구를 빠르게 만드는 이유</text>
+</svg>

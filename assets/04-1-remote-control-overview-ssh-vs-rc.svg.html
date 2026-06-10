@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380">
+<rect width="900" height="380" fill="#1e1e2e"/>
+<text x="450" y="38" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="22" fill="#cdd6f4" text-anchor="middle" font-weight="bold">SSH vs Remote Control 연결 방식 비교</text>
+<text x="450" y="62" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="14" fill="#a6adc8" text-anchor="middle">포트 직접 개방 vs HTTPS API 경유</text>
+
+<!-- Left: SSH -->
+<text x="215" y="92" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="16" fill="#f38ba8" text-anchor="middle" font-weight="bold">SSH 접속</text>
+
+<!-- Client -->
+<rect x="40" y="108" width="120" height="56" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="1.5"/>
+<text x="100" y="132" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle">SSH 클라이언트</text>
+<text x="100" y="152" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">모바일 / PC</text>
+
+<!-- Firewall block -->
+<rect x="198" y="108" width="36" height="56" rx="4" fill="#45475a" stroke="#f38ba8" stroke-width="1.5"/>
+<text x="216" y="130" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f38ba8" text-anchor="middle" transform="rotate(-90,216,136)">방화벽</text>
+<text x="216" y="152" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f9e2af" text-anchor="middle">:22</text>
+
+<line x1="162" y1="136" x2="196" y2="136" stroke="#f38ba8" stroke-width="2"/>
+<polygon points="196,136 188,131 188,141" fill="#f38ba8"/>
+<text x="180" y="128" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#f38ba8" text-anchor="middle">TCP</text>
+
+<!-- Server -->
+<rect x="238" y="108" width="120" height="56" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="1.5"/>
+<text x="298" y="132" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle">로컬 서버</text>
+<text x="298" y="152" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">Claude Code</text>
+
+<!-- SSH annotation -->
+<rect x="40" y="185" width="318" height="70" rx="6" fill="#181825" stroke="#45475a" stroke-width="1"/>
+<text x="52" y="204" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f38ba8" text-anchor="start">⚠ 포트 22 개방 필요</text>
+<text x="52" y="220" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="start">• 방화벽 규칙 수정 필요</text>
+<text x="52" y="236" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="start">• 별도 SSH 클라이언트 앱 설치</text>
+<text x="52" y="252" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="start">• 푸시 알림 없음</text>
+
+<!-- VS divider -->
+<line x1="450" y1="80" x2="450" y2="340" stroke="#45475a" stroke-width="1.5" stroke-dasharray="6,4"/>
+<rect x="432" y="210" width="36" height="30" rx="6" fill="#313244"/>
+<text x="450" y="230" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="14" fill="#fab387" text-anchor="middle" font-weight="bold">VS</text>
+
+<!-- Right: Remote Control -->
+<text x="685" y="92" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="16" fill="#a6e3a1" text-anchor="middle" font-weight="bold">Remote Control</text>
+
+<!-- Mobile Client -->
+<rect x="470" y="108" width="120" height="56" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="1.5"/>
+<text x="530" y="132" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle">Claude 공식 앱</text>
+<text x="530" y="152" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">모바일 / Web</text>
+
+<!-- Anthropic API cloud -->
+<rect x="616" y="100" width="120" height="72" rx="20" fill="#313244" stroke="#89b4fa" stroke-width="1.5"/>
+<text x="676" y="130" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#89b4fa" text-anchor="middle">Anthropic</text>
+<text x="676" y="148" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#89b4fa" text-anchor="middle">API</text>
+<text x="676" y="164" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="10" fill="#a6adc8" text-anchor="middle">HTTPS :443</text>
+
+<line x1="592" y1="136" x2="614" y2="136" stroke="#a6e3a1" stroke-width="2"/>
+<polygon points="614,136 606,131 606,141" fill="#a6e3a1"/>
+<line x1="738" y1="136" x2="760" y2="136" stroke="#a6e3a1" stroke-width="2"/>
+<polygon points="760,136 752,131 752,141" fill="#a6e3a1"/>
+
+<!-- Local Server -->
+<rect x="762" y="108" width="120" height="56" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="1.5"/>
+<text x="822" y="132" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle">로컬 서버</text>
+<text x="822" y="152" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">Claude Code</text>
+
+<!-- RC annotation -->
+<rect x="470" y="185" width="412" height="70" rx="6" fill="#181825" stroke="#45475a" stroke-width="1"/>
+<text x="482" y="204" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6e3a1" text-anchor="start">✅ 포트 개방 불필요</text>
+<text x="482" y="220" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="start">• HTTPS(443) 아웃바운드만 사용</text>
+<text x="482" y="236" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="start">• Claude 공식 앱 · OAuth 인증</text>
+<text x="482" y="252" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="start">• 푸시 알림 지원</text>
+
+<!-- Bottom comparison row -->
+<rect x="40" y="280" width="318" height="72" rx="8" fill="#181825" stroke="#f38ba8" stroke-width="1"/>
+<text x="199" y="302" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#f38ba8" text-anchor="middle" font-weight="bold">SSH</text>
+<text x="199" y="320" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">인증: SSH 키 / 비밀번호</text>
+<text x="199" y="338" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">알림: 없음</text>
+
+<rect x="470" y="280" width="412" height="72" rx="8" fill="#181825" stroke="#a6e3a1" stroke-width="1"/>
+<text x="676" y="302" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#a6e3a1" text-anchor="middle" font-weight="bold">Remote Control</text>
+<text x="676" y="320" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">인증: Anthropic 계정 (OAuth)</text>
+<text x="676" y="338" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">알림: 푸시 알림 지원</text>
+</svg>

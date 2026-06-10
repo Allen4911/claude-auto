@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+<rect width="900" height="300" fill="#1e1e2e"/>
+<text x="450" y="32" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#cdd6f4" text-anchor="middle" font-weight="bold">쭌의 5분 체크 루프 타임라인</text>
+<text x="450" y="52" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6adc8" text-anchor="middle">ScheduleWakeup 270초(4.5분) 주기로 자동 반복</text>
+
+<!-- Cycle box -->
+<rect x="40" y="68" width="820" height="170" rx="12" fill="#181825" stroke="#89b4fa" stroke-width="2"/>
+
+<!-- Step 1: Wake -->
+<rect x="65" y="90" width="150" height="90" rx="8" fill="#313244" stroke="#89b4fa" stroke-width="2"/>
+<text x="140" y="125" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="24" fill="#89b4fa" text-anchor="middle">⏰</text>
+<text x="140" y="150" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">쭌 깨어남</text>
+<text x="140" y="168" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">ScheduleWakeup</text>
+
+<!-- Arrow -->
+<polygon points="220,135 232,129 232,141" fill="#585b70"/>
+<line x1="217" y1="135" x2="230" y2="135" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 2: Check panes -->
+<rect x="235" y="90" width="150" height="90" rx="8" fill="#313244" stroke="#cba6f7" stroke-width="2"/>
+<text x="310" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#cba6f7" text-anchor="middle">🔍</text>
+<text x="310" y="147" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">pane 상태 확인</text>
+<text x="310" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">P1~P6 순서대로</text>
+<text x="310" y="176" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">작업중/idle/오류</text>
+
+<!-- Arrow -->
+<polygon points="390,135 402,129 402,141" fill="#585b70"/>
+<line x1="387" y1="135" x2="400" y2="135" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 3: Telegram report -->
+<rect x="405" y="90" width="150" height="90" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="2"/>
+<text x="480" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#a6e3a1" text-anchor="middle">✈️</text>
+<text x="480" y="147" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">텔레그램 중간 보고</text>
+<text x="480" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">앨런에게 상황 전송</text>
+<text x="480" y="176" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#a6adc8" text-anchor="middle">이상 시 민준 보고</text>
+
+<!-- Arrow -->
+<polygon points="560,135 572,129 572,141" fill="#585b70"/>
+<line x1="557" y1="135" x2="570" y2="135" stroke="#585b70" stroke-width="2"/>
+
+<!-- Step 4: ScheduleWakeup -->
+<rect x="575" y="90" width="200" height="90" rx="8" fill="#313244" stroke="#f9e2af" stroke-width="2"/>
+<text x="675" y="122" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#f9e2af" text-anchor="middle">⏱️</text>
+<text x="675" y="147" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#cdd6f4" text-anchor="middle" font-weight="bold">ScheduleWakeup 재등록</text>
+<text x="675" y="163" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">270초(4.5분) 후 재실행</text>
+<text x="675" y="176" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="10" fill="#f9e2af" text-anchor="middle">루프 유지</text>
+
+<!-- Return arrow (loop) -->
+<path d="M 675 182 Q 675 240 450 240 Q 225 240 140 182" stroke="#585b70" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/>
+<polygon points="138,177 140,189 148,180" fill="#585b70"/>
+<text x="450" y="255" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#585b70" text-anchor="middle">270초 후 자동 반복 → 사람 개입 없이 24시간 모니터링</text>
+
+<text x="450" y="285" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">이상 발견 시 즉시 민준 보고 → 민준이 해당 팀원에게 조치 지시</text>
+</svg>

@@ -20,7 +20,7 @@
               민준(PM) → 서연(개발) + 태양(리뷰) + 지훈(리서치)
 ```
 
-![](../assets/07-6-cupangs.png)
+![쿠팡 상품 분석 AI 도구 팀 지휘 구조](../assets/07-6-cupangs.png)
 
 **민준(PM·아키텍트)**: 3개 Phase 설계 — AI 비교 분석, 가격 히스토리, 일괄 갱신
 
@@ -52,6 +52,8 @@ bash claude-send.sh 5 "Phase 1 리뷰 부탁해.
 **발생한 문제와 해결**
 
 서연이 `catch(e: any)` 패턴을 반복 사용한 것을 태양이 발견했습니다.
+
+> 💡 **`catch(e: any)`가 왜 문제일까요?** 오류를 `any`(아무 타입)로 받으면 타입 검사가 꺼져, 오류 객체에 없는 속성을 잘못 써도 컴파일러가 못 잡습니다. `unknown`으로 받고 `instanceof Error`로 확인하면, 진짜 Error일 때만 안전하게 `.message`에 접근할 수 있습니다.
 
 ```typescript
 // 태양이 발견한 패턴 (개선 필요)
@@ -98,7 +100,7 @@ Phase 4: 발송 승인 워크플로우
 Phase 5: 스케줄링 및 로깅
 ```
 
-![](../assets/07-6-mail-auto.png)
+![메일 자동화 시스템 Phase 1~5 구성도](../assets/07-6-mail-auto.png)
 
 **서연의 TDD 실천:**
 
@@ -128,6 +130,8 @@ def test_imap_connection():
 [04:30] 서연 "P3 완료" 보고 → 태양에게 리뷰 지시
 [05:01] 쭌 깨어남 → 태양 리뷰 확인 → 앨런 보고
 ```
+
+![쭌의 5분 체크 루프 순환 다이어그램](../assets/08-1-real-world-check-loop.png)
 
 <hr>
 
@@ -163,6 +167,10 @@ openclaw message send --channel telegram --target 56518471 \
 → 앨런에게 재개 보고
 ```
 
+![Rate Limit 자동 대응 흐름도](../assets/08-1-real-world-rate-limit.png)
+
+> 💡 **rate limit(요청 한도)이란?** 일정 시간 동안 보낼 수 있는 요청량 상한입니다. 초과하면 리셋 시각까지 멈추는데, 쭌은 그 시각에 맞춰 ScheduleWakeup을 걸어 두어 사람이 챙기지 않아도 자동으로 작업을 이어갑니다.
+
 > **핵심**: rate limit 발생 시 즉시 ScheduleWakeup을 등록하여 사용자가 물어볼 때까지 기다리지 않고 자동으로 재개합니다.
 
 <hr>
@@ -180,7 +188,8 @@ openclaw message send --channel telegram --target 56518471 \
           쭌에게는 Phase 단위로만 보고
 ```
 
-![](../assets/07-6-central_command.png)
+![민준 중심 지휘 체계 — 앨런→쭌→민준→팀원](../assets/07-6-central_command.png)
+
 ### 2. 칸반 기반 진행 관리
 
 ```
@@ -188,7 +197,7 @@ Inbox → In Progress → Review → Done
   ↑민준    ↑서연/지훈    ↑태양    ↑민준 판단
 ```
 
-![](../assets/07-6-kanban-progress.png)
+![칸반 기반 작업 진행 관리 보드](../assets/07-6-kanban-progress.png)
 
 ### 3. 텔레그램 실시간 보고
 

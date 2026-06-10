@@ -21,7 +21,7 @@ tmux 서버 (백그라운드 프로세스)
 │
 └── 세션: work                      ← 별도 작업용 세션 (선택)
 ```
-![](../assets/03-1-tmux-structure-session.png)
+![tmux 서버 아래 세션(team)→윈도우(0,1)→파인(0~5, 팀원별) 계층 구조를 트리로 표현한 다이어그램](../assets/03-1-tmux-structure-session.png)
 <hr>
 
 ## 세션(Session)
@@ -82,6 +82,8 @@ tmux split-window -t team:0.0 -h
 tmux split-window -t team:0.0 -v
 ```
 
+> 💡 **-h와 -v 헷갈림 주의:** `-h`(horizontal split)는 좌우로 나누는 **세로** 분할선, `-v`(vertical split)는 상하로 나누는 **가로** 분할선입니다. 이름과 결과 방향이 반대로 느껴질 수 있으니, "분할선이 가로/세로"가 아니라 "옵션 글자"로 외우면 편합니다.
+
 ### 파인 번호 체계
 
 파인 번호는 분할 순서에 따라 자동으로 부여됩니다. 6개 파인을 생성하는 표준 순서는 다음과 같습니다.
@@ -100,6 +102,8 @@ tmux split-window -t team:0.4 -h  # Pane 5
 # 균등 배분
 tmux select-layout -t team:0 even-horizontal
 ```
+
+![파인 분할 순서도](../assets/03-1-tmux-structure-pane-split.png)
 
 ### 파인 주소 지정
 
@@ -148,6 +152,8 @@ tmux set-option -t team main-pane-width 158
 | 3 | 수아 | 오른쪽 3번째 |
 | 4 | 서연 | 오른쪽 4번째 |
 | 5 | 태양 | 오른쪽 하단 |
+
+![main-vertical 레이아웃 배치도](../assets/03-1-tmux-structure-main-vertical-layout.png)
 
 <hr>
 

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240">
+<rect width="900" height="240" fill="#1e1e2e"/>
+<text x="450" y="32" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#cdd6f4" text-anchor="middle" font-weight="bold">충돌 발생 원인 도식</text>
+<text x="450" y="52" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6adc8" text-anchor="middle">두 에이전트가 같은 파일을 동시에 수정할 때</text>
+
+<!-- Seoyeon (left) -->
+<rect x="40" y="68" width="220" height="80" rx="8" fill="#313244" stroke="#89b4fa" stroke-width="2"/>
+<text x="150" y="96" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="14" fill="#89b4fa" text-anchor="middle" font-weight="bold">서연 (개발자)</text>
+<text x="150" y="118" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#a6adc8" text-anchor="middle">client.ts 수정 중</text>
+<text x="150" y="136" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#a6e3a1" text-anchor="middle">timeout: 5000</text>
+
+<!-- Arrow from Seoyeon -->
+<line x1="262" y1="108" x2="390" y2="140" stroke="#89b4fa" stroke-width="2"/>
+<polygon points="385,143 394,136 393,148" fill="#89b4fa"/>
+
+<!-- Conflict center -->
+<rect x="355" y="118" width="190" height="70" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="3"/>
+<rect x="355" y="118" width="190" height="70" rx="8" fill="#f38ba8" opacity="0.1"/>
+<text x="450" y="148" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#f38ba8" text-anchor="middle">⚡ 충돌!</text>
+<text x="450" y="170" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#f38ba8" text-anchor="middle">merge conflict</text>
+
+<!-- Arrow from Sua -->
+<line x1="638" y1="108" x2="547" y2="140" stroke="#cba6f7" stroke-width="2"/>
+<polygon points="550,148 547,136 554,143" fill="#cba6f7"/>
+
+<!-- Sua (right) -->
+<rect x="640" y="68" width="220" height="80" rx="8" fill="#313244" stroke="#cba6f7" stroke-width="2"/>
+<text x="750" y="96" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="14" fill="#cba6f7" text-anchor="middle" font-weight="bold">수아 (디자이너)</text>
+<text x="750" y="118" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#a6adc8" text-anchor="middle">client.ts 수정 중</text>
+<text x="750" y="136" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="11" fill="#f9e2af" text-anchor="middle">timeout: 10000</text>
+
+<!-- Target file -->
+<rect x="355" y="60" width="190" height="48" rx="8" fill="#181825" stroke="#45475a" stroke-width="1.5"/>
+<text x="450" y="82" font-family="Noto Sans Mono CJK KR, DejaVu Sans Mono, monospace" font-size="13" fill="#f9e2af" text-anchor="middle">src/api/client.ts</text>
+<text x="450" y="100" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="11" fill="#a6adc8" text-anchor="middle">같은 파일을 동시에 수정</text>
+
+<text x="450" y="214" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12" fill="#585b70" text-anchor="middle">해결책: 파일 소유권 분리 + Redis 잠금으로 사전 방지</text>
+</svg>

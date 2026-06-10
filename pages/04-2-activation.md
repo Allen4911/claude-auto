@@ -31,6 +31,8 @@ cat ~/.claude/settings.json 2>/dev/null || echo "{}"
 
 이 설정이 `true`이면 `claude` 명령을 실행할 때마다 자동으로 Remote Control이 활성화됩니다.
 
+> 💡 **settings.json이란?** Claude Code의 동작을 저장해 두는 설정 파일입니다. 여기에 한 번 적어 두면 매번 옵션을 입력하지 않아도 항상 같은 설정으로 실행됩니다. 반대로, 그때그때만 켜고 싶으면 아래 방법 2(CLI 플래그)를 쓰면 됩니다.
+
 ![settings.json Remote Control 설정](../assets/04-2-settings-json.png)
 
 ### /config 메뉴로 설정
@@ -66,6 +68,8 @@ claude --rc "프론트엔드 작업"
 ```
 
 세션 이름을 지정하면 `claude.ai/code` 세션 목록에서 쉽게 찾을 수 있습니다.
+
+> 💡 `--rc`는 `--remote-control`의 단축 표기로, 둘은 완전히 같은 옵션입니다. 타이핑을 줄이고 싶을 때 `--rc`를 쓰면 됩니다.
 
 ### 서버 모드 실행
 
@@ -160,6 +164,8 @@ tmux send-keys -t team:0.0 \
 | `settings.json` | 모든 세션 | 항상 켜두고 싶을 때 |
 | CLI 플래그 (`--rc`) | 특정 세션 1개 | 그때그때 켜고 싶을 때 |
 | `/remote-control` | 현재 실행 중 세션 | 실행 후 필요해졌을 때 |
+
+![활성화 방법 선택 가이드](../assets/04-2-activation-method-decision.png)
 
 <hr>
 
