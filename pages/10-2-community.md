@@ -150,7 +150,7 @@ PM, 리서쳐, 리뷰어 순서로 추가
 1개 Phase를 팀과 함께 완주
 ```
 
-![실습 5단계 로드맵 — 환경 설치(30분) → TMUX 팀 구성(1시간) → Remote Control(2시간) → 실제 프로젝트(1주) → 커뮤니티 기여](../assets/10-2-community-practice-roadmap.png)
+![실습 5단계 로드맵 — 기본 환경 구성 → 2인 팀으로 시작 → 역할 확장 → Remote Control 연동 → 실전 프로젝트 적용](../assets/10-2-community-practice-roadmap.png)
 
 2인 팀부터 시작하여 점진적으로 확장하는 것이 학습 곡선을 완만하게 한다.
 
