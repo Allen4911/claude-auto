@@ -1,18 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="700" height="480" viewBox="0 0 700 480">
-<rect width="700" height="480" rx="0" fill="#1e1e2e"/>
-<text x="350.0" y="42" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="24" fill="#cdd6f4" text-anchor="middle" font-weight="bold">TMUX 3계층 구조</text>
-<text x="350.0" y="68" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="15" fill="#a6adc8" text-anchor="middle" font-weight="normal">세션 ⊃ 윈도우 ⊃ 파인</text>
-<rect x="70" y="100" width="560" height="320" rx="18" ry="18" fill="#313244" opacity="1.0" stroke="#89b4fa" stroke-width="3"/>
-<text x="94" y="136" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="20" fill="#89b4fa" text-anchor="start" font-weight="bold">세션 (Session)</text>
-<text x="94" y="158" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6adc8" text-anchor="start" font-weight="normal">최상위 단위 · 닫아도 백그라운드 유지</text>
-<rect x="110" y="178" width="480" height="210" rx="14" ry="14" fill="#181825" opacity="1.0" stroke="#fab387" stroke-width="2"/>
-<text x="130" y="210" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="18" fill="#fab387" text-anchor="start" font-weight="bold">윈도우 (Window)</text>
-<text x="130" y="230" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="12.5" fill="#a6adc8" text-anchor="start" font-weight="normal">세션 안의 탭 · 전체 화면 하나</text>
-<rect x="134" y="246" width="210.0" height="118" rx="10" ry="10" fill="#45475a" opacity="1.0" stroke="#a6e3a1" stroke-width="2"/>
-<text x="239.0" y="310.0" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="16" fill="#a6e3a1" text-anchor="middle" font-weight="bold">파인 0</text>
-<rect x="356.0" y="246" width="210.0" height="53.0" rx="10" ry="10" fill="#45475a" opacity="1.0" stroke="#a6e3a1" stroke-width="2"/>
-<text x="461.0" y="277.5" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="16" fill="#a6e3a1" text-anchor="middle" font-weight="bold">파인 1</text>
-<rect x="356.0" y="311.0" width="210.0" height="53.0" rx="10" ry="10" fill="#45475a" opacity="1.0" stroke="#a6e3a1" stroke-width="2"/>
-<text x="461.0" y="342.5" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="16" fill="#a6e3a1" text-anchor="middle" font-weight="bold">파인 2</text>
-<text x="350.0" y="386" font-family="Noto Sans CJK KR, DejaVu Sans, sans-serif" font-size="13" fill="#a6e3a1" text-anchor="middle" font-weight="normal">파인 (Pane) — 각자 독립 쉘</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="494" viewBox="0 0 700 480">
+  <rect width="700" height="480" fill="#f5f5f7"/>
+  <text x="350" y="42" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="24" fill="#1d1d1f" text-anchor="middle" font-weight="bold">TMUX 3계층 구조</text>
+  <text x="350" y="68" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="15" fill="#7a7a7a" text-anchor="middle" font-weight="normal">세션 ⊃ 윈도우 ⊃ 파인</text>
+  <!-- Session box (outermost) -->
+  <rect x="70" y="100" width="560" height="320" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="94" y="136" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="20" fill="#0066cc" text-anchor="start" font-weight="bold">세션 (Session)</text>
+  <text x="94" y="158" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="13" fill="#7a7a7a" text-anchor="start" font-weight="normal">최상위 단위 · 닫아도 백그라운드 유지</text>
+  <!-- Window box -->
+  <rect x="110" y="178" width="480" height="210" rx="11" ry="11" fill="#f0f0f0" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="130" y="210" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="18" fill="#0066cc" text-anchor="start" font-weight="bold">윈도우 (Window)</text>
+  <text x="130" y="230" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="12.5" fill="#7a7a7a" text-anchor="start" font-weight="normal">세션 안의 탭 · 전체 화면 하나</text>
+  <!-- Pane 0 (left, tall) -->
+  <rect x="134" y="246" width="210" height="118" rx="10" ry="10" fill="#e8e8ed" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="239" y="310" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="16" fill="#0066cc" text-anchor="middle" font-weight="bold">파인 0</text>
+  <!-- Pane 1 (right top) -->
+  <rect x="356" y="246" width="210" height="53" rx="10" ry="10" fill="#e8e8ed" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="461" y="278" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="16" fill="#0066cc" text-anchor="middle" font-weight="bold">파인 1</text>
+  <!-- Pane 2 (right bottom) -->
+  <rect x="356" y="311" width="210" height="53" rx="10" ry="10" fill="#e8e8ed" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="461" y="343" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="16" fill="#0066cc" text-anchor="middle" font-weight="bold">파인 2</text>
+  <!-- Bottom label inside window box -->
+  <text x="350" y="386" font-family="Malgun Gothic, Noto Sans CJK KR, Arial, sans-serif" font-size="13" fill="#0066cc" text-anchor="middle" font-weight="normal">파인 (Pane) — 각자 독립 쉘</text>
 </svg>
