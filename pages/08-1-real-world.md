@@ -131,7 +131,7 @@ def test_imap_connection():
 [05:01] 쭌 깨어남 → 태양 리뷰 확인 → 앨런 보고
 ```
 
-![쭌의 5분 체크 루프 순환 다이어그램](../assets/08-1-real-world-check-loop.png)
+위 타임라인처럼 쭌은 270초마다 깨어나 각 pane 상태를 확인하고 사용자에게 보고한 뒤 다음 체크를 예약하는 순환을 반복한다.
 
 <hr>
 
@@ -164,7 +164,7 @@ Error: Rate limit exceeded. Reset in 47 minutes.
 → 앨런에게 재개 보고
 ```
 
-![Rate Limit 자동 대응 흐름도](../assets/08-1-real-world-rate-limit.png)
+위 흐름처럼 리셋 시각에 맞춰 깨어나 팀원 pane 상태를 확인하고 재가동·보고까지 자동으로 이어진다.
 
 > 💡 **rate limit(요청 한도)이란?** 일정 시간 동안 보낼 수 있는 요청량 상한입니다. 초과하면 리셋 시각까지 멈추는데, 쭌은 그 시각에 맞춰 ScheduleWakeup을 걸어 두어 사람이 챙기지 않아도 자동으로 작업을 이어갑니다.
 
