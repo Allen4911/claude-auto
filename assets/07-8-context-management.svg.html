@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>body { margin: 0; background: #f5f5f7; display: flex; justify-content: center; padding: 40px 0; }</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="740" viewBox="0 0 720 740" font-family="Gulim, Noto Sans CJK KR, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+  </defs>
+  <rect width="720" height="740" fill="#f5f5f7"/>
+
+  <!-- 제목 -->
+  <rect x="30" y="18" width="660" height="70" rx="11" ry="11" fill="#0066cc"/>
+  <text x="360" y="44" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">멀티 AI 에이전트/팀 운영에서</text>
+  <text x="360" y="64" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">핵심은 컨텍스트 관리입니다.</text>
+  <text x="360" y="78" text-anchor="middle" font-size="11" fill="#e0eeff">효율적인 팀 에이전트 운영을 위한 필수 사이클</text>
+
+  <!-- 3단계 박스 -->
+  <!-- /context-save -->
+  <rect x="18" y="110" width="218" height="230" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <rect x="18" y="110" width="218" height="44" rx="11" ry="11" fill="#0066cc"/>
+  <rect x="18" y="130" width="218" height="24" fill="#0066cc"/>
+  <text x="127" y="138" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">/context-save</text>
+  <text x="127" y="170" text-anchor="middle" font-size="11" fill="#7a7a7a">→ 현재 작업 상태 저장</text>
+  <line x1="30" y1="185" x2="224" y2="185" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="40" y="203" font-size="11" font-weight="bold" fill="#0066cc">저장되는 것들</text>
+  <text x="40" y="221" font-size="11" fill="#1d1d1f">✓ 작업 맥락</text>
+  <text x="40" y="238" font-size="11" fill="#1d1d1f">✓ TODO 리스트</text>
+  <text x="40" y="255" font-size="11" fill="#1d1d1f">✓ 결정 사항</text>
+  <text x="40" y="272" font-size="11" fill="#1d1d1f">✓ 다음 단계</text>
+  <text x="40" y="289" font-size="11" fill="#1d1d1f">✓ 팀 상태 정보</text>
+  <text x="40" y="306" font-size="11" fill="#1d1d1f">✓ 환경 설정</text>
+  <text x="40" y="328" font-size="10" fill="#7a7a7a">컨텍스트 초기화 전 필수 실행</text>
+
+  <!-- 화살표 save → clear -->
+  <line x1="236" y1="225" x2="254" y2="225" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- /clear -->
+  <rect x="256" y="110" width="208" height="230" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <rect x="256" y="110" width="208" height="44" rx="11" ry="11" fill="#0066cc"/>
+  <rect x="256" y="130" width="208" height="24" fill="#0066cc"/>
+  <text x="360" y="138" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">/clear</text>
+  <text x="360" y="163" text-anchor="middle" font-size="11" fill="#7a7a7a">→ 컨텍스트 초기화 후</text>
+  <text x="360" y="178" text-anchor="middle" font-size="11" fill="#7a7a7a">다음 작업 수행</text>
+  <line x1="268" y1="190" x2="452" y2="190" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="268" y="208" font-size="11" font-weight="bold" fill="#0066cc">초기화되는 것들</text>
+  <text x="268" y="226" font-size="11" fill="#1d1d1f">✗ 현재 컨텍스트</text>
+  <text x="268" y="243" font-size="11" fill="#1d1d1f">✗ 임시 데이터</text>
+  <text x="268" y="260" font-size="11" fill="#1d1d1f">✗ 세션 상태</text>
+  <line x1="268" y1="280" x2="452" y2="280" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="360" y="300" text-anchor="middle" font-size="10" fill="#7a7a7a">⚠️ 저장 없이 clear하면</text>
+  <text x="360" y="316" text-anchor="middle" font-size="10" fill="#7a7a7a">모든 맥락 소실</text>
+  <text x="360" y="332" text-anchor="middle" font-size="10" fill="#7a7a7a">save 먼저 실행할 것</text>
+
+  <!-- 화살표 clear → restore -->
+  <line x1="464" y1="225" x2="482" y2="225" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- /context-restore -->
+  <rect x="484" y="110" width="218" height="230" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <rect x="484" y="110" width="218" height="44" rx="11" ry="11" fill="#0066cc"/>
+  <rect x="484" y="130" width="218" height="24" fill="#0066cc"/>
+  <text x="593" y="138" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">/context-restore</text>
+  <text x="593" y="168" text-anchor="middle" font-size="11" fill="#7a7a7a">→ 저장했던 작업</text>
+  <text x="593" y="183" text-anchor="middle" font-size="11" fill="#7a7a7a">이어서 복구</text>
+  <line x1="496" y1="200" x2="690" y2="200" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="496" y="218" font-size="11" font-weight="bold" fill="#0066cc">복구되는 것들</text>
+  <text x="496" y="236" font-size="11" fill="#1d1d1f">✓ 작업 컨텍스트</text>
+  <text x="496" y="253" font-size="11" fill="#1d1d1f">✓ TODO 리스트</text>
+  <text x="496" y="270" font-size="11" fill="#1d1d1f">✓ 결정 사항</text>
+  <text x="496" y="287" font-size="11" fill="#1d1d1f">✓ 다음 단계</text>
+  <text x="496" y="304" font-size="11" fill="#1d1d1f">✓ 팀 상태 정보</text>
+  <text x="496" y="321" font-size="11" fill="#1d1d1f">✓ 환경 설정</text>
+
+  <!-- 이 흐름 없이 발생하는 문제들 -->
+  <rect x="18" y="360" width="684" height="150" rx="11" ry="11" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+  <text x="360" y="385" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d1d1f">이 흐름 없이 발생하는 문제들</text>
+  <!-- 3개 아이콘 카드 -->
+  <rect x="38" y="398" width="195" height="98" rx="8" ry="8" fill="#fff5f5" stroke="#c7c7cc" stroke-width="1"/>
+  <text x="136" y="424" text-anchor="middle" font-size="20">⚠️</text>
+  <text x="136" y="447" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">에이전트/팀 간</text>
+  <text x="136" y="463" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">작업 맥락 끊김</text>
+  <text x="136" y="483" text-anchor="middle" font-size="10" fill="#7a7a7a">처음부터 재시작 필요</text>
+
+  <rect x="263" y="398" width="195" height="98" rx="8" ry="8" fill="#fff5f5" stroke="#c7c7cc" stroke-width="1"/>
+  <text x="361" y="424" text-anchor="middle" font-size="20">⚠️</text>
+  <text x="361" y="447" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">이전 작업</text>
+  <text x="361" y="463" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">오류</text>
+  <text x="361" y="483" text-anchor="middle" font-size="10" fill="#7a7a7a">맥락 불일치 발생</text>
+
+  <rect x="488" y="398" width="195" height="98" rx="8" ry="8" fill="#fff5f5" stroke="#c7c7cc" stroke-width="1"/>
+  <text x="586" y="424" text-anchor="middle" font-size="20">⚠️</text>
+  <text x="586" y="447" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">TODO</text>
+  <text x="586" y="463" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">유실</text>
+  <text x="586" y="483" text-anchor="middle" font-size="10" fill="#7a7a7a">작업 항목 추적 불가</text>
+
+  <!-- 결론 -->
+  <rect x="18" y="530" width="684" height="78" rx="11" ry="11" fill="#0066cc"/>
+  <text x="360" y="558" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">결론: 팀 에이전트 운영은</text>
+  <text x="360" y="580" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">save → clear → restore 없으면</text>
+  <text x="360" y="598" text-anchor="middle" font-size="13" fill="#e0eeff">사실상 규모화가 어렵습니다.</text>
+
+  <text x="360" y="650" text-anchor="middle" font-size="11" fill="#7a7a7a">컨텍스트 관리 = 팀 AI 운영의 핵심 인프라</text>
+</svg>
+</body>
+</html>
