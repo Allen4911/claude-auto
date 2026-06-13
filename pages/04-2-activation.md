@@ -33,7 +33,13 @@ cat ~/.claude/settings.json 2>/dev/null || echo "{}"
 
 > 💡 **settings.json이란?** Claude Code의 동작을 저장해 두는 설정 파일입니다. 여기에 한 번 적어 두면 매번 옵션을 입력하지 않아도 항상 같은 설정으로 실행됩니다. 반대로, 그때그때만 켜고 싶으면 아래 방법 2(CLI 플래그)를 쓰면 됩니다.
 
-![settings.json Remote Control 설정](../assets/04-2-settings-json.png)
+전체 `settings.json`을 세 가지 논리 블록으로 나누어 살펴보겠습니다.
+
+![settings.json — 훅(hooks) 설정](../assets/04-2-settings-json-hooks.png)
+
+![settings.json — 활성 플러그인(enabledPlugins)](../assets/04-2-settings-json-plugins.png)
+
+![settings.json — 마켓플레이스(extraKnownMarketplaces)와 시작 옵션](../assets/04-2-settings-json-marketplaces.png)
 
 ### /config 메뉴로 설정
 
