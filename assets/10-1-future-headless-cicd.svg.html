@@ -1,44 +1,44 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{margin:0;background:#0f172a;font-family:'Noto Sans CJK KR',DejaVu Sans,system-ui,sans-serif}</style></head><body>
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260">
-  <rect width="900" height="260" fill="#0f172a"/>
-  <text x="450" y="30" fill="#e2e8f0" font-size="16" font-weight="bold" text-anchor="middle">Headless CI/CD 통합 파이프라인</text>
-  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#3b82f6" stroke-width="1.5"/></marker></defs>
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{margin:0;background:#f5f5f7;font-family:'Noto Sans CJK KR',DejaVu Sans,system-ui,sans-serif}</style></head><body>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="208" viewBox="0 0 900 260">
+  <rect width="900" height="260" fill="#f5f5f7"/>
+  <text x="450" y="30" fill="#1d1d1f" font-size="16" font-weight="bold" text-anchor="middle">Headless CI/CD 통합 파이프라인</text>
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#0066cc" stroke-width="1.5"/></marker></defs>
   <!-- Step 1: PR -->
-  <rect x="20" y="55" width="130" height="60" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="85" y="80" fill="#60a5fa" font-size="12" font-weight="bold" text-anchor="middle">① PR 생성</text>
-  <text x="85" y="97" fill="#94a3b8" font-size="10" text-anchor="middle">GitHub / GitLab</text>
-  <text x="85" y="110" fill="#64748b" font-size="9" text-anchor="middle">개발자 커밋</text>
+  <rect x="20" y="55" width="130" height="60" rx="8" fill="#ffffff" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="85" y="80" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">① PR 생성</text>
+  <text x="85" y="97" fill="#7a7a7a" font-size="10" text-anchor="middle">GitHub / GitLab</text>
+  <text x="85" y="110" fill="#7a7a7a" font-size="9" text-anchor="middle">개발자 커밋</text>
   <!-- Arrow 1 -->
-  <line x1="150" y1="85" x2="182" y2="85" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="150" y1="85" x2="182" y2="85" stroke="#0066cc" stroke-width="2" marker-end="url(#arr)"/>
   <!-- Step 2: CI trigger -->
-  <rect x="182" y="55" width="130" height="60" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="247" y="80" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">② CI 트리거</text>
-  <text x="247" y="97" fill="#94a3b8" font-size="10" text-anchor="middle">GitHub Actions</text>
-  <text x="247" y="110" fill="#64748b" font-size="9" text-anchor="middle">자동 실행</text>
+  <rect x="182" y="55" width="130" height="60" rx="8" fill="#ffffff" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="247" y="80" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">② CI 트리거</text>
+  <text x="247" y="97" fill="#7a7a7a" font-size="10" text-anchor="middle">GitHub Actions</text>
+  <text x="247" y="110" fill="#7a7a7a" font-size="9" text-anchor="middle">자동 실행</text>
   <!-- Arrow 2 -->
-  <line x1="312" y1="85" x2="344" y2="85" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="312" y1="85" x2="344" y2="85" stroke="#0066cc" stroke-width="2" marker-end="url(#arr)"/>
   <!-- Step 3: Claude Code -->
-  <rect x="344" y="55" width="150" height="60" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
-  <text x="419" y="78" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">③ Claude Code</text>
-  <text x="419" y="95" fill="#94a3b8" font-size="10" text-anchor="middle">claude -p 자동 실행</text>
-  <text x="419" y="110" fill="#4ade80" font-size="9" text-anchor="middle">코드 리뷰 · 테스트 · 수정</text>
+  <rect x="344" y="55" width="150" height="60" rx="8" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="419" y="78" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">③ Claude Code</text>
+  <text x="419" y="95" fill="#7a7a7a" font-size="10" text-anchor="middle">claude -p 자동 실행</text>
+  <text x="419" y="110" fill="#0066cc" font-size="9" text-anchor="middle">코드 리뷰 · 테스트 · 수정</text>
   <!-- Arrow 3 -->
-  <line x1="494" y1="85" x2="526" y2="85" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="494" y1="85" x2="526" y2="85" stroke="#0066cc" stroke-width="2" marker-end="url(#arr)"/>
   <!-- Step 4: Report -->
-  <rect x="526" y="55" width="130" height="60" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
-  <text x="591" y="78" fill="#c4b5fd" font-size="12" font-weight="bold" text-anchor="middle">④ 결과 보고</text>
-  <text x="591" y="95" fill="#94a3b8" font-size="10" text-anchor="middle">PR 코멘트 자동 작성</text>
-  <text x="591" y="110" fill="#64748b" font-size="9" text-anchor="middle">이슈 자동 등록</text>
+  <rect x="526" y="55" width="130" height="60" rx="8" fill="#ffffff" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="591" y="78" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">④ 결과 보고</text>
+  <text x="591" y="95" fill="#7a7a7a" font-size="10" text-anchor="middle">PR 코멘트 자동 작성</text>
+  <text x="591" y="110" fill="#7a7a7a" font-size="9" text-anchor="middle">이슈 자동 등록</text>
   <!-- Arrow 4 -->
-  <line x1="656" y1="85" x2="688" y2="85" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="656" y1="85" x2="688" y2="85" stroke="#0066cc" stroke-width="2" marker-end="url(#arr)"/>
   <!-- Step 5: Merge -->
-  <rect x="688" y="55" width="130" height="60" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="1.5"/>
-  <text x="753" y="78" fill="#f9a8d4" font-size="12" font-weight="bold" text-anchor="middle">⑤ 머지/배포</text>
-  <text x="753" y="95" fill="#94a3b8" font-size="10" text-anchor="middle">승인 후 자동 머지</text>
-  <text x="753" y="110" fill="#64748b" font-size="9" text-anchor="middle">스테이징 자동 배포</text>
+  <rect x="688" y="55" width="130" height="60" rx="8" fill="#ffffff" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="753" y="78" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">⑤ 머지/배포</text>
+  <text x="753" y="95" fill="#7a7a7a" font-size="10" text-anchor="middle">승인 후 자동 머지</text>
+  <text x="753" y="110" fill="#7a7a7a" font-size="9" text-anchor="middle">스테이징 자동 배포</text>
   <!-- Bottom note -->
-  <rect x="20" y="145" width="860" height="60" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="450" y="167" fill="#94a3b8" font-size="11" font-weight="bold" text-anchor="middle">현재 Batch API → 미래 Streaming / Webhook 기반으로 진화</text>
-  <text x="450" y="187" fill="#64748b" font-size="10" text-anchor="middle">사람 개입 없이 PR 품질 검사 → 코드 수정 → 머지까지 자동화 가능</text>
+  <rect x="20" y="145" width="860" height="60" rx="8" fill="#ffffff" stroke="#e8e8ed" stroke-width="1"/>
+  <text x="450" y="167" fill="#7a7a7a" font-size="11" font-weight="bold" text-anchor="middle">현재 Batch API → 미래 Streaming / Webhook 기반으로 진화</text>
+  <text x="450" y="187" fill="#7a7a7a" font-size="10" text-anchor="middle">사람 개입 없이 PR 품질 검사 → 코드 수정 → 머지까지 자동화 가능</text>
 </svg>
 </body></html>
