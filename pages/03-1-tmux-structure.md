@@ -43,7 +43,7 @@ tmux rename-session -t team newname
 
 `-x`와 `-y`는 세션의 가상 터미널 크기입니다. 실제 터미널 크기보다 크게 설정하면 파인이 잘리지 않습니다.
 
-![TMUX 세션 목록 확인](../assets/03-1-tmux-sessions.png)
+위 `tmux ls`를 실행하면 `team: 1 windows ... (attached)`처럼 현재 살아 있는 세션이 한 줄씩 출력됩니다. `attached`는 지금 그 세션에 화면이 붙어 있다는 뜻이고, 떨어져 있으면(`detached`) 목록에는 남아 있되 화면에만 안 보일 뿐 작업은 계속 돌아갑니다. 세션 이름만 확인되면 언제든 `tmux attach -t team`으로 다시 들어갈 수 있습니다.
 
 <hr>
 
