@@ -176,6 +176,8 @@ tmux send-keys -t team:0.5 \
 
 PR이 올라올 때마다 자동으로 리뷰를 수행하는 워크플로우다.
 
+![사용자가 PR #42 리뷰를 지시하면 지훈의 변경 분석과 태양의 코드 리뷰가 병렬로 실행되고, 결과를 종합해 GitHub PR 코멘트로 자동 등록하는 코드 리뷰 자동화 흐름도](../assets/07-5-workflow-examples-code-review.png)
+
 ### 사용자 지시
 
 ```
