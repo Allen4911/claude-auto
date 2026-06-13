@@ -22,7 +22,7 @@ Press SPACE to show QR code
 Press W to toggle spawn mode (same-dir ↔ worktree)
 ```
 
-![서버 모드 실행 옵션 예시](../assets/04-3-server-mode.png)
+이 화면에서 알아 둘 정보는 세 가지입니다 — **Session prefix**(만들어질 세션 이름 앞에 붙는 머리말), **Spawn mode**(동시 접속을 어떻게 처리할지, 기본 `same-dir`), 그리고 **Capacity**(현재/최대 세션 수). 아래 안내대로 SPACE를 누르면 모바일 연결용 QR 코드가 뜨고, W를 누르면 spawn 모드를 `same-dir`와 `worktree` 사이에서 전환할 수 있습니다.
 
 <hr>
 

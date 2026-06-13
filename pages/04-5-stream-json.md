@@ -11,7 +11,7 @@ Remote Control이 사람이 다른 기기에서 직접 접속하는 방식이라
 | 출력 스트리밍 | `--output-format stream-json` | Claude 응답을 JSON 스트림으로 받기 |
 | 입력 스트리밍 | `--input-format stream-json` | JSON으로 메시지를 Claude에게 전송 |
 
-![Stream JSON 양방향 입출력 흐름도](../assets/04-5-stream-json-io-flow.png)
+두 방향은 독립적이라 따로 쓸 수도, 함께 쓸 수도 있습니다. **출력 스트리밍**은 Claude가 만들어 내는 응답을 JSON으로 받아 가는 통로이고, **입력 스트리밍**은 반대로 프로그램이 JSON 형태의 메시지를 Claude에게 밀어 넣는 통로입니다. 둘을 동시에 켜면 프로그램과 Claude가 JSON으로 주고받는 양방향 대화가 되어, 사람의 키 입력 없이도 자동화된 왕복 통신이 이뤄집니다.
 
 > 💡 **Stream JSON은 누가 쓸까요?** 사람이 직접 쓰는 게 아니라 **프로그램**이 씁니다. Remote Control이 사람용 원격 조종이라면, Stream JSON은 스크립트가 Claude를 부품처럼 호출해 결과를 받아 가는 자동화용 통로입니다.
 

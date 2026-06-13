@@ -35,11 +35,13 @@ cat ~/.claude/settings.json 2>/dev/null || echo "{}"
 
 전체 `settings.json`을 세 가지 논리 블록으로 나누어 살펴보겠습니다.
 
-![settings.json — 훅(hooks) 설정](../assets/04-2-settings-json-hooks.png)
+세 블록은 각각 이런 역할을 합니다.
 
-![settings.json — 활성 플러그인(enabledPlugins)](../assets/04-2-settings-json-plugins.png)
+- **hooks(훅)** — 특정 시점(예: 도구 실행 전후)에 자동으로 끼어들 명령을 등록합니다. 명령 실행 전 검증 스크립트를 돌리는 식으로, "언제 무엇을 자동으로 할지"를 정합니다.
+- **enabledPlugins(활성 플러그인)** — 어떤 플러그인을 켤지 이름으로 나열합니다. 여기 적힌 것만 로드되므로, "무엇을 켤지"의 목록입니다.
+- **extraKnownMarketplaces · 시작 옵션** — 플러그인을 받아올 추가 마켓플레이스 주소와, 앞서 본 `remoteControlAtStartup` 같은 시작 시 동작을 함께 둡니다. "어디서 받아올지 · 켤 때 어떻게 시작할지"에 해당합니다.
 
-![settings.json — 마켓플레이스(extraKnownMarketplaces)와 시작 옵션](../assets/04-2-settings-json-marketplaces.png)
+정리하면 하나의 `settings.json` 안에 **언제 끼어들지(hooks) · 무엇을 켤지(plugins) · 어디서 받아올지(marketplaces)**가 한데 모여 있는 구조입니다. 세 블록은 서로 독립적이라, 필요한 블록만 적고 나머지는 비워 둬도 됩니다.
 
 ### /config 메뉴로 설정
 
@@ -57,7 +59,7 @@ cat ~/.claude/settings.json 2>/dev/null || echo "{}"
 
 특정 세션에만 Remote Control을 활성화하려면 실행 시 플래그를 사용합니다.
 
-![CLI 플래그로 Remote Control 실행](../assets/04-2-remote-control-flag.png)
+방법 1이 "항상 켜 두기"라면, 방법 2는 "이번 한 번만 켜기"입니다. 설정 파일을 건드리지 않고, 실행할 때 플래그 하나만 덧붙이면 그 세션에서만 Remote Control이 동작합니다. 아래 형식처럼 `claude` 뒤에 옵션을 붙이면 됩니다.
 
 ### 인터랙티브 세션 + 원격 접근
 
