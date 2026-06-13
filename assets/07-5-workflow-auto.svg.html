@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>body { margin: 0; background: #f5f5f7; display: flex; justify-content: center; padding: 40px 0; }</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="860" viewBox="0 0 720 860" font-family="Gulim, Noto Sans CJK KR, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+  </defs>
+  <rect width="720" height="860" fill="#f5f5f7"/>
+
+  <!-- 제목 -->
+  <rect x="30" y="20" width="660" height="55" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="360" y="42" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d1d1f">자동화 워크플로우</text>
+  <text x="360" y="60" text-anchor="middle" font-size="12" fill="#7a7a7a">사용자 요청 → 조사 → 설계 → 구현 → 리뷰 → 보고</text>
+
+  <!-- 사용자 입력 -->
+  <rect x="200" y="92" width="320" height="44" rx="11" ry="11" fill="#0066cc"/>
+  <text x="360" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">👤 사용자</text>
+  <text x="360" y="128" text-anchor="middle" font-size="12" fill="#e0eeff">"새 기능 만들어줘"</text>
+
+  <!-- 자동 실행 레이블 -->
+  <line x1="360" y1="136" x2="360" y2="155" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="375" y="150" font-size="11" fill="#0066cc">자동 실행</text>
+
+  <!-- 5단계 플로우 -->
+  <!-- 1. 조사 -->
+  <circle cx="52" cy="190" r="18" fill="#0066cc"/>
+  <text x="52" y="195" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">1</text>
+  <rect x="80" y="162" width="280" height="56" rx="8" ry="8" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="100" y="182" font-size="13" font-weight="bold" fill="#0066cc">🔍 조사</text>
+  <text x="100" y="200" font-size="11" fill="#7a7a7a">기능 방향 조사 분석</text>
+  <text x="100" y="215" font-size="11" fill="#7a7a7a">· 기존 코드 검색  · 유사 패턴 파악</text>
+  <!-- 결과물 박스 -->
+  <rect x="375" y="162" width="315" height="56" rx="8" ry="8" fill="#f0f4ff" stroke="#0066cc" stroke-width="1"/>
+  <text x="390" y="182" font-size="11" font-weight="bold" fill="#0066cc">조사 결과</text>
+  <text x="390" y="198" font-size="10" fill="#7a7a7a">· 기존 코드 분석, 패턴 파악</text>
+  <text x="390" y="212" font-size="10" fill="#7a7a7a">· 기술 스택, PostgreSQL 확인</text>
+
+  <line x1="52" y1="218" x2="52" y2="248" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 2. 설계 -->
+  <circle cx="52" cy="270" r="18" fill="#0066cc"/>
+  <text x="52" y="275" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">2</text>
+  <rect x="80" y="242" width="280" height="56" rx="8" ry="8" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="100" y="262" font-size="13" font-weight="bold" fill="#0066cc">📐 설계</text>
+  <text x="100" y="280" font-size="11" fill="#7a7a7a">기능 구조 및 API 설계</text>
+  <text x="100" y="295" font-size="11" fill="#7a7a7a">· ERD 작성  · API 스펙 정의</text>
+  <rect x="375" y="242" width="315" height="56" rx="8" ry="8" fill="#f0f4ff" stroke="#0066cc" stroke-width="1"/>
+  <text x="390" y="262" font-size="11" font-weight="bold" fill="#0066cc">설계 결과</text>
+  <text x="390" y="278" font-size="10" fill="#7a7a7a">· DB 스키마 (users / Media)</text>
+  <text x="390" y="294" font-size="10" fill="#7a7a7a">· API endpoint 구조 설계</text>
+
+  <line x1="52" y1="298" x2="52" y2="328" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 3. 구현 -->
+  <circle cx="52" cy="350" r="18" fill="#0066cc"/>
+  <text x="52" y="355" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">3</text>
+  <rect x="80" y="322" width="280" height="72" rx="8" ry="8" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="100" y="342" font-size="13" font-weight="bold" fill="#0066cc">⚙️ 구현</text>
+  <text x="100" y="360" font-size="11" fill="#7a7a7a">코드 작성 및 테스트</text>
+  <text x="100" y="375" font-size="11" fill="#7a7a7a">· 기능 구현  · 테스트 작성</text>
+  <text x="100" y="390" font-size="11" fill="#7a7a7a">· PR 작성  · CHANGES 업데이트</text>
+  <rect x="375" y="322" width="315" height="72" rx="8" ry="8" fill="#f0f4ff" stroke="#0066cc" stroke-width="1"/>
+  <text x="390" y="342" font-size="11" font-weight="bold" fill="#0066cc">구현 결과</text>
+  <text x="390" y="358" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">function createFeature() {</text>
+  <text x="390" y="373" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">  return process.env;</text>
+  <text x="390" y="388" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">}</text>
+
+  <line x1="52" y1="394" x2="52" y2="424" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 4. 리뷰 -->
+  <circle cx="52" cy="446" r="18" fill="#0066cc"/>
+  <text x="52" y="451" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">4</text>
+  <rect x="80" y="418" width="280" height="72" rx="8" ry="8" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="100" y="438" font-size="13" font-weight="bold" fill="#0066cc">🔎 리뷰</text>
+  <text x="100" y="456" font-size="11" fill="#7a7a7a">코드 품질 검토</text>
+  <text x="100" y="471" font-size="11" fill="#7a7a7a">· 코드 검토  · 테스트 실행</text>
+  <text x="100" y="486" font-size="11" fill="#7a7a7a">· 성능 분석  · 보안 확인</text>
+  <rect x="375" y="418" width="315" height="72" rx="8" ry="8" fill="#f0f4ff" stroke="#0066cc" stroke-width="1"/>
+  <text x="390" y="438" font-size="11" font-weight="bold" fill="#0066cc">리뷰 결과</text>
+  <!-- 도넛 차트 대체 텍스트 -->
+  <rect x="390" y="447" width="90" height="36" rx="5" ry="5" fill="#e8f4ff" stroke="#0066cc" stroke-width="1"/>
+  <text x="435" y="462" text-anchor="middle" font-size="10" font-weight="bold" fill="#0066cc">통과 95%</text>
+  <text x="435" y="476" text-anchor="middle" font-size="9" fill="#7a7a7a">테스트 통과율</text>
+  <text x="490" y="458" font-size="10" fill="#7a7a7a">· 품질 검증 완료</text>
+  <text x="490" y="474" font-size="10" fill="#7a7a7a">· 보안 스캔 통과</text>
+
+  <line x1="52" y1="490" x2="52" y2="520" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 5. 보고 -->
+  <circle cx="52" cy="542" r="18" fill="#0066cc"/>
+  <text x="52" y="547" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">5</text>
+  <rect x="80" y="514" width="280" height="72" rx="8" ry="8" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="100" y="534" font-size="13" font-weight="bold" fill="#0066cc">📊 보고</text>
+  <text x="100" y="552" font-size="11" fill="#7a7a7a">결과 보고 및 문서화</text>
+  <text x="100" y="567" font-size="11" fill="#7a7a7a">· 작업 결과 요약  · 문서 업데이트</text>
+  <text x="100" y="582" font-size="11" fill="#7a7a7a">· 변경사항 공유  · 배포 준비</text>
+  <rect x="375" y="514" width="315" height="72" rx="8" ry="8" fill="#f0f4ff" stroke="#0066cc" stroke-width="1"/>
+  <text x="390" y="534" font-size="11" font-weight="bold" fill="#0066cc">보고 결과</text>
+  <text x="390" y="552" font-size="10" fill="#7a7a7a">· 기능 구현 완료 보고서</text>
+  <text x="390" y="568" font-size="10" fill="#7a7a7a">· 코드 리뷰 문서 첨부</text>
+  <text x="390" y="584" font-size="10" fill="#7a7a7a">· 배포 일정 공유</text>
+
+  <!-- 완료 메시지 -->
+  <line x1="52" y1="586" x2="52" y2="620" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="30" y="622" width="660" height="55" rx="11" ry="11" fill="#0066cc"/>
+  <text x="360" y="645" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">✅ 새 기능의 성공적으로 완료되었습니다!</text>
+  <text x="360" y="665" text-anchor="middle" font-size="12" fill="#e0eeff">조사 → 설계 → 구현 → 리뷰 → 보고  |  전 단계 자동 실행</text>
+
+  <!-- 하단 요약 -->
+  <text x="360" y="720" text-anchor="middle" font-size="11" fill="#7a7a7a">사용자 요청 1개 → 5단계 자동화 파이프라인 → 완성된 기능 배포</text>
+</svg>
+</body>
+</html>

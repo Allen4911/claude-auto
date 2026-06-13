@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>body { margin: 0; background: #f5f5f7; display: flex; justify-content: center; padding: 40px 0; }</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720" font-family="Gulim, Noto Sans CJK KR, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+  </defs>
+  <rect width="720" height="720" fill="#f5f5f7"/>
+
+  <!-- 제목 -->
+  <rect x="30" y="25" width="660" height="50" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="360" y="45" text-anchor="middle" font-size="15" font-weight="bold" fill="#1d1d1f">모바일 접근 승인 플로우</text>
+  <text x="360" y="63" text-anchor="middle" font-size="12" fill="#7a7a7a">Claude Code 서버 모드 — 모바일 명령 승인/거부 처리</text>
+
+  <!-- Claude Code 서버 모드 박스 (상단) -->
+  <rect x="120" y="100" width="480" height="100" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <rect x="140" y="115" width="200" height="70" rx="7" ry="7" fill="#f0f0f0" stroke="#c7c7cc" stroke-width="1"/>
+  <!-- 트래픽라이트 -->
+  <circle cx="155" cy="126" r="5" fill="#ff5f57"/>
+  <circle cx="169" cy="126" r="5" fill="#febc2e"/>
+  <circle cx="183" cy="126" r="5" fill="#28c840"/>
+  <text x="150" y="145" font-size="11" fill="#1d1d1f" font-family="Courier New, Consolas, monospace">$ git push origin main</text>
+  <text x="150" y="160" font-size="11" fill="#1d1d1f" font-family="Courier New, Consolas, monospace">를 실행하겠습니다.</text>
+  <text x="150" y="175" font-size="11" fill="#1d1d1f" font-family="Courier New, Consolas, monospace">승인하시겠습니까?</text>
+  <text x="360" y="140" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d1d1f">Claude Code 서버 모드</text>
+  <text x="360" y="162" text-anchor="middle" font-size="11" fill="#7a7a7a">명령 실행 전 모바일 승인 요청</text>
+
+  <!-- 승인 요청 화살표 -->
+  <line x1="360" y1="200" x2="360" y2="245" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="375" y="228" font-size="11" fill="#0066cc">승인 요청</text>
+
+  <!-- 모바일 승인 다이얼로그 -->
+  <rect x="195" y="248" width="330" height="140" rx="20" ry="20" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <!-- 폰 노치 -->
+  <rect x="295" y="250" width="130" height="15" rx="7" ry="7" fill="#e0e0e0"/>
+  <text x="360" y="282" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">Claude Code</text>
+  <text x="360" y="300" text-anchor="middle" font-size="11" fill="#1d1d1f">명령 실행 요청</text>
+  <text x="360" y="318" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">git push origin main</text>
+  <text x="360" y="336" text-anchor="middle" font-size="11" fill="#7a7a7a">을 실행하시겠습니까?</text>
+  <!-- 승인/거부 버튼 -->
+  <rect x="218" y="348" width="100" height="30" rx="8" ry="8" fill="#0066cc"/>
+  <text x="268" y="367" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">✓ 승인</text>
+  <rect x="402" y="348" width="100" height="30" rx="8" ry="8" fill="#ffffff" stroke="#cc0000" stroke-width="2"/>
+  <text x="452" y="367" text-anchor="middle" font-size="12" font-weight="bold" fill="#cc0000">✗ 거부</text>
+
+  <!-- 분기 화살표 -->
+  <!-- 승인 방향 (왼쪽) -->
+  <line x1="268" y1="388" x2="268" y2="415" stroke="#0066cc" stroke-width="2"/>
+  <line x1="268" y1="415" x2="180" y2="415" stroke="#0066cc" stroke-width="2"/>
+  <line x1="180" y1="415" x2="180" y2="448" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="215" y="410" text-anchor="middle" font-size="11" fill="#0066cc">승인</text>
+
+  <!-- 거부 방향 (오른쪽) -->
+  <line x1="452" y1="388" x2="452" y2="415" stroke="#cc0000" stroke-width="2"/>
+  <line x1="452" y1="415" x2="540" y2="415" stroke="#cc0000" stroke-width="2"/>
+  <line x1="540" y1="415" x2="540" y2="448" stroke="#cc0000" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="500" y="410" text-anchor="middle" font-size="11" fill="#cc0000">거부</text>
+
+  <!-- 승인 → 명령 실행 박스 -->
+  <rect x="40" y="448" width="280" height="140" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="180" y="470" text-anchor="middle" font-size="13" font-weight="bold" fill="#0066cc">승인 → 명령 실행</text>
+  <rect x="55" y="478" width="250" height="95" rx="7" ry="7" fill="#f0f0f0" stroke="#c7c7cc" stroke-width="1"/>
+  <circle cx="68" cy="489" r="5" fill="#ff5f57"/>
+  <circle cx="82" cy="489" r="5" fill="#febc2e"/>
+  <circle cx="96" cy="489" r="5" fill="#28c840"/>
+  <text x="60" y="507" font-size="10" fill="#1d1d1f" font-family="Courier New, Consolas, monospace">&gt; git push origin main</text>
+  <text x="60" y="522" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">Enumerating objects: 42, done.</text>
+  <text x="60" y="537" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">Counting objects: 100%</text>
+  <text x="60" y="552" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">Total 42, reused 0</text>
+  <text x="60" y="567" font-size="10" fill="#0066cc" font-family="Courier New, Consolas, monospace">✓ 명령 실행 완료</text>
+
+  <!-- 거부 → 작업 중단 박스 -->
+  <rect x="400" y="448" width="280" height="140" rx="11" ry="11" fill="#ffffff" stroke="#cc0000" stroke-width="2"/>
+  <text x="540" y="470" text-anchor="middle" font-size="13" font-weight="bold" fill="#cc0000">거부 → 작업 중단</text>
+  <rect x="415" y="478" width="250" height="95" rx="7" ry="7" fill="#f0f0f0" stroke="#c7c7cc" stroke-width="1"/>
+  <circle cx="428" cy="489" r="5" fill="#ff5f57"/>
+  <circle cx="442" cy="489" r="5" fill="#febc2e"/>
+  <circle cx="456" cy="489" r="5" fill="#28c840"/>
+  <text x="420" y="510" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">&gt; git push origin main 중단</text>
+  <text x="420" y="528" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">시용자에 의해 거부되었습니다.</text>
+  <text x="420" y="546" font-size="10" fill="#7a7a7a" font-family="Courier New, Consolas, monospace">작업이 중단되었습니다.</text>
+  <text x="420" y="564" font-size="10" fill="#cc0000" font-family="Courier New, Consolas, monospace">✗ 명령 실행 취소됨</text>
+
+  <!-- 원격 저장소 업데이트 -->
+  <line x1="180" y1="588" x2="180" y2="625" stroke="#0066cc" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="80" y="625" width="200" height="55" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <text x="180" y="649" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d1d1f">원격 저장소 업데이트</text>
+  <text x="180" y="667" text-anchor="middle" font-size="11" fill="#7a7a7a">GitHub 변경사항 반영</text>
+
+  <!-- 작업 중단 -->
+  <line x1="540" y1="588" x2="540" y2="625" stroke="#cc0000" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <rect x="440" y="625" width="200" height="55" rx="11" ry="11" fill="#ffffff" stroke="#cc0000" stroke-width="2"/>
+  <text x="540" y="649" text-anchor="middle" font-size="12" font-weight="bold" fill="#cc0000">작업 중단</text>
+  <text x="540" y="667" text-anchor="middle" font-size="11" fill="#7a7a7a">명령이 실행되지 않음</text>
+</svg>
+</body>
+</html>
