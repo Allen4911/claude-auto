@@ -1,68 +1,68 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{margin:0;background:#0f172a;font-family:'Noto Sans CJK KR',DejaVu Sans,system-ui,sans-serif}</style></head><body>
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
-  <rect width="900" height="420" fill="#0f172a"/>
-  <text x="450" y="38" fill="#e2e8f0" font-size="16" font-weight="bold" text-anchor="middle">Remote Control 인증 오류 진단 트리</text>
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{margin:0;background:#f5f5f7;font-family:'Noto Sans CJK KR',DejaVu Sans,system-ui,sans-serif}</style></head><body>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="336" viewBox="0 0 900 420">
+  <rect width="900" height="420" fill="#f5f5f7"/>
+  <text x="450" y="38" fill="#1d1d1f" font-size="16" font-weight="bold" text-anchor="middle">Remote Control 인증 오류 진단 트리</text>
   <!-- Root -->
-  <rect x="325" y="55" width="250" height="44" rx="8" fill="#1e40af" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="450" y="82" fill="#e2e8f0" font-size="14" font-weight="bold" text-anchor="middle">오류 메시지 확인</text>
+  <rect x="325" y="55" width="250" height="44" rx="8" fill="#0066cc" stroke="#0066cc" stroke-width="1.5"/>
+  <text x="450" y="82" fill="#1d1d1f" font-size="14" font-weight="bold" text-anchor="middle">오류 메시지 확인</text>
   <!-- branches down -->
-  <line x1="450" y1="99" x2="110" y2="155" stroke="#475569" stroke-width="1.5"/>
-  <line x1="450" y1="99" x2="300" y2="155" stroke="#475569" stroke-width="1.5"/>
-  <line x1="450" y1="99" x2="600" y2="155" stroke="#475569" stroke-width="1.5"/>
-  <line x1="450" y1="99" x2="790" y2="155" stroke="#475569" stroke-width="1.5"/>
+  <line x1="450" y1="99" x2="110" y2="155" stroke="#c7c7cc" stroke-width="1.5"/>
+  <line x1="450" y1="99" x2="300" y2="155" stroke="#c7c7cc" stroke-width="1.5"/>
+  <line x1="450" y1="99" x2="600" y2="155" stroke="#c7c7cc" stroke-width="1.5"/>
+  <line x1="450" y1="99" x2="790" y2="155" stroke="#c7c7cc" stroke-width="1.5"/>
   <!-- Branch 1 -->
-  <rect x="30" y="155" width="160" height="40" rx="6" fill="#1e3a5f" stroke="#60a5fa" stroke-width="1.2"/>
-  <text x="110" y="178" fill="#93c5fd" font-size="12" font-weight="bold" text-anchor="middle">Session not found</text>
+  <rect x="30" y="155" width="160" height="40" rx="6" fill="#ffffff" stroke="#0066cc" stroke-width="1.2"/>
+  <text x="110" y="178" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">Session not found</text>
   <!-- Branch 2 -->
-  <rect x="220" y="155" width="160" height="40" rx="6" fill="#3b1f5c" stroke="#a78bfa" stroke-width="1.2"/>
-  <text x="300" y="178" fill="#c4b5fd" font-size="12" font-weight="bold" text-anchor="middle">Authentication failed</text>
+  <rect x="220" y="155" width="160" height="40" rx="6" fill="#ffffff" stroke="#0066cc" stroke-width="1.2"/>
+  <text x="300" y="178" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">Authentication failed</text>
   <!-- Branch 3 -->
-  <rect x="520" y="155" width="160" height="40" rx="6" fill="#1c3a2e" stroke="#34d399" stroke-width="1.2"/>
-  <text x="600" y="178" fill="#6ee7b7" font-size="12" font-weight="bold" text-anchor="middle">Connection timeout</text>
+  <rect x="520" y="155" width="160" height="40" rx="6" fill="#ffffff" stroke="#0066cc" stroke-width="1.2"/>
+  <text x="600" y="178" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">Connection timeout</text>
   <!-- Branch 4 -->
-  <rect x="710" y="155" width="160" height="40" rx="6" fill="#451a1a" stroke="#f87171" stroke-width="1.2"/>
-  <text x="790" y="178" fill="#fca5a5" font-size="12" font-weight="bold" text-anchor="middle">Permission denied</text>
+  <rect x="710" y="155" width="160" height="40" rx="6" fill="#ffffff" stroke="#0066cc" stroke-width="1.2"/>
+  <text x="790" y="178" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">Permission denied</text>
   <!-- Causes & fixes lines -->
-  <line x1="110" y1="195" x2="110" y2="225" stroke="#475569" stroke-width="1.2"/>
-  <line x1="300" y1="195" x2="300" y2="225" stroke="#475569" stroke-width="1.2"/>
-  <line x1="600" y1="195" x2="600" y2="225" stroke="#475569" stroke-width="1.2"/>
-  <line x1="790" y1="195" x2="790" y2="225" stroke="#475569" stroke-width="1.2"/>
+  <line x1="110" y1="195" x2="110" y2="225" stroke="#c7c7cc" stroke-width="1.2"/>
+  <line x1="300" y1="195" x2="300" y2="225" stroke="#c7c7cc" stroke-width="1.2"/>
+  <line x1="600" y1="195" x2="600" y2="225" stroke="#c7c7cc" stroke-width="1.2"/>
+  <line x1="790" y1="195" x2="790" y2="225" stroke="#c7c7cc" stroke-width="1.2"/>
   <!-- Cause boxes -->
-  <rect x="28" y="225" width="164" height="50" rx="5" fill="#162032"/>
-  <text x="110" y="244" fill="#94a3b8" font-size="10" text-anchor="middle">원인: 서버 미실행 /</text>
-  <text x="110" y="258" fill="#94a3b8" font-size="10" text-anchor="middle">계정 불일치</text>
-  <rect x="218" y="225" width="164" height="50" rx="5" fill="#162032"/>
-  <text x="300" y="244" fill="#94a3b8" font-size="10" text-anchor="middle">원인: 토큰 만료 /</text>
-  <text x="300" y="258" fill="#94a3b8" font-size="10" text-anchor="middle">잘못된 계정</text>
-  <rect x="518" y="225" width="164" height="50" rx="5" fill="#162032"/>
-  <text x="600" y="244" fill="#94a3b8" font-size="10" text-anchor="middle">원인: 방화벽 차단 /</text>
-  <text x="600" y="258" fill="#94a3b8" font-size="10" text-anchor="middle">DNS 오류</text>
-  <rect x="708" y="225" width="164" height="50" rx="5" fill="#162032"/>
-  <text x="790" y="244" fill="#94a3b8" font-size="10" text-anchor="middle">원인: deny 규칙</text>
-  <text x="790" y="258" fill="#94a3b8" font-size="10" text-anchor="middle">과도 설정</text>
+  <rect x="28" y="225" width="164" height="50" rx="5" fill="#ffffff"/>
+  <text x="110" y="244" fill="#7a7a7a" font-size="10" text-anchor="middle">원인: 서버 미실행 /</text>
+  <text x="110" y="258" fill="#7a7a7a" font-size="10" text-anchor="middle">계정 불일치</text>
+  <rect x="218" y="225" width="164" height="50" rx="5" fill="#ffffff"/>
+  <text x="300" y="244" fill="#7a7a7a" font-size="10" text-anchor="middle">원인: 토큰 만료 /</text>
+  <text x="300" y="258" fill="#7a7a7a" font-size="10" text-anchor="middle">잘못된 계정</text>
+  <rect x="518" y="225" width="164" height="50" rx="5" fill="#ffffff"/>
+  <text x="600" y="244" fill="#7a7a7a" font-size="10" text-anchor="middle">원인: 방화벽 차단 /</text>
+  <text x="600" y="258" fill="#7a7a7a" font-size="10" text-anchor="middle">DNS 오류</text>
+  <rect x="708" y="225" width="164" height="50" rx="5" fill="#ffffff"/>
+  <text x="790" y="244" fill="#7a7a7a" font-size="10" text-anchor="middle">원인: deny 규칙</text>
+  <text x="790" y="258" fill="#7a7a7a" font-size="10" text-anchor="middle">과도 설정</text>
   <!-- Fix boxes -->
-  <line x1="110" y1="275" x2="110" y2="305" stroke="#475569" stroke-width="1.2"/>
-  <line x1="300" y1="275" x2="300" y2="305" stroke="#475569" stroke-width="1.2"/>
-  <line x1="600" y1="275" x2="600" y2="305" stroke="#475569" stroke-width="1.2"/>
-  <line x1="790" y1="275" x2="790" y2="305" stroke="#475569" stroke-width="1.2"/>
-  <rect x="28" y="305" width="164" height="50" rx="5" fill="#0c2a1a" stroke="#22c55e" stroke-width="1"/>
-  <text x="110" y="324" fill="#86efac" font-size="10" font-weight="bold" text-anchor="middle">해결: claude --remote-control</text>
-  <text x="110" y="340" fill="#86efac" font-size="10" text-anchor="middle">동일 계정으로 재로그인</text>
-  <rect x="218" y="305" width="164" height="50" rx="5" fill="#0c2a1a" stroke="#22c55e" stroke-width="1"/>
-  <text x="300" y="324" fill="#86efac" font-size="10" font-weight="bold" text-anchor="middle">해결: claude auth login</text>
-  <text x="300" y="340" fill="#86efac" font-size="10" text-anchor="middle">브라우저 재인증</text>
-  <rect x="518" y="305" width="164" height="50" rx="5" fill="#0c2a1a" stroke="#22c55e" stroke-width="1"/>
-  <text x="600" y="324" fill="#86efac" font-size="10" font-weight="bold" text-anchor="middle">해결: ufw allow 443</text>
-  <text x="600" y="340" fill="#86efac" font-size="10" text-anchor="middle">DNS·방화벽 확인</text>
-  <rect x="708" y="305" width="164" height="50" rx="5" fill="#0c2a1a" stroke="#22c55e" stroke-width="1"/>
-  <text x="790" y="324" fill="#86efac" font-size="10" font-weight="bold" text-anchor="middle">해결: deny 규칙</text>
-  <text x="790" y="340" fill="#86efac" font-size="10" text-anchor="middle">패턴 좁히기</text>
+  <line x1="110" y1="275" x2="110" y2="305" stroke="#c7c7cc" stroke-width="1.2"/>
+  <line x1="300" y1="275" x2="300" y2="305" stroke="#c7c7cc" stroke-width="1.2"/>
+  <line x1="600" y1="275" x2="600" y2="305" stroke="#c7c7cc" stroke-width="1.2"/>
+  <line x1="790" y1="275" x2="790" y2="305" stroke="#c7c7cc" stroke-width="1.2"/>
+  <rect x="28" y="305" width="164" height="50" rx="5" fill="#ffffff" stroke="#0066cc" stroke-width="1"/>
+  <text x="110" y="324" fill="#0066cc" font-size="10" font-weight="bold" text-anchor="middle">해결: claude --remote-control</text>
+  <text x="110" y="340" fill="#0066cc" font-size="10" text-anchor="middle">동일 계정으로 재로그인</text>
+  <rect x="218" y="305" width="164" height="50" rx="5" fill="#ffffff" stroke="#0066cc" stroke-width="1"/>
+  <text x="300" y="324" fill="#0066cc" font-size="10" font-weight="bold" text-anchor="middle">해결: claude auth login</text>
+  <text x="300" y="340" fill="#0066cc" font-size="10" text-anchor="middle">브라우저 재인증</text>
+  <rect x="518" y="305" width="164" height="50" rx="5" fill="#ffffff" stroke="#0066cc" stroke-width="1"/>
+  <text x="600" y="324" fill="#0066cc" font-size="10" font-weight="bold" text-anchor="middle">해결: ufw allow 443</text>
+  <text x="600" y="340" fill="#0066cc" font-size="10" text-anchor="middle">DNS·방화벽 확인</text>
+  <rect x="708" y="305" width="164" height="50" rx="5" fill="#ffffff" stroke="#0066cc" stroke-width="1"/>
+  <text x="790" y="324" fill="#0066cc" font-size="10" font-weight="bold" text-anchor="middle">해결: deny 규칙</text>
+  <text x="790" y="340" fill="#0066cc" font-size="10" text-anchor="middle">패턴 좁히기</text>
   <!-- Legend -->
-  <rect x="30" y="378" width="12" height="12" rx="2" fill="#1e3a5f"/>
-  <text x="48" y="389" fill="#64748b" font-size="10">증상 분류</text>
-  <rect x="130" y="378" width="12" height="12" rx="2" fill="#162032"/>
-  <text x="148" y="389" fill="#64748b" font-size="10">원인</text>
-  <rect x="200" y="378" width="12" height="12" rx="2" fill="#0c2a1a"/>
-  <text x="218" y="389" fill="#64748b" font-size="10">해결 명령어</text>
+  <rect x="30" y="378" width="12" height="12" rx="2" fill="#ffffff"/>
+  <text x="48" y="389" fill="#7a7a7a" font-size="10">증상 분류</text>
+  <rect x="130" y="378" width="12" height="12" rx="2" fill="#ffffff"/>
+  <text x="148" y="389" fill="#7a7a7a" font-size="10">원인</text>
+  <rect x="200" y="378" width="12" height="12" rx="2" fill="#ffffff"/>
+  <text x="218" y="389" fill="#7a7a7a" font-size="10">해결 명령어</text>
 </svg>
 </body></html>
