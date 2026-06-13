@@ -71,6 +71,7 @@
 * [08-2. GitHub Actions 기반 자동화](pages/08-2-github-actions.md)
 * [08-3. 컨텍스트 관리 기법](pages/08-3-context-management.md)
 * [08-4. 멀티에이전트 충돌 방지](pages/08-4-conflict-prevention.md)
+* [08-5. Redis 에이전트 상태공유](pages/08-5-redis-state-sharing.md)
 
 ---
 
@@ -78,6 +79,7 @@
 * [09-1. Remote-Control 인증 오류 해결](pages/09-1-auth-troubleshooting.md)
 * [09-2. TMUX 세션 복구 및 재연결](pages/09-2-tmux-recovery.md)
 * [09-3. 토큰 최적화 심화](pages/09-3-token-optimization.md)
+* [09-4. 자동복구 스크립트](pages/09-4-auto-recovery.md)
 
 ---
 
