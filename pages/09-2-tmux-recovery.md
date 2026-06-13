@@ -266,7 +266,7 @@ ps aux | grep claude | grep -v grep | awk '{print $6/1024 "MB", $0}' | sort -rn
 
 메모리 부족으로 Claude가 OOM(Out of Memory)으로 종료되는 것을 방지하려면 충분한 RAM(16GB 이상 권장)을 확보하거나, 동시 실행 파인 수를 줄이는 것을 고려한다.
 
-![예방 조치 2가지 카드 — tmux-resurrect(Ctrl-b+Ctrl-s/r 저장 복원)와 check-team.sh 크론 자동 복구](../assets/09-2-tmux-recovery-prevention-cards.png)
+정리하면 예방은 두 갈래다. ①앞서 설치한 tmux-resurrect 플러그인으로 세션 상태를 저장·복원해 두고(`Ctrl-b`+`Ctrl-s`로 저장, `Ctrl-b`+`Ctrl-r`로 복원), ②위 `ps aux` 명령으로 Claude 프로세스의 메모리 사용량을 주기적으로 점검해 OOM 종료를 미리 막는다.
 
 <hr>
 
