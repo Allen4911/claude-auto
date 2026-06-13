@@ -31,7 +31,7 @@ Claude Code에서 토큰이 소비되는 주요 경로를 이해해야 최적화
 
 이 중 가장 큰 비중을 차지하는 것은 **도구 결과**와 **대화 히스토리**다.
 
-![토큰 소비 경로 구조 도식 — 입력 토큰 버킷(시스템 프롬프트, 대화 히스토리, 도구 결과, 컨텍스트 파일 4가지 레이어)](../assets/09-3-token-optimization-consume-paths.png)
+위 구조의 입력 토큰 네 갈래(시스템 프롬프트·대화 히스토리·도구 결과·컨텍스트 파일)가 최적화의 핵심 지점이다.
 
 <hr>
 
@@ -111,7 +111,7 @@ claude   # 세션 2: 기능 B
 
 > 💡 **/compact와 /clear의 차이** `/compact`는 대화를 요약·압축하여 맥락을 유지하면서 토큰을 줄입니다. `/clear`는 대화를 완전히 초기화합니다. 작업 중간에 맥락을 유지하면서 토큰만 줄이고 싶을 때는 `/compact`, 새 작업을 시작할 때는 `/clear`를 사용합니다.
 
-![세션 분리 전략 타임라인 — 나쁜 예 긴 단일 세션 히스토리 누적 vs 좋은 예 기능별 분리 세션으로 토큰 절약](../assets/09-3-token-optimization-session-split.png)
+위 예처럼 하나의 긴 세션에 모든 작업을 몰면 히스토리가 누적되지만, 작업별로 세션을 분리하면 토큰을 크게 아낄 수 있다.
 
 <hr>
 
@@ -160,7 +160,7 @@ coverage/
 
 특히 `node_modules/`, `dist/` 같은 대용량 디렉토리를 제외하면 `ls`나 `find` 명령어의 출력이 크게 줄어든다.
 
-![.claudeignore 효과 비교 — 적용 전 node_modules 수천 항목 포함 ls 출력 vs 적용 후 핵심 파일만 표시](../assets/09-3-token-optimization-claudeignore-effect.png)
+위처럼 node_modules·dist 같은 대용량 디렉토리를 제외하면 `ls`·`find` 출력이 핵심 파일만 남아 크게 줄어든다.
 
 <hr>
 
@@ -273,7 +273,7 @@ Estimated cost: $0.42
 
 이 전략들은 중첩 적용이 가능하다. RTK + .claudeignore + CLAUDE.md 간소화만 적용해도 전체 토큰 소비를 절반 이하로 줄일 수 있다.
 
-![전략별 절약률 가로 막대 그래프 — .claudeignore(80%), 세션 분리(70%), CLAUDE.md 최적화(50%), 캐시 활용(40%) 등 비교](../assets/09-3-token-optimization-strategy-savings.png)
+위 표처럼 전략마다 절약률이 다르며, RTK·.claudeignore·CLAUDE.md 간소화만 중첩 적용해도 전체 소비를 절반 이하로 줄일 수 있다.
 
 <hr>
 

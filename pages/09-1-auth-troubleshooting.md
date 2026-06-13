@@ -60,7 +60,7 @@ claude auth login
 
 브라우저가 자동으로 열리며 Anthropic 계정으로 로그인한다. 로그인 후 터미널에 표시되는 인증 코드를 입력하면 새 토큰이 발급된다.
 
-![Authentication failed 해결 3단계 흐름 — auth status 확인 → auth login 실행 → 브라우저 인증 후 토큰 갱신 완료](../assets/09-1-auth-troubleshooting-auth-failed-flow.png)
+세 단계는 ①`auth status`로 계정 확인 → ②`auth login`으로 재인증 → ③브라우저 로그인 후 토큰 갱신 순서다.
 
 ### 3. "Connection timeout" — 연결 시간 초과
 
@@ -126,7 +126,7 @@ claude auth status
 claude auth login
 ```
 
-![토큰 만료 주기 타임라인 — 로그인 시점에서 토큰 발급, 만료 지점 도달, 인증 오류 발생, auth login으로 재발급 순환 구조](../assets/09-1-auth-troubleshooting-token-expiry-timeline.png)
+즉 로그인 시 발급된 토큰이 만료되면 인증 오류가 나고, `auth login`으로 재발급하면 다시 정상화되는 순환 구조다.
 
 ### 여러 계정 사용 시
 
@@ -162,7 +162,7 @@ for i in 0 1 2 3 4 5; do
 done
 ```
 
-![팀 전체 인증 실패 복구 흐름 — 토큰 만료 이벤트 후 P0~P5 파인이 동시 인증 실패, 반복문으로 순차 재실행하여 복구](../assets/09-1-auth-troubleshooting-team-recovery-flow.png)
+위 반복문처럼 토큰이 만료되면 P0~P5 파인이 동시에 실패하므로, 모든 파인을 순차로 재시작해 한꺼번에 복구한다.
 
 ### 특정 파인만 인증 실패하는 경우
 
@@ -212,7 +212,7 @@ python3 -c "import json; json.load(open('$HOME/.claude/settings.json'))" \
     || echo "JSON 구문 오류"
 ```
 
-![5단계 진단 체크리스트 흐름 — 프로세스 확인 → 인증 상태 → 네트워크 → 로그 확인 → JSON 유효성, 각 단계 정상/비정상 분기](../assets/09-1-auth-troubleshooting-diagnosis-steps.png)
+다섯 단계는 프로세스 확인 → 인증 상태 → 네트워크 → 로그 확인 → JSON 유효성 순으로, 각 단계의 정상/비정상으로 원인을 좁혀간다.
 
 <hr>
 
