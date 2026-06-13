@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>body { margin: 0; background: #f5f5f7; display: flex; justify-content: center; padding: 40px 0; }</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" font-family="Gulim, Noto Sans CJK KR, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+  </defs>
+  <rect width="720" height="560" fill="#f5f5f7"/>
+
+  <!-- 제목 -->
+  <text x="360" y="52" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d1d1f">토큰 소비 구조</text>
+  <text x="360" y="75" text-anchor="middle" font-size="13" fill="#7a7a7a">입력 토큰 → AI 처리 → 출력 토큰</text>
+
+  <!-- 입력 토큰 패널 -->
+  <rect x="18" y="100" width="250" height="380" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <rect x="18" y="100" width="250" height="44" rx="11" ry="11" fill="#0066cc"/>
+  <rect x="18" y="120" width="250" height="24" fill="#0066cc"/>
+  <text x="143" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">[입력 토큰]</text>
+
+  <!-- 입력 항목 1 -->
+  <rect x="35" y="158" width="216" height="62" rx="8" ry="8" fill="#f5f5f7" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="42" y="165" width="40" height="40" rx="6" ry="6" fill="#e8e8ed"/>
+  <text x="62" y="190" text-anchor="middle" font-size="18">💻</text>
+  <text x="95" y="176" font-size="11" font-weight="bold" fill="#1d1d1f">시스템 프롬프트</text>
+  <text x="95" y="193" font-size="10" fill="#7a7a7a">CLAUDE.md 등</text>
+  <text x="95" y="208" font-size="10" fill="#7a7a7a">역할·규칙 정의</text>
+
+  <!-- 입력 항목 2 -->
+  <rect x="35" y="228" width="216" height="62" rx="8" ry="8" fill="#f5f5f7" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="42" y="235" width="40" height="40" rx="6" ry="6" fill="#e8e8ed"/>
+  <text x="62" y="260" text-anchor="middle" font-size="18">💬</text>
+  <text x="95" y="246" font-size="11" font-weight="bold" fill="#1d1d1f">대화 히스토리</text>
+  <text x="95" y="263" font-size="10" fill="#7a7a7a">이전 메시지</text>
+  <text x="95" y="278" font-size="10" fill="#7a7a7a">주고받은 내용 전체</text>
+
+  <!-- 입력 항목 3 -->
+  <rect x="35" y="298" width="216" height="62" rx="8" ry="8" fill="#f5f5f7" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="42" y="305" width="40" height="40" rx="6" ry="6" fill="#e8e8ed"/>
+  <text x="62" y="330" text-anchor="middle" font-size="18">🔧</text>
+  <text x="95" y="316" font-size="11" font-weight="bold" fill="#1d1d1f">도구 결과</text>
+  <text x="95" y="333" font-size="10" fill="#7a7a7a">Bash 출력, 파일 내용</text>
+  <text x="95" y="348" font-size="10" fill="#7a7a7a">실행 결과 텍스트</text>
+
+  <!-- 입력 항목 4 -->
+  <rect x="35" y="368" width="216" height="62" rx="8" ry="8" fill="#f5f5f7" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="42" y="375" width="40" height="40" rx="6" ry="6" fill="#e8e8ed"/>
+  <text x="62" y="400" text-anchor="middle" font-size="18">📁</text>
+  <text x="95" y="386" font-size="11" font-weight="bold" fill="#1d1d1f">컨텍스트 파일</text>
+  <text x="95" y="403" font-size="10" fill="#7a7a7a">자동 로드</text>
+  <text x="95" y="418" font-size="10" fill="#7a7a7a">@파일 참조 등</text>
+
+  <!-- 화살표 → AI -->
+  <line x1="268" y1="290" x2="298" y2="290" stroke="#0066cc" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- AI Claude 중앙 -->
+  <circle cx="360" cy="290" r="62" fill="#0066cc"/>
+  <text x="360" y="280" text-anchor="middle" font-size="20" fill="#ffffff">AI</text>
+  <text x="360" y="300" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Claude</text>
+  <text x="360" y="320" text-anchor="middle" font-size="11" fill="#e0eeff">처리 중...</text>
+
+  <!-- 화살표 → 출력 -->
+  <line x1="422" y1="290" x2="452" y2="290" stroke="#0066cc" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- 출력 토큰 패널 -->
+  <rect x="454" y="100" width="248" height="380" rx="11" ry="11" fill="#ffffff" stroke="#0066cc" stroke-width="2"/>
+  <rect x="454" y="100" width="248" height="44" rx="11" ry="11" fill="#0066cc"/>
+  <rect x="454" y="120" width="248" height="24" fill="#0066cc"/>
+  <text x="578" y="128" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">[출력 토큰]</text>
+
+  <!-- 출력 항목 1 -->
+  <rect x="472" y="158" width="212" height="90" rx="8" ry="8" fill="#f5f5f7" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="480" y="166" width="40" height="40" rx="6" ry="6" fill="#e8e8ed"/>
+  <text x="500" y="191" text-anchor="middle" font-size="18">💬</text>
+  <text x="534" y="178" font-size="11" font-weight="bold" fill="#1d1d1f">Claude의 응답 텍스트</text>
+  <text x="534" y="196" font-size="10" fill="#7a7a7a">사용자에게 전달하는</text>
+  <text x="534" y="211" font-size="10" fill="#7a7a7a">마크다운 형식의 답변</text>
+  <text x="534" y="226" font-size="10" fill="#7a7a7a">설명, 코드, 분석 등</text>
+
+  <!-- 출력 항목 2 -->
+  <rect x="472" y="258" width="212" height="90" rx="8" ry="8" fill="#f5f5f7" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="480" y="266" width="40" height="40" rx="6" ry="6" fill="#e8e8ed"/>
+  <text x="500" y="291" text-anchor="middle" font-size="18">🔧</text>
+  <text x="534" y="278" font-size="11" font-weight="bold" fill="#1d1d1f">도구 호출 요청</text>
+  <text x="534" y="296" font-size="10" fill="#7a7a7a">Bash, Read, Edit</text>
+  <text x="534" y="311" font-size="10" fill="#7a7a7a">도구 실행 파라미터</text>
+  <text x="534" y="326" font-size="10" fill="#7a7a7a">JSON 형식 명령</text>
+
+  <!-- 출력 항목 3 -->
+  <rect x="472" y="358" width="212" height="90" rx="8" ry="8" fill="#f5f5f7" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="480" y="366" width="40" height="40" rx="6" ry="6" fill="#e8e8ed"/>
+  <text x="500" y="391" text-anchor="middle" font-size="18">🧠</text>
+  <text x="534" y="378" font-size="11" font-weight="bold" fill="#1d1d1f">사고 과정 (thinking)</text>
+  <text x="534" y="396" font-size="10" fill="#7a7a7a">내부 추론 단계</text>
+  <text x="534" y="411" font-size="10" fill="#7a7a7a">extended thinking 시</text>
+  <text x="534" y="426" font-size="10" fill="#7a7a7a">별도 토큰 소비</text>
+
+  <!-- 하단 설명 -->
+  <rect x="18" y="498" width="684" height="42" rx="11" ry="11" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+  <text x="360" y="514" text-anchor="middle" font-size="11" fill="#7a7a7a">💡 입력 토큰이 클수록 비용↑ · 컨텍스트 윈도우(200K) 초과 시 오래된 내용 자동 제거</text>
+  <text x="360" y="530" text-anchor="middle" font-size="11" fill="#7a7a7a">context-save로 중요 정보 보존 후 /clear → context-restore 패턴으로 관리</text>
+</svg>
+</body>
+</html>
