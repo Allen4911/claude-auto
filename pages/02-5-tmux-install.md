@@ -123,7 +123,7 @@ tmux select-layout -t team:0 tiled             # 격자 배열
 
 > 💡 우리 팀 환경은 `main-vertical`을 사용합니다. 팀장(쭌) 파인을 왼쪽에 크게 두고, 나머지 팀원 파인을 오른쪽에 세로로 나열하기 위해서입니다.
 
-![TMUX 5가지 레이아웃의 파인 배치를 썸네일 격자로 비교한 도식](../assets/02-5-tmux-install-layouts.png)
+각 레이아웃을 머릿속에 그려 보면 이렇습니다. `even-horizontal`은 파인들을 좌우로 똑같이 나눠 세로 기둥처럼 세우고, `even-vertical`은 위아래로 똑같이 나눠 가로 줄무늬처럼 쌓습니다. `main-vertical`은 왼쪽 한 칸을 크게 두고 오른쪽에 나머지를 세로로 줄세우며, `main-horizontal`은 그것을 90도 돌려 위 한 칸을 크게 둡니다. `tiled`는 모든 칸을 바둑판처럼 균등한 격자로 배치합니다. 우리 팀이 쓰는 `main-vertical`은 팀장 파인을 크게 보면서 팀원들을 곁에 나열하기에 가장 적합합니다.
 
 <hr>
 

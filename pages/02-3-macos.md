@@ -10,7 +10,7 @@ macOS에서는 WSL2 없이 기본 터미널(zsh)에서 바로 Claude Code 멀티
 
 > 아래는 이 페이지에서 진행할 전체 흐름입니다. 1→7단계를 순서대로 따라가면 됩니다.
 
-![macOS 설치 7단계 로드맵 세로 타임라인](../assets/02-3-macos-roadmap-7steps.png)
+크게 보면 흐름은 세 묶음입니다 — 먼저 **개발 토대(Xcode 도구·Homebrew)를 깔고**(1~2단계), **Node.js·Git·유틸리티·TMUX를 차례로 설치**(3~6단계)한 뒤, 마지막으로 **Claude Code를 설치**(7단계)합니다. 세부 단계가 아래에 1번부터 나오니, 지금은 "Homebrew 준비 → 도구 설치 → Claude 설치"라는 큰 줄기만 기억하면 됩니다.
 
 <hr>
 
@@ -45,7 +45,7 @@ Homebrew는 macOS의 사실상 표준 패키지 관리자입니다. 터미널에
 
 > 💡 **내 맥이 Apple Silicon인지 Intel인지 확인하는 법:** 화면 왼쪽 위 사과(🍎) 메뉴 → `이 Mac에 관하여`를 엽니다. "칩(Chip)"에 `Apple M1/M2/M3...`라고 적혀 있으면 Apple Silicon, "프로세서(Processor)"에 `Intel...`이라고 적혀 있으면 Intel Mac입니다. 둘은 아래 설치 경로가 다르므로 자기 기종에 맞는 항목을 따르세요.
 
-![Apple 메뉴의 이 Mac에 관하여 창에서 칩 정보를 확인하는 위치 안내](../assets/02-3-macos-about-this-mac.png)
+이 정보가 중요한 이유는 바로 다음 단계가 칩 종류에 따라 갈리기 때문입니다. Apple Silicon은 Homebrew가 `/opt/homebrew/`에, Intel Mac은 `/usr/local/`에 설치되어 PATH 설정 명령이 서로 다릅니다. 그러니 위에서 확인한 칩 종류를 기억해 두고, 아래 두 갈래 중 자기 기종에 맞는 쪽만 따라가면 됩니다.
 
 ### Apple Silicon (M1/M2/M3) — PATH 설정
 
