@@ -115,6 +115,8 @@ tmux send-keys -t team1:0.4 '/clear' Enter
 
 새 세션이 시작되면 팀원은 `/context-restore`로 중단 지점부터 재개합니다.
 
+![멀티에이전트 팀 컨텍스트 관리 사이클](../assets/08-3-context-management-team-cycle.png)
+
 <hr>
 
 ## 컨텍스트 관리 전략
