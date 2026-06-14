@@ -1,4 +1,4 @@
-## 8-4. 멀티에이전트 충돌 방지
+## 08-4. 멀티에이전트 충돌 방지
 
 ## 이 절에서 배우는 것
 
@@ -151,7 +151,7 @@ git commit -m "resolve: api timeout 충돌 해결"
 
 ```bash
 # 서연이 충돌 발견 시
-bash claude-send.sh 1 "src/api/client.ts에서 충돌 발생. 
+bash 내부전달스크립트.sh 1 "src/api/client.ts에서 충돌 발생. 
 HEAD: timeout=5000, Phase-2: timeout=10000. 
 어떤 값으로 해결할까요?"
 ```
@@ -227,7 +227,7 @@ for message in pubsub.listen():
 
 ```bash
 # 민준이 타입 변경 전 서연에게 공지
-bash claude-send.sh 4 "⚠️ Product 인터페이스 변경 예정. 
+bash 내부전달스크립트.sh 4 "⚠️ Product 인터페이스 변경 예정. 
 price 필드가 number → PriceInfo 객체로 변경됨. 
 현재 작업 완료 후 알려줘, 타입 변경 후 함께 수정하자."
 ```
@@ -378,18 +378,18 @@ git add $STAGED_TS
 **1단계: 전 팀원에게 동결 공지**
 ```bash
 # 민준이 전 팀원에게 공지
-bash claude-send.sh 4 "⛔ 리팩토링 동결 시작. 
+bash 내부전달스크립트.sh 4 "⛔ 리팩토링 동결 시작. 
 auth 모듈 전면 재설계 예정.
 src/auth/ 파일 작업 중단. 완료 후 재개 알림."
 
-bash claude-send.sh 2 "⛔ 리팩토링 동결. auth 모듈 조사 보류."
+bash 내부전달스크립트.sh 2 "⛔ 리팩토링 동결. auth 모듈 조사 보류."
 ```
 
 **2단계: 리팩토링 진행** (동결 구간 동안 다른 팀원은 관련 파일 미수정)
 
 **3단계: 완료 후 재동기화 공지**
 ```bash
-bash claude-send.sh 4 "✅ auth 리팩토링 완료. 
+bash 내부전달스크립트.sh 4 "✅ auth 리팩토링 완료. 
 커밋 def5678 확인 후 작업 재개.
 변경된 인터페이스: AuthToken → TokenPayload
 사용법: docs/auth-migration.md 참고"

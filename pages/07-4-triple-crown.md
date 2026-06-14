@@ -1,14 +1,8 @@
-## 7-4. Triple Crown 전략 — gstack + GSD + Superpowers 통합 워크플로우
+## 07-4. Triple Crown 전략 — gstack + GSD + Superpowers 통합 워크플로우
 
 ## Triple Crown이란
 
 6장에서 gstack, GSD, superpowers를 각각 소개했다. 이 세 도구는 독립적으로도 유용하지만, **셋을 하나의 파이프라인으로 연결**할 때 진가를 발휘한다. 이것이 Triple Crown 전략이다.
-
-| 순서  | 도구          | 역할     | 핵심 질문    |
-| --- | ----------- | ------ | -------- |
-| ①   | gstack      | 전략·검증  | "무엇을 왜"  |
-| ②   | GSD         | 관리·실행  | "어떤 순서로" |
-| ③   | Superpowers | 품질·방법론 | "어떻게 잘"  |
 
 | 도구 | 역할 | 핵심 질문 |
 |------|------|----------|
@@ -17,6 +11,8 @@
 | Superpowers | 구현 품질 보장 | 각 단계를 어떤 방법론으로 수행할 것인가? |
 
 세 도구 없이도 Claude Code는 코드를 작성할 수 있다. 하지만 "일단 코드부터" 접근은 프로젝트 규모가 커질수록 방향을 잃기 쉽다. Triple Crown은 **전략 → 계획 → 실행 → 검증**의 사이클을 강제하여 이 문제를 해결한다.
+
+> 💡 **비유: 건물 짓기** gstack은 건축사(무엇을 왜 짓는지 설계), GSD는 공사 관리자(어떤 순서로 공사할지 계획), Superpowers는 건설 기준(콘크리트 강도·배선 규격 등 품질 기준)입니다. 설계 없이 벽돌부터 쌓으면 나중에 전체를 허물어야 합니다.
 
 ![전략→계획→실행→검증 사이클을 강제하는 Triple Crown 통합 개발 흐름 개념도](../assets/07-4-triple-crown-dev.png)
 
@@ -128,6 +124,8 @@ Claude의 계획 수립 과정:
 
 GSD의 가장 큰 가치는 이 계획이 `.planning/` 디렉토리에 **파일로 저장**된다는 점이다. 대화가 끊기거나 세션이 바뀌어도 계획은 유지된다.
 
+> 💡 **GSD(Get Stuff Done)란?** Claude Code 프로젝트 관리 도구입니다. `/gsd:new-project`로 프로젝트를 만들고, `/gsd:plan-phase`로 단계를 계획하며, `/gsd:execute-phase`로 실행합니다. 계획이 파일로 저장되기 때문에 AI 세션이 초기화돼도 "어디까지 했는지"를 잃지 않습니다.
+
 ```
 .planning/
   ├── ROADMAP.md
@@ -223,6 +221,8 @@ superpowers:systematic-debugging 적용:
 
 팀 환경에서 여러 태스크를 동시에 진행할 때 사용한다.
 
+> 💡 **병렬 실행이 가능한 조건** 두 태스크가 서로 같은 파일을 수정하지 않고, 결과물이 의존 관계가 없을 때 병렬로 진행할 수 있습니다. 서연의 서버 코드와 수아의 UI 컴포넌트는 "인터페이스(API 스펙)"만 공유하므로 동시에 작업 가능합니다. 민준이 인터페이스를 먼저 정의해두는 이유가 바로 이것입니다.
+
 ```
 superpowers:dispatching-parallel-agents 적용:
 
@@ -248,7 +248,7 @@ superpowers:dispatching-parallel-agents 적용:
 
 구현이 끝나면 두 단계의 검증을 거친다.
 
-### 4-1. GSD 검증 — 계획 대비 완성도
+### GSD 검증 — 계획 대비 완성도
 
 ```bash
 # 페이즈 목표 달성 여부 확인
@@ -281,7 +281,7 @@ superpowers:dispatching-parallel-agents 적용:
   ⚠️ 3명 이상 동시 편집 미테스트 (Phase 3에서 처리)
 ```
 
-### 4-2. gstack 검증 — 코드 품질과 기능 완성도
+### gstack 검증 — 코드 품질과 기능 완성도
 
 ```bash
 # 코드 리뷰
@@ -308,6 +308,8 @@ superpowers:dispatching-parallel-agents 적용:
 ```
 
 GSD 검증은 "계획한 것을 다 했는가"를 확인하고, gstack 검증은 "만든 것이 제대로 동작하는가"를 확인한다. 관점이 다르기 때문에 둘 다 필요하다.
+
+> 💡 **검증이 두 단계인 이유** GSD 검증(`/gsd:validate-phase`)은 체크리스트 방식 — "Task 1~5 전부 완료했나?" GSD 검증만 통과하면 태스크는 다 했지만 버그가 있을 수 있습니다. gstack 검증(`/review`, `/qa`)은 실제 실행 방식 — "코드가 제대로 동작하나?" 두 단계를 모두 통과해야 진짜 완료입니다.
 
 <hr>
 
@@ -353,6 +355,7 @@ GSD 검증은 "계획한 것을 다 했는가"를 확인하고, gstack 검증은
 6명의 팀 에이전트에게 Triple Crown의 각 단계를 분담하면 더 효율적이다.
 
 ![Triple Crown 팀 배분](../assets/07-4-team-triple-crown.png)
+
 ### 팀장의 Triple Crown 실행 스크립트
 
 팀장이 전체 사이클을 오케스트레이션하는 예시이다.

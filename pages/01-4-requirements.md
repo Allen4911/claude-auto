@@ -2,6 +2,8 @@
 
 이 챕터에서 구축하는 멀티에이전트 환경을 원활하게 실행하려면 일정 수준의 하드웨어와 소프트웨어가 필요하다. 시작 전에 본인의 환경이 요건을 충족하는지 확인하자.
 
+> 💡 **이 절의 목적** 설치를 시작하기 전에 "내 컴퓨터에서 이게 돌아갈까?"를 미리 점검하는 절입니다. 체크리스트를 따라 실행하면 5분 안에 준비 여부를 알 수 있습니다.
+
 <hr>
 
 ## 하드웨어 사양
@@ -17,9 +19,29 @@
 
 > 💡 **사양 표 읽는 법**: "최소 사양"은 일단 돌아가는 기준, "권장 사양"은 끊김 없이 쾌적하게 쓰는 기준이다. 둘 사이라면 동작은 하되 무거운 작업에서 느려질 수 있다.
 
-> **메모리 참고**: Claude Code 인스턴스 1개당 약 200~400MB를 사용한다. 6개 동시 실행 시 최대 2.4GB가 필요하며, 실제 프로젝트 작업(Node.js 빌드, 테스트 등)을 고려하면 16GB를 권장한다.
+> **메모리 참고**: Claude Code 인스턴스 1개당 약 200~400MB를 사용한다. 6개 동시 실행 시 최대 400MB × 6 = 약 2.4GB가 필요하며, 실제 프로젝트 작업(Node.js 빌드, 테스트 등)을 고려하면 16GB를 권장한다.
 
 숫자로 따져보면 팀 자체가 쓰는 2.4GB는 16GB의 일부일 뿐이다. 남는 여유분이 Node.js 빌드·테스트·브라우저처럼 실제 작업이 함께 돌아갈 공간이 되어준다. 그래서 8GB로도 팀은 뜨지만, 무거운 작업을 몇 개 겹치는 순간 금세 빠듯해진다 — 16GB를 권장하는 이유가 바로 이 여유 공간에 있다.
+
+---
+
+**내 RAM 확인하기**
+
+```bash
+# Linux / WSL2
+free -h
+# 출력 예시:
+#               total  used  free  available
+# Mem:           15Gi  5Gi   3Gi   9Gi
+# "total" 값이 8GB 이상이면 최소 충족
+
+# macOS
+system_profiler SPHardwareDataType | grep Memory
+# 출력 예시:
+# Memory: 16 GB
+```
+
+`total`이 8GB(표시: `7.7Gi` ~ `8Gi`) 이상이면 최소 사양을 충족한다.
 
 <hr>
 
@@ -38,6 +60,21 @@
 
 > **Windows 사용자**: WSL2는 Windows 10 버전 21H2 이상 또는 Windows 11에서 안정적으로 동작한다. 버전 확인: `시작 → 설정 → 시스템 → 정보 → Windows 사양`
 
+> 💡 **WSL2란?** Windows Subsystem for Linux 2의 약자로, Windows 위에서 리눅스를 실행할 수 있게 해주는 기능입니다. 가상머신처럼 별도 OS를 설치하는 것이 아니라 Windows 커널과 통합된 방식으로 동작해 성능이 뛰어납니다. 이 책의 대부분 설치 명령어는 WSL2 Ubuntu에서 실행합니다.
+
+---
+
+**Windows 버전 빠른 확인**
+
+```powershell
+# PowerShell에서 실행
+winver
+# 또는
+(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion
+# 출력 예시: 22H2
+# 21H2 이상이면 WSL2 지원
+```
+
 <hr>
 
 ## 소프트웨어 버전
@@ -50,6 +87,8 @@
 | **Git** | 2.30 | 2.40 이상 | `git --version` |
 | **Claude Code** | 2.x | 최신 버전 | `claude --version` |
 | **Bash** | 5.0 | 5.2 | `bash --version` |
+
+> 💡 **Node.js가 필요한 이유** Claude Code는 Node.js 기반으로 만들어진 프로그램입니다. `npm install -g @anthropic-ai/claude-code` 명령으로 설치하는데, npm은 Node.js의 패키지 관리자입니다. Node.js가 없으면 Claude Code를 설치할 수 없습니다.
 
 <hr>
 
@@ -66,6 +105,8 @@ Remote-Control 기능과 멀티에이전트 환경을 사용하려면 적절한 
 
 > **무료 플랜 사용자**: Claude Code는 실행 가능하지만 요청 한도가 낮아 멀티에이전트 환경에서는 금방 한도에 도달할 수 있다. 장시간 작업이라면 Pro 플랜을 권장한다.
 
+> 💡 **OAuth 로그인 vs API 키의 차이** API 키는 프로그램이 직접 Anthropic 서버에 요청을 보낼 때 사용하는 인증 방식입니다. Remote-Control은 Claude 계정과 연결된 세션을 식별해야 하므로 OAuth(claude.ai 로그인) 방식만 지원합니다. API 키만 있고 claude.ai 계정이 없다면 Remote-Control을 사용할 수 없습니다.
+
 <hr>
 
 ## 네트워크 요건
@@ -76,6 +117,19 @@ Remote-Control 기능과 멀티에이전트 환경을 사용하려면 적절한 
 | **방화벽** | `api.anthropic.com` (443/TCP) 허용 필요 |
 | **VPN** | 대부분 정상 동작하나 일부 기업 VPN에서 차단 가능 |
 | **오프라인** | 지원 안 됨 (Claude API 요청 불가) |
+
+> 💡 **기업 VPN에서 막히는 경우** 일부 기업 VPN은 Anthropic API 서버로의 연결을 차단할 수 있습니다. 이 경우 VPN을 끄거나, IT 부서에 `api.anthropic.com:443` 허용을 요청해야 합니다. 재택근무 중 VPN이 필수라면 IT 부서와 먼저 확인하세요.
+
+---
+
+**네트워크 연결 빠른 확인**
+
+```bash
+# api.anthropic.com 접근 가능 여부 확인
+curl -s -o /dev/null -w "%{http_code}" https://api.anthropic.com
+# 200 또는 401이면 네트워크 정상
+# 000이면 서버에 도달 불가 (방화벽·VPN 확인 필요)
+```
 
 <hr>
 
@@ -120,7 +174,60 @@ echo "Git:     $(git --version 2>/dev/null || echo '미설치')"
 echo "Claude:  $(claude --version 2>/dev/null || echo '미설치')"
 ```
 
-모든 항목이 최소 버전 이상이면 다음 챕터로 진행한다.
+출력 예시 (모두 정상인 경우):
+```
+Node.js: v22.3.0
+npm:     10.8.1
+TMUX:    tmux 3.4
+Git:     git version 2.43.0
+Claude:  2.1.71
+```
+
+모든 항목이 최소 버전 이상이면 다음 챕터로 진행한다. 미설치 항목이 있다면 2장에서 설치 방법을 안내한다.
+
+---
+
+**한 번에 통과/실패를 판단하는 빠른 점검 스크립트**
+
+```bash
+#!/bin/bash
+# env-check.sh — 환경 요건 빠른 점검
+
+PASS=true
+
+check() {
+  local name="$1"
+  local cmd="$2"
+  local min_ver="$3"
+  local result
+  result=$(eval "$cmd" 2>/dev/null)
+  if [ -z "$result" ]; then
+    echo "❌ $name: 미설치"
+    PASS=false
+  else
+    echo "✅ $name: $result"
+  fi
+}
+
+check "Node.js"     "node --version"    "v18"
+check "npm"         "npm --version"     "9"
+check "TMUX"        "tmux -V"           "3.2"
+check "Git"         "git --version"     "2.30"
+check "Claude Code" "claude --version"  "2"
+
+echo ""
+if $PASS; then
+  echo "🎉 모든 요건 충족 — 2장으로 진행하세요!"
+else
+  echo "⚠️  미설치 항목이 있습니다. 2장의 설치 가이드를 따라주세요."
+fi
+```
+
+저장 및 실행:
+```bash
+chmod +x ~/env-check.sh
+~/env-check.sh
+```
 
 <hr>
 
@@ -136,6 +243,8 @@ echo "Claude:  $(claude --version 2>/dev/null || echo '미설치')"
 | **전체** | **약 30~50분** |
 
 표를 길이로 바꿔 보면 전체 시간의 절반 안팎이 **WSL2 + Ubuntu 설치**(Windows 사용자 한정)에 쏠려 있다. 나머지 단계는 대부분 명령어 한두 줄이라 금방 끝난다. 즉 체감 대기 시간은 초반 OS 준비에 몰려 있고, 그 고비만 넘기면 이후는 빠르게 흘러간다. macOS·네이티브 리눅스 사용자라면 이 단계가 통째로 빠져 20~30분이면 충분하다.
+
+> 💡 **WSL2 설치가 긴 이유** WSL2는 Windows Update를 통해 배포되는 컴포넌트입니다. 설치 중 재부팅이 한 번 필요하고, Ubuntu 이미지를 다운로드하는 데 네트워크 속도에 따라 수 분이 걸릴 수 있습니다. 기다리는 시간이지 직접 무언가를 해야 하는 시간이 아니므로, 설치를 걸어두고 다른 일을 해도 됩니다.
 
 <hr>
 

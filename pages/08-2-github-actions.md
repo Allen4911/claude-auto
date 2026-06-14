@@ -1,4 +1,4 @@
-## 8-2. GitHub Actions 기반 자동화
+## 08-2. GitHub Actions 기반 자동화
 
 ## GitHub Actions란?
 
@@ -394,7 +394,7 @@ act push -j test
 
 ## GitHub Actions 비용 최적화
 
-GitHub Actions는 월 2,000분(무료 계정) 또는 3,000분(Pro) 무료로 제공됩니다. 팀이 활발하게 작업하면 빠르게 소진될 수 있습니다.
+GitHub Actions는 월 2,000분(무료 계정) 또는 3,000분(Pro) 무료로 제공됩니다. **public 레포지토리는 실행 시간 제한 없이 무료**이므로, 오픈소스 프로젝트라면 비용 걱정 없이 사용할 수 있습니다. 팀이 활발하게 작업하면 private 레포 한도는 빠르게 소진될 수 있습니다.
 
 ### 불필요한 실행 줄이기
 
