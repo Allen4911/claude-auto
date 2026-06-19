@@ -160,7 +160,7 @@ tmux send-keys -t team:0.3 "claude" Enter
 tmux select-layout -t team:0 main-vertical
 ```
 
-네 단계는 `split-window`로 새 파인 분할 → 타이틀 설정 → claude 실행 → 레이아웃 재정렬 순서다.
+파인을 새로 나누고 타이틀을 붙인 뒤 claude를 띄우고 레이아웃을 정리하면 된다.
 
 <hr>
 
@@ -201,7 +201,7 @@ tmux attach -t team
 
 셋업 스크립트는 TMUX 세션 생성, 파인 분할, 타이틀 설정, Claude Code 실행을 자동으로 수행한다.
 
-세 단계는 `tmux ls`로 소실 확인 → setup-team.sh 실행 → 세션 접속이며, 스크립트가 세션·파인·역할을 한 번에 재구성한다.
+tmux ls로 소실을 확인하고 setup-team.sh를 돌린 뒤 세션에 접속하면 된다. 스크립트가 세션·파인·역할을 한 번에 재구성한다.
 
 <hr>
 
@@ -368,7 +368,7 @@ tmux source-file ~/.tmux.conf
 
 ### 시스템 리소스 모니터링
 
-Claude Code는 메모리를 많이 사용한다. 6개 인스턴스를 동시에 실행하면 상당한 메모리가 필요하다.
+Claude Code는 메모리를 꽤 먹는다. 여섯 개를 한꺼번에 돌리면 부담이 만만치 않다.
 
 **Claude Code 프로세스별 메모리 사용량 확인:**
 ```bash
@@ -384,7 +384,7 @@ ps aux | grep claude | grep -v grep | awk '{print $6/1024 "MB", $0}' | sort -rn
 
 각 Claude 인스턴스가 500MB 안팎을 사용한다면, 6개를 동시 실행하면 약 3GB가 필요하다. 시스템 총 RAM이 8GB 이하라면 OOM 위험이 있다.
 
-메모리 부족으로 Claude가 OOM(Out of Memory)으로 종료되는 것을 방지하려면 충분한 RAM(16GB 이상 권장)을 확보하거나, 동시 실행 파인 수를 줄이는 것을 고려한다.
+메모리가 모자라 Claude가 OOM으로 죽는 걸 막으려면 RAM을 충분히 확보하거나(16GB 이상 권장), 동시 실행 파인 수를 줄이는 것을 고려한다.
 
 **현재 메모리 여유량 확인:**
 ```bash
@@ -401,4 +401,4 @@ free -h
 
 ## 요약
 
-TMUX 세션 복구의 핵심은 **단계별 진단**이다. SSH 끊김은 재연결만 하면 되고, 파인 내 Claude 종료는 재실행으로 해결되고, 파인 소실은 재생성이 필요하고, 세션 전체 소실은 셋업 스크립트로 재구성한다. `check-team.sh` 같은 자동 점검 스크립트와 tmux-resurrect 플러그인을 활용하면 복구 시간을 크게 줄일 수 있다. OOM을 방지하려면 `free -h`와 `ps aux`로 메모리 여유량을 주기적으로 확인하는 습관이 중요하다.
+TMUX 세션 복구의 핵심은 **단계별 진단**이다. SSH가 끊기면 다시 붙고, Claude만 죽으면 재실행하고, 파인이 사라지면 새로 만들고, 세션이 통째 날아가면 셋업 스크립트로 다시 짠다. `check-team.sh` 같은 자동 점검 스크립트와 tmux-resurrect 플러그인을 활용하면 복구 시간이 확 줄어든다. OOM을 방지하려면 `free -h`와 `ps aux`로 메모리 여유량을 주기적으로 확인하는 습관이 중요하다.
