@@ -1,6 +1,6 @@
 ## 04-5. Stream JSON 제어
 
-Remote Control이 사람이 다른 기기에서 직접 접속하는 방식이라면, **Stream JSON**은 프로그램이 Claude Code를 자동으로 제어하는 방식입니다. 스크립트, 파이프라인, 다른 애플리케이션에서 Claude와 구조화된 방식으로 통신할 수 있습니다.
+Remote Control이 사람이 다른 기기에서 직접 접속하는 방식이라면, **Stream JSON**은 프로그램이 Claude Code를 자동으로 제어하는 방식입니다. 스크립트, 파이프라인, 다른 애플리케이션에서 Claude와 정해진 형식으로 주고받을 수 있습니다.
 
 > 💡 **비유:** Remote Control이 "폰으로 TV 채널 바꾸는 것"이라면, Stream JSON은 "방송 제작 시스템이 자동으로 TV에 신호를 보내는 것"입니다. 사람 손이 가지 않고 프로그램끼리 대화합니다.
 
@@ -13,7 +13,7 @@ Remote Control이 사람이 다른 기기에서 직접 접속하는 방식이라
 | 출력 스트리밍 | `--output-format stream-json` | Claude 응답을 JSON 스트림으로 받기 |
 | 입력 스트리밍 | `--input-format stream-json` | JSON으로 메시지를 Claude에게 전송 |
 
-두 방향은 독립적이라 따로 쓸 수도, 함께 쓸 수도 있습니다. **출력 스트리밍**은 Claude가 만들어 내는 응답을 JSON으로 받아 가는 통로이고, **입력 스트리밍**은 반대로 프로그램이 JSON 형태의 메시지를 Claude에게 밀어 넣는 통로입니다. 둘을 동시에 켜면 프로그램과 Claude가 JSON으로 주고받는 양방향 대화가 되어, 사람의 키 입력 없이도 자동화된 왕복 통신이 이뤄집니다.
+두 방향은 독립적이라 따로 써도 되고 함께 써도 됩니다. 출력 스트리밍은 Claude의 응답을 JSON으로 받아 가고, 입력 스트리밍은 거꾸로 프로그램이 JSON 메시지를 Claude에게 밀어 넣습니다. 둘을 동시에 켜면 양방향 대화가 되어, 사람이 키를 두드리지 않아도 프로그램끼리 주고받습니다.
 
 > 💡 **Stream JSON은 누가 쓸까요?** 사람이 직접 쓰는 게 아니라 **프로그램**이 씁니다. Remote Control이 사람용 원격 조종이라면, Stream JSON은 스크립트가 Claude를 부품처럼 호출해 결과를 받아 가는 자동화용 통로입니다.
 
@@ -335,7 +335,7 @@ echo "합계 → 입력: $TOTAL_INPUT, 출력: $TOTAL_OUTPUT"
 
 ### 함께 쓰는 방법
 
-Remote Control과 Stream JSON은 배타적이지 않습니다. 예를 들어, 서버 모드로 세션을 열어 두고 동시에 스크립트에서 `-p` 플래그로 Claude를 호출하는 것도 가능합니다.
+Remote Control과 Stream JSON은 함께 써도 됩니다. 서버 모드로 세션을 열어 둔 채, 스크립트에서 `-p` 플래그로 Claude를 호출할 수도 있죠.
 
 ```bash
 # 터미널 1: 서버 모드 (원격 접속용)
@@ -382,4 +382,4 @@ echo "$RESPONSE" | jq -r '.result'
 
 ## 요약
 
-Stream JSON은 Claude를 자동화 도구로 활용할 때 핵심 기능입니다. 쉘 스크립트, CI/CD 파이프라인, 배치 처리에서 Claude의 응답을 구조화된 데이터로 처리할 수 있습니다. 다음 챕터에서는 Remote Control 사용 시 중요한 **보안 설정**을 설명합니다.
+Stream JSON을 쓰면 Claude의 응답을 구조화된 데이터로 받아 쉘 스크립트, CI/CD 파이프라인, 배치 처리에 그대로 흘려보낼 수 있습니다. 자동화에 Claude를 끼워 넣는 핵심 통로인 셈이죠. 이어지는 챕터에서는 Remote Control을 쓸 때 꼭 챙겨야 할 보안 설정을 다룹니다.

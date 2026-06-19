@@ -1,8 +1,8 @@
 ## 04-6. 보안 설정 및 인증 요구사항
 
-Remote Control은 외부에서 Claude Code를 원격 제어하는 기능입니다. 편리한 만큼 보안 설정을 소홀히 하면 의도하지 않은 접근이 발생할 수 있습니다. 이 절에서는 Remote Control의 보안 모델과 권장 설정을 다룹니다.
+Remote Control은 외부에서 Claude Code를 원격 제어하는 기능입니다. 편리하지만 보안 설정을 빠뜨리면 누군가 함부로 접근할 수 있습니다. 이 절에서는 Remote Control의 보안 모델과 권장 설정을 다룹니다.
 
-> 💡 **비유:** Remote Control 보안은 아파트 현관 잠금과 같습니다. 건물 입구(Anthropic 인증)와 내 집 문(권한 모드·allow/deny)이 각각 따로 있어, 건물에 들어왔더라도 내 집 문을 열 수 없으면 접근이 막힙니다. 두 겹의 잠금이 함께 작동합니다.
+> 💡 **비유:** Remote Control 보안은 아파트 현관 잠금과 같습니다. 건물 입구를 지나도 내 집 문이 따로 잠겨 있어, 두 겹을 모두 열어야 안으로 들어올 수 있습니다. 어느 잠금이 무엇을 막는지는 아래 표에서 정리합니다.
 
 <hr>
 
@@ -342,7 +342,7 @@ ls -lt ~/.claude/projects/*/conversations/ | head -10
 
 ## 요약
 
-Remote Control의 보안은 Anthropic 계정 인증, 권한 모드, `settings.json`의 allow/deny 규칙, 그리고 `.claudeignore` 파일의 조합으로 구성됩니다. 기본 원칙은 **최소 권한**으로, 읽기는 자동 허용하되 쓰기와 실행은 명시적으로 승인하거나 차단하는 것입니다.
+Remote Control의 보안은 Anthropic 계정 인증, 권한 모드, `settings.json`의 allow/deny 규칙, `.claudeignore` 파일이 함께 받칩니다. 핵심은 최소 권한입니다. 읽기는 풀어 두고 쓰기·실행만 막거나 승인받게 하세요.
 
 **보안 설정 빠른 체크리스트:**
 
