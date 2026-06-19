@@ -1,5 +1,4 @@
-# 클로드 코드(Claude Code) 멀티에이전트 팀 자동화 완성 가이드 : AI 개발팀 구성부터 Remote-Control 실전까지
-## 클로드 코드(Claude Code) 멀티에이전트 팀 자동화 완성 가이드 : AI 개발팀 구성부터 Remote-Control 실전까지
+# 클로드 코드(Claude Code) 멀티에이전트 팀 자동화 완성 가이드
 
 ---
 
@@ -13,8 +12,8 @@
 
 ## 02장. 환경 설치 및 기반 구성
 * [02-1. 플랫폼별 설치 안내](pages/02-1-ubuntu-install.md)
-* [02-2. Windows: WSL2 환경 구성 완전 가이드](pages/02-2-windows-wsl2.md)
-* [02-3. macOS: 설치 완전 가이드](pages/02-3-macos.md)
+* [02-2. Windows: WSL2 환경 구성 가이드](pages/02-2-windows-wsl2.md)
+* [02-3. macOS: 설치 가이드](pages/02-3-macos.md)
 * [02-4. Claude Code 설치 및 인증](pages/02-4-claude-install.md)
 * [02-5. TMUX 기본 명령어 및 활용](pages/02-5-tmux-install.md)
 
@@ -61,7 +60,7 @@
 * [07-1. 팀 지시 흐름 설계](pages/07-1-team-flow.md)
 * [07-2. Bot Mode 활용](pages/07-2-bot-mode.md)
 * [07-3. 업무 분담 전략](pages/07-3-task-distribution.md)
-* [07-4. Triple Crown 전략 — gstack + GSD + Superpowers 통합 워크플로우](pages/07-4-triple-crown.md)
+* [07-4. gstack·GSD·Superpowers 통합 워크플로우](pages/07-4-triple-crown.md)
 * [07-5. 자동화 워크플로우 예시](pages/07-5-workflow-examples.md)
 
 ---
