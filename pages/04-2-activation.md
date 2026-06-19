@@ -223,7 +223,7 @@ https://claude.ai/code?session=<session-id>
 
 ## 멀티에이전트 팀에서 활용
 
-팀 셋업 스크립트에서 팀장(쭌) 파인만 Remote Control을 활성화하면 모바일에서 팀장에게 지시할 수 있습니다.
+팀 셋업 스크립트에서 팀장(쭌) 파인(pane)만 Remote Control을 활성화하면 모바일에서 팀장에게 지시할 수 있습니다.
 
 ```bash
 # 팀장 파인(0)에 Remote Control 포함하여 Claude 실행
