@@ -1,123 +1,180 @@
-## 02-4. Claude Code 설치 및 인증
+## 02-4. Docker 컨테이너 기동 + 내부 Claude Code 설치
 
-Claude Code는 Anthropic이 만든 AI 코딩 어시스턴트 CLI 도구입니다. 터미널에서 직접 Claude와 대화하며 코드를 작성하고, 파일을 편집하고, 명령을 실행할 수 있습니다. 멀티에이전트 환경에서는 각 TMUX 파인마다 Claude Code 인스턴스가 독립적으로 동작합니다.
+플랫폼별 Docker 준비(02-1~02-3)가 끝났습니다. 이제부터는 **모든 플랫폼이 동일한 경로**를 걷습니다. `ubuntu:22.04` 컨테이너를 띄우고, 그 안에 Node.js와 Claude Code를 설치합니다.
 
-> 💡 **CLI란?** Command Line Interface, 즉 "명령줄 도구"입니다. 마우스로 클릭하는 화면 대신, 터미널에 명령어를 입력해 프로그램을 사용하는 방식입니다. 처음엔 낯설지만, 한 번 익히면 훨씬 빠르고 자동화하기 좋습니다.
-
-> 💡 **Claude Code가 할 수 있는 것들**: 단순한 질문 답변을 넘어, 프로젝트 파일을 직접 읽고 수정하며, 터미널 명령을 실행하고, 여러 파일에 걸쳐 리팩터링을 수행할 수 있습니다. 이 책에서 구성하는 멀티에이전트 팀은 이 능력을 가진 Claude Code 6개를 동시에 운영하는 환경입니다.
+> **컨테이너가 호스트와 분리되는 이유**: 컨테이너는 호스트 OS와 격리된 독립 공간입니다. Node.js, Claude Code를 호스트에 직접 설치하면 버전 충돌이나 경로 문제가 생길 수 있지만, 컨테이너 안에서는 항상 깨끗한 Ubuntu 22.04 환경에서 시작합니다. 여러 사람이 같은 이미지로 동일한 환경을 재현합니다.
 
 <hr>
 
-## 설치
+## 컨테이너 기동
 
-아래 2단계로 설치하고 정상 설치 여부를 확인합니다.
+### 즉시 체험 (1회성)
 
-### 1단계. npm으로 전역 설치
+Docker가 정상 설치됐는지 확인하면서 Ubuntu 22.04 환경을 바로 체험할 수 있습니다.
 
-npm을 통해 전역(컴퓨터 전체에서 사용 가능) 설치합니다.
+```bash
+docker run --rm -it ubuntu:22.04 bash
+```
+
+처음 실행하면 이미지를 자동으로 내려받습니다.
+
+```
+Unable to find image 'ubuntu:22.04' locally
+22.04: Pulling from library/ubuntu
+...
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+```
+
+> `--rm`은 컨테이너 종료 시 자동 삭제, `-it`는 인터랙티브 터미널 연결입니다. 이 방식은 실험용이며, `exit`로 나오면 컨테이너와 내부에 설치한 모든 것이 사라집니다.
+
+### 지속 실행 (실전)
+
+작업이 유지되는 지속 컨테이너를 만듭니다. 이 방식으로 Claude Code를 설치하고 운영합니다.
+
+```bash
+# 컨테이너 생성 (백그라운드 실행)
+docker run -d --name claude-env \
+  -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
+  -v "$HOME/project":/workspace \
+  ubuntu:22.04 sleep infinity
+
+# 컨테이너 내부로 진입
+docker exec -it claude-env bash
+```
+
+각 옵션이 하는 일을 살펴봅니다.
+
+| 옵션 | 의미 |
+|------|------|
+| `-d` | 백그라운드(detached)로 실행 — 터미널을 점유하지 않음 |
+| `--name claude-env` | 컨테이너에 이름 부여 — 이후 `docker exec`로 재진입 가능 |
+| `-e ANTHROPIC_API_KEY=...` | 환경변수로 API 키 주입 — 컨테이너 인증의 핵심 |
+| `-v "$HOME/project":/workspace` | 호스트 폴더를 컨테이너 `/workspace`에 연결 |
+| `sleep infinity` | 컨테이너가 종료되지 않고 대기하도록 유지 |
+
+> **주의** **`-v` 없이 작업하면 파일을 잃습니다.** `-v` 볼륨 마운트 없이 컨테이너 안에서 파일을 만들면, `docker rm`으로 컨테이너를 삭제하는 순간 내부 파일이 전량 소실됩니다. 작업물은 반드시 `/workspace` (호스트 볼륨)에 저장하세요.
+
+> **`$HOME/project` 폴더가 없다면** 먼저 `mkdir -p ~/project`로 만들어 두세요. 마운트 대상 폴더가 없으면 Docker가 빈 디렉터리를 자동 생성하지만, 미리 만들어 두는 것이 안전합니다.
+
+<hr>
+
+## 컨테이너 내부 설치
+
+`docker exec -it claude-env bash`로 컨테이너에 진입한 상태에서 아래 명령을 순서대로 실행합니다.
+
+### 1단계. 기본 도구 설치
+
+```bash
+apt-get update
+apt-get install -y curl ca-certificates git
+```
+
+> `ubuntu:22.04` 이미지는 최소 구성으로 배포됩니다. `curl`, `git` 등 익숙한 도구들이 기본으로 들어있지 않아 먼저 설치해야 합니다. tmux는 다음 챕터(02-5)에서 멀티파인 환경과 함께 설치합니다.
+
+### 2단계. Node.js 22 설치 (nodesource 경유)
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt-get install -y nodejs
+```
+
+설치 확인:
+```bash
+node --version   # v22.22.3
+npm --version    # 10.9.8
+```
+
+> **왜 `apt-get install nodejs`를 직접 쓰지 않나요?** Ubuntu 22.04 기본 저장소의 Node.js는 오래된 버전(12.x)입니다. Claude Code는 Node.js 18 이상이 필요합니다. nodesource 스크립트는 Node.js 공식 팀이 관리하는 저장소를 등록해 현재 안정 버전(22.x)을 설치해 줍니다.
+
+### 3단계. Claude Code 설치
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-> 💡 `-g`는 "global(전역)"의 약자로, 어느 폴더에서든 `claude` 명령을 쓸 수 있게 설치한다는 뜻입니다. `-g` 없이 설치하면 현재 폴더의 프로젝트에서만 쓸 수 있는 로컬 설치가 됩니다.
-
-설치 중 패키지 다운로드 진행 상황이 화면에 표시됩니다. 수십 개의 의존 패키지를 함께 내려받기 때문에 수 초에서 수십 초가 걸릴 수 있습니다. `added N packages` 메시지가 나오면 설치가 끝난 것입니다.
-
-> 💡 **`npm ERR! code EACCES` 오류가 나면**: 권한 문제입니다. 이 경우 절대 `sudo npm install -g`를 쓰지 마세요. sudo로 설치하면 파일 소유권이 꼬여 이후에도 계속 오류가 납니다. nvm으로 Node.js를 재설치하면 이 문제가 사라집니다 — nvm은 홈 디렉터리 안에 Node.js를 설치해 sudo 없이 전역 패키지를 설치할 수 있게 해 줍니다.
-
-### 2단계. 버전 확인
-
-설치가 끝나면 버전을 확인해 정상 설치를 검증합니다.
-
+설치 확인:
 ```bash
-claude --version
+claude --version   # 2.1.181 (Claude Code)
 ```
 
-출력 예시:
-```
-claude-code 2.1.170
-```
-
-위처럼 버전 번호가 보이면 설치 성공입니다.
-
-정리하면 검증은 간단합니다 — npm으로 설치한 뒤 `claude --version` 한 줄을 쳤을 때 위처럼 버전 번호가 돌아오면 끝입니다. 만약 `command not found` 같은 메시지가 나온다면 설치가 안 됐거나 PATH 등록이 빠진 것이니, 앞 단계를 다시 확인하세요.
-
-> 💡 **PATH란?** 운영체제가 명령어를 찾아보는 폴더 목록입니다. npm이 전역으로 설치한 실행 파일이 이 목록에 포함된 경로에 있어야 `claude`라고 치면 바로 실행됩니다. nvm 기반 설치라면 보통 자동으로 등록되지만, 터미널을 한 번 닫고 다시 열면 PATH가 재적용되어 문제가 해결되는 경우가 많습니다.
+> 컨테이너 내부는 root 사용자로 실행되므로 `-g` 전역 설치에 `sudo`가 필요 없습니다. `npm ERR! code EACCES` 오류가 나지 않는 것이 정상입니다.
 
 <hr>
 
-## 인증
+## 인증 — API 키 주입 방식
 
-Claude Code를 처음 실행하면 Anthropic 계정 인증이 필요합니다. 아래 명령으로 실행을 시작합니다.
+> **주의** **컨테이너 안에서 `/login` 브라우저 인증은 불가능합니다.** 컨테이너에는 브라우저가 없기 때문에 `claude` 실행 시 `/login`을 선택해도 인증이 완료되지 않습니다. 컨테이너에서 Claude Code를 인증하는 **유일한 실용적 방법은 `ANTHROPIC_API_KEY` 환경변수 주입**입니다.
+
+API 키는 컨테이너 기동 시 `-e` 옵션으로 주입합니다.
 
 ```bash
-claude
+docker run -d --name claude-env \
+  -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
+  ...
 ```
 
-처음 실행 시 아래 세 가지 화면이 순서대로 나타납니다. 각 화면에서 안내대로 선택하면 됩니다.
+컨테이너 내부에서 환경변수가 제대로 들어왔는지 확인합니다.
 
-세 화면은 **폴더 신뢰 → 이용 약관 동의 → 로그인 방식 선택**의 한 방향 순서로 흘러가며, 마지막에서 로그인을 고르면 브라우저가 열려 OAuth 인증으로 마무리됩니다. 되돌아가는 분기는 없으니 안내대로 차례차례 선택하면 됩니다. 아래에서 각 화면을 하나씩 짚어 보겠습니다.
+```bash
+echo $ANTHROPIC_API_KEY
+```
 
-### 1단계. 폴더 신뢰
+`sk-ant-...`로 시작하는 키 값이 출력되면 주입 성공입니다. API 키가 없거나 잘못된 경우 Claude Code 실행 시 아래 메시지가 나타납니다.
 
+```
+Not logged in · Please run /login
+```
+
+> **API 키 발급 위치**: Anthropic Console(`console.anthropic.com`) → API Keys 탭 → Create Key. 키는 `sk-ant-`로 시작합니다.
+
+### Dockerfile에 API 키를 하드코딩하지 마세요
+
+```dockerfile
+# ❌ 절대 이렇게 하지 마세요
+ENV ANTHROPIC_API_KEY="sk-ant-..."
+
+# ✅ 올바른 방법: docker run 시 -e로 주입
+```
+
+Dockerfile에 키를 박으면 `docker build`로 생성된 이미지에 키가 영구적으로 포함됩니다. 이미지를 Docker Hub에 push하거나 공유하는 순간 키가 유출됩니다. 키는 항상 실행 시점에 `-e`로 전달하세요.
+
+<hr>
+
+## Claude Code 실행
+
+컨테이너 내부에서 Claude Code를 시작합니다.
+
+```bash
+claude --dangerously-skip-permissions
+```
+
+> **`--dangerously-skip-permissions` 플래그**: Claude Code는 파일 쓰기·명령 실행 등 위험한 작업 전 사용자에게 확인을 요청합니다. 멀티에이전트 자동화 환경에서는 6개의 에이전트가 자동으로 동작하므로 매번 사람이 확인하면 자동화가 불가능합니다. 신뢰하는 컨테이너 환경에서만 이 플래그를 사용하세요.
+
+처음 실행하면 아래 두 가지 화면이 차례로 나타납니다.
+
+**폴더 신뢰 확인:**
 ```
 Do you trust the files in this folder?
 > Yes, I trust this folder (proceed)
   No, exit
 ```
+Enter를 눌러 진행합니다.
 
-Enter를 눌러 신뢰를 승인합니다.
-
-> 💡 Claude Code는 현재 작업 폴더의 파일을 읽고 쓸 수 있으므로, 처음 들어온 폴더가 안전한지 한 번 확인하는 절차입니다. 자신이 만든 폴더나 홈 디렉터리에서 실행할 때는 바로 신뢰를 선택하면 됩니다. 출처를 모르는 프로젝트 폴더에서 실행할 때는 내용을 먼저 확인하는 것이 좋습니다.
-
-### 2단계. 이용 약관 동의
-
+**이용 약관 동의:**
 ```
 Do you accept the terms of service?
   No, exit
 > Yes, I accept
 ```
+방향키 ↓로 `Yes, I accept`를 선택한 뒤 Enter를 누릅니다.
 
-아래 방향키(↓)로 `Yes, I accept`를 선택한 뒤 Enter를 누릅니다.
-
-> 💡 기본 커서가 `No, exit`에 있으니 방향키로 아래로 한 번 이동한 후 Enter를 누릅니다. 방향키 대신 `j` 키로도 아래로 이동할 수 있습니다.
-
-### 3단계. 로그인 방식 선택
-
-```
-How would you like to authenticate?
-> Login with claude.ai (recommended)
-  Use an API key
-```
-
-`Login with claude.ai`를 선택하면 브라우저가 열리고 Anthropic 계정으로 OAuth 로그인을 진행합니다.
-
-> 💡 **OAuth란?** 비밀번호를 직접 입력하지 않고, 이미 로그인된 웹사이트(claude.ai)를 통해 안전하게 권한을 넘겨받는 방식입니다. 브라우저에서 "허용"만 누르면 됩니다. GitHub 계정으로 다른 서비스에 로그인할 때와 같은 원리입니다.
-
-> **중요**: Remote Control 기능을 사용하려면 반드시 `claude.ai`를 통한 OAuth 로그인이 필요합니다. API 키 방식으로는 Remote Control이 활성화되지 않습니다.
-
-브라우저에서 로그인을 완료하면 "터미널로 돌아가도 좋습니다"라는 안내가 나타나고, 터미널로 자동으로 돌아와 인증이 완료됩니다.
-
-<hr>
-
-## 인증 확인
-
-로그인 후 Claude 프롬프트(`>`)가 나타나면 인증이 완료된 것입니다.
+두 화면을 통과하면 Claude 프롬프트(`>`)가 나타납니다.
 
 ```
 > Hello! What can I help you with?
 ```
 
-현재 인증 상태와 계정 정보는 `/status` 명령으로 확인할 수 있습니다.
-
-```
-> /status
-```
-
-> 💡 Claude Code 안에서 `/`로 시작하는 명령은 슬래시 명령(slash command)입니다. `/help`를 입력하면 사용 가능한 전체 슬래시 명령 목록을 볼 수 있습니다. `/status`는 현재 연결된 계정, 사용 모델, 세션 정보를 한눈에 보여 줍니다.
-
-Claude 프롬프트에서 나오려면 `/exit`를 입력하거나 `Ctrl+C`를 두 번 누릅니다.
+`>` 프롬프트가 보이면 인증 및 실행 완료입니다. `/exit` 또는 `Ctrl+C` 두 번으로 종료합니다.
 
 <hr>
 
@@ -136,8 +193,6 @@ claude --model claude-opus-4-8
 claude --model claude-haiku-4-5-20251001
 ```
 
-> 💡 처음에는 기본값인 Sonnet으로 시작하길 권합니다. 더 복잡하고 어려운 작업이 필요해지면 Opus로, 빠르고 가벼운 응답이 필요하면 Haiku로 바꾸면 됩니다.
-
 모델별 특성을 정리하면 다음과 같습니다.
 
 | 모델 | 특성 | 적합한 작업 |
@@ -146,38 +201,30 @@ claude --model claude-haiku-4-5-20251001
 | Opus | 최고 성능, 느리고 비용 높음 | 복잡한 설계, 다단계 추론 |
 | Haiku | 가장 빠르고 저렴 | 단순 질문, 반복 작업 |
 
-이 책의 멀티에이전트 팀 구성에서는 팀장(쭌)·PM(민준)처럼 판단이 많이 필요한 역할은 Opus를, 실행 담당 팀원은 Sonnet을 기본으로 사용합니다.
+멀티에이전트 팀에서는 역할별로 모델을 다르게 배정합니다. 팀장(쭌)·PM(민준)처럼 설계·판단·조율이 많은 역할에는 Opus를, 실행 중심 팀원(지훈·수아·서연·태양)에는 Sonnet을 사용합니다. 역할별로 모델을 섞어 쓰면 비용과 성능을 함께 잡습니다.
 
 <hr>
 
-## 권한 설정 (멀티에이전트용)
+## 파일 영속성 요약
 
-여러 파인에서 자동으로 실행할 때는 권한 다이얼로그를 건너뛰는 플래그를 사용합니다.
+컨테이너 환경에서 데이터가 어떻게 유지되는지 한눈에 정리합니다.
 
-```bash
-claude --dangerously-skip-permissions
-```
-
-이 플래그는 파일 읽기/쓰기, 명령 실행 등의 권한 승인 절차를 자동으로 허용합니다. 신뢰할 수 있는 환경에서만 사용하세요.
-
-> ⚠️ 이름 그대로 "위험할 수 있으니 권한 확인을 건너뛴다"는 옵션입니다. 내 컴퓨터처럼 믿을 수 있는 환경에서만 쓰고, 잘 모르는 코드를 다룰 때는 사용하지 마세요.
-
-> 💡 **왜 이 플래그가 필요한가?** Claude Code는 기본적으로 파일 쓰기나 명령 실행 전에 사용자에게 확인을 요청합니다. 6명의 에이전트가 자동으로 동작하는 멀티에이전트 팀에서는 매번 사람이 확인을 눌러야 한다면 자동화가 불가능합니다. 신뢰하는 환경에서 자동화를 가능하게 하기 위해 이 플래그를 사용합니다.
+| 데이터 | 보존 방법 | `docker rm` 시 |
+|--------|----------|--------------|
+| 프로젝트 코드 | `-v ~/project:/workspace` 볼륨 | 보존 |
+| API 키 | `-e ANTHROPIC_API_KEY=...` 환경변수 | 매번 재주입 필요 |
+| tmux 세션 | 없음 (컨테이너 내부) | 소실 |
+| 설치 도구 | Dockerfile `RUN npm install -g ...` | 이미지에 포함 |
 
 <hr>
 
 ## 업데이트
 
-새 버전이 출시되면 동일한 npm 명령으로 업데이트합니다.
+새 버전이 출시되면 컨테이너 내부에서 동일한 npm 명령으로 업데이트합니다.
 
 ```bash
-npm update -g @anthropic-ai/claude-code
-
-# 또는
 npm install -g @anthropic-ai/claude-code@latest
 ```
-
-> 💡 `update`와 `install ... @latest`의 차이: `update`는 `package.json`의 버전 범위를 지켜 업데이트하고, `install @latest`는 무조건 최신 버전을 설치합니다. Claude Code는 빠르게 업데이트되므로 `@latest`를 권장합니다.
 
 현재 설치된 버전과 최신 버전을 비교하려면 다음 명령을 씁니다.
 
@@ -192,18 +239,24 @@ npm outdated -g @anthropic-ai/claude-code
 ## 요약
 
 ```bash
-# 설치
+# 지속 컨테이너 생성
+docker run -d --name claude-env \
+  -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
+  -v "$HOME/project":/workspace \
+  ubuntu:22.04 sleep infinity
+
+# 컨테이너 진입
+docker exec -it claude-env bash
+
+# 내부 설치 (한 번만)
+apt-get update && apt-get install -y curl ca-certificates git
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt-get install -y nodejs
 npm install -g @anthropic-ai/claude-code
 
-# 최초 실행 및 인증
-claude
-
-# 인증 후 정상 동작 확인
-claude --version   # 버전 출력
-claude             # > 프롬프트 확인
-
-# 멀티에이전트 자동화용 실행
+# 실행 확인
+claude --version   # 2.1.181
 claude --dangerously-skip-permissions
 ```
 
-다음 챕터에서는 멀티에이전트 환경의 핵심인 TMUX를 설치하고 기본 사용법을 익힙니다.
+다음 챕터에서는 컨테이너 내부에서 TMUX를 설치하고 멀티에이전트 팀 레이아웃을 구성합니다.
