@@ -37,7 +37,7 @@
 
 ```bash
 # 경로 1: Bot Mode (메시지 채널)
-# 사용자가 원격 채널(텔레그램·Slack 등)에서 전송
+# 사용자가 원격 채널에서 전송
 # → Bot Mode CLAUDE.md 규칙에 따라 Pane 0이 수신 및 처리
 
 # 경로 2: Remote-Control
