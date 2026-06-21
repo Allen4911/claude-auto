@@ -1,8 +1,8 @@
 ## 02-3. macOS: 설치 완전 가이드 + Docker Desktop
 
-macOS에서는 기본 터미널(zsh)에서 바로 호스트 환경을 구성하고, **Docker Desktop**을 설치한 뒤 컨테이너 안에서 Claude Code·tmux·OpenClaw를 운영합니다.
+macOS에서는 기본 터미널(zsh)에서 바로 호스트 환경을 구성하고, **Docker Desktop**을 설치한 뒤 컨테이너 안에서 Claude Code·tmux를 운영합니다.
 
-> **이 페이지 범위**: Homebrew 설치 → Git·기본 유틸리티 설치 → **Docker Desktop 설치**까지. Claude Code·tmux·OpenClaw 등 실제 개발 도구는 **Docker 컨테이너 내부**(02-4·02-5)에서 설치합니다.
+> **이 페이지 범위**: Homebrew 설치 → Git·기본 유틸리티 설치 → **Docker Desktop 설치**까지. Claude Code·tmux 등 실제 개발 도구는 **Docker 컨테이너 내부**(02-4·02-5)에서 설치합니다.
 
 > **지원 버전**: macOS 12 Monterey 이상을 권장합니다. Intel Mac과 Apple Silicon(M1/M2/M3) 모두 지원됩니다.
 
@@ -257,6 +257,6 @@ docker run hello-world  # Hello from Docker! 출력
 
 ## 다음 단계: 02-4 컨테이너 기동
 
-호스트(macOS + Docker Desktop) 준비가 완료됐습니다. 이제 Claude Code·tmux·OpenClaw를 설치할 **Docker 컨테이너를 기동**합니다.
+호스트(macOS + Docker Desktop) 준비가 완료됐습니다. 이제 Claude Code·tmux를 설치할 **Docker 컨테이너를 기동**합니다.
 
 [02-4. Docker 컨테이너 기동 + 내부 Claude Code](02-4-claude-install.md)로 이동하세요.

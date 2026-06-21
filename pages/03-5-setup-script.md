@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y \
     curl ca-certificates git tmux \
   && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
   && apt-get install -y nodejs \
-  && npm install -g @anthropic-ai/claude-code openclaw \
+  && npm install -g @anthropic-ai/claude-code \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
@@ -58,13 +58,11 @@ CMD ["bash"]
 | `ENV DEBIAN_FRONTEND=noninteractive` | apt 설치 중 대화형 프롬프트 차단 (자동화 필수) |
 | `apt-get install curl ca-certificates git tmux` | 기본 도구 설치 |
 | `nodesource setup_22.x` | Node.js 22 저장소 등록 (기본 apt는 구버전) |
-| `npm install -g @anthropic-ai/claude-code openclaw` | Claude Code(2.1.181)·OpenClaw(2026.6.8) 전역 설치 |
+| `npm install -g @anthropic-ai/claude-code` | Claude Code(2.1.181) 전역 설치 |
 | `apt-get clean && rm -rf /var/lib/apt/lists/*` | 이미지 용량 최적화 |
 | `WORKDIR /workspace` | 컨테이너 기동 시 기본 작업 디렉터리 |
 
 > **`DEBIAN_FRONTEND=noninteractive`이 필요한 이유**: `tzdata` 같은 패키지는 설치 중 시간대를 묻는 대화형 화면을 표시합니다. `docker build`처럼 사람이 입력할 수 없는 환경에서는 이 화면에서 빌드가 영구히 멈춥니다. 이 환경변수로 모든 대화형 프롬프트를 차단합니다.
-
-> **주의** **OpenClaw 사용 시 주의사항**: OpenClaw는 Anthropic 공식 도구가 아닌 서드파티 멀티채널 AI 게이트웨이입니다. 사용은 본인 책임이며, 연결하는 각 서비스의 이용 약관(ToS)을 직접 확인하세요.
 
 ### 이미지 빌드
 
