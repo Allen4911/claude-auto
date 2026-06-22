@@ -84,9 +84,65 @@ npm --version    # 10.9.8
 
 > **왜 `apt-get install nodejs`를 직접 쓰지 않나요?** Ubuntu 22.04 기본 저장소의 Node.js는 오래된 버전(12.x)입니다. Claude Code는 Node.js 18 이상이 필요합니다. nodesource 스크립트는 Node.js 공식 팀이 관리하는 저장소를 등록해 현재 안정 버전(22.x)을 설치해 줍니다.
 
-### 3단계. Claude Code 설치
+### 3단계. 일반 사용자 생성 및 전환
+
+컨테이너는 기본적으로 `root` 계정으로 동작합니다. 그런데 멀티에이전트 실행에 쓰는 `--dangerously-skip-permissions` 플래그는 보안상 `root` 권한으로는 막혀 있어, root 상태에서는 실행되지 않습니다.
+
+```
+--dangerously-skip-permissions cannot be used with root/sudo privileges for security reasons
+```
+
+그래서 Claude Code는 **일반 사용자 계정에 설치하고 실행**합니다. 먼저 계정을 만듭니다.
 
 ```bash
+adduser user
+```
+
+실행하면 비밀번호와 사용자 정보를 차례로 묻습니다.
+
+```
+root@f6263100f869:/app# adduser user
+Adding user `user' ...
+Adding new group `user' (1000) ...
+Adding new user `user' (1000) with group `user' ...
+Creating home directory `/home/user' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for user
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n]
+```
+
+> **입력 순서**: ① `New password:`와 `Retype new password:`에 비밀번호를 두 번 입력합니다(입력해도 화면에는 표시되지 않습니다). ② `Full Name`부터 `Other`까지는 선택 항목이라 Enter로 모두 건너뜁니다. ③ `Is the information correct? [Y/n]`에서 `Y`를 누르면 생성이 끝납니다.
+
+만든 계정으로 전환합니다.
+
+```bash
+su - user
+```
+
+비밀번호를 입력하면 프롬프트가 `root@...`에서 `user@...`로 바뀝니다. 이제부터는 일반 사용자로 동작합니다.
+
+### 4단계. Claude Code 설치
+
+npm의 전역 설치 위치를 사용자 홈(`~/.npm-global`)으로 바꿔, root 없이 `user` 계정에 직접 설치합니다.
+
+```bash
+# 1. npm 전역 설치 위치를 사용자 홈으로 변경
+npm config set prefix ~/.npm-global
+
+# 2. PATH에 추가
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# 3. 사용자 계정에 설치
 npm install -g @anthropic-ai/claude-code
 ```
 
@@ -95,7 +151,7 @@ npm install -g @anthropic-ai/claude-code
 claude --version   # 2.1.181 (Claude Code)
 ```
 
-> 컨테이너 내부는 root 사용자로 실행되므로 `-g` 전역 설치에 `sudo`가 필요 없습니다. `npm ERR! code EACCES` 오류가 나지 않는 것이 정상입니다.
+> npm의 전역(`-g`) 설치는 기본적으로 시스템 폴더(`/usr/lib` 등)에 설치돼 root 권한이 필요합니다. 설치 위치를 홈 폴더 아래 `~/.npm-global`로 바꾸면 root 없이도 설치되고, 일반 사용자 계정에서 바로 `claude` 명령을 쓸 수 있습니다.
 
 <hr>
 
@@ -179,78 +235,6 @@ claude --dangerously-skip-permissions
 ```
 
 > **`--dangerously-skip-permissions` 플래그**: Claude Code는 파일 쓰기·명령 실행 등 위험한 작업 전 사용자에게 확인을 요청합니다. 멀티에이전트 자동화 환경에서는 6개의 에이전트가 자동으로 동작하므로 매번 사람이 확인하면 자동화가 불가능합니다. 신뢰하는 컨테이너 환경에서만 이 플래그를 사용하세요.
-
-### root 계정에서 실행이 막힐 때
-
-컨테이너는 기본적으로 `root` 계정으로 동작합니다. 그런데 `--dangerously-skip-permissions`는 보안상 `root` 권한으로는 실행을 막아 두어, root 상태에서 그대로 실행하면 아래 오류가 납니다.
-
-```
---dangerously-skip-permissions cannot be used with root/sudo privileges for security reasons
-```
-
-이럴 때는 일반 사용자 계정을 하나 만들어 그 계정으로 전환한 뒤 실행합니다.
-
-**1단계. 일반 사용자 계정 생성**
-
-```bash
-adduser user
-```
-
-실행하면 비밀번호와 사용자 정보를 차례로 묻습니다.
-
-```
-root@f6263100f869:/app# adduser user
-Adding user `user' ...
-Adding new group `user' (1000) ...
-Adding new user `user' (1000) with group `user' ...
-Creating home directory `/home/user' ...
-Copying files from `/etc/skel' ...
-New password:
-Retype new password:
-passwd: password updated successfully
-Changing the user information for user
-Enter the new value, or press ENTER for the default
-        Full Name []:
-        Room Number []:
-        Work Phone []:
-        Home Phone []:
-        Other []:
-Is the information correct? [Y/n]
-```
-
-> **입력 순서**: ① `New password:`와 `Retype new password:`에 비밀번호를 두 번 입력합니다(입력해도 화면에는 표시되지 않습니다). ② `Full Name`부터 `Other`까지는 선택 항목이라 Enter로 모두 건너뜁니다. ③ `Is the information correct? [Y/n]`에서 `Y`를 누르면 생성이 끝납니다.
-
-**2단계. 만든 계정으로 전환**
-
-```bash
-su - user
-```
-
-비밀번호를 입력하면 프롬프트가 `root@...`에서 `user@...`로 바뀝니다.
-
-**3단계. 사용자 계정에 Claude Code 설치 (설치 위치 변경)**
-
-앞서 root로 설치한 claude는 일반 사용자(`user`)의 PATH에서 보이지 않을 수 있습니다. npm의 전역 설치 위치를 사용자 홈(`~/.npm-global`)으로 바꿔, sudo 없이 `user` 계정에 직접 설치합니다.
-
-```bash
-# 1. npm 전역 설치 위치를 사용자 홈으로 변경
-npm config set prefix ~/.npm-global
-
-# 2. PATH에 추가
-echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-
-# 3. 이제 root 없이 사용자 계정에 설치됩니다
-npm install -g @anthropic-ai/claude-code
-```
-
-> npm의 전역(`-g`) 설치는 기본적으로 시스템 폴더(`/usr/lib` 등)에 설치돼 root 권한이 필요합니다. 설치 위치를 홈 폴더 아래 `~/.npm-global`로 바꾸면 root 없이도 설치되고, 일반 사용자 계정에서 바로 `claude` 명령을 쓸 수 있습니다.
-
-**4단계. 다시 실행**
-
-```bash
-claude --dangerously-skip-permissions
-```
 
 처음 실행하면 아래 두 가지 화면이 차례로 나타납니다.
 
