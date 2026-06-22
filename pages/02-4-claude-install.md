@@ -317,6 +317,7 @@ claude --model claude-haiku-4-5-20251001
 |--------|----------|--------------|
 | 프로젝트 코드 | `-v ~/project:/workspace` 볼륨 | 보존 |
 | API 키 | `-e ANTHROPIC_API_KEY=...` 환경변수 | 매번 재주입 필요 |
+| `/login` 로그인 정보 | `~/.claude`에 저장 | 소실 (볼륨 마운트 시 보존) |
 | tmux 세션 | 없음 (컨테이너 내부) | 소실 |
 | 설치 도구 | Dockerfile `RUN npm install -g ...` | 이미지에 포함 |
 
@@ -343,24 +344,33 @@ npm outdated -g @anthropic-ai/claude-code
 ## 요약
 
 ```bash
-# 지속 컨테이너 생성
+# 1. 지속 컨테이너 생성
 docker run -d --name claude-env \
   -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
   -v "$HOME/project":/workspace \
   ubuntu:22.04 sleep infinity
 
-# 컨테이너 진입
+# 2. 컨테이너 진입
 docker exec -it claude-env bash
 
-# 내부 설치 (한 번만)
+# 3. 내부 설치 (한 번만)
 apt-get update && apt-get install -y curl ca-certificates git
 curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 apt-get install -y nodejs
 npm install -g @anthropic-ai/claude-code
-
-# 실행 확인
 claude --version   # 2.1.181
+
+# 4. root에서 --dangerously-skip-permissions가 막히면 일반 사용자로 전환 후 설치
+adduser user
+su - user
+npm config set prefix ~/.npm-global
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+npm install -g @anthropic-ai/claude-code
+
+# 5. 실행
 claude --dangerously-skip-permissions
 ```
+
+**인증은 두 가지 중 하나**입니다 — 실행 후 `/login`으로 브라우저(OAuth) 인증(원격 제어 사용 시 필수), 또는 컨테이너 기동 시 `-e ANTHROPIC_API_KEY`로 API 키를 주입합니다.
 
 다음 챕터에서는 컨테이너 내부에서 TMUX를 설치하고 멀티에이전트 팀 레이아웃을 구성합니다.
