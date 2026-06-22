@@ -353,21 +353,22 @@ docker run -d --name claude-env \
 # 2. 컨테이너 진입
 docker exec -it claude-env bash
 
-# 3. 내부 설치 (한 번만)
+# 3. 시스템 의존성 설치 (root, 한 번만)
 apt-get update && apt-get install -y curl ca-certificates git
 curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 apt-get install -y nodejs
-npm install -g @anthropic-ai/claude-code
-claude --version   # 2.1.181
 
-# 4. root에서 --dangerously-skip-permissions가 막히면 일반 사용자로 전환 후 설치
+# 4. 일반 사용자 생성 후 전환 (root에선 --dangerously-skip-permissions가 막힘)
 adduser user
 su - user
+
+# 5. 사용자 계정에 Claude Code 설치
 npm config set prefix ~/.npm-global
 echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
 npm install -g @anthropic-ai/claude-code
+claude --version   # 2.1.181
 
-# 5. 실행
+# 6. 실행
 claude --dangerously-skip-permissions
 ```
 
