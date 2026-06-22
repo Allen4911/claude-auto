@@ -101,9 +101,41 @@ claude --version   # 2.1.181 (Claude Code)
 
 <hr>
 
-## 인증 — API 키 주입 방식
+## 인증
 
-> **주의** **컨테이너 안에서 `/login` 브라우저 인증은 불가능합니다.** 컨테이너에는 브라우저가 없기 때문에 `claude` 실행 시 `/login`을 선택해도 인증이 완료되지 않습니다. 컨테이너에서 Claude Code를 인증하는 **유일한 실용적 방법은 `ANTHROPIC_API_KEY` 환경변수 주입**입니다.
+Claude Code 인증 방법은 두 가지입니다 — **`/login` 브라우저(OAuth) 인증**과 **`ANTHROPIC_API_KEY` 환경변수 주입**. 컨테이너에는 브라우저가 없지만, `/login`도 URL을 복사해 다른 기기 브라우저에서 로그인하고 코드만 붙여넣는 방식으로 정상 동작합니다.
+
+> **어떤 방법을 고를까**: Remote Control(원격 제어) 기능을 쓰려면 반드시 `claude.ai` OAuth 로그인(`/login`)이 필요합니다. API 키 방식으로는 Remote Control이 활성화되지 않습니다. 원격 제어 없이 단순 코딩·자동화만 쓴다면 API 키 주입이 간편합니다.
+
+### 방법 1. /login 브라우저(OAuth) 인증
+
+`claude` 실행 후 `/login`을 입력합니다. 컨테이너에는 브라우저가 없어 자동으로 열리지 않고, 대신 로그인 URL이 출력됩니다.
+
+```
+❯ /login
+
+  Login
+
+  Browser didn't open? Use the url below to sign in (c to copy)
+
+  https://claude.com/cai/oauth/authorize?code=true&client_id=...&response_type=code&scope=...
+
+  Paste code here if prompted >
+
+  Esc to cancel
+```
+
+진행 순서는 다음과 같습니다.
+
+1. 출력된 URL을 복사합니다(`c`를 누르면 클립보드로 복사됩니다).
+2. **브라우저가 있는 다른 기기**(호스트 PC 등)에서 그 URL을 열고 `claude.ai` 계정으로 로그인·승인합니다.
+3. 승인 후 화면에 표시되는 **인증 코드**를 복사해, 컨테이너의 `Paste code here if prompted >`에 붙여넣고 Enter를 누릅니다.
+
+코드가 확인되면 인증이 완료되어 Claude 프롬프트(`>`)로 들어갑니다.
+
+> 컨테이너에 브라우저가 없어도 OAuth 인증이 됩니다. "URL 복사 → 외부 브라우저 로그인 → 코드 붙여넣기"가 헤드리스(브라우저 없는) 환경의 표준 로그인 흐름입니다.
+
+### 방법 2. API 키 주입
 
 API 키는 컨테이너 기동 시 `-e` 옵션으로 주입합니다.
 
@@ -119,7 +151,7 @@ docker run -d --name claude-env \
 echo $ANTHROPIC_API_KEY
 ```
 
-`sk-ant-...`로 시작하는 키 값이 출력되면 주입 성공입니다. API 키가 없거나 잘못된 경우 Claude Code 실행 시 아래 메시지가 나타납니다.
+`sk-ant-...`로 시작하는 키 값이 출력되면 주입 성공입니다. 키가 없거나 잘못된 경우 Claude Code 실행 시 아래 메시지가 나타나며, 이때 `/login`(방법 1)으로 인증할 수도 있습니다.
 
 ```
 Not logged in · Please run /login
