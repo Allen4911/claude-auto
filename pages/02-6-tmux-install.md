@@ -1,6 +1,6 @@
-## 02-5. 컨테이너 내부 tmux 설치 + Claude Code 원격제어 설정
+## 02-6. 컨테이너 내부 tmux 설치 + Claude Code 원격제어 설정
 
-02-4에서 기동한 Docker 컨테이너 **안에서** tmux를 설치하고 Claude Code 원격제어 환경을 설정합니다. 호스트 OS에 설치하는 것이 아니라 컨테이너 내부에서 실행하는 점에 주의하세요.
+02-5에서 기동한 Docker 컨테이너 **안에서** tmux를 설치하고 Claude Code 원격제어 환경을 설정합니다. 호스트 OS에 설치하는 것이 아니라 컨테이너 내부에서 실행하는 점에 주의하세요.
 
 TMUX(Terminal Multiplexer)는 한 터미널 창에서 여러 터미널을 동시에 띄워 관리하는 도구입니다. Claude 멀티에이전트 환경에서는 TMUX의 파인(Pane) 기능을 활용해 여러 에이전트를 동시에 운영합니다.
 
@@ -86,7 +86,7 @@ TMUX는 세 가지 계층 구조로 구성됩니다.
 
 이 계층 구조를 이해하면 `team:0.1` 같은 주소 표기가 자연스럽게 읽힙니다 — `팀세션 : 0번윈도우 . 1번파인`의 뜻입니다.
 
-![세션·윈도우·파인 3계층을 중첩 상자로 표현한 구조 다이어그램](../assets/02-5-tmux-install-session-window-pane.png)
+![세션·윈도우·파인 3계층을 중첩 상자로 표현한 구조 다이어그램](../assets/02-6-tmux-install-session-window-pane.png)
 
 <hr>
 
@@ -155,7 +155,7 @@ TMUX 세션 안에서 사용하는 단축키입니다. 모든 단축키는 `Ctrl
 
 > `Ctrl+B q`를 누르면 각 파인에 번호가 잠깐 표시됩니다. 파인이 많을 때 몇 번 파인인지 빠르게 확인하는 방법입니다. 번호가 표시되는 동안 그 숫자 키를 누르면 해당 파인으로 즉시 이동합니다.
 
-![Ctrl+B 좌우 분할과 상하 분할의 결과 화면을 before/after로 비교한 그림](../assets/02-5-tmux-install-split-compare.png)
+![Ctrl+B 좌우 분할과 상하 분할의 결과 화면을 before/after로 비교한 그림](../assets/02-6-tmux-install-split-compare.png)
 
 <hr>
 

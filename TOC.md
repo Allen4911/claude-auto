@@ -14,8 +14,9 @@
 * [02-1. 플랫폼별 설치 안내](pages/02-1-ubuntu-install.md)
 * [02-2. Windows: WSL2 환경 구성 가이드](pages/02-2-windows-wsl2.md)
 * [02-3. macOS: 설치 가이드](pages/02-3-macos.md)
-* [02-4. Claude Code 설치 및 인증](pages/02-4-claude-install.md)
-* [02-5. TMUX 기본 명령어 및 활용](pages/02-5-tmux-install.md)
+* [02-4. Docker 이해](pages/02-4-docker-concept.md)
+* [02-5. Docker 환경 구축](pages/02-5-docker-setup.md)
+* [02-6. TMUX 기본 명령어 및 활용](pages/02-6-tmux-install.md)
 
 ---
 

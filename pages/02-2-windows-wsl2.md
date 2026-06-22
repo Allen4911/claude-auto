@@ -2,7 +2,7 @@
 
 Windows에서 Claude Code 멀티에이전트 환경을 구성하려면 **WSL2(Windows Subsystem for Linux 2)**가 필요합니다. WSL2는 Windows 10/11 위에서 완전한 Linux 커널을 실행하는 Microsoft 공식 솔루션으로, 성능과 호환성 모두 네이티브에 가깝습니다.
 
-> **이 페이지 범위**: WSL2 활성화 → Ubuntu 설치 → 기본 유틸리티 설치 → **Docker Desktop(WSL2 백엔드) 설치**까지. Claude Code·tmux 등 실제 개발 도구는 **Docker 컨테이너 내부**(02-4·02-5)에서 설치합니다.
+> **이 페이지 범위**: WSL2 활성화 → Ubuntu 설치 → 기본 유틸리티 설치 → **Docker Desktop(WSL2 백엔드) 설치**까지. Claude Code·tmux 등 실제 개발 도구는 **Docker 컨테이너 내부**(02-5·02-6)에서 설치합니다.
 
 > **WSL2를 쉽게 말하면?** Windows 안에 작은 Ubuntu 컴퓨터를 하나 더 띄우는 기능입니다. Windows는 그대로 쓰면서, 개발에 필요한 Linux 환경만 그 안에서 함께 돌리는 것이죠. 두 환경은 파일도 서로 주고받을 수 있습니다(뒤의 `/mnt/c` 설명 참고).
 
@@ -223,7 +223,7 @@ netsh advfirewall firewall add rule name="Claude Remote" dir=in action=allow pro
 
 ## 원클릭 설치 스크립트
 
-WSL2 Ubuntu 호스트 환경 기본 설정을 한 번에 처리합니다. Node.js·tmux·Claude Code는 02-4 컨테이너 단계에서 설치합니다.
+WSL2 Ubuntu 호스트 환경 기본 설정을 한 번에 처리합니다. Node.js·tmux·Claude Code는 02-5 컨테이너 단계에서 설치합니다.
 
 ```bash
 #!/bin/bash
@@ -234,7 +234,7 @@ echo "=== WSL2 Ubuntu 호스트 환경 설치 시작 ==="
 # 시스템 업데이트
 sudo apt update && sudo apt upgrade -y
 
-# 기본 도구 (컨테이너 내부 도구는 02-4에서 설치)
+# 기본 도구 (컨테이너 내부 도구는 02-5에서 설치)
 sudo apt install -y git curl wget unzip build-essential
 
 # Git 기본 설정
@@ -275,8 +275,8 @@ docker run hello-world  # Hello from Docker! 출력
 
 <hr>
 
-## 다음 단계: 02-4 컨테이너 기동
+## 다음 단계: 02-4 Docker 이해
 
-호스트(WSL2 + Docker Desktop) 준비가 완료됐습니다. 이제 Claude Code·tmux를 설치할 **Docker 컨테이너를 기동**합니다.
+호스트(WSL2 + Docker Desktop) 준비가 완료됐습니다. 이제 Docker의 개념을 익힌 뒤, 컨테이너를 기동해 Claude Code·tmux를 설치합니다.
 
-[02-4. Docker 컨테이너 기동 + 내부 Claude Code](02-4-claude-install.md)로 이동하세요.
+[02-4. Docker 이해](02-4-docker-concept.md)로 이동하세요.
