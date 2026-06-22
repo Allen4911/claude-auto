@@ -1,58 +1,6 @@
-## 02-5. Docker 환경 구축
+## 02-5. 컨테이너에 Claude Code 설치·실행
 
-앞 절(02-4)에서 컨테이너의 개념을 익혔습니다. 이제 실제로 `ubuntu:22.04` 컨테이너를 띄우고, 그 안에 Node.js와 Claude Code를 설치한 뒤 인증·실행까지 마칩니다. 플랫폼별 Docker 준비(02-1~02-3)가 끝났다면, 이제부터는 **모든 플랫폼이 동일한 경로**를 걷습니다.
-
-<hr>
-
-## 컨테이너 기동
-
-### 즉시 체험 (1회성)
-
-Docker가 정상 설치됐는지 확인하면서 Ubuntu 22.04 환경을 바로 체험할 수 있습니다.
-
-```bash
-docker run --rm -it ubuntu:22.04 bash
-```
-
-처음 실행하면 이미지를 자동으로 내려받습니다.
-
-```
-Unable to find image 'ubuntu:22.04' locally
-22.04: Pulling from library/ubuntu
-...
-PRETTY_NAME="Ubuntu 22.04.5 LTS"
-```
-
-> `--rm`은 컨테이너 종료 시 자동 삭제, `-it`는 인터랙티브 터미널 연결입니다. 이 방식은 실험용이며, `exit`로 나오면 컨테이너와 내부에 설치한 모든 것이 사라집니다.
-
-### 지속 실행 (실전)
-
-작업이 유지되는 지속 컨테이너를 만듭니다. 이 방식으로 Claude Code를 설치하고 운영합니다.
-
-```bash
-# 컨테이너 생성 (백그라운드 실행)
-docker run -d --name claude-env \
-  -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
-  -v "$HOME/project":/workspace \
-  ubuntu:22.04 sleep infinity
-
-# 컨테이너 내부로 진입
-docker exec -it claude-env bash
-```
-
-각 옵션이 하는 일을 살펴봅니다.
-
-| 옵션 | 의미 |
-|------|------|
-| `-d` | 백그라운드(detached)로 실행 — 터미널을 점유하지 않음 |
-| `--name claude-env` | 컨테이너에 이름 부여 — 이후 `docker exec`로 재진입 가능 |
-| `-e ANTHROPIC_API_KEY=...` | 환경변수로 API 키 주입 — 컨테이너 인증의 핵심 |
-| `-v "$HOME/project":/workspace` | 호스트 폴더를 컨테이너 `/workspace`에 연결 |
-| `sleep infinity` | 컨테이너가 종료되지 않고 대기하도록 유지 |
-
-> **주의** **`-v` 없이 작업하면 파일을 잃습니다.** `-v` 볼륨 마운트 없이 컨테이너 안에서 파일을 만들면, `docker rm`으로 컨테이너를 삭제하는 순간 내부 파일이 전량 소실됩니다. 작업물은 반드시 `/workspace` (호스트 볼륨)에 저장하세요.
-
-> **`$HOME/project` 폴더가 없다면** 먼저 `mkdir -p ~/project`로 만들어 두세요. 마운트 대상 폴더가 없으면 Docker가 빈 디렉터리를 자동 생성하지만, 미리 만들어 두는 것이 안전합니다.
+앞 절(02-4)에서 Docker 개념을 익히고 `ubuntu:22.04` 컨테이너를 기동해 안으로 들어왔습니다. 이제 컨테이너 안에서 Node.js와 Claude Code를 설치하고, 인증·실행까지 마칩니다. 플랫폼별 Docker 준비(02-1~02-3)가 끝났다면, 이제부터는 **모든 플랫폼이 동일한 경로**를 걷습니다.
 
 <hr>
 
