@@ -14,7 +14,7 @@ TMUX(Terminal Multiplexer)는 한 터미널 창에서 여러 터미널을 동시
 
 ## 1단계: tmux 설치 (컨테이너 내부)
 
-컨테이너 안에서 apt로 설치합니다. ubuntu:22.04 기본 저장소에서 제공합니다.
+컨테이너 안에서 apt로 설치합니다. `ubuntu:22.04` 기본 저장소에서 제공합니다.
 
 ```bash
 # 컨테이너 내부 셸에서 실행
@@ -291,7 +291,7 @@ tmux send-keys -t team:0.1 "echo 'Pane 1 작동 중'" Enter
 tmux attach -t team
 ```
 
-> 접속 후 빠져나오려면 `Ctrl+B`를 누르고 손을 뗀 다음 `d`를 누르세요(detach). 실습 세션을 완전히 끄려면 `tmux kill-session -t practice`를 실행합니다.
+> 접속 후 빠져나오려면 `Ctrl+B`를 누르고 손을 뗀 다음 `d`를 누르세요(detach). 실습 세션을 완전히 끄려면 `tmux kill-session -t team`을 실행합니다.
 
 이 실습에서 핵심 패턴을 확인하세요. `new-session -d`로 백그라운드에서 세션을 만들고, `split-window`로 파인을 나누고, `send-keys`로 각 파인에 명령을 주입한 뒤, `attach`로 들어가서 결과를 확인합니다. 3장에서 6명의 에이전트 팀을 구성할 때도 이 흐름을 그대로 반복합니다.
 

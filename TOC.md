@@ -16,7 +16,7 @@
 * [02-3. macOS: 설치 가이드](pages/02-3-macos.md)
 * [02-4. Docker 이해와 컨테이너 기동](pages/02-4-docker-concept.md)
 * [02-5. 컨테이너에 Claude Code 설치·실행](pages/02-5-docker-setup.md)
-* [02-6. TMUX 기본 명령어 및 활용](pages/02-6-tmux-install.md)
+* [02-6. 컨테이너 내부 tmux 설치와 원격제어](pages/02-6-tmux-install.md)
 
 ---
 
