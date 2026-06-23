@@ -139,13 +139,7 @@ Claude Code 인증 방법은 두 가지입니다 — **`/login` 브라우저(OAu
 
 ### 방법 2. API 키 주입
 
-API 키는 컨테이너 기동 시 `-e` 옵션으로 주입합니다.
-
-```bash
-docker run -d --name claude-env \
-  -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
-  ...
-```
+API 키는 **컨테이너 기동 시 `-e` 옵션으로 주입**합니다. 02-4의 지속 실행에서 본 `docker run ... -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" ...`가 바로 그 방법입니다.
 
 컨테이너 내부에서 환경변수가 제대로 들어왔는지 확인합니다.
 
@@ -249,7 +243,7 @@ claude --model claude-haiku-4-5-20251001
 | API 키 | `-e ANTHROPIC_API_KEY=...` 환경변수 | 매번 재주입 필요 |
 | `/login` 로그인 정보 | `~/.claude`에 저장 | 소실 (볼륨 마운트 시 보존) |
 | tmux 세션 | 없음 (컨테이너 내부) | 소실 |
-| 설치 도구 | Dockerfile `RUN npm install -g ...` | 이미지에 포함 |
+| 설치 도구(Node·Claude Code) | 컨테이너 내부에 직접 설치 | 소실 — 영구 보존은 Dockerfile 이미지로 빌드(03-5) |
 
 <hr>
 
