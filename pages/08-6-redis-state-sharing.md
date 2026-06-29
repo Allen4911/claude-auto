@@ -18,6 +18,58 @@
 
 <hr>
 
+## Redis 설치와 기동
+
+이 절의 실습과 이후 시스템은 모두 Redis가 로컬에서 실행 중임을 전제로 한다. [08-4](08-4-conflict-prevention.md)에서 소개한 락·Pub/Sub 예시를 직접 따라하려면 아래 순서로 먼저 설치·기동해 두자.
+
+**Ubuntu / WSL2**
+
+```bash
+sudo apt update
+sudo apt install -y redis-server
+```
+
+**macOS (Homebrew)**
+
+```bash
+brew install redis
+```
+
+**Docker 옵션**
+
+```bash
+docker run -d --name redis -p 6379:6379 redis:7
+```
+
+> 💡 **Docker로 띄우면 버전 격리가 쉽다** 로컬에 직접 설치하기 싫거나 Redis 버전을 프로젝트마다 다르게 쓰고 싶다면 Docker 컨테이너가 편하다. Docker 기본 개념은 [02-4](02-4-docker-concept.md)를 참고하자.
+
+**기동**
+
+```bash
+# Ubuntu/WSL2: systemd 사용 시
+sudo systemctl start redis-server
+sudo systemctl enable redis-server   # 부팅 시 자동 시작
+
+# systemd 미사용(WSL2 등) 시 직접 기동
+redis-server --daemonize yes
+
+# macOS (Homebrew)
+brew services start redis
+```
+
+> 💡 **WSL2에서 systemd가 꺼져 있다면** `sudo systemctl start redis-server`가 실패할 수 있다. 그 경우 `redis-server --daemonize yes`로 직접 띄우면 된다.
+
+**검증**
+
+```bash
+redis-cli ping
+# → PONG 이 나오면 정상
+```
+
+PONG이 출력되면 설치·기동 성공이다. 이제 아래 Pub/Sub, 키 스키마, Streams 실습을 모두 따라가면 된다.
+
+<hr>
+
 ## Pub/Sub와 폴링 — 언제 무엇을 쓸까
 
 두 방식은 경쟁 관계가 아니라 서로 모자란 부분을 메워 준다.
@@ -41,7 +93,7 @@
 
 ### 따라하기: Pub/Sub 기본 동작 확인
 
-Redis가 설치되어 있다면 터미널 두 개를 열어 실습할 수 있습니다.
+위에서 설치한 Redis로 터미널 두 개를 열어 실습할 수 있습니다.
 
 ```bash
 # 터미널 1: 구독자 (태양 역할)
