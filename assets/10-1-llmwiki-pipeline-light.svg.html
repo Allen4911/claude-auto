@@ -1,0 +1,106 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{margin:0;background:#ffffff;font-family:'Noto Sans CJK KR','Apple SD Gothic Neo',DejaVu Sans,system-ui,sans-serif}</style></head><body>
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="320" viewBox="0 0 860 320">
+  <rect width="860" height="320" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="430" y="34" fill="#1d1d1f" font-size="17" font-weight="bold" text-anchor="middle">Inbox → Knowledge → Memory 파이프라인</text>
+  <line x1="100" y1="44" x2="760" y2="44" stroke="#d2d2d7" stroke-width="1"/>
+
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7" fill="none" stroke="#0066cc" stroke-width="1.5"/>
+    </marker>
+    <marker id="arg" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7" fill="none" stroke="#34c759" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- Phase labels -->
+  <text x="90"  y="66" fill="#6e6e73" font-size="10" text-anchor="middle" font-style="italic">입력</text>
+  <text x="218" y="66" fill="#6e6e73" font-size="10" text-anchor="middle" font-style="italic">감지</text>
+  <text x="346" y="66" fill="#6e6e73" font-size="10" text-anchor="middle" font-style="italic">추출</text>
+  <text x="474" y="66" fill="#6e6e73" font-size="10" text-anchor="middle" font-style="italic">생성</text>
+  <text x="602" y="66" fill="#6e6e73" font-size="10" text-anchor="middle" font-style="italic">분류</text>
+  <text x="730" y="66" fill="#6e6e73" font-size="10" text-anchor="middle" font-style="italic">저장</text>
+
+  <!-- ── 팀원 작업 ── -->
+  <rect x="30" y="78" width="120" height="80" rx="10" fill="#f0f6ff" stroke="#0066cc" stroke-width="1.8"/>
+  <text x="90" y="104" fill="#0066cc" font-size="12" font-weight="bold" text-anchor="middle">팀원 작업</text>
+  <text x="90" y="122" fill="#6e6e73" font-size="10" text-anchor="middle">조사 결과</text>
+  <text x="90" y="137" fill="#6e6e73" font-size="10" text-anchor="middle">설계 결정</text>
+  <text x="90" y="152" fill="#6e6e73" font-size="10" text-anchor="middle">리뷰 지적</text>
+
+  <!-- arrow -->
+  <line x1="150" y1="118" x2="163" y2="118" stroke="#0066cc" stroke-width="1.8" marker-end="url(#ar)"/>
+
+  <!-- ── inbox/ ── -->
+  <rect x="163" y="78" width="110" height="80" rx="10" fill="#f0fff4" stroke="#34c759" stroke-width="1.8"/>
+  <text x="218" y="101" fill="#1a7a3a" font-size="12" font-weight="bold" text-anchor="middle">inbox/</text>
+  <text x="218" y="118" fill="#6e6e73" font-size="10" text-anchor="middle">폴링 감시</text>
+  <text x="218" y="133" fill="#34c759" font-size="10" font-weight="bold" text-anchor="middle">10초마다</text>
+  <text x="218" y="150" fill="#6e6e73" font-size="9.5" text-anchor="middle">inbox-watch.sh</text>
+
+  <!-- arrow -->
+  <line x1="273" y1="118" x2="286" y2="118" stroke="#34c759" stroke-width="1.8" marker-end="url(#arg)"/>
+
+  <!-- ── Researcher ── -->
+  <rect x="286" y="78" width="120" height="80" rx="10" fill="#f0fff4" stroke="#34c759" stroke-width="1.8"/>
+  <text x="346" y="101" fill="#1a7a3a" font-size="12" font-weight="bold" text-anchor="middle">Researcher</text>
+  <text x="346" y="118" fill="#6e6e73" font-size="10" text-anchor="middle">개념 추출</text>
+  <text x="346" y="133" fill="#6e6e73" font-size="10" text-anchor="middle">기존 노트 검색</text>
+  <text x="346" y="150" fill="#6e6e73" font-size="9.5" text-anchor="middle">중복 방지</text>
+
+  <!-- arrow -->
+  <line x1="406" y1="118" x2="419" y2="118" stroke="#34c759" stroke-width="1.8" marker-end="url(#arg)"/>
+
+  <!-- ── Writer ── -->
+  <rect x="419" y="78" width="110" height="80" rx="10" fill="#f0fff4" stroke="#34c759" stroke-width="1.8"/>
+  <text x="474" y="101" fill="#1a7a3a" font-size="12" font-weight="bold" text-anchor="middle">Writer</text>
+  <text x="474" y="118" fill="#6e6e73" font-size="10" text-anchor="middle">Atomic Note 생성</text>
+  <text x="474" y="133" fill="#6e6e73" font-size="10" text-anchor="middle">YAML Frontmatter</text>
+  <text x="474" y="150" fill="#6e6e73" font-size="9.5" text-anchor="middle">[[링크]] 연결</text>
+
+  <!-- arrow -->
+  <line x1="529" y1="118" x2="542" y2="118" stroke="#34c759" stroke-width="1.8" marker-end="url(#arg)"/>
+
+  <!-- ── Organizer ── -->
+  <rect x="542" y="78" width="120" height="80" rx="10" fill="#f0fff4" stroke="#34c759" stroke-width="1.8"/>
+  <text x="602" y="101" fill="#1a7a3a" font-size="12" font-weight="bold" text-anchor="middle">Organizer</text>
+  <text x="602" y="118" fill="#6e6e73" font-size="10" text-anchor="middle">카테고리 분류</text>
+  <text x="602" y="133" fill="#6e6e73" font-size="10" text-anchor="middle">중복 감지</text>
+  <text x="602" y="150" fill="#6e6e73" font-size="9.5" text-anchor="middle">concepts/ 배치</text>
+
+  <!-- arrow -->
+  <line x1="662" y1="118" x2="675" y2="118" stroke="#34c759" stroke-width="1.8" marker-end="url(#arg)"/>
+
+  <!-- ── Memory Manager ── -->
+  <rect x="675" y="78" width="150" height="80" rx="10" fill="#f0fff4" stroke="#34c759" stroke-width="1.8"/>
+  <text x="750" y="101" fill="#1a7a3a" font-size="12" font-weight="bold" text-anchor="middle">Memory Manager</text>
+  <text x="750" y="118" fill="#6e6e73" font-size="10" text-anchor="middle">INDEX.md 갱신</text>
+  <text x="750" y="133" fill="#6e6e73" font-size="10" text-anchor="middle">importance 재계산</text>
+  <text x="750" y="150" fill="#6e6e73" font-size="9.5" text-anchor="middle">git commit</text>
+
+  <!-- ── 결과: LLMWiki ── (below, centered) -->
+  <line x1="430" y1="175" x2="430" y2="208" stroke="#ff9500" stroke-width="2" marker-end="url(#ar)" stroke-dasharray="6,3"/>
+
+  <!-- Result box -->
+  <rect x="180" y="210" width="500" height="88" rx="12" fill="#fff8f0" stroke="#ff9500" stroke-width="2"/>
+  <text x="430" y="234" fill="#b35a00" font-size="13" font-weight="bold" text-anchor="middle">LLMWiki 저장소 — 팀의 외부 장기기억</text>
+
+  <!-- Three output boxes -->
+  <rect x="200" y="244" width="138" height="44" rx="8" fill="#ffffff" stroke="#ff9500" stroke-width="1.2"/>
+  <text x="269" y="262" fill="#b35a00" font-size="11" font-weight="bold" text-anchor="middle">Knowledge</text>
+  <text x="269" y="278" fill="#6e6e73" font-size="9.5" text-anchor="middle">concepts/ · research/</text>
+
+  <rect x="360" y="244" width="140" height="44" rx="8" fill="#ffffff" stroke="#ff9500" stroke-width="1.2"/>
+  <text x="430" y="262" fill="#b35a00" font-size="11" font-weight="bold" text-anchor="middle">Memory</text>
+  <text x="430" y="278" fill="#6e6e73" font-size="9.5" text-anchor="middle">memory/ · INDEX.md</text>
+
+  <rect x="522" y="244" width="138" height="44" rx="8" fill="#ffffff" stroke="#ff9500" stroke-width="1.2"/>
+  <text x="591" y="262" fill="#b35a00" font-size="11" font-weight="bold" text-anchor="middle">Projects</text>
+  <text x="591" y="278" fill="#6e6e73" font-size="9.5" text-anchor="middle">projects/ · people/</text>
+
+  <!-- Bottom note -->
+  <text x="430" y="312" fill="#6e6e73" font-size="10" text-anchor="middle">팀원은 inbox에 파일을 넣기만 하면 된다 — 지식 관리는 파이프라인이 자동으로 처리한다</text>
+</svg>
+</body></html>
