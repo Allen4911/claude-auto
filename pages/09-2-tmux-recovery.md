@@ -23,7 +23,7 @@ TMUX 기반 팀 환경을 운용하다 보면 세션이 끊기거나, 파인이 
 
 위험도별로 복구 난이도가 다르다. **낮음**은 재연결만 하면 되고, **중간**은 해당 파인만 재시작하면 되며, **높음**은 셋업 스크립트로 전체를 처음부터 다시 구성해야 한다.
 
-![TMUX 복구 상황 분류 트리 — SSH 연결 끊김(낮은 위험) / Claude만 종료(중간 위험) / TMUX 전체 소실(높은 위험) 분류](../assets/09-2-tmux-recovery-situation-tree.png)
+![TMUX 복구 상황 분류 트리 — 문제 발생에서 SSH 연결 끊김(낮은 위험)/Claude만 종료(중간 위험)/TMUX 서버 크래시(높은 위험)/시스템 재부팅(높은 위험) 4가지로 분기, 각 분기에 복구 명령(tmux attach·claude 재실행·setup-team.sh)](../assets/09-2-tmux-recovery-situation-tree.png)
 
 <hr>
 

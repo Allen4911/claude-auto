@@ -29,8 +29,6 @@ Claude Code에서 토큰이 소비되는 주요 경로를 이해해야 최적화
   └── 사고 과정 (thinking)
 ```
 
-![CLAUDE.md 최적화 전후 토큰 소비 구조 비교](../assets/09-3-token-optimization-claudemd-compare.png)
-
 여기서 제일 무거운 건 **도구 결과**와 **대화 히스토리**다. 이 둘만 줄여도 전체 토큰 소비의 60~70%를 절감할 수 있다.
 
 결국 시스템 프롬프트, 대화 히스토리, 도구 결과, 컨텍스트 파일 이 네 갈래가 최적화의 급소다.
@@ -321,7 +319,7 @@ for i in 0 1 2 3 4 5; do
 done
 ```
 
-![팀 환경 토큰 절약 3가지 축 — 필요한 파인만 활성화, 역할별 최소 CLAUDE.md, 세션 주기적 분리](../assets/09-3-token-optimization-team-saving-axes.png)
+![팀 환경 토큰 절약 3가지 축 — ①필요한 파인만 활성화(최대 6배 절약), ②역할별 최소 CLAUDE.md, ③RTK 전 파인 적용(~63% 자동 절약), 3가지 중첩 적용 시 전체 토큰 소비 대폭 감소](../assets/09-3-token-optimization-team-saving-axes.png)
 
 <hr>
 
