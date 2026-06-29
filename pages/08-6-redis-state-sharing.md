@@ -1,4 +1,4 @@
-## 08-5. Redis 에이전트 상태공유
+## 08-6. Redis 에이전트 상태공유
 
 ## 이 절에서 배우는 것
 
@@ -81,7 +81,7 @@ agent:{이름}:task         # 현재 작업 한 줄 설명
 ```bash
 # 서연이 작업 시작 시
 redis-cli SET agent:서연:status "working"
-redis-cli SET agent:서연:task "08-5 페이지 작성"
+redis-cli SET agent:서연:task "08-6 페이지 작성"
 redis-cli SET agent:서연:context_pct 42
 
 # 하트비트 갱신 (15초마다)
@@ -101,11 +101,11 @@ lock:phase:{번호}   # Phase 단위 작업 점유 (담당자명)
 
 ```bash
 # 서연이 파일 편집 전 락 획득
-redis-cli SET lock:file:pages/08-5-redis-state-sharing.md "서연" EX 3600 NX
+redis-cli SET lock:file:pages/08-6-redis-state-sharing.md "서연" EX 3600 NX
 # NX: 이미 락이 있으면 실패 → 충돌 방지
 
 # 락 획득 성공 여부 확인
-RESULT=$(redis-cli SET lock:file:pages/08-5.md "서연" EX 3600 NX)
+RESULT=$(redis-cli SET lock:file:pages/08-6.md "서연" EX 3600 NX)
 if [ "$RESULT" = "OK" ]; then
   echo "락 획득 성공 — 편집 시작"
 else
@@ -144,7 +144,7 @@ queue:review   # 리뷰 대기 목록 (LPUSH로 추가, RPOP으로 꺼냄)
 
 ```bash
 # 서연이 리뷰 요청 추가
-redis-cli LPUSH queue:review "pages/08-5-redis-state-sharing.md"
+redis-cli LPUSH queue:review "pages/08-6-redis-state-sharing.md"
 
 # 태양이 다음 리뷰 대상 꺼내기
 redis-cli RPOP queue:review
@@ -279,7 +279,7 @@ redis-cli XREVRANGE stream:team:events + - COUNT 5
 # ── 서연: 작업 완료 처리 ──────────────────────────────
 
 # 1. 파일 락 해제
-redis-cli DEL lock:file:pages/08-5-redis-state-sharing.md
+redis-cli DEL lock:file:pages/08-6-redis-state-sharing.md
 
 # 2. 에이전트 상태 업데이트
 redis-cli SET agent:서연:status "idle"
@@ -289,11 +289,11 @@ redis-cli SET agent:서연:task   "대기 중"
 redis-cli SET team:phase:8:status "review"
 
 # 4. 리뷰 큐에 추가
-redis-cli LPUSH queue:review "pages/08-5-redis-state-sharing.md"
+redis-cli LPUSH queue:review "pages/08-6-redis-state-sharing.md"
 
 # 5. Streams에 이벤트 기록 + Pub/Sub 동시 발행
-redis-cli XADD stream:team:events '*' type "review_requested" file "pages/08-5-redis-state-sharing.md" from "서연"
-redis-cli PUBLISH channel:agent:태양 "리뷰 요청: pages/08-5-redis-state-sharing.md"
+redis-cli XADD stream:team:events '*' type "review_requested" file "pages/08-6-redis-state-sharing.md" from "서연"
+redis-cli PUBLISH channel:agent:태양 "리뷰 요청: pages/08-6-redis-state-sharing.md"
 
 
 # ── 태양: 리뷰 수신 ──────────────────────────────────
