@@ -27,7 +27,7 @@
 
 현재의 텍스트 전달 방식은 충분히 작동하지만 한계도 있다. 팀원이 메시지를 "읽고 이해"해야 하고, 오해가 생기면 재지시가 필요하다. 구조화된 프로토콜이 표준화되면 팀장이 작업 객체를 전달하고 팀원이 결과 객체를 반환하는 방식으로 자동화 수준이 높아진다.
 
-![현재 vs 미래 에이전트 통신 방식 비교 — 현재 tmux send-keys 단방향 텍스트 vs 미래 양방향 구조화 메시지 통신](../assets/10-1-future-agent-communication.png)
+![현재 vs 미래 에이전트 통신 방식 비교 — 현재 tmux send-keys 단방향 텍스트 vs 미래 양방향 구조화 메시지 통신](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-1-future-agent-communication.png)
 
 ### MCP (Model Context Protocol) 확장
 
@@ -45,7 +45,7 @@ MCP는 Claude Code를 외부 도구·데이터와 잇는 표준 규격이다. Cl
 
 MCP 생태계는 이미 빠르게 성장 중이다. 지금도 GitHub, Slack, 데이터베이스 등 여러 MCP 서버가 공개되어 있다. 역할별 전문 MCP 서버에 더해 Slack·Discord 같은 공통 채널을 전 역할이 공유하고, 앞으로 MCP 레지스트리 표준화, 클라우드 원격 MCP, 에이전트 간 컨텍스트 공유로 확장될 전망이다. 에이전트 각자가 전문 MCP 서버를 장착하면, 에이전트 한 명이 사람 한 명의 도구 사용 범위에 가까워진다.
 
-![MCP 생태계 아키텍처 계층형 다이어그램 — Claude Code → 내장 MCP 클라이언트 → 역할별 MCP 서버(PM·Jira, 개발·GitHub, QA·Playwright, 배포·Docker, 리뷰·Notion) → 외부 도구. 하단에 공통 채널 Slack·Discord와 미래 확장 방향(MCP 레지스트리·클라우드 원격 MCP·에이전트 간 공유)](../assets/10-1-future-mcp-ecosystem.png)
+![MCP 생태계 아키텍처 계층형 다이어그램 — Claude Code → 내장 MCP 클라이언트 → 역할별 MCP 서버(PM·Jira, 개발·GitHub, QA·Playwright, 배포·Docker, 리뷰·Notion) → 외부 도구. 하단에 공통 채널 Slack·Discord와 미래 확장 방향(MCP 레지스트리·클라우드 원격 MCP·에이전트 간 공유)](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-1-future-mcp-ecosystem.png)
 
 ### Headless 모드 고도화
 
@@ -63,7 +63,7 @@ Claude Code의 비대화형 실행(`-p` 플래그, Stream JSON)이 더 성숙해
 
 지금도 5장에서 다룬 Stream JSON(`--output-format stream-json`)이나 단일 JSON(`--output-format json`)으로 이 파이프라인의 기초를 구현할 수 있다. Headless 모드가 고도화될수록 더 복잡한 워크플로우를 스크립트 없이 Claude 자체가 처리하게 된다.
 
-![Headless CI/CD 통합 파이프라인 — PR 생성 → CI 트리거 → Claude Code 자동 실행 → 결과 보고 → 머지 및 배포 5단계](../assets/10-1-future-headless-cicd.png)
+![Headless CI/CD 통합 파이프라인 — PR 생성 → CI 트리거 → Claude Code 자동 실행 → 결과 보고 → 머지 및 배포 5단계](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-1-future-headless-cicd.png)
 
 <hr>
 
@@ -96,7 +96,7 @@ Claude Code의 비대화형 실행(`-p` 플래그, Stream JSON)이 더 성숙해
 
 지금 TMUX로 에이전트를 구성해 본 경험은 미래의 프레임워크를 처음 마주했을 때 "이 설정이 파인 역할이구나", "이 큐가 send-keys 역할이구나"라고 즉각 매핑할 수 있는 직관을 준다. 낯선 도구도 이미 아는 개념으로 빠르게 이해된다.
 
-![현재 도구 → 미래 프레임워크 대응 매핑 — TMUX 파인/CLAUDE.md/send-keys/Bot Mode → Agent SDK/시스템 프롬프트/Tool Call/Headless CI](../assets/10-1-future-tool-framework-mapping.png)
+![현재 도구 → 미래 프레임워크 대응 매핑 — TMUX 파인/CLAUDE.md/send-keys/Bot Mode → Agent SDK/시스템 프롬프트/Tool Call/Headless CI](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-1-future-tool-framework-mapping.png)
 
 <hr>
 
@@ -125,7 +125,7 @@ PM (태블릿) ──→ 작업 할당·진행 확인
 
 > 💡 음성 제어가 가능해지면 "지하철에서 이어폰으로 팀에게 지시를 내리고, 목적지에 도착하면 결과를 확인하는" 방식이 현실이 된다. 지금도 모바일 앱으로 텍스트 지시는 가능하다 — 음성은 그 다음 단계다.
 
-![멀티 디바이스 협업 미래 시나리오 — 팀 세션 서버 중심으로 PM(태블릿), 개발자(데스크톱), 리뷰어(노트북), 경영진(모바일) 연결](../assets/10-1-future-multi-device.png)
+![멀티 디바이스 협업 미래 시나리오 — 팀 세션 서버 중심으로 PM(태블릿), 개발자(데스크톱), 리뷰어(노트북), 경영진(모바일) 연결](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-1-future-multi-device.png)
 
 <hr>
 
