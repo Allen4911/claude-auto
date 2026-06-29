@@ -71,7 +71,9 @@
 * [08-2. GitHub Actions 기반 자동화](pages/08-2-github-actions.md)
 * [08-3. 컨텍스트 관리 기법](pages/08-3-context-management.md)
 * [08-4. 멀티에이전트 충돌 방지](pages/08-4-conflict-prevention.md)
-* [08-5. Redis 에이전트 상태공유](pages/08-5-redis-state-sharing.md)
+* [08-5. Redis의 필요성](pages/08-5-redis-why.md)
+* [08-6. Redis 에이전트 상태공유](pages/08-6-redis-state-sharing.md)
+* [08-7. 실전 충돌 사례와 해결](pages/08-7-conflict-cases.md)
 
 ---
 
@@ -85,6 +87,5 @@
 
 ## 10장. 마치며
 * [10-1. 앞으로의 발전 방향](pages/10-1-future.md)
-* [10-2. 커뮤니티 참여](pages/10-2-community.md)
 
 ---
