@@ -55,6 +55,7 @@
 * [06-3. gsd — Get Shit Done 프로젝트 관리](pages/06-3-gsd.md)
 * [06-4. RTK — Rust Token Killer 토큰 최적화](pages/06-4-rtk.md)
 * [06-5. MCP 연동 및 외부 도구 연결](pages/06-5-mcp.md)
+* [06-6. 멀티에이전트에 유용한 추가 MCP 도구](pages/06-6-multiagent-mcp.md)
 
 ---
 
