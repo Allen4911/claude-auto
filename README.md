@@ -1,6 +1,6 @@
 # 클로드 코드(Claude Code) 멀티에이전트 팀 자동화 완성 가이드
 
-> **키워드**: Claude Code 멀티에이전트, AI 팀 자동화, TMUX 멀티에이전트, Claude Code Remote Control, AI 에이전트 팀 구성, 1인 개발 AI 팀, AI 개발 생산성, Claude Code WSL2, 스마트폰 AI 원격 제어
+> **키워드**: Claude Code 멀티에이전트, AI 팀 자동화, TMUX 멀티에이전트, Claude Code Remote Control, AI 에이전트 팀 구성, 1인 개발 AI 팀, AI 개발 생산성, Claude Code WSL2, 스마트폰 AI 원격 제어, MCP 서버 연동, Redis 상태 공유, GitHub Actions 자동화, LLMWiki 기억하는 AI 팀
 
 ---
 
@@ -10,7 +10,7 @@
 - **Claude Code 입문자** — 단순 질답을 넘어 AI를 팀으로 운용하고 싶은 분
 - **생산성 자동화에 관심 있는 개발자** — AI 에이전트로 반복 작업을 없애고 싶은 분
 - **원격 근무자·이동이 많은 개발자** — 스마트폰으로 AI 팀을 지휘하고 싶은 분
-- **AI 자동화 파이프라인 구축에 관심 있는 분** — GitHub Actions, MCP 등 외부 도구와 AI를 연결하고 싶은 분
+- **AI 자동화 파이프라인 구축에 관심 있는 분** — GitHub Actions, MCP, Redis 같은 외부 도구와 AI를 연결하고 싶은 분
 
 > **사전 지식**: 터미널 기본 명령어(ls, cd, mkdir) 수준이면 충분합니다. Ubuntu·Linux 경험이 없어도 WSL2 설치부터 차근차근 안내합니다.
 
@@ -70,37 +70,37 @@
 
 ## 책 구성 (Claude Code 멀티에이전트 완전 정복 로드맵)
 
-각 장은 이전 장 위에 쌓이는 구조입니다. 2장에서 기반을 만들고, 3~5장에서 AI 팀을 구성하고, 6~8장에서 실전 자동화 수준으로 끌어올립니다.
+각 장은 이전 장 위에 쌓이는 구조입니다. 2장에서 기반을 만들고, 3~5장에서 AI 팀을 구성하고, 6~8장에서 실전 자동화 수준으로 끌어올립니다. 전체 10장, 50개 절로 구성됩니다.
 
 **1장. 들어가며**
-왜 AI를 혼자 쓰면 안 되는지, 멀티에이전트 팀이 왜 필요한지 설명합니다. 전체 아키텍처를 미리 보고 이 책이 어디를 향하는지 파악합니다.
+왜 AI를 혼자 쓰면 안 되는지, 멀티에이전트 팀이 왜 필요한지 설명합니다. 전체 아키텍처를 미리 보고, 기억을 공유하는 AI 팀(LLMWiki)이라는 이 책의 지향점을 파악합니다.
 
-**2장. Ubuntu 환경에서 Claude & TMUX 설치**
-WSL2 또는 네이티브 Ubuntu 환경에 Claude Code와 TMUX를 설치합니다. AI 팀을 올릴 기반 환경을 만듭니다.
+**2장. 개발 환경 구축 — Claude, TMUX, Git**
+WSL2·Ubuntu·macOS에 Claude Code와 TMUX를 설치하고, Docker 기본 개념까지 잡습니다. 마지막으로 Git 설치와 GitHub 연동·협업 사용법을 더해, AI 팀이 버전 관리까지 다루는 기반 환경을 만듭니다.
 
 **3장. Claude Code와 TMUX로 멀티에이전트 구성**
 TMUX 화면을 6칸으로 나누고 각 칸에 Claude Code를 실행합니다. CLAUDE.md로 팀원별 역할을 정의하고, 셋업 스크립트로 원클릭 팀 환경을 구성합니다.
 
 **4장. Claude Code Remote-Control 기능 설정 및 사용**
-Remote-Control을 활성화해 외부에서 로컬 Claude Code 세션에 접근하는 방법을 설정합니다. 서버 모드, 보안 설정, 세션 이름 관리를 살펴봅니다.
+Remote-Control을 활성화해 외부에서 로컬 Claude Code 세션에 접근하는 방법을 설정합니다. 서버 모드, 세션 이름 관리, stream-json, 보안 설정을 살펴봅니다.
 
 **5장. 휴대폰 Claude 앱에서 Remote-Control 사용**
-스마트폰 Claude 앱으로 PC의 AI 팀에 접속합니다. QR 코드 연결, 도구 승인, 푸시 알림으로 작업 완료를 확인합니다.
+스마트폰 Claude 앱으로 PC의 AI 팀에 접속합니다. QR 코드 연결, 세션 목록 확인, 도구 승인, 푸시 알림으로 작업 완료를 확인합니다.
 
 **6장. 핵심 도구 설치 및 활용**
-gstack, superpowers, gsd, RTK, MCP를 설치하고 활용합니다. 각 도구가 AI 팀 자동화에서 어떤 역할을 하는지 실전 예시로 설명합니다.
+gstack, superpowers, gsd, RTK를 설치하고 활용합니다. 이어 MCP(Model Context Protocol)로 AI에 외부 도구를 연결하고, 멀티에이전트 환경에서 특히 유용한 MCP 도구(Memory·Sequential Thinking·Playwright·Context7 등)를 별도로 정리합니다.
 
 **7장. 실전 팀 에이전트 운용**
-팀 지시 흐름 설계, Bot Mode 활용, 업무 분담 전략을 다룹니다. gstack + GSD + Superpowers를 조합한 Triple Crown 전략으로 팀 자동화 워크플로우를 완성합니다.
+팀 지시 흐름 설계, Bot Mode 활용, 업무 분담 전략을 다룹니다. gstack + GSD + Superpowers를 조합한 Triple Crown 전략과 실전 워크플로우 예시로 팀 자동화를 완성합니다.
 
 **8장. 고급 운용 기법**
-실제 멀티에이전트 운영 사례, GitHub Actions 자동화, 컨텍스트 관리, 멀티에이전트 충돌 방지를 다룹니다. 이 책에서 가장 실전적인 장입니다.
+실제 멀티에이전트 운영 사례, GitHub Actions 자동화, 컨텍스트 관리, 충돌 방지를 다룹니다. 나아가 Redis로 팀원 간 상태를 공유하는 이유와 구현, 실제 충돌 사례까지 담은 이 책에서 가장 실전적인 장입니다.
 
 **9장. 운영 및 문제 해결**
-Remote-Control 인증 오류, TMUX 세션 복구, 토큰 최적화 심화를 다룹니다. 실제 운영 중 마주치는 문제를 해결합니다.
+Remote-Control 인증 오류, TMUX 세션 복구, 토큰 최적화 심화, 자동 복구를 다룹니다. 실제 운영 중 마주치는 문제를 해결합니다.
 
 **10장. 마치며**
-AI 에이전트 기술의 발전 방향을 전망하고, 커뮤니티 참여 방법을 안내합니다.
+옵시디언 기반 LLMWiki로 팀이 기억을 쌓아가는 방향을 소개하고, AI 에이전트 기술의 발전 방향을 전망합니다.
 
 ---
 
@@ -109,7 +109,8 @@ AI 에이전트 기술의 발전 방향을 전망하고, 커뮤니티 참여 방
 **기술적으로 갖추게 되는 것**
 - Ubuntu + TMUX + Claude Code로 구성된 6인 AI 멀티에이전트 팀 환경
 - 스마트폰에서 언제든 접속할 수 있는 AI Remote-Control 원격 제어 시스템
-- gstack · superpowers · gsd를 조합한 Triple Crown AI 자동화 워크플로우
+- gstack · superpowers · gsd · RTK · MCP를 조합한 AI 자동화 워크플로우
+- GitHub Actions·Redis로 확장한 팀 협업·상태 공유 파이프라인
 
 **AI 개발 생산성이 바뀌는 것**
 - AI에게 묻는 대신 AI 팀을 지휘하는 체계로
@@ -117,4 +118,4 @@ AI 에이전트 기술의 발전 방향을 전망하고, 커뮤니티 참여 방
 - 1인 개발자도 기획·개발·리뷰를 AI 에이전트 팀에 분담하는 체계
 
 **이 책이 진짜 가르치는 것**
-도구는 계속 바뀝니다. TMUX 대신 다른 것이 나올 수 있고, Claude 다음에 더 좋은 AI가 나올 수 있습니다. 역할 분리, 멀티에이전트 병렬 실행, AI 원격 제어, 컨텍스트 유지라는 개념은 도구가 바뀌어도 남습니다. 이 책은 그 개념을 가장 현실적인 Claude Code 도구로 직접 구현해보는 과정입니다.
+도구는 계속 바뀝니다. TMUX 대신 다른 것이 나올 수 있고, Claude 다음에 더 좋은 AI가 나올 수 있습니다. 역할 분리, 멀티에이전트 병렬 실행, AI 원격 제어, 컨텍스트 유지, 기억 공유라는 개념은 도구가 바뀌어도 남습니다. 이 책은 그 개념을 가장 현실적인 Claude Code 도구로 직접 구현해보는 과정입니다.
