@@ -149,7 +149,7 @@ gstack (전략·검증)  →  GSD (구조·실행)  →  Superpowers (품질·�
  "무엇을 왜"          "어떤 순서로"         "어떻게 잘"
 ```
 
-이 세 도구를 파이프라인으로 연결하는 것이 Triple Crown 전략입니다. 구체적인 5단계 사이클, 팀 환경 배분 방법, 실전 예시는 [7-4. Triple Crown 전략](07-4-triple-crown.md)에서 자세히 다룹니다.
+이 세 도구를 파이프라인으로 연결하는 것이 Triple Crown 전략입니다. 구체적인 5단계 사이클, 팀 환경 배분 방법, 실전 예시는 [8-4. Triple Crown 전략](08-4-triple-crown.md)에서 자세히 다룹니다.
 
 <hr>
 

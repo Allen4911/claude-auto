@@ -243,7 +243,7 @@ claude --model claude-haiku-4-5-20251001
 | API 키 | `-e ANTHROPIC_API_KEY=...` 환경변수 | 매번 재주입 필요 |
 | `/login` 로그인 정보 | `~/.claude`에 저장 | 소실 (볼륨 마운트 시 보존) |
 | tmux 세션 | 없음 (컨테이너 내부) | 소실 |
-| 설치 도구(Node·Claude Code) | 컨테이너 내부에 직접 설치 | 소실 — 영구 보존은 Dockerfile 이미지로 빌드(03-5) |
+| 설치 도구(Node·Claude Code) | 컨테이너 내부에 직접 설치 | 소실 — 영구 보존은 Dockerfile 이미지로 빌드(04-5) |
 
 <hr>
 
