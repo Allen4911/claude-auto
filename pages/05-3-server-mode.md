@@ -145,7 +145,7 @@ claude remote-control --spawn session
 claude remote-control --spawn session --name "쭌의 작업"
 ```
 
-![Spawn 모드 3가지 비교](../assets/04-3-server-mode-spawn-modes.png)
+![Spawn 모드 3가지 비교](../assets/05-3-server-mode-spawn-modes.png)
 
 ### Spawn 모드 선택 가이드
 

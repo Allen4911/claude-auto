@@ -231,7 +231,7 @@ cat main.py | \
     jq -r '.result'
 ```
 
-![파이프라인 데이터 흐름](../assets/04-5-stream-json-pipeline.png)
+![파이프라인 데이터 흐름](../assets/05-5-stream-json-pipeline.png)
 
 > 💡 **파이프(`|`)와 `jq`란?** `|`는 앞 명령의 출력을 다음 명령의 입력으로 넘기는 연결 장치입니다. `jq`는 JSON에서 원하는 값만 골라내는 도구로, 여기서는 Claude의 JSON 응답에서 `.result`(실제 답변)만 추출합니다.
 

@@ -36,7 +36,7 @@ Claude Code는 시작 시 다음 순서로 `CLAUDE.md`를 탐색하고 모두 �
 
 멀티에이전트 팀에서는 전역 `~/.claude/CLAUDE.md`에 **팀 공통 설정**과 **역할 라우팅 규칙**을 정의합니다.
 
-![CLAUDE.md 로딩 우선순위 3계층](../assets/03-4-claude-md-roles-load-priority.png)
+![CLAUDE.md 로딩 우선순위 3계층](../assets/04-4-claude-md-roles-load-priority.png)
 
 > 💡 세 위치의 파일은 하나만 골라 쓰는 게 아니라 **모두 합쳐서** 적용됩니다. 그래서 공통 규칙은 전역에, 프로젝트별 규칙은 프로젝트 파일에 나눠 두면 됩니다.
 
@@ -227,7 +227,7 @@ tmux send-keys -t team:0.1 "민준, [파일명] 리뷰 완료: [핵심 소견]" 
 
 이 기능을 활용하면 공통 설정과 역할별 설정을 파일로 분리해 관리할 수 있습니다.
 
-![CLAUDE.md 파일 분리·참조 구조도](../assets/03-4-claude-md-roles-file-structure.png)
+![CLAUDE.md 파일 분리·참조 구조도](../assets/04-4-claude-md-roles-file-structure.png)
 
 ```bash
 # 파일 구조 예시

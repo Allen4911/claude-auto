@@ -90,7 +90,7 @@ React 19 + TS, Express, PostgreSQL, Jest
 
 > 💡 **CLAUDE.md에 넣을 것 vs 빼야 할 것** 넣어야 할 것: 팀 규칙("PR에 반드시 테스트 포함"), 비표준 경로("로그는 /var/log/app에만"), 주의사항("X 함수는 스레드 불안전"). 빼야 할 것: 스택 목록(package.json에 있음), 일반 설명(Claude가 코드를 보면 알 수 있음), 주석으로 설명된 내용.
 
-![CLAUDE.md 최적화 before/after 비교 — 50줄 긴 설명(매 요청 토큰 소비) vs 핵심만 담은 최적화 버전](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/09-3-token-optimization-claudemd-compare.png)
+![CLAUDE.md 최적화 before/after 비교 — 50줄 긴 설명(매 요청 토큰 소비) vs 핵심만 담은 최적화 버전](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-3-token-optimization-claudemd-compare.png)
 
 <hr>
 
@@ -252,7 +252,7 @@ CLAUDE.md를 자주 수정하면 캐시가 무효화되어 비용이 증가합�
 | 같은 세션에서 반복 요청 | 캐시 적중률 상승 |
 | `/clear` 후 새 작업 | 캐시 새로 시작 (첫 요청만 비용 full) |
 
-![프롬프트 캐시 동작 원리 — 첫 요청 100% 비용, 캐시 저장(5분 TTL), 두 번째 요청 캐시 적중 시 10% 비용만 청구](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/09-3-token-optimization-cache-principle.png)
+![프롬프트 캐시 동작 원리 — 첫 요청 100% 비용, 캐시 저장(5분 TTL), 두 번째 요청 캐시 적중 시 10% 비용만 청구](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-3-token-optimization-cache-principle.png)
 
 <hr>
 
@@ -319,7 +319,7 @@ for i in 0 1 2 3 4 5; do
 done
 ```
 
-![팀 환경 토큰 절약 3가지 축 — ①필요한 파인만 활성화(최대 6배 절약), ②역할별 최소 CLAUDE.md, ③RTK 전 파인 적용(~63% 자동 절약), 3가지 중첩 적용 시 전체 토큰 소비 대폭 감소](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/09-3-token-optimization-team-saving-axes.png)
+![팀 환경 토큰 절약 3가지 축 — ①필요한 파인만 활성화(최대 6배 절약), ②역할별 최소 CLAUDE.md, ③RTK 전 파인 적용(~63% 자동 절약), 3가지 중첩 적용 시 전체 토큰 소비 대폭 감소](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-3-token-optimization-team-saving-axes.png)
 
 <hr>
 

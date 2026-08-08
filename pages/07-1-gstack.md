@@ -14,7 +14,7 @@ gstack은 세 가지 철학 위에 서 있습니다.
 - **자동화된 계획 수립**: 복잡한 작업을 단계별로 쪼개고 각 단계마다 검증을 거칩니다.
 - **그라운딩(Grounding)**: 프로젝트의 현재 상태와 요구사항에 에이전트를 강력하게 고정시켜 맥락을 잃지 않게 합니다.
 
-![gstack 3대 핵심 철학](../assets/06-1-gstack-three-pillars-light2.png)
+![gstack 3대 핵심 철학](../assets/07-1-gstack-three-pillars-light2.png)
 
 > 💡 **그라운딩이란?** AI가 엉뚱한 방향으로 새지 않도록 "지금 프로젝트의 실제 상태와 요구사항"에 단단히 묶어 두는 것입니다. 덕분에 대화가 길어져도 처음 목표를 잃지 않습니다.
 
@@ -119,7 +119,7 @@ gstack은 **setup 스크립트**를 통해 설치됩니다. 스크립트가 Clau
    → 브랜치 정리, 변경사항 요약, 배포 체크리스트를 제공합니다.
 ```
 
-![새 기능 개발 5단계 gstack 커맨드 파이프라인](../assets/06-1-gstack-command-pipeline-light.png)
+![새 기능 개발 5단계 gstack 커맨드 파이프라인](../assets/07-1-gstack-command-pipeline-light.png)
 
 ### 컨텍스트 저장 및 복원
 

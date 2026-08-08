@@ -31,7 +31,7 @@
 - 여러 작업을 한꺼번에 나열하면 Claude가 순서대로 처리합니다. "테스트 실행하고, 실패하면 원인 분석 후 수정까지 해줘"처럼 연속 지시가 가능합니다.
 - 모바일 클립보드를 활용해 에러 메시지를 그대로 붙여넣으면 시간을 절약할 수 있습니다.
 
-![모바일 지시가 PC Claude Code로 전달되고 응답이 실시간 스트리밍되는 왕복 흐름도](../assets/05-4-mobile-control-input-roundtrip-light.png)
+![모바일 지시가 PC Claude Code로 전달되고 응답이 실시간 스트리밍되는 왕복 흐름도](../assets/06-4-mobile-control-input-roundtrip-light.png)
 
 <hr>
 

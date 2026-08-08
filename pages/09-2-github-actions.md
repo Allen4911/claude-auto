@@ -48,7 +48,7 @@ jobs:
 | `steps` | 각 job 내에서 순서대로 실행할 단계 |
 | `runs-on` | 실행 환경 (ubuntu-latest, windows-latest 등) |
 
-![GitHub Actions 워크플로우 on→jobs→steps 계층 구조](../assets/08-2-github-actions-workflow-structure.png)
+![GitHub Actions 워크플로우 on→jobs→steps 계층 구조](../assets/09-2-github-actions-workflow-structure.png)
 
 > 💡 **YAML이란?** 들여쓰기로 구조를 표현하는 설정 파일 형식입니다. 위 `ci.yml`처럼 "무엇을(on) 언제 실행하고, 어떤 단계(steps)를 거칠지"를 사람이 읽기 쉽게 적어 둡니다. 들여쓰기가 어긋나면 동작하지 않으니 칸 수에 주의합니다.
 
@@ -340,7 +340,7 @@ jobs:
           배포 완료 알림 전송
 ```
 
-![멀티에이전트 팀과 GitHub Actions 통합 전체 흐름](../assets/07-7-team-workflow.png)
+![멀티에이전트 팀과 GitHub Actions 통합 전체 흐름](../assets/08-7-team-workflow.png)
 이 흐름이 완성되면 앨런은 스마트폰으로 지시만 내리고, 코드 작성부터 배포·알림까지 모두 자동으로 돌아갑니다.
 
 > **핵심 요약**: GitHub Actions는 멀티에이전트 팀의 자동화를 완성하는 마지막 레이어입니다. 팀이 코드를 작성하고 푸시하는 순간부터 최종 배포까지, 사람이 손대지 않아도 파이프라인이 흘러갑니다.

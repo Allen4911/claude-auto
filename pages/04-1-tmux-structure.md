@@ -24,7 +24,7 @@ tmux 서버 (백그라운드 프로세스)
 └── 세션: work                      ← 별도 작업용 세션 (선택)
 ```
 
-![tmux 서버 아래 세션(team)→윈도우(0,1)→파인(0~5, 팀원별) 계층 구조를 트리로 표현한 다이어그램](../assets/03-1-tmux-structure-session.png)
+![tmux 서버 아래 세션(team)→윈도우(0,1)→파인(0~5, 팀원별) 계층 구조를 트리로 표현한 다이어그램](../assets/04-1-tmux-structure-session.png)
 
 > 💡 **건물 비유로 이해하기:** TMUX 서버는 건물 전체이고, 세션은 층, 윈도우는 그 층의 사무실, 파인은 사무실 안에 칸막이로 나눈 책상입니다. 건물(서버)은 전원이 켜진 이상 계속 서 있고, 사람(사용자)이 건물을 잠시 나갔다 와도(detach/attach) 각 책상에서 하던 작업은 그대로입니다.
 
@@ -140,7 +140,7 @@ tmux select-layout -t team:0 even-horizontal
 
 > 💡 **번호는 분할 순서에 따라 결정됩니다.** 세션을 만들면 Pane 0이 자동으로 생깁니다. 이후 분할할 때마다 새 파인이 다음 번호를 받습니다. 중요한 것은 **번호는 화면 위치가 아니라 생성 순서**라는 점입니다. 레이아웃을 바꾸거나 파인을 이동해도 번호는 유지됩니다.
 
-![파인 분할 순서도](../assets/03-1-tmux-structure-pane-split.png)
+![파인 분할 순서도](../assets/04-1-tmux-structure-pane-split.png)
 
 ### 파인 주소 지정
 
@@ -203,7 +203,7 @@ tmux set-option -t team main-pane-width 158
 
 > 💡 **너비 158의 이유:** 전체 세션 너비를 317로 설정했을 때, 절반인 158이 팀장 파인의 너비입니다. 팀장이 Remote-Control로 수신한 메시지와 팀원에게 보낼 지시를 충분히 볼 수 있는 공간입니다. 나머지 159컬럼을 5명이 나눠 쓰므로 각 팀원은 약 31컬럼씩 갖게 됩니다.
 
-![main-vertical 레이아웃 배치도](../assets/03-1-tmux-structure-main-vertical-layout.png)
+![main-vertical 레이아웃 배치도](../assets/04-1-tmux-structure-main-vertical-layout.png)
 
 <hr>
 

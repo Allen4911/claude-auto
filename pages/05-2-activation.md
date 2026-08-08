@@ -252,7 +252,7 @@ tmux send-keys -t team:0.2 "claude --remote-control '지훈-리서쳐'" Enter
 | CLI 플래그 (`--remote-control`) | 특정 세션 1개 | 그때그때 켜고 싶을 때 |
 | `/remote-control` | 현재 실행 중 세션 | 실행 후 필요해졌을 때 |
 
-![활성화 방법 선택 가이드](../assets/04-2-activation-method-decision.png)
+![활성화 방법 선택 가이드](../assets/05-2-activation-method-decision.png)
 
 ### 선택 가이드
 

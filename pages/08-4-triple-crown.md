@@ -14,7 +14,7 @@
 
 > 💡 **비유: 건물 짓기** gstack은 건축사(무엇을 왜 짓는지 설계), GSD는 공사 관리자(어떤 순서로 공사할지 계획), Superpowers는 건설 기준(콘크리트 강도·배선 규격 등 품질 기준)입니다. 설계 없이 벽돌부터 쌓으면 나중에 전체를 허물어야 합니다.
 
-![전략→계획→실행→검증 사이클을 강제하는 Triple Crown 통합 개발 흐름 개념도](../assets/07-4-triple-crown-dev.png)
+![전략→계획→실행→검증 사이클을 강제하는 Triple Crown 통합 개발 흐름 개념도](../assets/08-4-triple-crown-dev.png)
 
 <hr>
 
@@ -354,7 +354,7 @@ GSD 검증은 "계획한 것을 다 했는가"를 확인하고, gstack 검증은
 
 6명의 팀 에이전트에게 Triple Crown의 각 단계를 분담하면 더 효율적입니다.
 
-![Triple Crown 팀 배분](../assets/07-4-team-triple-crown.png)
+![Triple Crown 팀 배분](../assets/08-4-team-triple-crown.png)
 
 ### 팀장의 Triple Crown 실행 스크립트
 
@@ -428,7 +428,7 @@ echo "팀장: /ship 으로 배포 준비"
 | 대 (1~3일) | gstack + Superpowers | 새 기능 모듈, API 추가 |
 | 특대 (1주 이상) | **Triple Crown 전체** | 신규 서비스, 대규모 리팩토링 |
 
-![작업 규모가 커질수록 권장 도구 조합이 늘어나는 규모별 적용 기준 매트릭스](../assets/07-4-triple-crown-scale-matrix.png)
+![작업 규모가 커질수록 권장 도구 조합이 늘어나는 규모별 적용 기준 매트릭스](../assets/08-4-triple-crown-scale-matrix.png)
 
 > 💡 핵심은 "규모에 맞게 쓰라"는 것이다. 오타 수정에 전체 파이프라인을 돌리면 과하고, 대규모 프로젝트를 도구 없이 진행하면 방향을 잃는다.
 

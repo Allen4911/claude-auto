@@ -49,7 +49,7 @@ CLAUDE.md에 파일 소유권을 명시하면 에이전트가 자연스럽게 �
 - docs/ — 민준 담당
 ```
 
-![역할별 파일 소유권 지도](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/08-4-conflict-prevention-ownership-map.png)
+![역할별 파일 소유권 지도](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/09-4-conflict-prevention-ownership-map.png)
 
 ### 원칙 2: 순차 실행으로 의존성 관리
 
@@ -81,11 +81,11 @@ Phase 완료 후 리뷰 통과 시 main에 머지합니다. 여러 Phase가 동�
 
 > 💡 **브랜치(Branch)란?** 코드의 "작업 사본"입니다. main 브랜치는 안정적인 완성 코드, feature 브랜치는 새 기능을 개발하는 임시 공간입니다. 서로 다른 브랜치에서 같은 파일을 수정해도 main이 망가지지 않습니다. 작업이 완료되면 main에 "머지(merge)"하여 합칩니다.
 
-![Phase별 브랜치 전략과 main 머지 흐름](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/07-9-conflict-Strategy.png)
+![Phase별 브랜치 전략과 main 머지 흐름](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/08-9-conflict-Strategy.png)
 
 위 그림은 각 Phase 브랜치가 main에서 분기되어 독립 작업 후 순서대로 머지되는 전체 흐름입니다. 아래 그림은 실제 git 그래프 형태로 커밋 분기와 머지 포인트를 상세히 표현합니다.
 
-![Phase별 feature 브랜치 전략 git 그래프](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/08-4-conflict-prevention-branch-strategy.png)
+![Phase별 feature 브랜치 전략 git 그래프](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/09-4-conflict-prevention-branch-strategy.png)
 
 <hr>
 
@@ -205,7 +205,7 @@ for message in pubsub.listen():
         print(f"{event['agent']} Phase {event['phase']} 완료. 리뷰 시작.")
 ```
 
-![Redis 기반 에이전트 간 파일 잠금·상태 공유 흐름](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/08-4-conflict-prevention-redis-flow.png)
+![Redis 기반 에이전트 간 파일 잠금·상태 공유 흐름](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/09-4-conflict-prevention-redis-flow.png)
 
 <hr>
 

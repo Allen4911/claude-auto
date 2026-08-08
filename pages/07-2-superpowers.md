@@ -60,7 +60,7 @@ superpowers의 `using-superpowers` 스킬이 활성화되어 있으면, Claude�
 
 두 방법은 쓰임이 다릅니다. **직접 이름을 대는 방법 1**은 정확히 원하는 스킬을 콕 집을 때 좋고, **자동 감지인 방법 2**는 작업만 말하면 Claude가 알맞은 스킬을 알아서 골라(때로는 여러 개를 순서대로 엮어) 줍니다. 평소엔 방법 2가 편하고, 특정 스킬을 꼭 써야 할 때만 방법 1로 지정하면 됩니다.
 
-![자동 감지 스킬 연계 예시 흐름](../assets/06-2-superpowers-skill-chain-light2.png)
+![자동 감지 스킬 연계 예시 흐름](../assets/07-2-superpowers-skill-chain-light2.png)
 
 <hr>
 

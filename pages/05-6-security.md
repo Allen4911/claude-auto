@@ -23,7 +23,7 @@ Claude Code 서버 모드
 로컬 머신
 ```
 
-![Claude Code 서버 모드 보안 요청 처리 흐름](../assets/04-6-security-processing.png)
+![Claude Code 서버 모드 보안 요청 처리 흐름](../assets/05-6-security-processing.png)
 
 핵심 원칙: **동일한 Anthropic 계정으로 로그인한 기기만 해당 세션에 접근할 수 있습니다.** 타인이 세션 ID를 알더라도 계정 인증 없이는 연결이 불가능합니다.
 
@@ -48,7 +48,7 @@ Claude Code는 도구 실행 시 권한 확인을 거칩니다. Remote Control �
 | `plan` | 코드 읽기만 허용, 모든 수정은 승인 필요 | [높은 보안] |
 | `bypassPermissions` | 모든 작업 자동 허용 | [비권장] |
 
-![권한 모드 보안 강도 스펙트럼](../assets/04-6-security-permission-spectrum.png)
+![권한 모드 보안 강도 스펙트럼](../assets/05-6-security-permission-spectrum.png)
 
 > 💡 **권한 모드란?** Claude가 파일을 바꾸거나 명령을 실행하기 전에 "어디까지 자동으로 허용할지"를 정하는 단계입니다. 외부에서 접속하는 Remote Control에서는 더 엄격하게 잡는 것이 안전합니다. `default`(권장)는 읽기는 자동으로 허용하고, 쓰기·실행은 사람이 승인하게 합니다.
 
@@ -93,7 +93,7 @@ Claude: "git push origin main을 실행하겠습니다. 승인하시겠습니까
 거부 → 작업 중단
 ```
 
-![모바일 도구 실행 승인 흐름](../assets/04-6-mobile-access.png)
+![모바일 도구 실행 승인 흐름](../assets/05-6-mobile-access.png)
 
 `bypassPermissions` 모드는 이 승인 단계를 건너뛰므로 Remote Control 환경에서는 사용하지 않는 것이 좋습니다.
 
@@ -132,7 +132,7 @@ Claude: "git push origin main을 실행하겠습니다. 승인하시겠습니까
 
 읽기 전용 명령어(`git status`, `git log`, `Read`)는 자동 허용하되, 시스템 변경 명령어(`rm`, `sudo`)는 차단하는 것이 기본 원칙입니다.
 
-![settings.json Allow/Deny 권한 판정 게이트](../assets/04-6-security-allow-deny-gate.png)
+![settings.json Allow/Deny 권한 판정 게이트](../assets/05-6-security-allow-deny-gate.png)
 
 > 💡 **최소 권한 원칙:** 안전하게 운영하는 핵심은 "꼭 필요한 것만 자동 허용"입니다. 되돌릴 수 없는 명령(`rm -rf`, `sudo`, `git push --force` 등)은 deny로 막고, 무해한 읽기만 allow로 풀어 두면 사고를 크게 줄일 수 있습니다.
 

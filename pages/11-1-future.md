@@ -110,7 +110,7 @@ rate-limit-handling.md가 error-response-200.md를 참조하면:
 
 팀원이 직접 LLMWiki에 글을 쓰지 않습니다. 팀원은 inbox 폴더에 작업 결과를 넣기만 하면 됩니다. 파이프라인이 나머지를 처리합니다.
 
-![Inbox→Knowledge→Memory 파이프라인](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-1-llmwiki-pipeline-light.png)
+![Inbox→Knowledge→Memory 파이프라인](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/11-1-llmwiki-pipeline-light.png)
 
 각 에이전트의 역할은 명확하게 나뉩니다.
 
@@ -129,7 +129,7 @@ rate-limit-handling.md가 error-response-200.md를 참조하면:
 
 완성된 시스템은 세 개의 계층으로 쌓입니다.
 
-![LLMWiki 3계층 구조](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-1-llmwiki-3layers-light.png)
+![LLMWiki 3계층 구조](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/11-1-llmwiki-3layers-light.png)
 
 **계층 1 — LLMWiki 저장소**: Atomic Note 규칙, YAML Frontmatter, Wikilink/Backlink, INDEX.md로 구성된 지식 저장 구조입니다. 서랍장을 먼저 갖춰야 물건을 정리할 수 있듯, 저장소 구조가 먼저입니다.
 

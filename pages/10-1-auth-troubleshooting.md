@@ -6,7 +6,7 @@ Remote Control을 사용하다 보면 인증 관련 오류를 마주칠 때가 �
 
 > 💡 **인증 토큰(Auth Token)이란?** 비밀번호를 매번 입력하는 대신, 로그인 후 발급받은 "임시 열쇠"입니다. 이 열쇠로 서버에 접속하는데, 일정 기간이 지나면 만료되어 새 열쇠를 발급받아야 합니다. 토큰이 만료되면 갑자기 연결이 거부되는 것처럼 보일 수 있습니다.
 
-![Remote Control 인증 오류 진단 트리 — Session not found / Authentication failed / Connection timeout / Permission denied 4가지 분기 결정 트리](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/09-1-auth-troubleshooting-diagnosis-tree.png)
+![Remote Control 인증 오류 진단 트리 — Session not found / Authentication failed / Connection timeout / Permission denied 4가지 분기 결정 트리](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/10-1-auth-troubleshooting-diagnosis-tree.png)
 
 <hr>
 

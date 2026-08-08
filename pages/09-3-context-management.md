@@ -115,7 +115,7 @@ tmux send-keys -t team1:0.4 '/clear' Enter
 
 새 세션이 시작되면 팀원은 `/context-restore`로 중단 지점부터 재개합니다.
 
-![멀티에이전트 팀 컨텍스트 관리 사이클](../assets/08-3-context-management-team-cycle.png)
+![멀티에이전트 팀 컨텍스트 관리 사이클](../assets/09-3-context-management-team-cycle.png)
 
 <hr>
 
@@ -259,7 +259,7 @@ context-save       → 현재 세션의 상세 상태
 
 세 가지를 조합하면 어떤 세션에서 시작하더라도 완전한 맥락을 복원할 수 있습니다.
 
-![장기 프로젝트 3계층 메모리 구조 피라미드](../assets/08-3-context-management-memory-layers.png)
+![장기 프로젝트 3계층 메모리 구조 피라미드](../assets/09-3-context-management-memory-layers.png)
 
 ### 컨텍스트 사용량 계산 기준
 
@@ -276,7 +276,7 @@ context-save       → 현재 세션의 상세 상태
 
 Claude Sonnet 4.6의 컨텍스트 한도는 200,000 토큰입니다. 70% 기준으로는 약 140,000 토큰이 임계치입니다. 큰 파일을 자주 읽으면 컨텍스트가 금세 소진됩니다.
 
-![작업 유형별 토큰 소비량 비교표](../assets/08-3-token-consume.png)
+![작업 유형별 토큰 소비량 비교표](../assets/09-3-token-consume.png)
 
 ### 비상 컨텍스트 복구
 

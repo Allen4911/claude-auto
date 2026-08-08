@@ -24,7 +24,7 @@ Anthropic API 서버 (라우팅)
       └── 로컬 파일시스템, MCP 서버, 도구 사용
 ```
 
-![Remote Control 원격 연결 통신 경로 개요도](../assets/04-1-remote-control.png)
+![Remote Control 원격 연결 통신 경로 개요도](../assets/05-1-remote-control.png)
 
 클라우드로 이동하는 것은 **통신 경로**뿐입니다. 코드, 파일, 설정은 모두 로컬에 남아 있습니다.
 
@@ -97,7 +97,7 @@ Claude가 입력을 기다리거나 승인이 필요할 때 모바일 앱으로 
 | 모바일 앱 | 별도 SSH 클라이언트 | Claude 공식 모바일 앱 |
 | 알림 기능 | 없음 | 푸시 알림 지원 |
 
-![SSH vs Remote Control 연결 방식 비교](../assets/04-1-remote-control-overview-ssh-vs-rc.png)
+![SSH vs Remote Control 연결 방식 비교](../assets/05-1-remote-control-overview-ssh-vs-rc.png)
 
 > 💡 SSH는 서버 관리에 최적화된 "전문가 도구"이고, Remote Control은 Claude 세션 공유에 최적화된 "편의 도구"입니다. 둘을 대체재가 아닌 보완재로 보는 것이 좋습니다. 파일 전송·서버 관리는 SSH, Claude 세션 원격 조작은 Remote Control이 편합니다.
 
@@ -150,7 +150,7 @@ Remote Control이 활성화된 세션에 다른 기기에서 접속하는 방법
 2. **QR 코드**: 서버 모드에서 스페이스바 → 폰 카메라로 스캔
 3. **세션 목록**: `claude.ai/code`에서 세션 이름으로 찾기 (컴퓨터 아이콘 + 초록 점)
 
-![세션 접속 3가지 방법](../assets/04-1-remote-control-overview-access-methods.png)
+![세션 접속 3가지 방법](../assets/05-1-remote-control-overview-access-methods.png)
 
 상황별 추천:
 - **빠른 1회 접속**: QR 코드 (가장 빠름, 타이핑 없음)
