@@ -1,4 +1,4 @@
-## 04-5. Stream JSON 제어
+## 05-5. Stream JSON 제어
 
 Remote Control이 사람이 다른 기기에서 직접 접속하는 방식이라면, **Stream JSON**은 프로그램이 Claude Code를 자동으로 제어하는 방식입니다. 스크립트, 파이프라인, 다른 애플리케이션에서 Claude와 정해진 형식으로 주고받을 수 있습니다.
 

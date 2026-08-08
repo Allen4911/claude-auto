@@ -1,4 +1,4 @@
-## 06-2. superpowers — 스킬 기반 워크플로우 자동화
+## 07-2. superpowers — 스킬 기반 워크플로우 자동화
 
 ## superpowers란?
 

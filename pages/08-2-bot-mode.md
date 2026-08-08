@@ -1,4 +1,4 @@
-## 07-2. Bot Mode 활용
+## 08-2. Bot Mode 활용
 
 ## Bot Mode란 무엇인가
 

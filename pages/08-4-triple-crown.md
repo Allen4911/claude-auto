@@ -1,4 +1,4 @@
-## 07-4. Triple Crown 전략 — gstack + GSD + Superpowers 통합 워크플로우
+## 08-4. Triple Crown 전략 — gstack + GSD + Superpowers 통합 워크플로우
 
 ## Triple Crown이란
 

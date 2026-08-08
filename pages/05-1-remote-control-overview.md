@@ -1,4 +1,4 @@
-## 04-1. Remote-Control 개요
+## 05-1. Remote-Control 개요
 
 Claude Code Remote Control은 로컬에서 실행 중인 Claude Code 세션을 **다른 기기**에서 실시간으로 제어할 수 있는 기능입니다. 개발 PC를 켜둔 채로 스마트폰이나 태블릿에서 작업을 이어가거나, 실행 중인 작업을 원격으로 감독할 수 있습니다.
 

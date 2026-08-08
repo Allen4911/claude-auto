@@ -1,4 +1,4 @@
-## 04-2. Remote Control 활성화 방법 3가지
+## 05-2. Remote Control 활성화 방법 3가지
 
 Remote Control은 상황에 따라 세 가지 방법으로 활성화할 수 있습니다. 항상 켜두고 싶다면 전역 설정을, 특정 세션에만 적용하려면 CLI 플래그나 세션 내 명령을 사용합니다.
 
@@ -122,7 +122,7 @@ claude remote-control
 claude remote-control --remote-control-session-name-prefix myproject
 ```
 
-서버 모드는 4-3 챕터에서 자세히 다룹니다.
+서버 모드는 5-3 챕터에서 자세히 다룹니다.
 
 <hr>
 

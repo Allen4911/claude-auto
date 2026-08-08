@@ -1,4 +1,4 @@
-## 06-1. gstack — Claude Code 플러그인 스택 관리
+## 07-1. gstack — Claude Code 플러그인 스택 관리
 
 ## gstack이란?
 

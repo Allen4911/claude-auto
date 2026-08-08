@@ -1,4 +1,4 @@
-## 09-1. Remote-Control 인증 오류 해결
+## 10-1. Remote-Control 인증 오류 해결
 
 ## 이 절에서 배우는 것
 
