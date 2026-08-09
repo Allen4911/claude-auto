@@ -171,6 +171,10 @@ description: 배포 전 체크리스트를 실행합니다
 
 > 💡 **팀 스킬 공유**: 커스텀 스킬 파일을 팀 저장소에 올리고, 각자 `~/.claude/skills/`에 설치하면 팀 전체가 동일한 워크플로우를 따를 수 있습니다.
 
+> 🔀 **네이티브 vs 팀**
+>
+> 네이티브 단일 세션에서는 superpowers 스킬이 한 사람의 작업 방식을 강제하는 개인 방법론 도구로 작동합니다. TDD·디버깅·코드 리뷰 스킬을 설치하면 그 세션의 Claude가 절차를 건너뛰지 못하도록 묶어둡니다. TMUX 팀에서는 역할이 다릅니다. 서연(개발자)의 CLAUDE.md에는 `test-driven-development`·`systematic-debugging`을, 태양(리뷰어)에는 `code-reviewer`·`verification-before-completion`을 지정하는 식으로 각 에이전트에게 역할 전용 스킬만 부여합니다. 이렇게 하면 누가 어느 pane에서 작업하든 팀 전체의 품질 기준이 자동으로 일관되게 유지됩니다. 스킬 지정 방법은 [3-4. Skills 작성](03-4-skills-authoring.md)에서 다룹니다.
+
 <hr>
 
 ## 스킬 우선순위 규칙
