@@ -87,6 +87,10 @@ Phase 완료 후 리뷰 통과 시 main에 머지합니다. 여러 Phase가 동�
 
 ![Phase별 feature 브랜치 전략 git 그래프](https://raw.githubusercontent.com/Allen4911/claude-auto/main/assets/09-4-conflict-prevention-branch-strategy.png)
 
+> 🔀 **네이티브 vs 팀**
+>
+> 브랜치 전략이 논리적 격리를 제공한다면, Git Worktree는 물리적 격리를 추가합니다. 네이티브 병렬 에이전트는 같은 작업 디렉토리를 공유하므로 파일 소유권 규칙이 필수입니다. 반면 TMUX 팀이 Git Worktree를 사용하면 각 pane이 별도 디렉토리에서 독립적으로 작업하게 되어, 같은 파일을 두 에이전트가 동시에 건드릴 수 없는 구조적 제약이 파일 충돌을 원천 차단합니다. Worktree 설정과 운용 방법은 [3-6. Git Worktree](03-6-worktree.md)에서 다룹니다.
+
 <hr>
 
 ## Git 충돌 처리

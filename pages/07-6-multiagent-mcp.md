@@ -297,3 +297,7 @@ JavaScript 렌더링이 불필요한 HTTP 문서 수집에 씁니다. `start_ind
 | 경량 HTTP 문서 수집 | Fetch MCP | 이번 추가 |
 | 타임존 정규화·시간 게이팅 | Time MCP | 이번 추가 |
 | 버전 관리 감사·브랜치 분기 | Git MCP | 이번 추가 ⚠️ 초기개발 |
+
+> 🔀 **네이티브 vs 팀**
+>
+> 위 MCP 도구들은 네이티브 멀티에이전트(Claude Code 내 서브에이전트)와 TMUX 팀(분리 CLI 인스턴스) 모두에 동일하게 활용됩니다. 네이티브 서브에이전트는 Memory·Sequential Thinking MCP로 에이전트 간 지식과 추론 구조를 공유하고, TMUX 팀은 같은 MCP 서버를 여러 pane이 동시에 연결하여 Playwright·Context7 등을 병렬로 활용합니다. MCP는 두 방식 모두의 역할 능력을 확장하는 공통 인프라입니다. 서브에이전트 역할 설계는 [3-2](03-2-subagent-roles.md), 스킬과 MCP 연동은 [3-4](03-4-skills-authoring.md)를 참조하십시오.

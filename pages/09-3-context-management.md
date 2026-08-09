@@ -117,6 +117,10 @@ tmux send-keys -t team1:0.4 '/clear' Enter
 
 ![멀티에이전트 팀 컨텍스트 관리 사이클](../assets/09-3-context-management-team-cycle.png)
 
+> 🔀 **네이티브 vs 팀**
+>
+> 네이티브 서브에이전트는 하나의 Claude Code 프로세스 안에서 격리된 컨텍스트로 실행되므로, 서브에이전트가 완료되면 그 컨텍스트도 함께 소멸합니다. 반면 TMUX 팀은 각 pane이 독립된 CLI 세션이므로, 한 팀원이 context-save + /clear를 수행해도 나머지 팀원은 영향을 받지 않습니다. 장기 프로젝트에서 TMUX 팀의 분리 구조가 컨텍스트 관리 면에서 더 유연한 이유입니다. 서브에이전트의 컨텍스트 격리 특성은 [3-1. Subagent와 멀티에이전트](03-1-subagent-basics.md)에서 확인할 수 있습니다.
+
 <hr>
 
 ## 컨텍스트 관리 전략

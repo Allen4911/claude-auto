@@ -122,6 +122,8 @@ claude remote-control --spawn worktree
 
 **추천 상황:** 여러 Claude 세션이 동일 프로젝트에서 서로 다른 기능을 병렬 구현할 때. 각자 브랜치에서 독립 작업하고 나중에 머지합니다.
 
+> 🔀 **네이티브 vs 팀**: 서버 모드의 `worktree` spawn은 원격 접속자마다 별도 git worktree를 배정하는 외부 다중 접속 관리 방식입니다. 반면 네이티브의 `isolation: worktree`는 한 세션 내 서브에이전트가 파일 충돌 없이 병렬 작업하도록 격리하는 내부 위임 방식입니다. 두 worktree 격리는 목적(외부 다중 접속 vs 내부 병렬 위임)이 다릅니다. → [3-6. Git Worktree 병렬 개발](03-6-worktree.md)
+
 ```bash
 # 예시: 기능별 병렬 개발
 cd ~/projects/myapp
