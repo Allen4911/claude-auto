@@ -14,10 +14,9 @@
 * [02-1. 플랫폼별 설치 안내](pages/02-1-ubuntu-install.md)
 * [02-2. Windows: WSL2 환경 구성 가이드](pages/02-2-windows-wsl2.md)
 * [02-3. macOS: 설치 가이드](pages/02-3-macos.md)
-* [02-4. Docker 이해와 컨테이너 기동](pages/02-4-docker-concept.md)
-* [02-5. 컨테이너에 Claude Code 설치·실행](pages/02-5-docker-setup.md)
-* [02-6. 컨테이너 내부 tmux 설치와 원격제어](pages/02-6-tmux-install.md)
-* [02-7. GitHub 연동과 협업 사용법](pages/02-7-git.md)
+* [02-4. 호스트에 Claude Code 설치·인증](pages/02-4-host-claude-install.md)
+* [02-5. tmux 설치와 원격제어](pages/02-5-tmux-install.md)
+* [02-6. GitHub 연동과 협업 사용법](pages/02-6-git.md)
 
 ---
 

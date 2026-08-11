@@ -1,16 +1,16 @@
-## 02-2. Windows: WSL2 환경 구성 + Docker Desktop
+## 02-2. Windows: WSL2 환경 구성 완전 가이드
 
 Windows에서 Claude Code 멀티에이전트 환경을 구성하려면 **WSL2(Windows Subsystem for Linux 2)**가 필요합니다. WSL2는 Windows 10/11 위에서 완전한 Linux 커널을 실행하는 Microsoft 공식 솔루션으로, 성능과 호환성 모두 네이티브에 가깝습니다.
 
-> **이 페이지 범위**: WSL2 활성화 → Ubuntu 설치 → 기본 유틸리티 설치 → **Docker Desktop(WSL2 백엔드) 설치**까지. Claude Code·tmux 등 실제 개발 도구는 **Docker 컨테이너 내부**(02-5·02-6)에서 설치합니다.
+> **이 페이지 범위**: WSL2 활성화 → Ubuntu 설치 → 기본 유틸리티 설치까지. Claude Code·tmux는 호스트에 직접 설치합니다(02-4·02-5).
 
 > **WSL2를 쉽게 말하면?** Windows 안에 작은 Ubuntu 컴퓨터를 하나 더 띄우는 기능입니다. Windows는 그대로 쓰면서, 개발에 필요한 Linux 환경만 그 안에서 함께 돌리는 것이죠. 두 환경은 파일도 서로 주고받을 수 있습니다(뒤의 `/mnt/c` 설명 참고).
 
 ![Windows 11 안에서 WSL2 Ubuntu가 실행되는 윈도우 속 리눅스 개념도](../assets/02-2-windows-wsl2-windows-in-linux.png)
 
-> 아래는 이 페이지에서 진행할 전체 흐름입니다. 1→8단계를 순서대로 따라가면 됩니다.
+> 아래는 이 페이지에서 진행할 전체 흐름입니다. 1→7단계를 순서대로 따라가면 됩니다.
 
-크게 보면 흐름은 세 묶음입니다 — **WSL2를 켜고 Ubuntu를 올린 뒤**(1~4단계), **시스템을 최신화하고 기본 유틸리티와 Git을 세팅**(5~7단계)한 다음, **Docker Desktop을 설치하고 WSL2와 연결**(8단계)합니다. 이후 Claude Code·tmux는 컨테이너 안에서 설치하므로 02-4로 넘어가면 됩니다.
+크게 보면 흐름은 두 묶음입니다 — **WSL2를 켜고 Ubuntu를 올린 뒤**(1~4단계), **시스템을 최신화하고 기본 유틸리티와 Git을 세팅**합니다(5~7단계). 이후 Claude Code·tmux는 호스트에 직접 설치하므로 02-4로 넘어가면 됩니다.
 
 <hr>
 
@@ -129,53 +129,6 @@ git config --list
 
 <hr>
 
-## 8단계: Docker Desktop 설치 (WSL2 백엔드)
-
-Windows에서 Docker를 쓰는 가장 간단한 방법은 **Docker Desktop**입니다. WSL2 백엔드를 활성화하면 Ubuntu 터미널에서 `docker` 명령을 그대로 쓸 수 있습니다.
-
-### 8-1. Docker Desktop 다운로드 및 설치
-
-[docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) 에서 **Windows용 Docker Desktop**을 내려받아 실행합니다.
-
-설치 화면에서 아래 옵션을 확인합니다.
-
-- **Use WSL 2 instead of Hyper-V** — 반드시 체크
-- **Add shortcut to desktop** — 선택 사항
-
-설치가 완료되면 PC 재시작이 필요할 수 있습니다.
-
-### 8-2. WSL2 통합 활성화
-
-Docker Desktop을 실행하고 **Settings(⚙️) → Resources → WSL Integration** 으로 이동합니다.
-
-- **Enable integration with my default WSL distro** — 켜기
-- Ubuntu 항목이 보이면 해당 토글도 켜기
-
-**Apply & Restart** 버튼을 클릭합니다.
-
-### 8-3. Ubuntu 터미널에서 확인
-
-WSL2 Ubuntu 터미널을 열고 다음을 실행합니다.
-
-```bash
-docker --version
-```
-
-출력 예시:
-```
-Docker version 29.3.1, build ...
-```
-
-```bash
-docker run hello-world
-```
-
-`Hello from Docker!` 메시지가 출력되면 설치 완료입니다.
-
-> `docker: command not found` 오류가 나면 Docker Desktop을 재시작하거나 WSL Integration 설정을 다시 확인하세요. WSL2 Ubuntu 터미널도 닫았다가 새로 열어보세요.
-
-<hr>
-
 ## WSL2 고유 설정
 
 ### Windows 파일 시스템 접근
@@ -223,7 +176,7 @@ netsh advfirewall firewall add rule name="Claude Remote" dir=in action=allow pro
 
 ## 원클릭 설치 스크립트
 
-WSL2 Ubuntu 호스트 환경 기본 설정을 한 번에 처리합니다. Node.js·tmux·Claude Code는 02-5 컨테이너 단계에서 설치합니다.
+WSL2 Ubuntu 호스트 환경 기본 설정을 한 번에 처리합니다.
 
 ```bash
 #!/bin/bash
@@ -234,7 +187,7 @@ echo "=== WSL2 Ubuntu 호스트 환경 설치 시작 ==="
 # 시스템 업데이트
 sudo apt update && sudo apt upgrade -y
 
-# 기본 도구 (컨테이너 내부 도구는 02-5에서 설치)
+# 기본 도구
 sudo apt install -y git curl wget unzip build-essential
 
 # Git 기본 설정
@@ -249,8 +202,7 @@ echo "=== 호스트 기본 설치 완료 ==="
 echo "  git: $(git --version | cut -d' ' -f3)"
 echo "  curl: $(curl --version | head -1 | cut -d' ' -f2)"
 echo ""
-echo "다음 단계: Docker Desktop WSL2 Integration을 활성화하고 02-4로 이동하세요."
-echo "  docker --version 으로 연동을 확인하세요."
+echo "다음 단계: 02-4로 이동하여 Claude Code를 설치하고 인증하세요."
 ```
 
 저장 후 실행:
@@ -267,16 +219,14 @@ chmod +x install-host.sh
 ```bash
 git --version     # 2.x.x
 curl --version    # 버전 출력
-docker --version  # Docker version 29.x.x 이상
-docker run hello-world  # Hello from Docker! 출력
 ```
 
 모든 항목이 정상이면 다음 단계로 넘어갑니다.
 
 <hr>
 
-## 다음 단계: 02-4 Docker 이해
+## 다음 단계: 02-4 호스트에 Claude Code 설치
 
-호스트(WSL2 + Docker Desktop) 준비가 완료됐습니다. 이제 Docker의 개념을 익힌 뒤, 컨테이너를 기동해 Claude Code·tmux를 설치합니다.
+WSL2 Ubuntu 호스트 준비가 완료됐습니다. 이제 Claude Code를 직접 설치하고 인증합니다.
 
-[02-4. Docker 이해](02-4-docker-concept.md)로 이동하세요.
+[02-4. 호스트에 Claude Code 설치·인증](02-4-host-claude-install.md)으로 이동하세요.

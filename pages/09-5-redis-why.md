@@ -105,14 +105,6 @@ sudo apt install -y redis-server
 brew install redis
 ```
 
-**Docker 옵션**
-
-```bash
-docker run -d --name redis -p 6379:6379 redis:7
-```
-
-> 💡 **Docker로 띄우면 버전 격리가 쉽다** 로컬에 직접 설치하기 싫거나 Redis 버전을 프로젝트마다 다르게 쓰고 싶다면 Docker 컨테이너가 편하다. Docker 기본 개념은 [02-4](02-4-docker-concept.md)를 참고하자.
-
 **기동**
 
 ```bash

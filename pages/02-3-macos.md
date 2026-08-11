@@ -1,16 +1,16 @@
-## 02-3. macOS: 설치 완전 가이드 + Docker Desktop
+## 02-3. macOS: 설치 완전 가이드
 
-macOS에서는 기본 터미널(zsh)에서 바로 호스트 환경을 구성하고, **Docker Desktop**을 설치한 뒤 컨테이너 안에서 Claude Code·tmux를 운영합니다.
+macOS에서는 기본 터미널(zsh)에서 바로 호스트 환경을 구성하고, Claude Code를 호스트에 직접 설치해 운영합니다.
 
-> **이 페이지 범위**: Homebrew 설치 → Git·기본 유틸리티 설치 → **Docker Desktop 설치**까지. Claude Code·tmux 등 실제 개발 도구는 **Docker 컨테이너 내부**(02-5·02-6)에서 설치합니다.
+> **이 페이지 범위**: Homebrew 설치 → Git·기본 유틸리티 설치까지. Claude Code·tmux는 호스트에 직접 설치합니다(02-4·02-5).
 
-> **지원 버전**: macOS 12 Monterey 이상을 권장합니다. Intel Mac과 Apple Silicon(M1/M2/M3) 모두 지원됩니다.
+> **지원 버전**: macOS 13 Ventura 이상을 권장합니다. Intel Mac과 Apple Silicon(M1/M2/M3) 모두 지원됩니다.
 
 > **Homebrew를 쉽게 말하면?** macOS용 "앱 설치 도우미"입니다. 평소 앱은 App Store에서 받지만, 개발 도구는 터미널에서 `brew install 도구이름` 한 줄로 깔 수 있게 해 줍니다. 이 페이지는 Homebrew로 필요한 도구들을 차례로 설치합니다.
 
-> 아래는 이 페이지에서 진행할 전체 흐름입니다. 1→5단계를 순서대로 따라가면 됩니다.
+> 아래는 이 페이지에서 진행할 전체 흐름입니다. 1→4단계를 순서대로 따라가면 됩니다.
 
-**개발 토대(Xcode 도구·Homebrew)를 깔고**(1~2단계), **Git과 기본 유틸리티를 설치**(3~4단계)한 뒤 **Docker Desktop을 설치**합니다(5단계). Claude Code·tmux는 02-5·02-6에서 컨테이너 내부에 설치합니다.
+**개발 토대(Xcode 도구·Homebrew)를 깔고**(1~2단계), **Git과 기본 유틸리티를 설치**합니다(3~4단계). 이후 Claude Code·tmux는 02-4·02-5에서 호스트에 직접 설치합니다.
 
 <hr>
 
@@ -114,60 +114,6 @@ wget --version | head -1
 
 <hr>
 
-## 5단계: Docker Desktop 설치
-
-macOS에서 Docker를 쓰는 표준 방법은 **Docker Desktop**입니다. Intel Mac과 Apple Silicon 모두 지원하며, GUI 관리 도구를 포함합니다.
-
-### 5-1. 설치 방법 선택
-
-**방법 A — Homebrew (권장)**
-
-```bash
-brew install --cask docker
-```
-
-설치 후 애플리케이션 폴더에서 **Docker** 앱을 실행합니다.
-
-**방법 B — 직접 다운로드**
-
-[docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) 에서 자신의 칩에 맞는 설치 파일을 내려받습니다.
-
-| 기종 | 다운로드 선택 |
-|------|-------------|
-| Apple Silicon (M1/M2/M3) | **Mac with Apple Chip** |
-| Intel Mac | **Mac with Intel Chip** |
-
-`.dmg` 파일을 열고 Docker 아이콘을 Applications 폴더로 드래그합니다.
-
-> **주의 — Apple Silicon 유의사항**: 이 책에서 사용하는 `ubuntu:22.04` 이미지는 x86(amd64) 아키텍처입니다. Apple Silicon에서는 **QEMU 에뮬레이션**으로 실행되며 실행 속도가 네이티브 대비 느릴 수 있습니다. 기능 자체는 동작합니다.
-
-### 5-2. Docker Desktop 최초 실행
-
-설치 후 **Docker Desktop 앱을 실행**합니다. 메뉴바(상단 우측)에 고래 🐳 아이콘이 나타나면 Docker 엔진이 시작된 것입니다.
-
-처음 실행 시 이용 약관 동의 화면이 나타납니다. **Accept** 를 선택합니다.
-
-### 5-3. 터미널에서 확인
-
-```bash
-docker --version
-```
-
-출력 예시:
-```
-Docker version 29.3.1, build ...
-```
-
-```bash
-docker run hello-world
-```
-
-`Hello from Docker!` 메시지가 출력되면 설치 완료입니다.
-
-> `docker: command not found` 오류가 나면 Docker Desktop 앱이 실행 중인지 확인하세요. 메뉴바 고래 아이콘이 회전 중이면 엔진이 시작 중입니다. 완전히 멈출 때까지 기다린 뒤 다시 시도하세요.
-
-<hr>
-
 ## macOS 고유 설정
 
 ### zsh 셸 확인
@@ -187,13 +133,13 @@ chsh -s /bin/zsh
 
 ### macOS 방화벽 설정
 
-Remote Control 기능 사용 시 macOS 방화벽에서 연결을 허용해야 합니다. **시스템 환경설정 → 보안 및 개인 정보 보호 → 방화벽** 에서 Docker를 허용 목록에 추가합니다.
+Remote Control 기능 사용 시 macOS 방화벽에서 연결을 허용해야 합니다. **시스템 환경설정 → 보안 및 개인 정보 보호 → 방화벽** 에서 해당 포트를 허용 목록에 추가합니다.
 
 <hr>
 
 ## 원클릭 설치 스크립트
 
-macOS 호스트 환경 기본 설정을 한 번에 처리합니다. Node.js·tmux·Claude Code는 02-5 컨테이너 단계에서 설치합니다.
+macOS 호스트 환경 기본 설정을 한 번에 처리합니다.
 
 ```bash
 #!/bin/bash
@@ -212,25 +158,15 @@ if ! command -v brew &>/dev/null; then
   fi
 fi
 
-# 기본 도구 (컨테이너 내부 도구는 02-5에서 설치)
+# 기본 도구
 brew install git wget
-
-# Docker Desktop
-if ! command -v docker &>/dev/null; then
-  echo "Docker Desktop 설치 중 (cask)..."
-  brew install --cask docker
-  echo "Docker Desktop 앱을 Applications에서 한 번 실행한 뒤 다시 확인하세요."
-fi
 
 echo ""
 echo "=== 호스트 기본 설치 완료 ==="
 echo "  git:  $(git --version | cut -d' ' -f3)"
 echo "  brew: $(brew --version | head -1)"
 echo ""
-echo "다음 단계:"
-echo "  1. Docker Desktop 앱을 실행하여 메뉴바 고래 아이콘을 확인"
-echo "  2. docker run hello-world 로 연동 확인"
-echo "  3. 02-4 Docker 이해로 이동"
+echo "다음 단계: 02-4로 이동하여 Claude Code를 설치하고 인증하세요."
 ```
 
 저장 후 실행:
@@ -247,16 +183,14 @@ chmod +x install-host.sh
 ```bash
 brew --version    # Homebrew 4.x.x
 git --version     # 2.x.x
-docker --version  # Docker version 29.x.x 이상
-docker run hello-world  # Hello from Docker! 출력
 ```
 
 모든 항목이 정상이면 다음 단계로 넘어갑니다.
 
 <hr>
 
-## 다음 단계: 02-4 Docker 이해
+## 다음 단계: 02-4 호스트에 Claude Code 설치
 
-호스트(macOS + Docker Desktop) 준비가 완료됐습니다. 이제 Docker의 개념을 익힌 뒤, 컨테이너를 기동해 Claude Code·tmux를 설치합니다.
+macOS 호스트 준비가 완료됐습니다. 이제 Claude Code를 직접 설치하고 인증합니다.
 
-[02-4. Docker 이해](02-4-docker-concept.md)로 이동하세요.
+[02-4. 호스트에 Claude Code 설치·인증](02-4-host-claude-install.md)으로 이동하세요.

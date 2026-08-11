@@ -1,6 +1,4 @@
-## 02-6. 컨테이너 내부 tmux 설치 + Claude Code 원격제어 설정
-
-02-5에서 기동한 Docker 컨테이너 **안에서** tmux를 설치하고 Claude Code 원격제어 환경을 설정합니다. 호스트 OS에 설치하는 것이 아니라 컨테이너 내부에서 실행하는 점에 주의하세요.
+## 02-5. tmux 설치와 원격제어
 
 TMUX(Terminal Multiplexer)는 한 터미널 창에서 여러 터미널을 동시에 띄워 관리하는 도구입니다. Claude 멀티에이전트 환경에서는 TMUX의 파인(Pane) 기능을 활용해 여러 에이전트를 동시에 운영합니다.
 
@@ -8,19 +6,23 @@ TMUX(Terminal Multiplexer)는 한 터미널 창에서 여러 터미널을 동시
 
 > **TMUX가 없다면 어떻게 될까?** 터미널 창 6개를 따로 띄우고 각각에 Claude를 실행해야 합니다. 그리고 에이전트끼리 메시지를 주고받으려면 사람이 직접 복사·붙여넣기를 해야 합니다. TMUX는 이 모든 창들을 하나로 묶고, 스크립트로 각 칸에 명령을 자동 전송합니다.
 
-> **설치 위치**: tmux는 **컨테이너 내부**에서 설치합니다. `docker exec -it claude-env bash` 로 컨테이너에 진입한 상태에서 아래 단계를 진행하세요.
-
 <hr>
 
-## 1단계: tmux 설치 (컨테이너 내부)
+## 1단계: tmux 설치
 
-컨테이너 안에서 apt로 설치합니다. `ubuntu:22.04` 기본 저장소에서 제공합니다.
+플랫폼별로 다음 명령을 실행합니다.
 
 ```bash
-# 컨테이너 내부 셸에서 실행
-apt-get install -y tmux
+# Ubuntu / WSL2
+sudo apt install -y tmux
 
-# 설치 확인
+# macOS
+brew install tmux
+```
+
+설치 확인:
+
+```bash
 tmux -V
 ```
 
@@ -31,24 +33,24 @@ tmux 3.2a
 
 <hr>
 
-## 2단계: Claude Code 원격제어 설정 (컨테이너 내부)
+## 2단계: Claude Code 원격제어 설정
 
-tmux 세션을 컨테이너 안에 만들어 두면 SSH로 원격 접속한 뒤에도 같은 세션에 붙어 Claude Code를 그대로 이어서 사용할 수 있습니다. 이 단계에서는 그 원격제어 워크플로우를 설정합니다.
+tmux 세션을 호스트에 만들어 두면 SSH로 원격 접속한 뒤에도 같은 세션에 붙어 Claude Code를 그대로 이어서 사용할 수 있습니다. 이 단계에서는 그 원격제어 워크플로우를 설정합니다.
 
-> **원격제어가 필요한 이유**: 노트북을 닫거나 네트워크 연결이 끊겨도 컨테이너 안의 tmux 세션은 계속 살아 있습니다. SSH로 다시 접속해 `tmux attach`만 하면 Claude Code가 실행 중이던 화면으로 돌아옵니다. 스마트폰이나 다른 기기에서도 동일하게 작업을 이어받을 수 있습니다.
+> **원격제어가 필요한 이유**: 노트북을 닫거나 네트워크 연결이 끊겨도 호스트의 tmux 세션은 계속 살아 있습니다. SSH로 다시 접속해 `tmux attach`만 하면 Claude Code가 실행 중이던 화면으로 돌아옵니다. 스마트폰이나 다른 기기에서도 동일하게 작업을 이어받을 수 있습니다.
 
 ### 기본 원격 접속 흐름
 
 ```
-[원격 기기] ──SSH──▶ [호스트] ──docker exec──▶ [컨테이너] ──tmux attach──▶ [Claude Code 세션]
+[원격 기기] ──SSH──▶ [호스트] ──tmux attach──▶ [Claude Code 세션]
 ```
 
-원격 기기(스마트폰·태블릿·다른 PC)에서 SSH로 호스트에 접속하고, `docker exec`로 컨테이너에 진입한 뒤 기존 tmux 세션에 붙으면 Claude Code 멀티에이전트 환경이 그대로 이어집니다.
+원격 기기(스마트폰·태블릿·다른 PC)에서 SSH로 호스트에 접속하고, 기존 tmux 세션에 붙으면 Claude Code 멀티에이전트 환경이 그대로 이어집니다.
 
-### 컨테이너 내부에서 tmux 세션 준비
+### 호스트에서 tmux 세션 준비
 
 ```bash
-# 컨테이너 내부에서 팀 세션 생성 후 백그라운드로 분리
+# 팀 세션 생성 후 백그라운드로 분리
 tmux new-session -d -s team
 # 이후 Claude Code 및 팀 환경 설정 진행 ...
 # Ctrl+B d 로 detach (세션은 백그라운드에서 유지)
@@ -57,10 +59,7 @@ tmux new-session -d -s team
 ### 원격에서 세션 재접속
 
 ```bash
-# 호스트 터미널에서
-docker exec -it claude-env bash
-
-# 컨테이너 내부에서
+# SSH로 호스트에 접속한 후
 tmux attach -t team
 ```
 
@@ -86,7 +85,7 @@ TMUX는 세 가지 계층 구조로 구성됩니다.
 
 이 계층 구조를 이해하면 `team:0.1` 같은 주소 표기가 자연스럽게 읽힙니다 — `팀세션 : 0번윈도우 . 1번파인`의 뜻입니다.
 
-![세션·윈도우·파인 3계층을 중첩 상자로 표현한 구조 다이어그램](../assets/02-6-tmux-install-session-window-pane.png)
+![세션·윈도우·파인 3계층을 중첩 상자로 표현한 구조 다이어그램](../assets/02-5-tmux-install-session-window-pane.png)
 
 <hr>
 
@@ -124,8 +123,6 @@ tmux kill-session -t team
 
 > `-s`는 세션 이름(session), `-t`는 대상(target)을 지정하는 옵션입니다. "분리(detach)"는 세션을 끄지 않고 잠시 빠져나오는 것으로, 다시 `attach`하면 하던 작업이 그대로 남아 있습니다.
 
-> **detach의 강력함**: 컨테이너 내부에서 tmux 세션을 만들고 detach한 뒤 `docker exec -it claude-env bash`로 다시 들어와 `tmux attach`하면 이전 작업 그대로 이어집니다. 단, 컨테이너 자체가 중지되면 tmux 세션도 함께 사라집니다.
-
 ### 윈도우 관리
 
 TMUX 세션 안에서 사용하는 단축키입니다. 모든 단축키는 `Ctrl+B`를 먼저 누른 후 키를 입력합니다.
@@ -155,7 +152,7 @@ TMUX 세션 안에서 사용하는 단축키입니다. 모든 단축키는 `Ctrl
 
 > `Ctrl+B q`를 누르면 각 파인에 번호가 잠깐 표시됩니다. 파인이 많을 때 몇 번 파인인지 빠르게 확인하는 방법입니다. 번호가 표시되는 동안 그 숫자 키를 누르면 해당 파인으로 즉시 이동합니다.
 
-![Ctrl+B 좌우 분할과 상하 분할의 결과 화면을 before/after로 비교한 그림](../assets/02-6-tmux-install-split-compare.png)
+![Ctrl+B 좌우 분할과 상하 분할의 결과 화면을 before/after로 비교한 그림](../assets/02-5-tmux-install-split-compare.png)
 
 <hr>
 
@@ -258,7 +255,7 @@ q               # 복사 모드 종료
 마우스 스크롤 자체를 활성화하려면 TMUX 설정에 한 줄을 추가합니다.
 
 ```bash
-# ~/.tmux.conf (컨테이너 내부)
+# ~/.tmux.conf
 set -g mouse on
 ```
 
@@ -270,13 +267,11 @@ tmux source-file ~/.tmux.conf
 
 <hr>
 
-## 실습: 컨테이너 내부 멀티파인 세션
+## 실습: 멀티파인 세션
 
-아래 4단계를 순서대로 따라 하면 컨테이너 안에서 좌우로 나뉜 파인 두 개가 각각 메시지를 출력하는 모습을 직접 확인할 수 있습니다.
+아래 4단계를 순서대로 따라 하면 좌우로 나뉜 파인 두 개가 각각 메시지를 출력하는 모습을 직접 확인할 수 있습니다.
 
 ```bash
-# 컨테이너 내부에서 실행
-
 # 1. 새 세션 생성 (백그라운드, 크기 지정)
 tmux new-session -d -s team -x 220 -y 50
 
@@ -293,7 +288,7 @@ tmux attach -t team
 
 > 접속 후 빠져나오려면 `Ctrl+B`를 누르고 손을 뗀 다음 `d`를 누르세요(detach). 실습 세션을 완전히 끄려면 `tmux kill-session -t team`을 실행합니다.
 
-이 실습에서 핵심 패턴을 확인하세요. `new-session -d`로 백그라운드에서 세션을 만들고, `split-window`로 파인을 나누고, `send-keys`로 각 파인에 명령을 주입한 뒤, `attach`로 들어가서 결과를 확인합니다. 3장에서 6명의 에이전트 팀을 구성할 때도 이 흐름을 그대로 반복합니다.
+이 실습에서 핵심 패턴을 확인하세요. `new-session -d`로 백그라운드에서 세션을 만들고, `split-window`로 파인을 나누고, `send-keys`로 각 파인에 명령을 주입한 뒤, `attach`로 들어가서 결과를 확인합니다. 4장에서 6명의 에이전트 팀을 구성할 때도 이 흐름을 그대로 반복합니다.
 
 <hr>
 
@@ -312,10 +307,10 @@ TMUX의 핵심 흐름은 **세션 생성 → 파인 분할 → 각 파인에 명
 | 파인에 명령 전송 | `tmux send-keys -t 세션:윈도우.파인 "명령" Enter` |
 | 파인 화면 읽기 | `tmux capture-pane -t 세션:윈도우.파인 -p` |
 
-### 설치 확인 체크리스트 (컨테이너 내부)
+### 설치 확인 체크리스트
 
 ```bash
-tmux -V         # tmux 3.2a
+tmux -V         # tmux 3.2a 이상
 ```
 
-다음 챕터에서는 이 구조를 활용해 6명의 Claude 에이전트가 동시에 동작하는 팀 환경을 구성합니다.
+다음 절에서는 GitHub 연동과 협업 사용법을 다룹니다. 여기서 익힌 TMUX 구조는 4장에서 6명의 Claude 에이전트가 동시에 동작하는 팀 환경을 구성할 때 그대로 활용됩니다.
