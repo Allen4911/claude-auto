@@ -1,6 +1,6 @@
 ## 02-2. Windows: WSL2 환경 구성 완전 가이드
 
-Windows에서 Claude Code 멀티에이전트 환경을 구성하려면 **WSL2(Windows Subsystem for Linux 2)**가 필요합니다. WSL2는 Windows 10/11 위에서 완전한 Linux 커널을 실행하는 Microsoft 공식 솔루션으로, 성능과 호환성 모두 네이티브에 가깝습니다.
+Windows에서 Claude Code 멀티에이전트 환경을 구성하려면 **WSL2(Windows Subsystem for Linux 2)**가 필요합니다. WSL2는 Windows 10/11 위에서 완전한 Linux 커널을 실행하는 Microsoft 공식 솔루션으로, 성능과 호환성 모두 네이티브에 가깝습니다. Claude Code 자체는 Windows 10 1809 이상을 지원하지만, WSL2를 사용하려면 Windows 10 버전 2004(빌드 19041) 이상이 필요합니다.
 
 > **이 페이지 범위**: WSL2 활성화 → Ubuntu 설치 → 기본 유틸리티 설치까지. Claude Code·tmux는 호스트에 직접 설치합니다(02-4·02-5).
 
