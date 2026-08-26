@@ -37,7 +37,7 @@ npm install -g @anthropic-ai/claude-code
 npm install -g @anthropic-ai/claude-code@latest
 ```
 
-npm 설치 방식은 자동 업데이트를 지원하지 않습니다. 쓰기 권한이 있는 npm 전역 디렉터리가 필요하므로, nvm 없이 apt로 Node.js를 설치한 환경이라면 자동 업데이트가 작동하지 않을 수 있습니다.
+npm 설치 방식의 자동 업데이트는 npm 전역 디렉터리에 쓰기 권한이 있어야 정상 동작합니다. 쓰기 권한이 없는 환경(예: nvm 없이 apt로 Node.js 설치)에서는 자동 업데이트가 실패하며, 시작 시 안내 메시지가 표시되고 `claude doctor`로 해결 방법을 확인할 수 있습니다.
 
 <hr>
 
