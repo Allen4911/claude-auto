@@ -20,85 +20,96 @@
 
 ---
 
-## 03장. 네이티브 Claude Code 멀티에이전트
-* [03-1. Subagent와 멀티에이전트 — 무엇이 다른가](pages/03-1-subagent-basics.md)
-* [03-2. 역할별 Subagent 설계 — Planner·Dev·Reviewer](pages/03-2-subagent-roles.md)
-* [03-3. Subagent 작업 분담과 병렬 실행](pages/03-3-subagent-parallel.md)
-* [03-4. Skills 작성으로 작업 표준화](pages/03-4-skills-authoring.md)
-* [03-5. Hooks로 자동 검증](pages/03-5-hooks-validation.md)
-* [03-6. Git Worktree로 병렬 개발](pages/03-6-worktree.md)
-* [03-7. 네이티브의 한계, 그리고 팀으로의 전환](pages/03-7-native-limits.md)
+## 03장. Claude Code 기본기
+* [03-1. 첫 실행과 기본 대화 흐름](pages/03-1-first-run.md)
+* [03-2. 파일 읽기·편집 워크플로우](pages/03-2-file-editing.md)
+* [03-3. 슬래시 명령어 기초](pages/03-3-slash-commands.md)
+* [03-4. CLI 명령과 플래그](pages/03-4-cli-flags.md)
+* [03-5. Plan Mode와 권한 시스템](pages/03-5-plan-mode-permissions.md)
+* [03-6. CLAUDE.md 기초](pages/03-6-claude-md-basics.md)
+* [03-7. 컨텍스트 관리 기초](pages/03-7-context-basics.md)
 
 ---
 
-## 04장. Claude Code와 TMUX로 멀티에이전트 구성
-* [04-1. TMUX 세션·윈도우·파인 구조](pages/04-1-tmux-structure.md)
-* [04-2. 팀 에이전트 레이아웃 설계](pages/04-2-team-layout.md)
-* [04-3. 각 파인에 Claude Code 자동 실행](pages/04-3-auto-launch.md)
-* [04-4. CLAUDE.md로 팀원 역할 정의](pages/04-4-claude-md-roles.md)
-* [04-5. 팀 셋업 스크립트 작성](pages/04-5-setup-script.md)
+## 04장. 네이티브 Claude Code 멀티에이전트
+* [04-1. Subagent와 멀티에이전트 — 무엇이 다른가](pages/04-1-subagent-basics.md)
+* [04-2. 역할별 Subagent 설계 — Planner·Dev·Reviewer](pages/04-2-subagent-roles.md)
+* [04-3. Subagent 작업 분담과 병렬 실행](pages/04-3-subagent-parallel.md)
+* [04-4. Skills 작성으로 작업 표준화](pages/04-4-skills-authoring.md)
+* [04-5. Hooks로 자동 검증](pages/04-5-hooks-validation.md)
+* [04-6. Git Worktree로 병렬 개발](pages/04-6-worktree.md)
+* [04-7. 네이티브의 한계, 그리고 팀으로의 전환](pages/04-7-native-limits.md)
 
 ---
 
-## 05장. Claude Code Remote-Control 기능 설정 및 사용
-* [05-1. Remote-Control 개요](pages/05-1-remote-control-overview.md)
-* [05-2. Remote Control 활성화 방법 3가지](pages/05-2-activation.md)
-* [05-3. 서버 모드 및 Spawn 모드](pages/05-3-server-mode.md)
-* [05-4. 세션 이름 설정](pages/05-4-session-naming.md)
-* [05-5. Stream JSON 제어](pages/05-5-stream-json.md)
-* [05-6. 보안 설정 및 인증 요구사항](pages/05-6-security.md)
+## 05장. Claude Code와 TMUX로 멀티에이전트 구성
+* [05-1. TMUX 세션·윈도우·파인 구조](pages/05-1-tmux-structure.md)
+* [05-2. 팀 에이전트 레이아웃 설계](pages/05-2-team-layout.md)
+* [05-3. 각 파인에 Claude Code 자동 실행](pages/05-3-auto-launch.md)
+* [05-4. CLAUDE.md로 팀원 역할 정의](pages/05-4-claude-md-roles.md)
+* [05-5. 팀 셋업 스크립트 작성](pages/05-5-setup-script.md)
 
 ---
 
-## 06장. 휴대폰 Claude 앱에서 Remote-Control 사용
-* [06-1. Claude 모바일 앱 설치 및 계정 연결](pages/06-1-mobile-install.md)
-* [06-2. QR 코드로 세션 연결하기](pages/06-2-qr-connect.md)
-* [06-3. 세션 목록에서 팀 에이전트 선택](pages/06-3-session-list.md)
-* [06-4. 모바일에서 지시 전달 및 도구 승인](pages/06-4-mobile-control.md)
-* [06-5. 푸시 알림으로 작업 완료 확인](pages/06-5-push-notification.md)
+## 06장. Claude Code Remote-Control 기능 설정 및 사용
+* [06-1. Remote-Control 개요](pages/06-1-remote-control-overview.md)
+* [06-2. Remote Control 활성화 방법 3가지](pages/06-2-activation.md)
+* [06-3. 서버 모드 및 Spawn 모드](pages/06-3-server-mode.md)
+* [06-4. 세션 이름 설정](pages/06-4-session-naming.md)
+* [06-5. Stream JSON 제어](pages/06-5-stream-json.md)
+* [06-6. 보안 설정 및 인증 요구사항](pages/06-6-security.md)
 
 ---
 
-## 07장. 핵심 도구 설치 및 활용
-* [07-1. gstack — Claude Code 플러그인 스택 관리](pages/07-1-gstack.md)
-* [07-2. superpowers — 스킬 기반 워크플로우 자동화](pages/07-2-superpowers.md)
-* [07-3. gsd — Get Shit Done 프로젝트 관리](pages/07-3-gsd.md)
-* [07-4. RTK — Rust Token Killer 토큰 최적화](pages/07-4-rtk.md)
-* [07-5. MCP 연동 및 외부 도구 연결](pages/07-5-mcp.md)
-* [07-6. 멀티에이전트에 유용한 추가 MCP 도구](pages/07-6-multiagent-mcp.md)
+## 07장. 휴대폰 Claude 앱에서 Remote-Control 사용
+* [07-1. Claude 모바일 앱 설치 및 계정 연결](pages/07-1-mobile-install.md)
+* [07-2. QR 코드로 세션 연결하기](pages/07-2-qr-connect.md)
+* [07-3. 세션 목록에서 팀 에이전트 선택](pages/07-3-session-list.md)
+* [07-4. 모바일에서 지시 전달 및 도구 승인](pages/07-4-mobile-control.md)
+* [07-5. 푸시 알림으로 작업 완료 확인](pages/07-5-push-notification.md)
 
 ---
 
-## 08장. 실전 팀 에이전트 운용
-* [08-1. 팀 지시 흐름 설계](pages/08-1-team-flow.md)
-* [08-2. Bot Mode 활용](pages/08-2-bot-mode.md)
-* [08-3. 업무 분담 전략](pages/08-3-task-distribution.md)
-* [08-4. gstack·GSD·Superpowers 통합 워크플로우](pages/08-4-triple-crown.md)
-* [08-5. 자동화 워크플로우 예시](pages/08-5-workflow-examples.md)
-* [08-6. 네이티브 vs 팀 — 대비 실전 예제](pages/08-6-native-vs-team.md)
+## 08장. 핵심 도구 설치 및 활용
+* [08-1. gstack — Claude Code 플러그인 스택 관리](pages/08-1-gstack.md)
+* [08-2. superpowers — 스킬 기반 워크플로우 자동화](pages/08-2-superpowers.md)
+* [08-3. gsd — Get Shit Done 프로젝트 관리](pages/08-3-gsd.md)
+* [08-4. RTK — Rust Token Killer 토큰 최적화](pages/08-4-rtk.md)
+* [08-5. MCP 연동 및 외부 도구 연결](pages/08-5-mcp.md)
+* [08-6. 멀티에이전트에 유용한 추가 MCP 도구](pages/08-6-multiagent-mcp.md)
 
 ---
 
-## 09장. 고급 운용 기법
-* [09-1. 실제 멀티에이전트 운영 사례](pages/09-1-real-world.md)
-* [09-2. GitHub Actions 기반 자동화](pages/09-2-github-actions.md)
-* [09-3. 컨텍스트 관리 기법](pages/09-3-context-management.md)
-* [09-4. 멀티에이전트 충돌 방지](pages/09-4-conflict-prevention.md)
-* [09-5. Redis의 필요성](pages/09-5-redis-why.md)
-* [09-6. Redis 에이전트 상태공유](pages/09-6-redis-state-sharing.md)
-* [09-7. 실전 충돌 사례와 해결](pages/09-7-conflict-cases.md)
+## 09장. 실전 팀 에이전트 운용
+* [09-1. 팀 지시 흐름 설계](pages/09-1-team-flow.md)
+* [09-2. Bot Mode 활용](pages/09-2-bot-mode.md)
+* [09-3. 업무 분담 전략](pages/09-3-task-distribution.md)
+* [09-4. gstack·GSD·Superpowers 통합 워크플로우](pages/09-4-triple-crown.md)
+* [09-5. 자동화 워크플로우 예시](pages/09-5-workflow-examples.md)
+* [09-6. 네이티브 vs 팀 — 대비 실전 예제](pages/09-6-native-vs-team.md)
 
 ---
 
-## 10장. 운영 및 문제 해결
-* [10-1. Remote-Control 인증 오류 해결](pages/10-1-auth-troubleshooting.md)
-* [10-2. TMUX 세션 복구 및 재연결](pages/10-2-tmux-recovery.md)
-* [10-3. 토큰 최적화 심화](pages/10-3-token-optimization.md)
-* [10-4. 자동복구 스크립트](pages/10-4-auto-recovery.md)
+## 10장. 고급 운용 기법
+* [10-1. 실제 멀티에이전트 운영 사례](pages/10-1-real-world.md)
+* [10-2. GitHub Actions 기반 자동화](pages/10-2-github-actions.md)
+* [10-3. 컨텍스트 관리 기법](pages/10-3-context-management.md)
+* [10-4. 멀티에이전트 충돌 방지](pages/10-4-conflict-prevention.md)
+* [10-5. Redis의 필요성](pages/10-5-redis-why.md)
+* [10-6. Redis 에이전트 상태공유](pages/10-6-redis-state-sharing.md)
+* [10-7. 실전 충돌 사례와 해결](pages/10-7-conflict-cases.md)
 
 ---
 
-## 11장. 마치며
-* [11-1. 앞으로의 발전 방향](pages/11-1-future.md)
+## 11장. 운영 및 문제 해결
+* [11-1. Remote-Control 인증 오류 해결](pages/11-1-auth-troubleshooting.md)
+* [11-2. TMUX 세션 복구 및 재연결](pages/11-2-tmux-recovery.md)
+* [11-3. 토큰 최적화 심화](pages/11-3-token-optimization.md)
+* [11-4. 자동복구 스크립트](pages/11-4-auto-recovery.md)
+
+---
+
+## 12장. 마치며
+* [12-1. 앞으로의 발전 방향](pages/12-1-future.md)
 
 ---
